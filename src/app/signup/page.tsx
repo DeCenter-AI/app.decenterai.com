@@ -133,7 +133,7 @@ const Page = () => {
     return (
         <div className='bg-primary_13 h-screen flex flex-col gap-4 '>
             <div className='h-[10%] flex pl-10'>
-                <div className="w-[20%] lg:w-[10% relative">
+                <div className="w-[20%] lg:w-[10%] relative">
                     <Image
                         src="/logo.png"
                         alt="logo image"
