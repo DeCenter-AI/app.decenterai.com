@@ -1,12 +1,135 @@
 "use client"
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlineEye } from "react-icons/ai"
 import { PiEyeClosedLight, PiGoogleLogoBold } from "react-icons/pi"
-import { SiWalletconnect } from "react-icons/si"
+import { Web3AuthNoModal } from "@web3auth/no-modal";
+import { WALLET_ADAPTERS, CHAIN_NAMESPACES, SafeEventEmitterProvider } from "@web3auth/base";
+import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
+import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
+import RPC from "./ethRPC";
+import type { IProvider } from "@web3auth/base";
+import {useRouter } from 'next/navigation';
+
 
 const Page = () => {
-    const [view, setView] = useState<boolean>(false)
+    const [view, setView] = useState<boolean>(false);
+    const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
+    const [provider, setProvider] = useState<IProvider | null>(null);
+    const { push } = useRouter();
+
+    const clientId: string = process.env.NEXT_PUBLIC_AUTH_CID; // my personal currently @TODO: edit this
+
+    useEffect(() => {
+        const init = async () => {
+            try {
+                const web3auth = new Web3AuthNoModal({
+                    clientId,
+                    web3AuthNetwork: "testnet", // mainnet, aqua,  cyan or testnet
+                    chainConfig: {
+                        chainNamespace: CHAIN_NAMESPACES.EIP155,
+                        chainId: "0x13881",
+                        rpcTarget: "https://rpc-mumbai.maticvigil.com", // This is the public RPC we have added, please pass on your own endpoint while creating an app
+                    },
+                });
+
+                const privateKeyProvider = new EthereumPrivateKeyProvider({
+                    config: {
+                        chainConfig: {
+                            chainId: "0x13881",
+                            rpcTarget: "https://rpc-mumbai.maticvigil.com",
+                            displayName: 'Polygon Mumbai',
+                            blockExplorer: 'https://mumbai.polygonscan.com/',
+                            ticker: 'MATIC',
+                            tickerName: "Matic"
+                        }
+                    }
+                })
+
+                const openloginAdapter = new OpenloginAdapter({
+                    adapterSettings: {
+                        whiteLabel: {
+                            appName: "DecenterAi",
+                            logoDark: "/icon.png",
+                            defaultLanguage: "en",
+                            mode: 'dark', 
+                        },
+                        loginConfig: {
+                            google: {
+                                name: "Google Login", 
+                                verifier: "test-dev-0", 
+                                typeOfLogin: "google", 
+                                clientId: process.env.NEXT_PUBLIC_GOOGLE_CID, 
+                            },
+
+                        },
+                    },
+                    privateKeyProvider
+                });
+                web3auth.configureAdapter(openloginAdapter);
+
+
+                setWeb3auth(web3auth);
+
+                await web3auth.init();
+                if (web3auth.provider) {
+                    setProvider(web3auth.provider);
+                };
+
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        init();
+
+    }, []);
+
+    const login = async () => {
+        if (!web3auth) {
+            console.log("web3auth not initialized yet");
+            return;
+        }
+        const web3authProvider = await web3auth.connectTo(WALLET_ADAPTERS.OPENLOGIN, {
+            mfaLevel: "none", // Pass on the mfa level of your choice: default, optional, mandatory, none
+            loginProvider: "google",
+        });
+        setProvider(web3authProvider);
+    };
+
+    const getUserInfo = async () => {
+        if (!web3auth) {
+            console.log("web3auth not initialized yet");
+            return;
+        }
+        try {
+            const user = await web3auth.getUserInfo();
+            return user
+        } catch (error) {
+            console.log("We dont have user");
+            return null
+        }
+    };
+
+    const logout = async () => {
+        if (!web3auth) {
+            console.log("web3auth not initialized yet");
+            return;
+        }
+        await web3auth.logout();
+        setProvider(null);
+    };
+
+    if (web3auth) {
+        getUserInfo().then((res) => {
+            console.log(res);
+            if (res != null) {
+                push('/dashboard')
+            }
+        })
+    }
+
     return (
         <div className='bg-primary_13 h-screen flex flex-col gap-4 '>
             <div className='h-[10%] flex pl-10'>
@@ -57,13 +180,10 @@ const Page = () => {
                             <div className='border border-primary_11 w-full'></div>
                         </div>
                         <div className='h-[45%] flex flex-col gap-3'>
-                            <button className="border flex  items-center justify-center gap-4 border-primary_11 hover:border-primary_7 text-primary_7 font-semibold font-primaryArchivo text-sm w-full h-12 cursor-pointer rounded-xl">
-                                <SiWalletconnect size={20} className="text-primary_7" /> Sign up with Wallet
+                            <button className="border flex  items-center justify-center gap-4 border-primary_11 hover:border-primary_7 text-primary_7 font-semibold font-primaryArchivo text-sm w-full h-12 cursor-pointer rounded-xl" onClick={login}>
+                                <PiGoogleLogoBold size={20} className="text-primary_7" /> Sign up with Google
                             </button>
-                            <button className="border flex  items-center justify-center gap-4 border-primary_11 hover:border-primary_7 text-primary_7 font-semibold font-primaryArchivo text-sm w-full h-12 cursor-pointer rounded-xl">
-                                <PiGoogleLogoBold size={20} className="text-primary_7" /> Sign up with Wallet
-                            </button>
-                            <div className='text-primary_8 text-xs font-archivo '> <p className='font-light text-center'>Already have an account?   <span className='text-primary_1 pl-3 cursor-pointer'> Log in</span> </p></div>
+
                         </div>
                     </div>
                 </div>
