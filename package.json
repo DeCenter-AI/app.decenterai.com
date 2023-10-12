@@ -15,14 +15,20 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "@wagmi/core": "^1.4.3",
+    "@web3auth/base": "^7.0.4",
+    "@web3auth/ethereum-provider": "^7.0.4",
+    "@web3auth/no-modal": "^7.0.4",
+    "@web3auth/openlogin-adapter": "^7.0.4",
     "autoprefixer": "10.4.15",
     "axios": "^1.5.1",
     "cids": "^1.1.9",
     "encoding": "^0.1.13",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "ethers": "^6.8.0",
     "file-saver": "^2.0.5",
     "framer-motion": "^10.16.4",
+    "fs": "0.0.1-security",
     "jszip": "^3.10.1",
     "lokijs": "^1.5.12",
     "next": "13.4.19",
@@ -44,5 +50,12 @@
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
     "jest": "^29.7.0"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false,
+    "net": false,
+    "tls": false
   }
 }
