@@ -1,7 +1,5 @@
 import { CID } from "multiformats";
 
-
-
 export function isCid(cidStr:string){
     const cid = CID.parse(cidStr);
 
