@@ -20,10 +20,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@utils/*": ["./utils/*"],
       "@Components/*": ["./src/components/*"],
       "@Svg/*": ["./src/svg/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules","./jest.config.ts"]
+  "exclude": ["node_modules", "./jest.config.ts"]
 }
