@@ -26,20 +26,7 @@ export const DashLayout = ({
                             className="max-w-[25%] max-h-[50%]"
                         />
                     </div>
-<<<<<<< Updated upstream
-=======
-                    <div className='grid justify-center'>
-                        <Image
-                            src={logoText}
-                            alt="DECENTER Icon"
-                            width={100}
-                            height={150}
-
-
-                        />
-
-                    </div>
->>>>>>> Stashed changes
+               
                 </Link>
                 <div className='w-full h-[90%] overflow-y-auto font-archivo text-primary_8'>
                     <Link href="/dashboard">
