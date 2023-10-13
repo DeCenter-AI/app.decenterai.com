@@ -26,6 +26,20 @@ export const DashLayout = ({
                             className="max-w-[25%] max-h-[50%]"
                         />
                     </div>
+<<<<<<< Updated upstream
+=======
+                    <div className='grid justify-center'>
+                        <Image
+                            src={logoText}
+                            alt="DECENTER Icon"
+                            width={100}
+                            height={150}
+
+
+                        />
+
+                    </div>
+>>>>>>> Stashed changes
                 </Link>
                 <div className='w-full h-[90%] overflow-y-auto font-archivo text-primary_8'>
                     <Link href="/dashboard">
@@ -43,12 +57,14 @@ export const DashLayout = ({
                             </div>
                             <p className='text-sm'>Train</p>
                         </div></Link>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
-                        <div className='flex justify-center '>
-                            <BsDatabase size={25} />
+                    <Link href="/dashboard/repository">
+                        <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                            <div className='flex justify-center '>
+                                <BsDatabase size={25} />
+                            </div>
+                            <p className='text-sm'>Repository</p>
                         </div>
-                        <p className='text-sm'>Repository</p>
-                    </div>
+                    </Link>
                     <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <PiUsersThree size={25} />
