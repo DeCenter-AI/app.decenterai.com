@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import React from 'react'
+import Logo from '../../../public/Logo White.png'
+import logoText from "../../../public/Logo Texts.png"
 import { RxDashboard } from "react-icons/rx"
 import { HiOutlineChip } from "react-icons/hi"
 import { BsDatabase } from "react-icons/bs"
@@ -19,12 +21,23 @@ export const DashLayout = ({
                 <Link href="/">
                     <div className='w-full h-[10%] flex items-center justify-center'>
                         <Image
-                            src="/icon.png"
+                            src={Logo}
                             alt="DECENTER Icon"
                             width={100}
-                            height={100}
+                            height={150}
                             className="max-w-[25%] max-h-[50%]"
                         />
+                    </div>
+                    <div  className='grid justify-center'>
+                    <Image
+                            src={logoText}
+                            alt="DECENTER Icon"
+                            width={100}
+                            height={150}
+                           
+                          
+                        />
+
                     </div>
                 </Link>
                 <div className='w-full h-[90%] overflow-y-auto font-archivo text-primary_8'>
