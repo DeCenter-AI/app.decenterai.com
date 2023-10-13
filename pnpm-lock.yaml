@@ -44,6 +44,9 @@ dependencies:
   axios:
     specifier: ^1.5.1
     version: 1.5.1
+  cid:
+    specifier: github:multiformats/cid
+    version: github.com/multiformats/cid/e5b6a3636d05234bc34bef873926c706afc1bd89
   cids:
     specifier: ^1.1.9
     version: 1.1.9
@@ -9032,4 +9035,10 @@ packages:
       '@types/react': 18.2.21
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  github.com/multiformats/cid/e5b6a3636d05234bc34bef873926c706afc1bd89:
+    resolution: {tarball: https://codeload.github.com/multiformats/cid/tar.gz/e5b6a3636d05234bc34bef873926c706afc1bd89}
+    name: cid
+    version: 0.0.0
     dev: false

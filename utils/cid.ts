@@ -22,4 +22,5 @@ function main(){
     isCid("hiro")
 }
 
-main()
+// TODO:
+// main()

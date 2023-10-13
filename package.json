@@ -27,6 +27,7 @@
     "@web3auth/openlogin-adapter": "^7.0.4",
     "autoprefixer": "10.4.15",
     "axios": "^1.5.1",
+    "cid": "github:multiformats/cid",
     "cids": "^1.1.9",
     "encoding": "^0.1.13",
     "eslint": "8.49.0",
