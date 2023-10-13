@@ -1,4 +1,4 @@
-"use client";
+
 import JSZip from "jszip";
 import { saveAs } from 'file-saver';
 import React, { ReactHTMLElement, useState, useRef, use } from 'react'
