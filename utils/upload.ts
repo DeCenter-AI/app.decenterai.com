@@ -1,17 +1,17 @@
 import JSZip from "jszip";
-import { saveAs } from "file-saver";
+import toBuffer from "blob-to-buffer";
 
 import lighthouse from "@lighthouse-web3/sdk";
 
-export const uploadFile = async (file: Blob) => {
-  const output = await lighthouse.upload(
+//upload file
+export const uploadFile = async (file: Buffer) => {
+  const output = await lighthouse.uploadBuffer(
     file,
-    `${process.env.NEXT_PUBLIC_LH_API}`,
-    false
+    `${process.env.NEXT_PUBLIC_LH_API}`
   );
 
   //@ts-ignore
-  console.log(output.data[0].Hash);
+  return output.data.Hash;
 };
 
 //zip files
@@ -19,7 +19,7 @@ export const processFiles = (
   trainScript: Blob,
   requirementsScript: Blob,
   dataSet: Blob[],
-  modelName: string
+  startTrain: (hash: string) => void
 ) => {
   let zip = new JSZip();
 
@@ -32,9 +32,12 @@ export const processFiles = (
     });
 
   zip.generateAsync({ type: "blob" }).then((content) => {
-    console.log(content);
-    //upload to lighthouse
-    uploadFile(content);
-    //saveAs(content, `${modelName}`)
+    //convert to buffer
+    toBuffer(content, async function (err, buffer) {
+      if (err) throw err;
+
+      let hash = await uploadFile(buffer);
+      startTrain(hash);
+    });
   });
 };

@@ -8,6 +8,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md"
 
 import lighthouse from "@lighthouse-web3/sdk";
 import { processFiles } from "@utils/upload";
+import { compute } from "@utils/compute";
 
 interface IProps {
     setPage: (page: number | null) => void
@@ -143,9 +144,15 @@ const NewModel = ({ setPage }: IProps) => {
         console.log(percentageDone);
     };
 
-    const startTrain = () => {
+    const startTrain = async (hash: string) => {
+        console.log(hash)
+        let trainData = await compute(`${trainScript?.name}`, hash)
+        console.log(trainData)
+    }
+
+    const startProcess = () => {
         if (modelName && trainScript && requirementsScript && dataSet) {
-            processFiles(trainScript, requirementsScript, dataSet, modelName)
+            processFiles(trainScript, requirementsScript, dataSet, startTrain)
         }
     }
 
@@ -276,7 +283,7 @@ const NewModel = ({ setPage }: IProps) => {
                         </div>)}
                     </div>
                     <div className='h-[10%]'>
-                        <button onClick={() => startTrain()} className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm py-3 w-full cursor-pointer rounded-xl">
+                        <button onClick={() => startProcess()} className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm py-3 w-full cursor-pointer rounded-xl">
                             Train
                         </button>
                     </div>

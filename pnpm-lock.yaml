@@ -44,6 +44,9 @@ dependencies:
   axios:
     specifier: ^1.5.1
     version: 1.5.1
+  blob-to-buffer:
+    specifier: ^1.2.9
+    version: 1.2.9
   cids:
     specifier: ^1.1.9
     version: 1.1.9
@@ -121,6 +124,9 @@ dependencies:
     version: 4.5.5(encoding@0.1.13)(node-fetch@2.7.0)
 
 devDependencies:
+  '@types/blob-to-buffer':
+    specifier: ^1.2.0
+    version: 1.2.0
   '@types/file-saver':
     specifier: ^2.0.5
     version: 2.0.5
@@ -1865,6 +1871,12 @@ packages:
       '@babel/types': 7.23.0
     dev: true
 
+  /@types/blob-to-buffer@1.2.0:
+    resolution: {integrity: sha512-H1pnvedEPyq/MNIdXbkQNNhBT+lvqAh7R5CrMtX6YTiSVfLxgj+o521WoPuyD/2EI6si7BlnQqgs+wZU2O9V3w==}
+    dependencies:
+      '@types/node': 20.6.2
+    dev: true
+
   /@types/connect@3.4.36:
     resolution: {integrity: sha512-P63Zd/JUGq+PdrM1lv0Wv5SBYeA2+CORvbrXbngriYY0jzLUWfQMQQxOhjONEz/wlHOAxOdY7CY65rgQdTjq2w==}
     dependencies:
@@ -3232,6 +3244,10 @@ packages:
       buffer: 6.0.3
       inherits: 2.0.4
       readable-stream: 3.6.2
+    dev: false
+
+  /blob-to-buffer@1.2.9:
+    resolution: {integrity: sha512-BF033y5fN6OCofD3vgHmNtwZWRcq9NLyyxyILx9hfMy1sXYy4ojFl765hJ2lP0YaN2fuxPaLO2Vzzoxy0FLFFA==}
     dev: false
 
   /blob-to-it@1.0.4:
