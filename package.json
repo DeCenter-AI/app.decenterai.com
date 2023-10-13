@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "postinstall": "npm run build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
