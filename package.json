@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --passWithNoTests",
-    "run-cid": "ts-node utils/cid.ts"
+    "run-cid": "ts-node utils/archived/cid.ts"
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",

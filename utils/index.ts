@@ -1,2 +1,2 @@
-export * from './cid.js'
+export * from './archived/cid.js'
 export * from './compute'
