@@ -1,7 +1,7 @@
 import { CID } from "multiformats";
 import {base64} from "multiformats/bases/base64";
 
-export function isCid(cidStr){
+export function isCid(cidStr:string){
     let cid;
     try {
         cid = CID.parse(cidStr);
