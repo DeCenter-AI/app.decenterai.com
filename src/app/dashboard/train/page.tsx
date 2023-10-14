@@ -13,15 +13,17 @@ import NewModel from './components/NewModel';
 
 export default function Page() {
     const [page, setPage] = useState<number | null>(null)
+    const [modal, setModal] = useState<number | null>(null)
+    const [train, setTrain] = useState<boolean>(false)
     return (
         <DashLayout >
             {!page && <TrainBase setPage={setPage} />}
-            {page == 1 && <NewModel setPage={setPage} />}
+            {page == 1 && <NewModel setPage={setPage} setModal={setModal} train={train} setTrain={setTrain} />}
 
 
-            {/* <TransactionAuthorization /> */}
-            {/* <TransactionProcessing /> */}
-            {/* <TransactionCompleted /> */}
+            {modal === 0 && <TransactionAuthorization setModal={setModal} setTrain={setTrain} />}
+            {modal === 1 && <TransactionProcessing />}
+            {modal === 2 && < TransactionCompleted setModal={setModal} />}
         </DashLayout>
     );
 }

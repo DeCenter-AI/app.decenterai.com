@@ -16,9 +16,9 @@ export const uploadFile = async (file: Buffer) => {
 
 //zip files
 export const processFiles = (
-  trainScript: Blob,
-  requirementsScript: Blob,
-  dataSet: Blob[],
+  trainScript: File | null,
+  requirementsScript: File | null,
+  dataSet: File[],
   startTrain: (hash: string) => void
 ) => {
   let zip = new JSZip();

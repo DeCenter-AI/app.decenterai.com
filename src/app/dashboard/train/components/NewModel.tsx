@@ -1,7 +1,7 @@
-
+"use client";
 import JSZip from "jszip";
 import { saveAs } from 'file-saver';
-import React, { ReactHTMLElement, useState, useRef, use } from 'react'
+import React, { ReactHTMLElement, useState, useRef, use, useEffect } from 'react'
 import { CiTrash } from "react-icons/ci"
 import { FiUploadCloud } from "react-icons/fi"
 import { MdKeyboardArrowLeft } from "react-icons/md"
@@ -12,11 +12,14 @@ import { compute } from "@utils/compute";
 
 interface IProps {
     setPage: (page: number | null) => void
+    setModal: (modal: number | null) => void
+    setTrain: (train: boolean) => void
+    train: boolean
 }
 
 
 
-const NewModel = ({ setPage }: IProps) => {
+const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
     const trainScriptInput = useRef<HTMLInputElement | null>(null)
     const requirementInput = useRef<HTMLInputElement | null>(null)
     const dataSetInput = useRef<HTMLInputElement | null>(null)
@@ -25,6 +28,8 @@ const NewModel = ({ setPage }: IProps) => {
     const [requirementsScript, setRequirementsScript] = useState<File | null>(null)
     const [modelName, setModelName] = useState<string>("")
     const [dataSet, setDataSet] = useState<File[]>([])
+
+
 
     //truncate file name
     const truncateFileName = (
@@ -148,13 +153,22 @@ const NewModel = ({ setPage }: IProps) => {
         console.log(hash)
         let trainData = await compute(`${trainScript?.name}`, hash)
         console.log(trainData)
+        setModal(2)
+        setTrain(false)
     }
 
     const startProcess = () => {
         if (modelName && trainScript && requirementsScript && dataSet) {
-            processFiles(trainScript, requirementsScript, dataSet, startTrain)
+            setModal(0)
         }
     }
+
+    useEffect(() => {
+        if (train) {
+            console.log(train)
+            processFiles(trainScript, requirementsScript, dataSet, startTrain)
+        }
+    }, [train])
 
     return (
         <div className='w-full h-full px-5 py-3 font-archivo'>
