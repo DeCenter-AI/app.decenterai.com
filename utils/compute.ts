@@ -1,6 +1,18 @@
 
 import axios from 'axios'
 
+const BACALHAU_API = 'http://dashboard.bacalhau.org:1000/api/v1/run'
+export const BACALHAU_TIMEOUT =  60*60*1000  //1hr
+
+const bacalhau = axios.create({
+    baseURL: BACALHAU_API,
+    headers: {
+    },
+    timeout:BACALHAU_TIMEOUT , //1hr
+})
+
+bacalhau.defaults.timeout =  BACALHAU_TIMEOUT
+
 let data = {
     "Engine": "Docker",
     "Docker": {
@@ -17,8 +29,6 @@ let data = {
     }
 };
 
-
-const BACALHAU_API = 'http://dashboard.bacalhau.org:1000/api/v1/run'
 
 export async function compute(train_script:string,cid:string): Promise<string>{
     let dto = {
@@ -55,7 +65,8 @@ export async function compute(train_script:string,cid:string): Promise<string>{
         'Resources': {'CPU': '1', 'GPU': '1', 'MEMORY': '1Gb'},
     }
 
-    const res = await axios.post(BACALHAU_API, dto)
+    const res = await bacalhau
+        .post(BACALHAU_API, dto)
 //     most likely gives a status of 200 even for errors.
     console.log({
         resStatus: res.status,
@@ -96,6 +107,7 @@ export async function computeDemo(train_script:string,input_archive:string): Pro
         },
     }
 
+    // TODO: make this bacalhau.post
     const res = await axios.post(BACALHAU_API, dto)
 //     most likely gives a status of 200 even for errors.
     console.log({
