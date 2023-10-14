@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 
 const BACALHAU_API = 'http://dashboard.bacalhau.org:1000/api/v1/run'
@@ -146,7 +145,7 @@ async function main(){
 
 
 
-// main()
+main()
 
 /*
 axios.post('http://dashboard.bacalhau.org:1000/api/v1/run', data)
