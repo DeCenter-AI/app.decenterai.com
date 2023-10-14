@@ -1,16 +1,15 @@
 "use client"
 import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
-import { AiOutlineEye } from "react-icons/ai"
-import { PiEyeClosedLight, PiGoogleLogoBold } from "react-icons/pi"
-import { Web3AuthNoModal } from "@web3auth/no-modal";
-import { WALLET_ADAPTERS, CHAIN_NAMESPACES, SafeEventEmitterProvider } from "@web3auth/base";
-import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
-import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
-import RPC from "./_web3AuthUtils";
-import type { IProvider } from "@web3auth/base";
-import {useRouter } from 'next/navigation';
-import { useUserContext } from '../userContext'
+import React, {useEffect, useState} from 'react'
+import {AiOutlineEye} from "react-icons/ai"
+import {PiEyeClosedLight, PiGoogleLogoBold} from "react-icons/pi"
+import {Web3AuthNoModal} from "@web3auth/no-modal";
+import type {IProvider} from "@web3auth/base";
+import {CHAIN_NAMESPACES, WALLET_ADAPTERS} from "@web3auth/base";
+import {EthereumPrivateKeyProvider} from "@web3auth/ethereum-provider";
+import {OpenloginAdapter} from "@web3auth/openlogin-adapter";
+import {useRouter} from 'next/navigation';
+import {useUserContext} from '../userContext'
 
 
 const Page = () => {
@@ -54,14 +53,14 @@ const Page = () => {
                             appName: "DecenterAi",
                             logoDark: "/icon.png",
                             defaultLanguage: "en",
-                            mode: 'dark', 
+                            mode: 'dark',
                         },
                         loginConfig: {
                             google: {
-                                name: "Google Login", 
-                                verifier: "test-dev-0", 
-                                typeOfLogin: "google", 
-                                clientId: process.env.NEXT_PUBLIC_GOOGLE_CID, 
+                                name: "Google Login",
+                                verifier: "test-dev-0",
+                                typeOfLogin: "google",
+                                clientId: process.env.NEXT_PUBLIC_GOOGLE_CID,
                             },
 
                         },
