@@ -7,10 +7,10 @@ const bacalhau = axios.create({
     baseURL: BACALHAU_API,
     headers: {
     },
-    timeout:BACALHAU_TIMEOUT , //1hr
+    // timeout:BACALHAU_TIMEOUT , //1hr default: 0
 })
 
-bacalhau.defaults.timeout =  BACALHAU_TIMEOUT
+// bacalhau.defaults.timeout =  BACALHAU_TIMEOUT
 
 let data = {
     "Engine": "Docker",
@@ -33,7 +33,7 @@ export async function compute(train_script:string,cid:string): Promise<string>{
     let dto = {
         "Engine": "Docker",
         "Docker": {
-            "Image": "ghcr.io/decenter-ai/compute:v1.5.5",
+            "Image": "ghcr.io/decenter-ai/compute:v1.5.6",
             "Parameters": [
                 train_script, //headbrain.ipynb
                 `/inputs/${cid}`
@@ -79,7 +79,7 @@ export async function computeDemo(train_script:string,input_archive:string): Pro
     let dto = {
         "Engine": "Docker",
         "Docker": {
-            "Image": "ghcr.io/decenter-ai/compute:v1.5.5",
+            "Image": "ghcr.io/decenter-ai/compute:v1.5.6",
             "Parameters": [
                 train_script,
                 input_archive,
@@ -145,7 +145,7 @@ async function main(){
 
 
 
-main()
+// main()
 
 /*
 axios.post('http://dashboard.bacalhau.org:1000/api/v1/run', data)
