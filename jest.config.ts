@@ -9,7 +9,7 @@ const jestConfig = {
   testEnvironment: 'node',
   collectCoverageFrom: ['**/*.(t|j)s'],
   coverageDirectory: '../coverage',
-  testRegex: '.*\\.spec\\.ts$',
+  testRegex: '.*\\.spec\\.(ts|mjs)$',
   moduleFileExtensions: ['js', 'json', 'ts','mjs'],
   // automock: true,
   verbose: true,
