@@ -1,5 +1,4 @@
-import { CID } from "multiformats";
-import {base64} from "multiformats/bases/base64";
+import {CID} from "multiformats";
 
 /*
 export function isCid(cidStr:string){
@@ -30,7 +29,7 @@ export async function isCid(cidStr:string){
 }
 
 function main(){
-    const cid = "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw";
+    const cid = "QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo";
     let res = isCid(cid)
     console.log({[cid]: res})
 

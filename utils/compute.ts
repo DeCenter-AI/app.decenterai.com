@@ -121,7 +121,7 @@ export async function computeDemo(train_script:string,input_archive:string): Pro
 async function main(){
     const sample = {
         train_script: "headbrain.ipynb",
-        cid: "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw",
+        cid: "QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo",
     }
 
     await compute(sample.train_script, sample.cid)

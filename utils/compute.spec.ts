@@ -1,13 +1,12 @@
 import {BACALHAU_TIMEOUT, compute, computeDemo} from './compute';
-import {jest} from "@jest/globals";
 import {isCid} from "./cid";
 
 // jest.mock('axios');
 
 describe('compute()', () => {
     it('should return a valid IPFS CID', async () => {
-        const train_script = 'linear-regression.ipynb';
-        const cid = 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw';
+        const train_script = 'headbrain.ipynb';
+        const cid = 'QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo';
 
         const result = await compute(train_script, cid);
 
