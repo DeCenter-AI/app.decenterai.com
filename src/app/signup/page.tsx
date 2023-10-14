@@ -10,6 +10,7 @@ import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import RPC from "./ethRPC";
 import type { IProvider } from "@web3auth/base";
 import {useRouter } from 'next/navigation';
+import { useUserContext } from '../userContext'
 
 
 const Page = () => {
@@ -17,6 +18,7 @@ const Page = () => {
     const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
     const [provider, setProvider] = useState<IProvider | null>(null);
     const { push } = useRouter();
+    const {user, setUser} = useUserContext();
 
     const clientId: string = process.env.NEXT_PUBLIC_AUTH_CID; // my personal currently @TODO: edit this
 
@@ -125,6 +127,7 @@ const Page = () => {
         getUserInfo().then((res) => {
             console.log(res);
             if (res != null) {
+                setUser(res);
                 push('/dashboard')
             }
         })

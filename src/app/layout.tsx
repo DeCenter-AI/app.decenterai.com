@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import '@rainbow-me/rainbowkit/styles.css'
 import { Providers } from './providers'
+import { ContextProvider } from "./userContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,11 @@ export default function RootLayout({
       <head>
         <title>Decenter AI</title>
       </head>
-      <body className={inter.className}><Providers>{children}</Providers></body>
+      <body className={inter.className}>
+        <ContextProvider>
+          <Providers>{children}</Providers>
+        </ContextProvider>
+      </body>
     </html>
   );
 }
