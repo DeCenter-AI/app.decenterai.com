@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image'
-import React, { useState } from 'react'
-import { AiOutlineEye } from "react-icons/ai"
-import { PiEyeClosedLight, PiGoogleLogoBold } from "react-icons/pi"
-import { SiWalletconnect } from "react-icons/si"
+import React, {useState} from 'react'
+import {AiOutlineEye} from "react-icons/ai"
+import {PiEyeClosedLight, PiGoogleLogoBold} from "react-icons/pi"
+import {SiWalletconnect} from "react-icons/si"
 
 const Page = () => {
     const [view, setView] = useState<boolean>(false)
@@ -32,7 +32,7 @@ const Page = () => {
                                 <div className='h-[30%] '>
                                     <p className='font-archivo text-primary_1 text-xs'>Email address</p>
                                 </div>
-                                <input type='email' placeholder='Enter email address' className='block h-[90%] focus:outline-none focus:ring-1 ring-primary_7 focus:border-none border border-primary_11 rounded-xl px-6 bg-transparent text-sm font-archivo' />
+                                <input type='email' placeholder='Enter email address' className='block h-[90%] focus:outline-none focus:ring-1 focus:bg-transparent ring-primary_7 focus:border-none border border-primary_11 rounded-xl px-6 bg-transparent text-sm font-archivo' />
                             </div>
                             <div className='h-[30%] flex flex-col'>
                                 <div className='h-[30%] '>
@@ -43,7 +43,7 @@ const Page = () => {
                                         {!view && <AiOutlineEye size={20} className="cursor-pointer" onClick={() => setView(!view)} />}
                                         {view && <PiEyeClosedLight size={20} className="cursor-pointer" onClick={() => setView(!view)} />}
                                     </div>
-                                    <input type={view ? "text" : "password"} placeholder='Enter your secure password here' className='h-full w-full focus:outline-none focus:ring-1 ring-primary_7 rounded-xl  pl-6 pr-12 bg-transparent text-sm font-archivo outline-none' />
+                                    <input type={view ? "text" : "password"} placeholder='Enter your secure password here' className='h-full w-full focus:outline-none focus:ring-1 focus:bg-transparent ring-primary_7 rounded-xl  pl-6 pr-12 bg-transparent text-sm font-archivo outline-none' />
                                 </div>
                             </div>
                             <div className='h-[30%] w-full'>
