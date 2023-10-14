@@ -7,7 +7,7 @@ import { Web3AuthNoModal } from "@web3auth/no-modal";
 import { WALLET_ADAPTERS, CHAIN_NAMESPACES, SafeEventEmitterProvider } from "@web3auth/base";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
-import RPC from "./web3AuthUtils";
+import RPC from "./_web3AuthUtils";
 import type { IProvider } from "@web3auth/base";
 import {useRouter } from 'next/navigation';
 import { useUserContext } from '../userContext'
