@@ -1,4 +1,4 @@
-import { compute, computeDemo } from './compute';
+import {compute, computeDemo} from './compute';
 import {jest} from "@jest/globals";
 import {isCid} from "./cid.mjs";
 

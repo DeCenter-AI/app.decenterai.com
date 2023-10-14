@@ -1,5 +1,4 @@
-import { CID } from "multiformats";
-import {base64} from "multiformats/bases/base64";
+import {CID} from "multiformats";
 
 export function isCid(cidStr){
     let cid;

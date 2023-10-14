@@ -1,15 +1,15 @@
 "use client"
 import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
-import { AiOutlineEye } from "react-icons/ai"
-import { PiEyeClosedLight, PiGoogleLogoBold } from "react-icons/pi"
-import { Web3AuthNoModal } from "@web3auth/no-modal";
-import { WALLET_ADAPTERS, CHAIN_NAMESPACES, SafeEventEmitterProvider } from "@web3auth/base";
-import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
-import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
-import RPC from "./ethRPC";
-import type { IProvider } from "@web3auth/base";
-import {useRouter } from 'next/navigation';
+import React, {useEffect, useState} from 'react'
+import {AiOutlineEye} from "react-icons/ai"
+import {PiEyeClosedLight, PiGoogleLogoBold} from "react-icons/pi"
+import {Web3AuthNoModal} from "@web3auth/no-modal";
+import type {IProvider} from "@web3auth/base";
+import {CHAIN_NAMESPACES, WALLET_ADAPTERS} from "@web3auth/base";
+import {EthereumPrivateKeyProvider} from "@web3auth/ethereum-provider";
+import {OpenloginAdapter} from "@web3auth/openlogin-adapter";
+import {useRouter} from 'next/navigation';
+import {useUserContext} from '../userContext'
 
 
 const Page = () => {
@@ -17,6 +17,7 @@ const Page = () => {
     const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null);
     const [provider, setProvider] = useState<IProvider | null>(null);
     const { push } = useRouter();
+    const {user, setUser} = useUserContext();
 
     const clientId: string = process.env.NEXT_PUBLIC_AUTH_CID; // my personal currently @TODO: edit this
 
@@ -52,14 +53,14 @@ const Page = () => {
                             appName: "DecenterAi",
                             logoDark: "/icon.png",
                             defaultLanguage: "en",
-                            mode: 'dark', 
+                            mode: 'dark',
                         },
                         loginConfig: {
                             google: {
-                                name: "Google Login", 
-                                verifier: "test-dev-0", 
-                                typeOfLogin: "google", 
-                                clientId: process.env.NEXT_PUBLIC_GOOGLE_CID, 
+                                name: "Google Login",
+                                verifier: "test-dev-0",
+                                typeOfLogin: "google",
+                                clientId: process.env.NEXT_PUBLIC_GOOGLE_CID,
                             },
 
                         },
@@ -125,6 +126,7 @@ const Page = () => {
         getUserInfo().then((res) => {
             console.log(res);
             if (res != null) {
+                setUser(res);
                 push('/dashboard')
             }
         })
@@ -155,7 +157,7 @@ const Page = () => {
                                 <div className='h-[30%] '>
                                     <p className='font-archivo text-primary_1 text-xs'>Email address</p>
                                 </div>
-                                <input type='email' placeholder='Enter email address' className='block h-[90%] focus:outline-none focus:ring-1 focus:bg-transparent ring-primary_7 focus:border-none border border-primary_11 rounded-xl px-6 bg-transparent text-sm font-archivo' />
+                                <input type='email' placeholder='Enter email address' className='block h-[90%] focus:outline-none focus:ring-1 ring-primary_7 focus:border-none border border-primary_11 rounded-xl px-6 bg-transparent text-sm font-archivo' />
                             </div>
                             <div className='h-[30%] flex flex-col'>
                                 <div className='h-[30%] '>
@@ -166,7 +168,7 @@ const Page = () => {
                                         {!view && <AiOutlineEye size={20} className="cursor-pointer" onClick={() => setView(!view)} />}
                                         {view && <PiEyeClosedLight size={20} className="cursor-pointer" onClick={() => setView(!view)} />}
                                     </div>
-                                    <input type={view ? "text" : "password"} placeholder='Enter your secure password here' className='h-full w-full focus:outline-none focus:ring-1 focus:bg-transparent ring-primary_7 rounded-xl  pl-6 pr-12 bg-transparent text-sm font-archivo outline-none' />
+                                    <input type={view ? "text" : "password"} placeholder='Enter your secure password here' className='h-full w-full focus:outline-none focus:ring-1 ring-primary_7 rounded-xl  pl-6 pr-12 bg-transparent text-sm font-archivo outline-none' />
                                 </div>
                             </div>
                             <div className='h-[30%] w-full'>
