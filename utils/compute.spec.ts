@@ -8,7 +8,14 @@ describe('compute()', () => {
         const train_script = 'headbrain.ipynb';
         const cid = 'QmRwvooN7Yfa6Gx8aVcf5cV7MAAMHmo5Q5JTt5234jf3qo';
 
+        expect(await isCid(cid)).toBe(true)
+
         const result = await compute(train_script, cid);
+
+        console.debug({
+            train_script,
+            result,
+        })
 
         expect(await isCid(result)).toBe(true)
     },BACALHAU_TIMEOUT);
