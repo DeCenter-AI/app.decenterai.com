@@ -5,7 +5,7 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/signup', // Matched parameters can be used in the destination
+        destination: '/explore', // Matched parameters can be used in the destination
         permanent: false
       }
     ]
