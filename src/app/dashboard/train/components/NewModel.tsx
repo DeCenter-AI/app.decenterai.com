@@ -11,12 +11,14 @@ import { extractFile, uploadFile } from "@utils/upload";
 import { compute } from "@utils/compute";
 import axios from "axios";
 import { extract } from "viem/utils";
+import { decodeCid, retrieve } from "@utils/fileCoinIpfs";
 
 interface IProps {
     setPage: (page: number | null) => void
     setModal: (modal: number | null) => void
     setTrain: (train: boolean) => void
-    train: boolean
+    train: boolean,
+    modal: number | null
 }
 
 interface IFile {
@@ -27,13 +29,14 @@ interface IFile {
 }
 
 
-const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
+const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
     const trainScriptInput = useRef<HTMLInputElement | null>(null)
     // const requirementInput = useRef<HTMLInputElement | null>(null)
     const dataSetInput = useRef<HTMLInputElement | null>(null)
     const [trainScript, setTrainScript] = useState<string>("")
     //const [requirementsScript, setRequirementsScript] = useState<File | null>(null)
     const [modelName, setModelName] = useState<string>("")
+    const [decodedCid, setDecodedCid] = useState<string>("")
     const [dataSet, setDataSet] = useState<File | null>(null)
     const [dataSetList, setDataSetList] = useState<IFile[]>([])
 
@@ -129,7 +132,7 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
 
     // }
 
-    //dataset
+    //dataset logic begins
     const handleDataSetDragOver = (e: React.DragEvent<Blob>) => {
         e.preventDefault()
 
@@ -183,6 +186,8 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
 
         });
     }
+    //dataset logic ends
+
 
 
 
@@ -193,10 +198,13 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
             trainScript: `${trainScript}`,
             cid: `${cid}`
         });
-        console.log(trainData.data)
-        //hide modal
-        setModal(2)
+        console.log((trainData.data.result))
+        //decode cid
+        const decodedCid = decodeCid(trainData.data.result)
+        setDecodedCid(decodedCid)
 
+        //change modal
+        setModal(2)
         setTrain(false)
     }
 
@@ -207,6 +215,18 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
         }
     }
 
+
+
+    //download trained model
+    const download = async () => {
+        //download
+        const status: boolean = await retrieve(decodedCid, modelName)
+        console.log(status)
+        if (status) setModal(null)
+
+    }
+
+
     useEffect(() => {
 
         if (train) {
@@ -214,6 +234,11 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
             uploadFile(dataSet, startTrain)
         }
     }, [train])
+
+    useEffect(() => {
+
+        if (modal == 3) download()
+    }, [modal])
 
     return (
         <div className='w-full h-full px-5 py-3 font-archivo'>
