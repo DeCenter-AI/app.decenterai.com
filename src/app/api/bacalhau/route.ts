@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   //return response
   return new Response(
     JSON.stringify({
-      data: trainRes,
+      result: trainRes,
     })
   );
 }
