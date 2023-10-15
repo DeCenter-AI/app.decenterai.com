@@ -9,6 +9,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md"
 import lighthouse from "@lighthouse-web3/sdk";
 import { processFiles } from "@utils/upload";
 import { compute } from "@utils/compute";
+import axios from "axios";
 
 interface IProps {
     setPage: (page: number | null) => void
@@ -143,29 +144,32 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
     }
 
 
-    const progressCallback = (progressData: any) => {
-        let percentageDone =
-            100 - Number((progressData?.total / progressData?.uploaded)?.toFixed(2));
-        console.log(percentageDone);
-    };
 
-    const startTrain = async (hash: string) => {
-        console.log(hash)
-        let trainData = await compute(`${trainScript?.name}`, hash)
-        console.log(trainData)
+    const startTrain = async (cid: string) => {
+
+        //call backend 
+        const trainData = await axios.post("/api/bacalhau", {
+            trainScript: `${trainScript}`,
+            cid: `${cid}`
+        });
+        console.log(trainData.data)
+        //hide modal
         setModal(2)
+
         setTrain(false)
     }
 
     const startProcess = () => {
+        //show authorization modal
         if (modelName && trainScript && requirementsScript && dataSet) {
             setModal(0)
         }
     }
 
     useEffect(() => {
+
         if (train) {
-            console.log(train)
+            //process uploaded files
             processFiles(trainScript, requirementsScript, dataSet, startTrain)
         }
     }, [train])
