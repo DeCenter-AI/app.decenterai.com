@@ -26,7 +26,7 @@ export const DashLayout = ({
                             className="max-w-[25%] max-h-[50%]"
                         />
                     </div>
-               
+                  
                 </Link>
                 <div className='w-full h-[90%] overflow-y-auto font-archivo text-primary_8'>
                     <Link href="/dashboard">
