@@ -33,9 +33,7 @@ export const DashLayout = ({
                             src={imageDecenterLogoSubtitle}
                             alt="DECENTER Icon"
                             width={100}
-                            height={150}
-                           
-                          
+                            height={150} 
                         />
 
                     </div>
