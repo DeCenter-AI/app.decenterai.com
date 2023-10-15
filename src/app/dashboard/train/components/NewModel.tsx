@@ -142,15 +142,18 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
 
         if (files[0].name.match(regex)?.[0] === "zip") {
             setDataSet(files[0]);
+            setDataSetList([])
             const extractedFiles = await extractFile(files[0])
             //loop through extracted files
             extractedFiles.forEach(async (relativePath, file) => {
                 const content = await file.async("string");
                 //set file list
-                setDataSetList((fileList) => [
-                    ...fileList,
-                    { file: file, path: relativePath },
-                ]);
+                if (file.name.match(regex)?.[0] === "ipynb") {
+                    setDataSetList((fileList) => [
+                        ...fileList,
+                        { file: file, path: relativePath },
+                    ]);
+                }
 
             });
         }
@@ -164,16 +167,19 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
 
     const processDataset = async (files: File[]) => {
         setDataSet(files[0]);
+        setDataSetList([])
         const extractedFiles = await extractFile(files[0])
         console.log(extractedFiles)
         //loop through extracted files
         extractedFiles.forEach(async (relativePath, file) => {
             const content = await file.async("string");
             //set file list
-            setDataSetList((fileList) => [
-                ...fileList,
-                { file: file, path: relativePath },
-            ]);
+            if (file.name.match(regex)?.[0] === "ipynb") {
+                setDataSetList((fileList) => [
+                    ...fileList,
+                    { file: file, path: relativePath },
+                ]);
+            }
 
         });
     }
@@ -228,7 +234,7 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
 
             <div className='w-full h-[82%] flex justify-center pt-10 pb-5'>
                 <div className='w-full lg:w-[60%] xl:w-[40%]  h-full '>
-                    <div className='w-full h-[90%] overflow-y-auto flex flex-col  gap-2 pr-1'>
+                    <div className='w-full h-[70%] overflow-y-auto flex flex-col  gap-2 pr-1'>
                         <div className="border border-primary_8 rounded-xl h-12">
                             <input
                                 type="text"
@@ -239,8 +245,8 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
                         </div>
 
                         <div className='h-auto w-full'>
-                            <div className='h-2 font-archivo flex items-center text-primary_1 text-xs py-2 '>
-                                <p> Dataset (.zip)</p>
+                            <div className='h-2 font-archivo flex items-center text-primary_1 text-xs py-4 '>
+                                <p> Upload working directory <span className="px-2"> ( .zip )</span></p>
                             </div>
                             {/* @ts-ignore */}
                             <div onDrop={(e) => handleDataSetDrop(e)} onDragOver={(e) => handleDataSetDragOver(e)} className='border-2 border-primary_8 border-dashed h-20  rounded-xl '>
@@ -351,7 +357,7 @@ const NewModel = ({ setPage, setModal, setTrain, train }: IProps) => {
 
                         {/* </div>)} */}
                     </div>
-                    <div className='h-[10%]'>
+                    <div className='h-[30%] flex items-start w-full'>
                         <button onClick={() => startProcess()} className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm py-3 w-full cursor-pointer rounded-xl">
                             Train
                         </button>
