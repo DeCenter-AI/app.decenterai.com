@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react'
-import Logo from '../../../public/Logo White.png'
-import logoText from "../../../public/Logo Texts.png"
+import imageDecenterLogoWhite from '@public/Logo White.png'
+import imageDecenterLogoSubtitle from "@public/Logo Texts.png"
 import { RxDashboard } from "react-icons/rx"
 import { HiOutlineChip } from "react-icons/hi"
 import { BsDatabase } from "react-icons/bs"
@@ -21,7 +21,7 @@ export const DashLayout = ({
                 <Link href="/">
                     <div className='w-full h-[10%] flex items-center justify-center'>
                         <Image
-                            src={Logo}
+                            src={imageDecenterLogoWhite}
                             alt="DECENTER Icon"
                             width={100}
                             height={150}
@@ -30,7 +30,7 @@ export const DashLayout = ({
                     </div>
                     <div  className='grid justify-center'>
                     <Image
-                            src={logoText}
+                            src={imageDecenterLogoSubtitle}
                             alt="DECENTER Icon"
                             width={100}
                             height={150}
