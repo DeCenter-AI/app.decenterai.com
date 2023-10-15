@@ -16,13 +16,14 @@
     "plugins": [
       {
         "name": "next"
-      }
+      } 
     ],
     "paths": {
       "@/*": ["./src/*"],
       "@Components/*": ["./src/components/*"],
       "@Svg/*": ["./src/svg/*"],
-      "@utils": ["./utils/*"]
+      "@public/*": ["./public/*"],
+      "@utils/*": ["./utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/userContext.js", "src/app/loading.js"],
