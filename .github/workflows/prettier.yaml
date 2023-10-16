@@ -22,6 +22,12 @@ on:
 
 
   workflow_dispatch:
+    inputs:
+      only_changed:
+        description: 'Only changed'
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -33,6 +39,9 @@ permissions:
 
 #env:
 #  TOKEN_GITHUB: ${{github.token}}
+
+env:
+  ONLY_CHANGED: ${{ inputs.only_changed }}
 
 jobs:
   prettier:
@@ -60,7 +69,7 @@ jobs:
         run: |
           cp .prettierignore .prettierignore.ci
           echo ".github/workflows/${GITHUB_WORKFLOW}.yaml" >> .prettierignore.ci
-#          echo ".github/workflows/*.yaml" >> .prettierignore.ci
+          echo ".github/workflows/*.yaml" >> .prettierignore.ci
 
       #        uses: "DamianReeves/write-file-action@master"
       #        with:
@@ -71,7 +80,7 @@ jobs:
 
 #      - name: Check if workflow was dispatched manually
 #        run: |
-#          if [[ "${{ github.event.workflow_dispatch }}" == "true" ]]; then
+#          if [[ "${{  github.event }}" ==  "workflow_dispatch" ]]; then
 #            echo "Workflow was dispatched manually."
 #            export ONLY_CHANGED=false
 #          else
@@ -91,7 +100,7 @@ jobs:
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
 #          file_pattern: '*'
-          only_changed:  ${{ github.event.workflow_dispatch != true }}
+          only_changed: ${{ env.ONLY_CHANGED }}
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'
