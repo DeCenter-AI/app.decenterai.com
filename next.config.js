@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const value=0;
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+  distDir: 'build',
+  //output: 'export',
+  reactStrictMode: false,
+  swcMinify: true,
+  modularizeImports: {},
   async redirects () {
     return [
       {
