@@ -41,7 +41,7 @@ permissions:
 #  TOKEN_GITHUB: ${{github.token}}
 
 env:
-  ONLY_CHANGED: ${{ inputs.only_changed && true }}
+  ONLY_CHANGED: ${{ inputs.only_changed }}
 
 jobs:
   prettier:
