@@ -1,14 +1,14 @@
 name: Prettier
 
 on:
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
 #    branches-ignore:
 #      - main
 
-  pull_request_review:
-    types: [ submitted ]
+#  pull_request_review:
+#    types: [ submitted ]
 
   pull_request:
     branches:
@@ -18,7 +18,7 @@ on:
       - opened
     branches:
       - 'main'
-    paths: ['**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
+#    paths: ['**.yaml','**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
 
 
   workflow_dispatch:
@@ -60,7 +60,7 @@ jobs:
         run: |
           cp .prettierignore .prettierignore.ci
           echo ".github/workflows/${GITHUB_WORKFLOW}.yaml" >> .prettierignore.ci
-          echo ".github/workflows/*.yaml" >> .prettierignore.ci
+#          echo ".github/workflows/*.yaml" >> .prettierignore.ci
 
       #        uses: "DamianReeves/write-file-action@master"
       #        with:
@@ -68,6 +68,16 @@ jobs:
       #          write-mode: append
       #          contents: |
       #            .github/workflows/${ github.workflow}.yaml
+
+#      - name: Check if workflow was dispatched manually
+#        run: |
+#          if [[ "${{ github.event.workflow_dispatch }}" == "true" ]]; then
+#            echo "Workflow was dispatched manually."
+#            export ONLY_CHANGED=false
+#          else
+#            echo "Workflow was triggered by another event."
+#            export ONLY_CHANGED=true
+#          fi
 
       - name: Prettify code
         #        continue-on-error: true
@@ -81,7 +91,7 @@ jobs:
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
 #          file_pattern: '*'
-          only_changed: true
+          only_changed:  ${{ github.event.workflow_dispatch != true }}
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'
