@@ -53,8 +53,8 @@ jobs:
       - name: Prettify code
         #        continue-on-error: true
         uses: creyD/prettier_action@v4.3
-        env:
-          GITHUB_ACTOR: ${{github.actor}}
+#        env:
+#          GITHUB_ACTOR: ${{github.actor}}
         with:
           dry: false
           github_token: ${{ github.token }}
