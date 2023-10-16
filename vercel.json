@@ -13,7 +13,5 @@
   "outputDirectory": "dist",
   "public": true,
   "cleanUrls": true,
-  "routes": [
-  ],
   "crons": []
 }
