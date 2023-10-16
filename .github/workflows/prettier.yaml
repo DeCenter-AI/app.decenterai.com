@@ -71,7 +71,7 @@ jobs:
 
       - name: Check if workflow was dispatched manually
         run: |
-          if [[ "${{  github.eventName }}" ==  "workflow_dispatch" ]]; then
+          if [[ "${{  github.event }}" ==  "workflow_dispatch" ]]; then
             echo "Workflow was dispatched manually."
             export ONLY_CHANGED=false
           else
