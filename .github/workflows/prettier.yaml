@@ -1,10 +1,25 @@
 name: Prettier
 
 on:
-  # pull_request:
   push:
     branches:
-        - main
+      - main
+#    branches-ignore:
+#      - main
+
+  pull_request_review:
+    types: [ submitted ]
+
+  pull_request:
+    branches:
+
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - 'main'
+    paths: ['**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
+
 
   workflow_dispatch:
 
@@ -16,6 +31,9 @@ permissions:
   actions: write
   contents: write
 
+#env:
+#  TOKEN_GITHUB: ${{github.token}}
+
 jobs:
   prettier:
     runs-on: ubuntu-latest
@@ -23,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 1
+          fetch-depth: 2
           ref: ${{ github.head_ref }}
           persist-credentials: true
 
@@ -42,6 +60,7 @@ jobs:
         run: |
           cp .prettierignore .prettierignore.ci
           echo ".github/workflows/${GITHUB_WORKFLOW}.yaml" >> .prettierignore.ci
+          echo ".github/workflows/*.yaml" >> .prettierignore.ci
 
       #        uses: "DamianReeves/write-file-action@master"
       #        with:
@@ -53,16 +72,16 @@ jobs:
       - name: Prettify code
         #        continue-on-error: true
         uses: creyD/prettier_action@v4.3
-        env:
-          GITHUB_ACTOR: ${{github.actor}}
+#        env:
+#          GITHUB_ACTOR: ${{github.actor}}
         with:
           dry: false
           github_token: ${{ github.token }}
           same_commit: false
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
-          file_pattern: '*'
-          only_changed: false
+#          file_pattern: '*'
+          only_changed: true
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'
