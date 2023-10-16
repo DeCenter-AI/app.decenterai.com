@@ -1,17 +1,11 @@
 "use client";
-import JSZip from "jszip";
-import { saveAs } from 'file-saver';
-import React, { ReactHTMLElement, useState, useRef, use, useEffect } from 'react'
-import { CiTrash } from "react-icons/ci"
-import { FiUploadCloud } from "react-icons/fi"
-import { MdKeyboardArrowLeft } from "react-icons/md"
-
-import lighthouse from "@lighthouse-web3/sdk";
-import { extractFile, uploadFile } from "@utils/upload";
-import { compute } from "@utils/compute";
+import React, {useEffect, useRef, useState} from 'react'
+import {CiTrash} from "react-icons/ci"
+import {FiUploadCloud} from "react-icons/fi"
+import {MdKeyboardArrowLeft} from "react-icons/md"
+import {extractFile, uploadFile} from "@utils/upload";
 import axios from "axios";
-import { extract } from "viem/utils";
-import { decodeCid, retrieve } from "@utils/fileCoinIpfs";
+import {decodeCid, retrieve} from "@utils/fileCoinIpfs";
 
 interface IProps {
     setPage: (page: number | null) => void
@@ -193,7 +187,7 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
 
     const startTrain = async (cid: string) => {
 
-        //call backend 
+        //call backend
         const trainData = await axios.post("/api/bacalhau", {
             trainScript: `${trainScript}`,
             cid: `${cid}`
@@ -322,7 +316,7 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
                             {/* <div className='h-2 font-archivo flex items-center text-primary_1 text-xs py-2 '>
                                 <p> Training script</p>
                             </div>
-                           
+
                             <div onDrop={(e) => handleTrainScriptDrop(e)} onDragOver={(e) => handleTrainScriptDragOver(e)} className='border-2 border-primary_8 border-dashed h-20  rounded-xl '>
                                 <div className='h-[50%] flex justify-center items-center text-primary_8'>
                                     <FiUploadCloud size={30} />
@@ -352,7 +346,7 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
                             <div className='h-2 font-archivo flex items-center text-primary_1 text-xs py-2 '>
                                 <p> Requirements</p>
                             </div>
-                           
+
                             <div onDrop={(e) => handleRequirementsScriptDrop(e)} onDragOver={(e) => handleRequirementsScriptDragOver(e)} className='border-2 border-primary_8 border-dashed h-20 rounded-xl '>
                                 <div className='h-[50%] flex justify-center items-center text-primary_8'>
                                     <FiUploadCloud size={30} />
