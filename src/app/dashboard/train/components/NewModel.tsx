@@ -214,7 +214,8 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
     //download trained model
     const download = async () => {
         //download
-        const status: boolean = await retrieve(decodedCid, modelName)
+        //const status: boolean = await retrieve(decodedCid, modelName)
+        const status: boolean = await retrieve("QmWLehnQJXwLL5YCDdiXjhZJCSPNUascX4Uh2fxwuNwNYH", modelName)
         console.log(status)
         if (status) setModal(null)
 
