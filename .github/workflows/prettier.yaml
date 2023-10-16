@@ -1,13 +1,14 @@
 name: Prettier
 
 on:
-  pull_request:
+#  push:
+#    branches:
+#      - main
 
   pull_request_review:
     types: [ submitted ]
-#  push:
-#    branches:
-#        - main
+
+  pull_request:
 
   pull_request_target:
     types:
@@ -26,6 +27,9 @@ concurrency:
 permissions:
   actions: write
   contents: write
+
+#env:
+#  TOKEN_GITHUB: ${{github.token}}
 
 jobs:
   prettier:
@@ -74,7 +78,7 @@ jobs:
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
           file_pattern: '*'
-          only_changed: false
+          only_changed: true
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'
