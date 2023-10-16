@@ -11,6 +11,7 @@ on:
     types: [ submitted ]
 
   pull_request:
+    branches:
 
   pull_request_target:
     types:
