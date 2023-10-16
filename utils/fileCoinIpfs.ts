@@ -17,14 +17,20 @@ export const retrieve = async (cid: string, modelName: string) => {
     token: `${process.env.NEXT_PUBLIC_WEB_TOKEN}`,
   });
   const res = await client.get(cid);
-  console.log(await res.files());
-  let files;
-  if ((files = await res.files())) {
-    console.log(files);
+  let files = await res.files();
+  console.log(files);
+
+  if (files.length > 0) {
+    //fetch the output folder
+    const outputRes = await client.get(files[1].cid);
+    let outputFiles = await outputRes.files();
+    console.log(outputFiles);
+    //zip the file
     let zip = new JSZip();
-    zip.file(``, files);
+    zip.file("output.zip", outputFiles[0]);
     zip.generateAsync({ type: "blob" }).then((content) => {
       console.log(content);
+      //save to device
       saveAs(content, `${modelName}`);
     });
 
