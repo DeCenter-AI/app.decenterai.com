@@ -69,6 +69,16 @@ jobs:
       #          contents: |
       #            .github/workflows/${ github.workflow}.yaml
 
+      - name: Check if workflow was dispatched manually
+        run: |
+          if [[ "${{ github.event.workflow_dispatch }}" == "true" ]]; then
+            echo "Workflow was dispatched manually."
+            export ONLY_CHANGED=false
+          else
+            echo "Workflow was triggered by another event."
+            export ONLY_CHANGED=true
+          fi
+
       - name: Prettify code
         #        continue-on-error: true
         uses: creyD/prettier_action@v4.3
@@ -81,7 +91,7 @@ jobs:
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
 #          file_pattern: '*'
-          only_changed:  ${{ github.event.workflow_dispatch != true }}
+          only_changed:  ${{ env.ONLY_CHANGED }}
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'
