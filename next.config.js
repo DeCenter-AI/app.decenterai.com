@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const value=0;
+const value = 0
 const nextConfig = {
   experimental: {
     appDir: true,
@@ -9,15 +9,15 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   modularizeImports: {},
-  async redirects () {
+  async redirects() {
     return [
       {
         source: '/',
         destination: '/explore', // Matched parameters can be used in the destination
-        permanent: false
-      }
+        permanent: false,
+      },
     ]
-  }
+  },
 }
 
 module.exports = nextConfig
