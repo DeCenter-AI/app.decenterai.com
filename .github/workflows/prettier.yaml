@@ -27,6 +27,7 @@ on:
         description: 'Only changed'
         required: false
         type: boolean
+        default: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
