@@ -3,14 +3,14 @@ import Image from 'next/image';
 import React from 'react'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from "@public/Logo Texts.png"
-import {RxDashboard} from "react-icons/rx"
-import {HiOutlineChip} from "react-icons/hi"
-import {BsDatabase} from "react-icons/bs"
-import {PiClipboardLight, PiTrophyBold, PiUsersThree} from "react-icons/pi"
-import {IoSettingsOutline} from "react-icons/io5"
-import {GoBell, GoSearch} from "react-icons/go"
+import { RxDashboard } from "react-icons/rx"
+import { HiOutlineChip } from "react-icons/hi"
+import { BsDatabase } from "react-icons/bs"
+import { PiClipboardLight, PiTrophyBold, PiUsersThree } from "react-icons/pi"
+import { IoSettingsOutline } from "react-icons/io5"
+import { GoBell, GoSearch } from "react-icons/go"
 import Link from 'next/link';
-import {useUserContext} from '../userContext'
+import { useUserContext } from '../userContext'
 
 
 export const DashLayout = ({
@@ -18,13 +18,13 @@ export const DashLayout = ({
 }: {
     children: React.ReactNode;
 }) => {
-    const {user} = useUserContext();
+    const { user } = useUserContext();
     console.log(user);
     return (
         <div className='w-screen h-screen flex  bg-primary_12 relative'>
             <aside className='h-full w-[10%] border-r border-primary_8'>
                 <Link href="/">
-                    <div className='w-full h-[10%] flex items-center justify-center'>
+                    <div className='w-full h-[10%] flex flex-col gap-2 pt-2 items-center justify-center'>
                         <Image
                             src={imageDecenterLogoWhite}
                             alt="DECENTER Icon"
@@ -32,16 +32,19 @@ export const DashLayout = ({
                             height={150}
                             className="max-w-[25%] max-h-[50%]"
                         />
-                    </div>
-                    <div  className='grid justify-center'>
-                    <Image
+
+                        <Image
                             src={imageDecenterLogoSubtitle}
                             alt="DECENTER Icon"
                             width={100}
                             height={150}
+                            style={{ maxWidth: "100%" }}
                         />
-
                     </div>
+
+
+
+
                 </Link>
                 <div className='w-full h-[90%] overflow-y-auto font-archivo text-primary_8'>
                     <Link href="/dashboard">
@@ -111,9 +114,9 @@ export const DashLayout = ({
                         </button>
                         <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
                             <button className='flex flex-row'>
-                            <img className="rounded-full w-6 h-6 mr-3" src={user?.profileImage} alt="profile pic" />
+                                <img className="rounded-full w-6 h-6 mr-3" src={user?.profileImage} alt="profile pic" />
 
-                            <div className='font-semibold font-primaryArchivo'>{user?.name.split(' ')[0]}</div>
+                                <div className='font-semibold font-primaryArchivo'>{user?.name.split(' ')[0]}</div>
                             </button>
 
                         </div>

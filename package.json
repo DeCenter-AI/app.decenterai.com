@@ -48,6 +48,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
     "react-intersection-observer": "^9.5.2",
+    "react-select": "^5.7.7",
     "react-spinners": "^0.13.8",
     "save-as": "^0.1.8",
     "semver": "^7.5.4",

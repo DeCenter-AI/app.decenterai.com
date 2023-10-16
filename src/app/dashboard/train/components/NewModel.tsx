@@ -1,11 +1,12 @@
 "use client";
-import React, {useEffect, useRef, useState} from 'react'
-import {CiTrash} from "react-icons/ci"
-import {FiUploadCloud} from "react-icons/fi"
-import {MdKeyboardArrowLeft} from "react-icons/md"
-import {extractFile, uploadFile} from "@utils/upload";
+import React, { useEffect, useRef, useState } from 'react'
+import { CiTrash } from "react-icons/ci"
+import { FiUploadCloud } from "react-icons/fi"
+import { MdKeyboardArrowLeft } from "react-icons/md"
+import { extractFile, uploadFile } from "@utils/upload";
 import axios from "axios";
-import {decodeCid, retrieve} from "@utils/fileCoinIpfs";
+import { decodeCid, retrieve } from "@utils/fileCoinIpfs";
+import Select from "react-select";
 
 interface IProps {
     setPage: (page: number | null) => void
@@ -234,6 +235,10 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
         if (modal == 3) download()
     }, [modal])
 
+    useEffect(() => {
+        if (dataSetList.length > 0) setTrainScript(dataSetList[0].path)
+    }, [dataSetList])
+
     return (
         <div className='w-full h-full px-5 py-3 font-archivo'>
             <div className='flex gap-6 items-center text-primary_7 h-[8%] '>
@@ -304,6 +309,7 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
                         <div className='h-auto  w-full'>
                             <select
                                 onChange={(e) => setTrainScript(e.currentTarget.value)}
+                                value={trainScript}
                                 className="rounded-md bg-primary_8 text-primary_1 px-4 py-2 cursor-pointer w-full border-none focus:ring-0 focus:border-none outline-none"
                             >
                                 <option value="">Select train script</option>
@@ -313,6 +319,7 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
                                     </option>
                                 ))}
                             </select>
+
                             {/* <div className='h-2 font-archivo flex items-center text-primary_1 text-xs py-2 '>
                                 <p> Training script</p>
                             </div>
