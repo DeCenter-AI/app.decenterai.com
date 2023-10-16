@@ -15,11 +15,5 @@
   "cleanUrls": true,
   "routes": [
   ],
-  "crons": [],
-  "functions": {
-       "src/app/api/bacalhau/route.ts": {
-         "memory": 200,
-         "maxDuration": 240
-       }
-  }
+  "crons": []
 }
