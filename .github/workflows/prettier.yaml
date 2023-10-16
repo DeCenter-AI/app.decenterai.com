@@ -22,6 +22,11 @@ on:
 
 
   workflow_dispatch:
+    inputs:
+      only_changed:
+        description: 'Only changed'
+        required: false
+        type: boolean
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -33,6 +38,9 @@ permissions:
 
 #env:
 #  TOKEN_GITHUB: ${{github.token}}
+
+env:
+  ONLY_CHANGED: ${{ inputs.only_changed || true }}
 
 jobs:
   prettier:
@@ -69,15 +77,15 @@ jobs:
       #          contents: |
       #            .github/workflows/${ github.workflow}.yaml
 
-      - name: Check if workflow was dispatched manually
-        run: |
-          if [[ "${{  github.event }}" ==  "workflow_dispatch" ]]; then
-            echo "Workflow was dispatched manually."
-            export ONLY_CHANGED=false
-          else
-            echo "Workflow was triggered by another event."
-            export ONLY_CHANGED=true
-          fi
+#      - name: Check if workflow was dispatched manually
+#        run: |
+#          if [[ "${{  github.event }}" ==  "workflow_dispatch" ]]; then
+#            echo "Workflow was dispatched manually."
+#            export ONLY_CHANGED=false
+#          else
+#            echo "Workflow was triggered by another event."
+#            export ONLY_CHANGED=true
+#          fi
 
       - name: Prettify code
         #        continue-on-error: true
