@@ -18,7 +18,7 @@ on:
       - opened
     branches:
       - 'main'
-    paths: ['**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
+#    paths: ['**.yaml','**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
 
 
   workflow_dispatch:
