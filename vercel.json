@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ],
+  "installCommand": "pnpm install",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "outputDirectory": "build",
+  "public": true,
+  "cleanUrls": true,
+  "routes": [
+
+  ],
+  "crons": [],
+  "functions": {
+       "src/app/api/bacalhau/route": {
+         "memory": 200,
+         "maxDuration": 240
+       }
+  }
+}
