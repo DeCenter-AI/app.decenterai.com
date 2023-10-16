@@ -77,7 +77,7 @@ jobs:
           same_commit: false
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
-          file_pattern: '*'
+#          file_pattern: '*'
           only_changed: true
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
