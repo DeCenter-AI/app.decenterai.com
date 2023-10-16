@@ -63,25 +63,25 @@ export const DashLayout = ({
                             <p className='text-sm'>Repository</p>
                         </div>
                     </Link>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 text-primary_8 hover:bg-primary_11 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <PiUsersThree size={25} />
                         </div>
                         <p className='text-sm'>Teams</p>
                     </div>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 text-primary_8 hover:bg-primary_11 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <PiClipboardLight size={25} />
                         </div>
                         <p className='text-sm'>Testing</p>
                     </div>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 text-primary_8 hover:bg-primary_11 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <PiTrophyBold size={25} />
                         </div>
                         <p className='text-sm'>Rewards</p>
                     </div>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <IoSettingsOutline size={25} />
                         </div>

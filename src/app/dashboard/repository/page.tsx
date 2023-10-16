@@ -20,7 +20,7 @@ export default function Page() {
                             <span>Personal</span>
                         </Link>
                         <Link href=''>
-                            <span>General</span>
+                            <span className='text-primary_8'>General</span>
                         </Link>
 
                     </div>
@@ -49,16 +49,16 @@ export default function Page() {
                     </div>
                     <div className='px-4 py-3 text-xs  border-[#494949] border flex justify-between max-w-[464px]  rounded-b-2xl ]'>
                         <Link href=''>
-                            <span>Personal</span>
+                            <span>Modal</span>
                         </Link>
                         <Link href=''>
-                            <span>Datasets</span>
+                            <span className='text-primary_8'>Datasets</span>
                         </Link>
                         <Link href=''>
-                            <span>Pre-trained models</span>
+                            <span className='text-primary_8'>Pre-trained models</span>
                         </Link>
                         <Link href=''>
-                            <span>Templates</span>
+                            <span className='text-primary_8'>Templates</span>
                         </Link>
 
                     </div>
