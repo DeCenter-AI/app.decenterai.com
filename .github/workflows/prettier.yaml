@@ -91,7 +91,7 @@ jobs:
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
 #          file_pattern: '*'
-          only_changed:  ${{ env.ONLY_CHANGED }}
+          only_changed: ${{ github.eventName == "workflow_dispatch" }}
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'
