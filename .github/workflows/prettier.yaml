@@ -71,7 +71,7 @@ jobs:
 
       - name: Check if workflow was dispatched manually
         run: |
-          if [[ "${{ github.event.workflow_dispatch }}" == "true" ]]; then
+          if [[ "${{  github.eventName }}" ==  "workflow_dispatch" ]]; then
             echo "Workflow was dispatched manually."
             export ONLY_CHANGED=false
           else
@@ -91,7 +91,7 @@ jobs:
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
 #          file_pattern: '*'
-          only_changed: ${{ github.eventName == "workflow_dispatch" }}
+          only_changed: ${{ env.ONLY_CHANGED }}
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'
