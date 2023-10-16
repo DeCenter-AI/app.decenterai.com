@@ -13,7 +13,7 @@
     "lint": "next lint",
     "test": "jest --passWithNoTests",
     "run-cid": "ts-node utils/archived/cid.ts",
-    "clean": "rimraf build"
+    "clean": "rimraf .next build"
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",

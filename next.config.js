@@ -4,7 +4,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  distDir: 'build',
+  // distDir: 'build',
   //output: 'export',
   reactStrictMode: false,
   swcMinify: true,
