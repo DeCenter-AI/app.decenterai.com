@@ -9,6 +9,14 @@ on:
 #    branches:
 #        - main
 
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - 'main'
+    paths: ['**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
+
+
   workflow_dispatch:
 
 concurrency:
