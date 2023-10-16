@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
+import { usePathname } from 'next/navigation';
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from "@public/Logo Texts.png"
 import { RxDashboard } from "react-icons/rx"
@@ -18,6 +19,7 @@ export const DashLayout = ({
     children: React.ReactNode;
 }) => {
     const {user} = useUserContext();
+    const pathname = usePathname();
     console.log(user);
     return (
         <div className='w-screen h-screen flex  bg-primary_12 relative'>
@@ -33,18 +35,13 @@ export const DashLayout = ({
                         />
                     </div>
                     <div  className='grid justify-center'>
-                    <Image
-                            src={imageDecenterLogoSubtitle}
-                            alt="DECENTER Icon"
-                            width={100}
-                            height={150} 
-                        />
+                
 
                     </div>
                 </Link>
-                <div className='w-full h-[90%] overflow-y-auto font-archivo text-primary_8'>
+                <div className='w-full h-[90%] overflow-y-auto font-archivo '>
                     <Link href="/dashboard">
-                        <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                        <div className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''}`}>
                             <div className='flex justify-center '>
                                 <RxDashboard size={25} />
                             </div>
@@ -52,37 +49,39 @@ export const DashLayout = ({
                         </div>
                     </Link>
                     <Link href="/dashboard/train">
-                        <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                        <div className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''}`}>
                             <div className='flex justify-center '>
                                 <HiOutlineChip size={25} />
                             </div>
                             <p className='text-sm'>Train</p>
                         </div></Link>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
-                        <div className='flex justify-center '>
-                            <BsDatabase size={25} />
+                    <Link href="/dashboard/repository">
+                        <div className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''}`}>
+                            <div className='flex justify-center '>
+                                <BsDatabase size={25} />
+                            </div>
+                            <p className='text-sm'>Repository</p>
                         </div>
-                        <p className='text-sm'>Repository</p>
-                    </div>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                    </Link>
+                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 text-primary_8 hover:bg-primary_11 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <PiUsersThree size={25} />
                         </div>
                         <p className='text-sm'>Teams</p>
                     </div>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 text-primary_8 hover:bg-primary_11 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <PiClipboardLight size={25} />
                         </div>
                         <p className='text-sm'>Testing</p>
                     </div>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 text-primary_8 hover:bg-primary_11 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <PiTrophyBold size={25} />
                         </div>
                         <p className='text-sm'>Rewards</p>
                     </div>
-                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                    <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1'>
                         <div className='flex justify-center '>
                             <IoSettingsOutline size={25} />
                         </div>
