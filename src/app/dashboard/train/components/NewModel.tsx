@@ -6,7 +6,6 @@ import { MdKeyboardArrowLeft } from "react-icons/md"
 import { extractFile, uploadFile } from "@utils/upload";
 import axios from "axios";
 import { decodeCid, retrieve } from "@utils/fileCoinIpfs";
-import Select from "react-select";
 
 interface IProps {
     setPage: (page: number | null) => void
