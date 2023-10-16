@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -8,7 +9,6 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -22,9 +22,11 @@
       "@/*": ["./src/*"],
       "@utils/*": ["./utils/*"],
       "@Components/*": ["./src/components/*"],
-      "@Svg/*": ["./src/svg/*"]
+      "@Svg/*": ["./src/svg/*"],
+      "@public/*": ["./public/*"],
+      "@utils/*": ["./utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/userContext.js", "src/app/loading.js"],
   "exclude": ["node_modules", "./jest.config.ts"]
 }
