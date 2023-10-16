@@ -13,7 +13,7 @@ export default function Page() {
     const pathname = usePathname();
     return (
         <DashLayout >
-            <div className='h-[100%]    px-10 py-6 text-white'>
+            <div className='h-[80%] max-h-screen overflow-y-scroll   px-10 py-6 text-white'>
                 <div className='mb-10 '>
                     <div className='px-4 py-2 flex justify-between max-w-[209px] text-xs rounded-t-2xl bg-[#232323]'>
                         <Link href=''>
@@ -68,103 +68,179 @@ export default function Page() {
 
 
                 <div className=' '>
-                    <div className='flex gap-3 max-h-[80%] text-white mb-4 text-xs  '>
-                        <div className='bg-[#05050538] px-4 py-5 h-[242px] rounded-lg w-[20%] '>
+                    <div className='flex gap-3 max-h-screen h-[80%] text-white mb-4 text-xs  '>
+                        <div className='bg-[#05050538] px-4 py-5 h-[242px] rounded-lg  '>
                             <span>Multimodal</span>
                             <div className='mt-3'>
                                 <span className='text-xs border border-[#232323] px-3 mt-4 py-1 rounded-full'>Feature Extraction</span>
                             </div>
                         </div>
 
-                        <div className=' w-[80%] h-[100%] overflow-y-scroll'>
-                       
-                                <div className=' border border-[#494949] mb-4 flex px-5 py-3 rounded-xl  h-[150px]'>
-                                    <div className='mt-2 grow'>
+                        <div className=' w-[80%] max-h-screen h-[80%] '>
+
+                            <div className=' border border-[#494949] mb-4 flex px-5 py-3 rounded-xl  h-[150px]'>
+                                <div className='mt-2 grow'>
+                                    <div>
+                                        <span className='bg-[#232323] rounded-full text-[#5D5D5D] py-2 px-3'>Text Generation</span>
+                                    </div>
+                                    <div className='mt-4'>
+                                        <span className='text-lg '>Model name</span>
+                                    </div>
+                                    <div className='mt-2'>
+                                        <span className='text-xs'>Identifies a variety of concepts in images and video including objects, themes, and more. </span>
+                                    </div>
+                                    <div className='mt-4 text-xs text-[#5D5D5D] flex gap-4'>
                                         <div>
-                                            <span className='bg-[#232323] rounded-full text-[#5D5D5D] py-2 px-3'>Text Generation</span>
+                                            <span>Updated Sep, 12 2023</span>
                                         </div>
-                                        <div className='mt-4'>
-                                            <span className='text-lg '>Model name</span>
+                                        <div className='flex'>
+                                            <GoDownload />
+                                            <span>12k</span>
                                         </div>
-                                        <div className='mt-2'>
-                                            <span className='text-xs'>Identifies a variety of concepts in images and video including objects, themes, and more. </span>
+                                        <div className='flex'>
+                                            <BiLike />
+                                            <span>127</span>
                                         </div>
-                                        <div className='mt-4 text-xs text-[#5D5D5D] flex gap-4'>
-                                            <div>
-                                                <span>Updated Sep, 12 2023</span>
-                                            </div>
-                                            <div className='flex'>
-                                                <GoDownload />
-                                                <span>12k</span>
-                                            </div>
-                                            <div className='flex'>
-                                                <BiLike />
-                                                <span>127</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div className='h-[108px] w-[115px] bg-[#232323] mt-2'>
 
                                     </div>
-
-
-
+                                </div>
+                                <div className='h-[108px] w-[115px] bg-[#232323] mt-2'>
 
                                 </div>
 
-                                <div className=' border border-[#494949] mb-4 flex px-5 py-3 rounded-xl  h-[150px]'>
-                                    <div className='mt-2 grow'>
+
+
+
+                            </div>
+
+                            <div className=' border border-[#494949] mb-4 flex px-5 py-3 rounded-xl  h-[150px]'>
+                                <div className='mt-2 grow'>
+                                    <div>
+                                        <span className='bg-[#232323] rounded-full text-[#5D5D5D] py-2 px-3'>Text Generation</span>
+                                    </div>
+                                    <div className='mt-4'>
+                                        <span className='text-lg '>Model name</span>
+                                    </div>
+                                    <div className='mt-2'>
+                                        <span className='text-xs'>Identifies a variety of concepts in images and video including objects, themes, and more. </span>
+                                    </div>
+                                    <div className='mt-4 text-xs text-[#5D5D5D] flex gap-4'>
                                         <div>
-                                            <span className='bg-[#232323] rounded-full text-[#5D5D5D] py-2 px-3'>Text Generation</span>
+                                            <span>Updated Sep, 12 2023</span>
                                         </div>
-                                        <div className='mt-4'>
-                                            <span className='text-lg '>Model name</span>
+                                        <div className='flex'>
+                                            <GoDownload />
+                                            <span>12k</span>
                                         </div>
-                                        <div className='mt-2'>
-                                            <span className='text-xs'>Identifies a variety of concepts in images and video including objects, themes, and more. </span>
+                                        <div className='flex'>
+                                            <BiLike />
+                                            <span>127</span>
                                         </div>
-                                        <div className='mt-4 text-xs text-[#5D5D5D] flex gap-4'>
-                                            <div>
-                                                <span>Updated Sep, 12 2023</span>
-                                            </div>
-                                            <div className='flex'>
-                                                <GoDownload />
-                                                <span>12k</span>
-                                            </div>
-                                            <div className='flex'>
-                                                <BiLike />
-                                                <span>127</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div className='h-[108px] w-[115px] bg-[#232323] mt-2'>
 
                                     </div>
-
-
-
+                                </div>
+                                <div className='h-[108px] w-[115px] bg-[#232323] mt-2'>
 
                                 </div>
 
-                                
 
-                         
+
+
+                            </div>
+
+                            <div className=' border border-[#494949] mb-4 flex px-5 py-3 rounded-xl  h-[150px]'>
+                                <div className='mt-2 grow'>
+                                    <div>
+                                        <span className='bg-[#232323] rounded-full text-[#5D5D5D] py-2 px-3'>Text Generation</span>
+                                    </div>
+                                    <div className='mt-4'>
+                                        <span className='text-lg '>Model name</span>
+                                    </div>
+                                    <div className='mt-2'>
+                                        <span className='text-xs'>Identifies a variety of concepts in images and video including objects, themes, and more. </span>
+                                    </div>
+                                    <div className='mt-4 text-xs text-[#5D5D5D] flex gap-4'>
+                                        <div>
+                                            <span>Updated Sep, 12 2023</span>
+                                        </div>
+                                        <div className='flex'>
+                                            <GoDownload />
+                                            <span>12k</span>
+                                        </div>
+                                        <div className='flex'>
+                                            <BiLike />
+                                            <span>127</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className='h-[108px] w-[115px] bg-[#232323] mt-2'>
+
+                                </div>
+
+
+
+
+                            </div>
+
+
+                            <div className=' border border-[#494949] mb-4 flex px-5 py-3 rounded-xl  h-[150px]'>
+                                <div className='mt-2 grow'>
+                                    <div>
+                                        <span className='bg-[#232323] rounded-full text-[#5D5D5D] py-2 px-3'>Text Generation</span>
+                                    </div>
+                                    <div className='mt-4'>
+                                        <span className='text-lg '>Model name</span>
+                                    </div>
+                                    <div className='mt-2'>
+                                        <span className='text-xs'>Identifies a variety of concepts in images and video including objects, themes, and more. </span>
+                                    </div>
+                                    <div className='mt-4 text-xs text-[#5D5D5D] flex gap-4'>
+                                        <div>
+                                            <span>Updated Sep, 12 2023</span>
+                                        </div>
+                                        <div className='flex'>
+                                            <GoDownload />
+                                            <span>12k</span>
+                                        </div>
+                                        <div className='flex'>
+                                            <BiLike />
+                                            <span>127</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className='h-[108px] w-[115px] bg-[#232323] mt-2'>
+
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+
+
                         </div>
-                 
+
+                        <div></div>
+
 
                     </div>
 
-
-
                 </div>
 
-
-
-
-
-             
+            </div>
+            <div className='flex justify-center text-[#8F8F8F]  items-center gap-5 mt-10 '>
+                <div>
+                    <button className='w-24 bg-primary_11 py-2 rounded-full'>Next</button>
+                </div>
+                <div className=' '><span className='p-2  border'>1</span></div>
+                <div>
+                    <button className='w-24 bg-primary_11 py-2 rounded-full'>Previous</button>
+                </div>
 
             </div>
 

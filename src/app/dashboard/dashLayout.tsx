@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
+import { usePathname } from 'next/navigation';
 import { RxDashboard } from "react-icons/rx"
 import { HiOutlineChip } from "react-icons/hi"
 import { BsDatabase } from "react-icons/bs"
@@ -13,6 +14,7 @@ export const DashLayout = ({
 }: {
     children: React.ReactNode;
 }) => {
+    const pathname = usePathname();
     return (
         <div className='w-screen h-screen flex  bg-primary_12 relative'>
             <aside className='h-full w-[10%] border-r border-primary_8'>
@@ -26,11 +28,11 @@ export const DashLayout = ({
                             className="max-w-[25%] max-h-[50%]"
                         />
                     </div>
-                  
+
                 </Link>
-                <div className='w-full h-[90%] overflow-y-auto font-archivo text-primary_8'>
+                <div className='w-full h-[90%] overflow-y-auto font-archivo '>
                     <Link href="/dashboard">
-                        <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                        <div className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''}`}>
                             <div className='flex justify-center '>
                                 <RxDashboard size={25} />
                             </div>
@@ -38,14 +40,14 @@ export const DashLayout = ({
                         </div>
                     </Link>
                     <Link href="/dashboard/train">
-                        <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                        <div className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''}`}>
                             <div className='flex justify-center '>
                                 <HiOutlineChip size={25} />
                             </div>
                             <p className='text-sm'>Train</p>
                         </div></Link>
                     <Link href="/dashboard/repository">
-                        <div className='flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 hover:text-primary_1'>
+                        <div className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''}`}>
                             <div className='flex justify-center '>
                                 <BsDatabase size={25} />
                             </div>
