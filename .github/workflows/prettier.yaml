@@ -1,11 +1,11 @@
 name: Prettier
 
 on:
-  push:
-    branches:
-
-    branches-ignore:
-      - main
+#  push:
+#    branches:
+#
+#    branches-ignore:
+#      - main
     #    branches:
 #      - main
 
@@ -13,7 +13,7 @@ on:
   pull_request_review:
     types: [ submitted ]
 
-#  pull_request:
+  pull_request:
 
   pull_request_target:
     types:
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 1
+          fetch-depth: 2
           ref: ${{ github.head_ref }}
           persist-credentials: true
 
