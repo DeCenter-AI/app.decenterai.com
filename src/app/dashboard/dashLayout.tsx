@@ -28,7 +28,7 @@ export const DashLayout = ({
                         <Image
                             src={imageDecenterLogoWhite}
                             alt="DECENTER Icon"
-                            width={100}
+                            width={50}
                             height={150}
                             className="max-w-[25%] max-h-[50%]"
                         />
