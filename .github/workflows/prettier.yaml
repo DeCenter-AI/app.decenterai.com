@@ -1,12 +1,33 @@
 name: Prettier
 
 on:
-  # pull_request:
-  push:
+#  push:
+#    branches:
+#      - main
+#    branches-ignore:
+#      - main
+
+#  pull_request_review:
+#    types: [ submitted ]
+
+  pull_request:
     branches:
-        - main
+
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - 'main'
+#    paths: ['**.yaml','**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
+
 
   workflow_dispatch:
+    inputs:
+      only_changed:
+        description: 'Only changed'
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,6 +37,12 @@ permissions:
   actions: write
   contents: write
 
+#env:
+#  TOKEN_GITHUB: ${{github.token}}
+
+env:
+  ONLY_CHANGED: ${{ inputs.only_changed }}
+
 jobs:
   prettier:
     runs-on: ubuntu-latest
@@ -23,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 1
+          fetch-depth: 2
           ref: ${{ github.head_ref }}
           persist-credentials: true
 
@@ -42,6 +69,7 @@ jobs:
         run: |
           cp .prettierignore .prettierignore.ci
           echo ".github/workflows/${GITHUB_WORKFLOW}.yaml" >> .prettierignore.ci
+          echo ".github/workflows/*.yaml" >> .prettierignore.ci
 
       #        uses: "DamianReeves/write-file-action@master"
       #        with:
@@ -50,19 +78,29 @@ jobs:
       #          contents: |
       #            .github/workflows/${ github.workflow}.yaml
 
+#      - name: Check if workflow was dispatched manually
+#        run: |
+#          if [[ "${{  github.event }}" ==  "workflow_dispatch" ]]; then
+#            echo "Workflow was dispatched manually."
+#            export ONLY_CHANGED=false
+#          else
+#            echo "Workflow was triggered by another event."
+#            export ONLY_CHANGED=true
+#          fi
+
       - name: Prettify code
         #        continue-on-error: true
         uses: creyD/prettier_action@v4.3
-        env:
-          GITHUB_ACTOR: ${{github.actor}}
+#        env:
+#          GITHUB_ACTOR: ${{github.actor}}
         with:
           dry: false
           github_token: ${{ github.token }}
           same_commit: false
           commit_message: 'style: pretty code'
           commit_description: 'automated via ci'
-          file_pattern: '*'
-          only_changed: false
+#          file_pattern: '*'
+          only_changed: ${{ env.ONLY_CHANGED }}
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'

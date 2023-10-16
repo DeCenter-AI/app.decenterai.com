@@ -10,10 +10,8 @@
   "installCommand": "pnpm install",
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
-  "outputDirectory": "dist",
+  "outputDirectory": ".next",
   "public": true,
   "cleanUrls": true,
-  "routes": [
-  ],
   "crons": []
 }
