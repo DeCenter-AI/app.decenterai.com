@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
+import { usePathname } from 'next/navigation';
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from "@public/Logo Texts.png"
 import { RxDashboard } from "react-icons/rx"
@@ -10,7 +11,6 @@ import { IoSettingsOutline } from "react-icons/io5"
 import { GoSearch, GoBell,GoChevronDown } from "react-icons/go"
 import Link from 'next/link';
 import { useUserContext } from '../userContext'
-import { usePathname } from 'next/navigation';
 
 
 export const DashLayout = ({
@@ -19,8 +19,8 @@ export const DashLayout = ({
     children: React.ReactNode;
 }) => {
     const {user} = useUserContext();
-    console.log(user);
     const pathname = usePathname();
+    console.log(user);
     return (
         <div className='w-screen h-screen flex  bg-primary_12 relative'>
             <aside className='h-full w-[10%] border-r border-primary_8'>
@@ -35,12 +35,7 @@ export const DashLayout = ({
                         />
                     </div>
                     <div  className='grid justify-center'>
-                    <Image
-                            src={imageDecenterLogoSubtitle}
-                            alt="DECENTER Icon"
-                            width={100}
-                            height={150} 
-                        />
+                
 
                     </div>
                 </Link>
