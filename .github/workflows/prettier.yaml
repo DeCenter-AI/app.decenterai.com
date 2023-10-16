@@ -60,7 +60,7 @@ jobs:
         run: |
           cp .prettierignore .prettierignore.ci
           echo ".github/workflows/${GITHUB_WORKFLOW}.yaml" >> .prettierignore.ci
-          echo ".github/workflows/*.yaml" >> .prettierignore.ci
+#          echo ".github/workflows/*.yaml" >> .prettierignore.ci
 
       #        uses: "DamianReeves/write-file-action@master"
       #        with:
