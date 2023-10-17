@@ -28,12 +28,11 @@ export async function compute(train_script: string, cid: string): Promise<string
         `/inputs/${cid}`,
       ],
       EnvironmentVariables: [
-        "OUTPUT_DIR=/outputs",
-        "OUTPUT_ARCHIVE=decenter-model",
+        'OUTPUT_DIR=/outputs',
+        'OUTPUT_ARCHIVE=decenter-model',
         // by default output archive is decenter-ai-model-input_archive.zip
         // but using this environment becomes decenter-model.zip, u can access with /outputs/decenter-model.zip,
       ],
-
     },
     inputs: [
       {
