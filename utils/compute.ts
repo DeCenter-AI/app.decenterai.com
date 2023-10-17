@@ -22,11 +22,18 @@ export async function compute(train_script: string, cid: string): Promise<string
   let dto = {
     Engine: 'Docker',
     Docker: {
-      Image: 'ghcr.io/decenter-ai/compute:v1.5.5',
+      Image: 'ghcr.io/decenter-ai/compute:v1.6.1',
       Parameters: [
         train_script, //headbrain.ipynb
         `/inputs/${cid}`,
       ],
+      EnvironmentVariables: [
+        "OUTPUT_DIR=/outputs",
+        "OUTPUT_ARCHIVE=decenter-model",
+        // by default output archive is decenter-ai-model-input_archive.zip
+        // but using this environment becomes decenter-model.zip, u can access with /outputs/decenter-model.zip,
+      ],
+
     },
     inputs: [
       {
