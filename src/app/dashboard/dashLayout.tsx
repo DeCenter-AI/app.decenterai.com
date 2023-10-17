@@ -8,7 +8,7 @@ import { HiOutlineChip } from "react-icons/hi"
 import { BsDatabase } from "react-icons/bs"
 import { PiUsersThree, PiClipboardLight, PiTrophyBold } from "react-icons/pi"
 import { IoSettingsOutline } from "react-icons/io5"
-import { GoSearch, GoBell,GoChevronDown } from "react-icons/go"
+import { GoSearch, GoBell, GoChevronDown } from "react-icons/go"
 import Link from 'next/link';
 import { useUserContext } from '../userContext'
 
@@ -18,7 +18,7 @@ export const DashLayout = ({
 }: {
     children: React.ReactNode;
 }) => {
-    const {user} = useUserContext();
+    const { user } = useUserContext();
     const pathname = usePathname();
     console.log(user);
     return (
@@ -33,9 +33,16 @@ export const DashLayout = ({
                             height={150}
                             className="max-w-[25%] max-h-[50%]"
                         />
+                        <Image
+                            src={imageDecenterLogoSubtitle}
+                            alt="DECENTER Icon"
+                            width={50}
+                            height={150}
+                            className="max-w-[25%] max-h-[50%]"
+                        />
                     </div>
-                    <div  className='grid justify-center'>
-                
+                    <div className='grid justify-center'>
+
 
                     </div>
                 </Link>
@@ -109,11 +116,11 @@ export const DashLayout = ({
                         </button>
                         <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
                             <button className='flex flex-row'>
-                            <img className="rounded-full w-6 h-6 mr-3" src={user?.profileImage} alt="profile pic" />
+                                <img className="rounded-full w-6 h-6 mr-3" src={user?.profileImage} alt="profile pic" />
 
-                            <div className='font-semibold font-primaryArchivo'>{user?.name.split(' ')[0]}</div>
+                                <div className='font-semibold font-primaryArchivo'>{user?.name.split(' ')[0]}</div>
                             </button>
-                            
+
                         </div>
                     </div>
                 </div>
