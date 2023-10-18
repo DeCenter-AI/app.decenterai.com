@@ -3,11 +3,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,21 +19,11 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@Components/*": [
-        "./src/components/*"
-      ],
-      "@Svg/*": [
-        "./src/svg/*"
-      ],
-      "@public/*": [
-        "./public/*"
-      ],
-      "@utils/*": [
-        "./utils/*"
-      ]
+      "@/*": ["./src/*"],
+      "@Components/*": ["./src/components/*"],
+      "@Svg/*": ["./src/svg/*"],
+      "@public/*": ["./public/*"],
+      "@utils/*": ["./utils/*"]
     },
     "declaration": true,
     "removeComments": true,
@@ -64,8 +50,5 @@
     "src/app/loading.js",
     "build/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "./jest.config.ts"
-  ]
+  "exclude": ["node_modules", "./jest.config.ts"]
 }
