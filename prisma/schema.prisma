@@ -1,0 +1,84 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing", "metrics", "clientExtensions", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(sequence(minValue: 1)) @db.Int4
+
+  email String @unique
+  hash  String
+
+  firstName String?
+  lastName  String?
+  Event     Event[]
+  Calendar  Calendar[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@map("users")
+}
+
+model Event {
+  // hosting an event
+  id          String  @id @default(uuid())
+  title       String
+  description String?
+  hostId      Int
+
+  ///IsNumber()
+  duration Int // in minutes
+  // location    String?
+
+  host User @relation(fields: [hostId], references: [id], onDelete: Cascade)
+
+  timeslots TimeSlot[]
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@unique([hostId, title, duration])
+  @@map("events")
+}
+
+model TimeSlot {
+  id        String   @id @default(uuid())
+  eventId   String
+  startTime DateTime @db.Timetz()
+  endTime   DateTime @db.Timetz()
+  available Boolean  @default(true)
+
+  createdAt DateTime   @default(now()) @db.Timestamptz()
+  updatedAt DateTime   @updatedAt @db.Timestamptz()
+  Calendar  Calendar[]
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, startTime, endTime])
+  @@map("timeslots")
+}
+
+model Calendar {
+  id Int @id @default(sequence(minValue: 1)) @db.Int4
+
+  timeSlotId String
+  guestId    Int
+
+  timeslot TimeSlot @relation(fields: [timeSlotId], references: [id], onDelete: Cascade)
+
+  guest User @relation(fields: [guestId], references: [id], onDelete: Cascade)
+
+  date DateTime @db.Date
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@unique([timeSlotId, guestId, date])
+  @@map("calendars")
+}
