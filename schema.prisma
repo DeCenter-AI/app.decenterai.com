@@ -1,0 +1,24 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing", "metrics", "clientExtensions", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(sequence(minValue: 1)) @db.Int4
+
+  email String @unique
+  hash  String // password
+
+  firstName String?
+  lastName  String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@map("users")
+}

@@ -1,0 +1,73 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(sequence(minValue: 1))
+
+  web3AuthId String? @map("web3authId") @db.String()
+
+  userName String? @unique
+  email    String? @unique
+  password String?
+
+  firstName String?
+  lastName  String?
+
+  createdAt    DateTime          @default(now()) @db.Timestamptz()
+  updatedAt    DateTime          @updatedAt @db.Timestamptz()
+  OrderRequest TrainingRequest[]
+
+  @@map("users")
+}
+
+enum Category {
+  FeatureExtraction @map("Feature Extraction")
+}
+
+model Model {
+  id          Int        @id @default(sequence(minValue: 1))
+  name        String
+  description String
+  category    Category[] // can be String[] FIXME unsure
+
+  trainingRequestId Int
+  trainingRequest   TrainingRequest @relation(fields: [trainingRequestId], references: [id])
+
+  cid       String
+  DataStore DataStore @relation(fields: [cid], references: [cid])
+}
+
+enum IPFSProvider {
+  LIGHTHOUSE
+  IPFS
+  INFURA
+  S3
+}
+
+model DataStore {
+  id              Int               @id @default(sequence(minValue: 1))
+  cid             String            @unique
+  provider        IPFSProvider      @default(LIGHTHOUSE)
+  TrainingRequest TrainingRequest[]
+  Model           Model[]
+}
+
+model TrainingRequest {
+  id      Int @id @default(sequence(minValue: 1))
+  userId  Int
+  modelId Int
+
+  cid       String // mountCid-lighthouse
+  DataStore DataStore @relation(fields: [cid], references: [cid])
+
+  user        User    @relation(fields: [userId], references: [id])
+  Model       Model[]
+  dataStoreId Int
+}
