@@ -42,12 +42,12 @@ async function main() {
   }
   const user1 = await create_user(hiro)
 
-  const ds = await prisma.dataStore.create({
-    data: {
-      cid: "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw",
-      provider: "LIGHTHOUSE"
-    }
-  })
+  // const ds = await prisma.dataStore.create({
+  //   data: {
+  //     cid: "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw",
+  //     provider: "LIGHTHOUSE"
+  //   }
+  // })
 
 
 
