@@ -11,6 +11,8 @@
   "scripts": {
     "postinstall": "npm run build",
     "dev": "next dev",
+    "start:dev": "concurrently \"pnpm:dev\" \"pnpm:prisma:generate:watch\"",
+    "prebuild": "npm run prisma:generate",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -27,8 +29,7 @@
     "test:cov": "MODE=test jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "MODE=test jest --config ./test/jest-e2e.json",
-    "test:e2e:watch": "MODE=test jest --watch --no-cache --config ./test/jest-e2e.json",
-    "dev:prisma": "concurrently \"pnpm:start:dev\" \"pnpm:prisma:generate:watch\""
+    "test:e2e:watch": "MODE=test jest --watch --no-cache --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
