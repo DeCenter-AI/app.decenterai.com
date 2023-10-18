@@ -9,16 +9,33 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(sequence(minValue: 1)) @db.Int4
+  id Int @id @default(sequence(minValue: 1))
 
-  email String @unique
-  hash  String
+  web3AuthId String @db.String()
 
   firstName String?
   lastName  String?
 
-  createdAt DateTime @default(now()) @db.Timestamptz()
-  updatedAt DateTime @updatedAt @db.Timestamptz()
+  createdAt    DateTime          @default(now()) @db.Timestamptz()
+  updatedAt    DateTime          @updatedAt @db.Timestamptz()
+  OrderRequest TrainingRequest[]
 
   @@map("users")
+}
+
+model Model {
+  id                Int             @id @default(sequence(minValue: 1))
+  name              String
+  description       String
+  trainingRequestId Int
+  trainingRequest   TrainingRequest @relation(fields: [trainingRequestId], references: [id])
+}
+
+model TrainingRequest {
+  id      Int @id @default(sequence(minValue: 1))
+  userId  Int
+  modelId Int
+
+  user  User    @relation(fields: [userId], references: [id])
+  Model Model[]
 }
