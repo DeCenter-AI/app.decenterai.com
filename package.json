@@ -24,7 +24,7 @@
     "prisma:generate:watch": "prisma generate --watch",
     "prisma:test:deploy": "cp .env.test .env && prisma migrate deploy && rm .env",
     "prisma:local:deploy": "cp .env.local .env && prisma migrate dev && rm .env",
-    "prisma:deploy": "prisma migrate deploy",
+    "prisma:deploy": "DEBUG=* prisma migrate deploy",
     "test:watch": "MODE=test jest --watch",
     "test:cov": "MODE=test jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
