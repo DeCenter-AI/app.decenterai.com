@@ -1,6 +1,6 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["tracing", "metrics", "clientExtensions", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
+  previewFeatures = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
 }
 
 datasource db {
@@ -11,7 +11,11 @@ datasource db {
 model User {
   id Int @id @default(sequence(minValue: 1))
 
-  web3AuthId String @db.String()
+  web3AuthId String @map("web3authId") @db.String()
+
+  userName String? @unique
+  email    String? @unique
+  password String?
 
   firstName String?
   lastName  String?
@@ -23,10 +27,16 @@ model User {
   @@map("users")
 }
 
+enum Category {
+  FeatureExtraction @map("Feature Extraction")
+}
+
 model Model {
-  id                Int             @id @default(sequence(minValue: 1))
-  name              String
-  description       String
+  id          Int        @id @default(sequence(minValue: 1))
+  name        String
+  description String
+  category    Category[] // can be String[] FIXME unsure
+
   trainingRequestId Int
   trainingRequest   TrainingRequest @relation(fields: [trainingRequestId], references: [id])
 }
