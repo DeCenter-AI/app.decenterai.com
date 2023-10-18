@@ -1,4 +1,4 @@
-import {PrismaClient} from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import * as argon from 'argon2'
 
 const prisma = new PrismaClient()
@@ -30,14 +30,14 @@ async function main() {
   const deleteHiro = await prisma.user.findFirst({
     where: {
       email: hiro.email,
-    }
+    },
   })
-  if (deleteHiro){
-    console.log({msg: `deleting user ${deleteHiro.id}`})
+  if (deleteHiro) {
+    console.log({ msg: `deleting user ${deleteHiro.id}` })
     await prisma.user.delete({
       where: {
-        email: hiro.email
-      }
+        email: hiro.email,
+      },
     })
   }
   const user1 = await create_user(hiro)
@@ -48,9 +48,6 @@ async function main() {
   //     provider: "LIGHTHOUSE"
   //   }
   // })
-
-
-
 }
 
 main()
