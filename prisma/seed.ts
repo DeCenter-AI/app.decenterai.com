@@ -21,16 +21,27 @@ function addDays(date: Date, days: number): Date {
 }
 
 async function main() {
-  await prisma.user.deleteMany()
+  // await prisma.user.deleteMany()
 
-  const user1 = await create_user({
-    email: 'dean@nas.edu',
-    password: 'dean@Testing#',
+  const hiro = {
+    email: 'hiro@decenterai.com',
+    password: 'hiro@1234',
+  }
+  const deleteHiro = await prisma.user.findFirst({
+    where: {
+      email: hiro.email,
+    }
   })
-  const user2 = await create_user({
-    email: 'hiro@student.nas.edu',
-    password: 'hiro@Testing#',
-  })
+  if (deleteHiro){
+    console.log({msg: `deleting user ${deleteHiro.id}`})
+    await prisma.user.delete({
+      where: {
+        email: hiro.email,
+      }
+    })
+  }
+  const user1 = await create_user(hiro)
+
 
 }
 
