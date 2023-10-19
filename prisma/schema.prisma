@@ -42,7 +42,9 @@ model Model {
   trainingRequest   TrainingRequest @relation(fields: [trainingRequestId], references: [id])
 
   cid       String
-  DataStore DataStore @relation(fields: [cid], references: [cid])
+  DataStore Datastore @relation(fields: [cid], references: [cid])
+
+  @@map("models")
 }
 
 enum IPFSProvider {
@@ -52,12 +54,14 @@ enum IPFSProvider {
   S3
 }
 
-model DataStore {
+model Datastore {
   id              Int               @id @default(sequence(minValue: 1))
   cid             String            @unique
   provider        IPFSProvider      @default(LIGHTHOUSE)
   TrainingRequest TrainingRequest[]
   Model           Model[]
+
+  @@map("datastores")
 }
 
 model TrainingRequest {
@@ -66,9 +70,11 @@ model TrainingRequest {
   modelId Int
 
   cid       String // mountCid-lighthouse
-  DataStore DataStore @relation(fields: [cid], references: [cid])
+  DataStore Datastore @relation(fields: [cid], references: [cid])
 
   user        User    @relation(fields: [userId], references: [id])
   Model       Model[]
   dataStoreId Int
+
+  @@map("training_requests")
 }
