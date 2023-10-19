@@ -1,6 +1,8 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
+  provider            = "prisma-client-js"
+  previewFeatures     = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
+  // output          = "./generated"
+  formatGeneratedCode = false
 }
 
 datasource db {
@@ -15,7 +17,7 @@ model User {
 
   userName String? @unique
   email    String? @unique
-  password String?
+  password String? // hash
 
   firstName String?
   lastName  String?
@@ -42,6 +44,11 @@ model Model {
 
   cid       String
   DataStore DataStore @relation(fields: [cid], references: [cid])
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@map("models")
 }
 
 enum IPFSProvider {
@@ -52,22 +59,32 @@ enum IPFSProvider {
 }
 
 model DataStore {
-  id              Int               @id @default(sequence(minValue: 1))
-  cid             String            @unique
-  provider        IPFSProvider      @default(LIGHTHOUSE)
+  id       Int          @id @default(sequence(minValue: 1))
+  cid      String       @unique
+  provider IPFSProvider @default(LIGHTHOUSE)
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
   TrainingRequest TrainingRequest[]
   Model           Model[]
+
+  @@map("datastores")
 }
 
 model TrainingRequest {
-  id      Int @id @default(sequence(minValue: 1))
-  userId  Int
-  modelId Int
+  id     Int  @id @default(sequence(minValue: 1))
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 
-  cid       String // mountCid-lighthouse
+  cid String
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
   DataStore DataStore @relation(fields: [cid], references: [cid])
 
-  user        User    @relation(fields: [userId], references: [id])
-  Model       Model[]
-  dataStoreId Int
+  Model Model[]
+
+  @@map("training_requests")
 }
