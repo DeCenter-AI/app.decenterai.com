@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
-  output          = "./generated"
+  // output          = "./generated"
 }
 
 datasource db {
@@ -16,7 +16,7 @@ model User {
 
   userName String? @unique
   email    String? @unique
-  password String?
+  password String? // hash
 
   firstName String?
   lastName  String?
