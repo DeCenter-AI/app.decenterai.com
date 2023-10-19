@@ -69,7 +69,7 @@ model TrainingRequest {
   userId  Int
   modelId Int
 
-  cid       String // mountCid-lighthouse
+  cid       String
   DataStore Datastore @relation(fields: [cid], references: [cid])
 
   user        User    @relation(fields: [userId], references: [id])
