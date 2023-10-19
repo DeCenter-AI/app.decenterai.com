@@ -18,7 +18,7 @@ const TrainBase = ({ setPage }: IProps) => {
                     Create Model
                 </button>
             </div>
-            <div className='w-[30%] h-[60%] border bg-primary_10 border-primary_8 rounded-xl p-10 flex flex-col items-center justify-center gap-10 text-primary_8'>
+            {/* <div className='w-[30%] h-[60%] border bg-primary_10 border-primary_8 rounded-xl p-10 flex flex-col items-center justify-center gap-10 text-primary_8'>
                 <PiGearFine size={50} />
                 <h3 className='font-logirentRegular text-md text-primary_1'>FIne-tune</h3>
                 <p className='font-archivo text-primary_8 text-lg text-center'>Edit existing applications to align with your  objectives.</p>
@@ -33,7 +33,7 @@ const TrainBase = ({ setPage }: IProps) => {
                 <button onClick={() => setPage(3)} className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm py-3 w-full cursor-pointer rounded-xl">
                     Use Template
                 </button>
-            </div>
+            </div> */}
         </div>
     )
 }
