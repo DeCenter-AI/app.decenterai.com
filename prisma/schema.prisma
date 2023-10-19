@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
-  output          = "./prisma/generated"
+  // output          = "./generated"
 }
 
 datasource db {
