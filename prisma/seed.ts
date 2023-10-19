@@ -1,5 +1,6 @@
 import {PrismaClient} from '@prisma/client'
 import * as argon from 'argon2'
+import {LIGHTHOUSE} from "../enums/ipfsProviders";
 
 const prisma = new PrismaClient()
 
@@ -44,20 +45,10 @@ async function main() {
 
   const inputDataset = {
     cid: "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw",
-    provider: "LIGHTHOUSE"
+    provider: LIGHTHOUSE
   }
 
- /* const inputDatasetFound = await prisma.dataStore.findUnique({
-    where: {
-      cid: inputDataset.cid
-    }
-  })
-
-  if (inputDatasetFound){
-    await
-  }
-*/
-  const ds = await prisma.dataStore.upsert({
+  const inputArchive = await prisma.dataStore.upsert({
     create: inputDataset,
     update: inputDataset,
     where: {
@@ -65,11 +56,16 @@ async function main() {
     }
   })
 
-  console.log({ds})
+  console.log({inputArchive})
 
+  const orderReq1 = await prisma.trainingRequest.create({
+    data: {
+      userId: user1.id,
+      cid: inputDataset.cid,
+    }
+  })
 
-
-
+  console.log({orderReq1})
 
 }
 

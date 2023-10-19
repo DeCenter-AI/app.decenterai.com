@@ -45,6 +45,9 @@ model Model {
   cid       String
   DataStore DataStore @relation(fields: [cid], references: [cid])
 
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
   @@map("models")
 }
 
@@ -56,9 +59,13 @@ enum IPFSProvider {
 }
 
 model DataStore {
-  id              Int               @id @default(sequence(minValue: 1))
-  cid             String            @unique
-  provider        IPFSProvider      @default(LIGHTHOUSE)
+  id       Int          @id @default(sequence(minValue: 1))
+  cid      String       @unique
+  provider IPFSProvider @default(LIGHTHOUSE)
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
   TrainingRequest TrainingRequest[]
   Model           Model[]
 
@@ -66,16 +73,18 @@ model DataStore {
 }
 
 model TrainingRequest {
-  id      Int @id @default(sequence(minValue: 1))
-  userId  Int
-  modelId Int
+  id     Int  @id @default(sequence(minValue: 1))
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 
-  cid       String
+  cid String
+
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
   DataStore DataStore @relation(fields: [cid], references: [cid])
 
-  user        User    @relation(fields: [userId], references: [id])
-  Model       Model[]
-  dataStoreId Int
+  Model Model[]
 
   @@map("training_requests")
 }
