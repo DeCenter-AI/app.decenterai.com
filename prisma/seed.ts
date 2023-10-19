@@ -42,10 +42,26 @@ async function main() {
   }
   const user1 = await create_user(hiro)
 
-  const ds = await prisma.dataStore?.create({
-    data: {
-      cid: "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw",
-      provider: "LIGHTHOUSE"
+  const inputDataset = {
+    cid: "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw",
+    provider: "LIGHTHOUSE"
+  }
+
+ /* const inputDatasetFound = await prisma.dataStore.findUnique({
+    where: {
+      cid: inputDataset.cid
+    }
+  })
+
+  if (inputDatasetFound){
+    await
+  }
+*/
+  const ds = await prisma.dataStore.upsert({
+    create: inputDataset,
+    update: inputDataset,
+    where: {
+      cid: inputDataset.cid,
     }
   })
 
