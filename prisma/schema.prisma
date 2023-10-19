@@ -1,7 +1,8 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
+  provider            = "prisma-client-js"
+  previewFeatures     = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
   // output          = "./generated"
+  formatGeneratedCode = false
 }
 
 datasource db {
@@ -42,7 +43,7 @@ model Model {
   trainingRequest   TrainingRequest @relation(fields: [trainingRequestId], references: [id])
 
   cid       String
-  DataStore Datastore @relation(fields: [cid], references: [cid])
+  DataStore DataStore @relation(fields: [cid], references: [cid])
 
   @@map("models")
 }
@@ -54,7 +55,7 @@ enum IPFSProvider {
   S3
 }
 
-model Datastore {
+model DataStore {
   id              Int               @id @default(sequence(minValue: 1))
   cid             String            @unique
   provider        IPFSProvider      @default(LIGHTHOUSE)
@@ -70,7 +71,7 @@ model TrainingRequest {
   modelId Int
 
   cid       String
-  DataStore Datastore @relation(fields: [cid], references: [cid])
+  DataStore DataStore @relation(fields: [cid], references: [cid])
 
   user        User    @relation(fields: [userId], references: [id])
   Model       Model[]
