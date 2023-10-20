@@ -1,5 +1,4 @@
-// import * as isIPFS from "is-ipfs"
-async function isCid(cidStr: string): Promise<boolean> {
+export async function isCid(cidStr: string): Promise<boolean> {
     const isIPFS = await import("is-ipfs")
     return isIPFS.cid(cidStr)
     // return true
@@ -14,4 +13,4 @@ async function main(): Promise<void> {
     console.log({ ['hiro']: res });
 }
 
-main();
+// main();

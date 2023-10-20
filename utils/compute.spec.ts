@@ -1,6 +1,6 @@
 import {jest} from '@jest/globals'
-import {isCid} from './cid.js'
 import {compute, computeDemo} from './compute'
+import {isCid} from './cid'
 
 jest.mock('axios')
 

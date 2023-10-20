@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// @ts-ignore
 let data = {
   Engine: 'Docker',
   Docker: {
@@ -102,6 +103,7 @@ export async function computeDemo(
 
   const res = await axios.post(BACALHAU_API, dto)
   //     most likely gives a status of 200 even for errors.
+  console.log({res})
   console.log({
     resStatus: res.status,
     data: res.data,
@@ -110,6 +112,7 @@ export async function computeDemo(
   return res.data['cid']
 }
 
+// @ts-ignore
 async function main() {
   const sample = {
     train_script: 'headbrain.ipynb',

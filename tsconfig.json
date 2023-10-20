@@ -41,10 +41,10 @@
     // linter checks
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": false,
     // advanced
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "stripInternal": true,
