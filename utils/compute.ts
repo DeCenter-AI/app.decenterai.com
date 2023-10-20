@@ -1,4 +1,3 @@
-
 let data = {
   Engine: 'Docker',
   Docker: {
@@ -16,7 +15,7 @@ let data = {
 }
 
 const BACALHAU_API = 'http://dashboard.bacalhau.org:1000/api/v1/run'
-export const BACALHAU_TIMEOUT =  60*60*1000  //1hr
+export const BACALHAU_TIMEOUT = 60 * 60 * 1000 //1hr
 
 export async function compute(train_script: string, cid: string): Promise<string> {
   let dto = {
@@ -66,10 +65,10 @@ export async function compute(train_script: string, cid: string): Promise<string
   const res = await fetch(BACALHAU_API, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(dto)
-  });
+    body: JSON.stringify(dto),
+  })
   //     most likely gives a status of 200 even for errors.
   const output = await res.json()
 
@@ -82,8 +81,8 @@ export async function compute(train_script: string, cid: string): Promise<string
 }
 
 export async function computeDemo(
-    train_script: string,
-    input_archive: string,
+  train_script: string,
+  input_archive: string,
 ): Promise<string> {
   let dto = {
     Engine: 'Docker',
@@ -115,10 +114,10 @@ export async function computeDemo(
   const res = await fetch(BACALHAU_API, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(dto)
-  });
+    body: JSON.stringify(dto),
+  })
   const output = await res.json()
 
   console.log({
@@ -164,7 +163,7 @@ async function main() {
     },
     // {train_script: 'boston-housing-price-prediction.ipynb', input_archive:'/app/samples/kaggle/inputs/boston-housing-price-prediction.zip'},
   ]
-/*
+  /*
   for (let { train_script, input_archive } of samples) {
     console.log('train:', train_script)
     await computeDemo(train_script, input_archive)
