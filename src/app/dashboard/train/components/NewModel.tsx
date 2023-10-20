@@ -1,10 +1,10 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
-import { CiTrash } from 'react-icons/ci'
-import { FiUploadCloud } from 'react-icons/fi'
-import { MdKeyboardArrowLeft } from 'react-icons/md'
-import { extractFile } from '@utils/upload'
-import { retrieve } from '@utils/fileCoinIpfs'
+import React, {useEffect, useRef, useState} from 'react'
+import {CiTrash} from 'react-icons/ci'
+import {FiUploadCloud} from 'react-icons/fi'
+import {MdKeyboardArrowLeft} from 'react-icons/md'
+import {extractFile} from '@utils/upload'
+import {retrieve} from '@utils/fileCoinIpfs'
 
 interface IProps {
   setPage: (page: number | null) => void
@@ -119,11 +119,11 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal, startUpload }: IP
   // }
 
   //dataset logic begins
-  const handleDataSetDragOver = (e: React.DragEvent<Blob>) => {
+  const handleDataSetDragOver = (e: React.DragEvent<Blob | HTMLDivElement>) => {
     e.preventDefault()
   }
 
-  const handleDataSetDrop = async (e: React.DragEvent<Blob>) => {
+  const handleDataSetDrop = async (e: React.DragEvent<Blob | HTMLDivElement>) => {
     e.preventDefault()
     const files = e.dataTransfer.files
 
