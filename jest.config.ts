@@ -1,16 +1,16 @@
-import { pathsToModuleNameMapper } from 'ts-jest'
-import { compilerOptions } from './tsconfig.node.json'
+import {pathsToModuleNameMapper} from 'ts-jest'
+import {compilerOptions} from './tsconfig.node.json'
 
 const jestConfig = {
-  // preset: 'ts-jest',
+  preset: 'ts-jest',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/',
   }),
   testEnvironment: 'node',
   collectCoverageFrom: ['**/*.(t|j|mj)s'],
   coverageDirectory: '../coverage',
-  testRegex: '.*\\.spec\\.(t|j|mj)s$',
-  moduleFileExtensions: ['js', 'json', 'ts', 'mjs'],
+  testRegex: '.*\\.spec\\.(t|j)s$',
+  moduleFileExtensions: ['js', 'json', 'ts'],
   // automock: true,
   verbose: true,
 }
