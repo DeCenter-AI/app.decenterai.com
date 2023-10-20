@@ -17,7 +17,7 @@ let data = {
 
 const BACALHAU_API = 'http://dashboard.bacalhau.org:1000/api/v1/run'
 
-async function compute(train_script: string, cid: string): Promise<string> {
+export async function compute(train_script: string, cid: string): Promise<string> {
   let dto = {
     Engine: 'Docker',
     Docker: {
@@ -164,7 +164,7 @@ async function main() {
   }*/
 }
 
-main()
+// main()
 
 /*
 axios.post('http://dashboard.bacalhau.org:1000/api/v1/run', data)
