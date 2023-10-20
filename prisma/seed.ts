@@ -1,6 +1,6 @@
 import {PrismaClient} from '@prisma/client'
 import * as argon from 'argon2'
-import {LIGHTHOUSE} from "../enums/ipfsProviders";
+import {LIGHTHOUSE} from '../enums/ipfsProviders'
 
 const prisma = new PrismaClient()
 
@@ -31,21 +31,21 @@ async function main() {
   const deleteHiro = await prisma.user.findFirst({
     where: {
       email: hiro.email,
-    }
+    },
   })
-  if (deleteHiro){
-    console.log({msg: `deleting user ${deleteHiro.id}`})
+  if (deleteHiro) {
+    console.log({ msg: `deleting user ${deleteHiro.id}` })
     await prisma.user.delete({
       where: {
-        email: hiro.email
-      }
+        email: hiro.email,
+      },
     })
   }
   const user1 = await create_user(hiro)
 
   const inputDataset = {
-    cid: "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw",
-    provider: LIGHTHOUSE
+    cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
+    provider: LIGHTHOUSE,
   }
 
   const inputArchive = await prisma.dataStore.upsert({
@@ -53,20 +53,19 @@ async function main() {
     update: inputDataset,
     where: {
       cid: inputDataset.cid,
-    }
+    },
   })
 
-  console.log({inputArchive})
+  console.log({ inputArchive })
 
   const orderReq1 = await prisma.trainingRequest.create({
     data: {
       userId: user1.id,
       cid: inputDataset.cid,
-    }
+    },
   })
 
-  console.log({orderReq1})
-
+  console.log({ orderReq1 })
 }
 
 main()

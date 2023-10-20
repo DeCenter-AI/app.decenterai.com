@@ -1,18 +1,18 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react'
-import { CiTrash } from "react-icons/ci"
-import { FiUploadCloud } from "react-icons/fi"
-import { MdKeyboardArrowLeft } from "react-icons/md"
-import { extractFile, uploadFile } from "@utils/upload";
-import axios from "axios";
-import { decodeCid, retrieve } from "@utils/fileCoinIpfs";
+import React, {useEffect, useRef, useState} from 'react'
+import {CiTrash} from "react-icons/ci"
+import {FiUploadCloud} from "react-icons/fi"
+import {MdKeyboardArrowLeft} from "react-icons/md"
+import {extractFile} from "@utils/upload";
+import {retrieve} from "@utils/fileCoinIpfs";
 
 interface IProps {
     setPage: (page: number | null) => void
     setModal: (modal: number | null) => void
     setTrain: (train: boolean) => void
     train: boolean,
-    modal: number | null
+    modal: number | null,
+    startUpload: (dataSet: File | null, trainScript: string, modelName: string) => void
 }
 
 interface IFile {
@@ -23,7 +23,7 @@ interface IFile {
 }
 
 
-const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
+const NewModel = ({ setPage, setModal, setTrain, train, modal, startUpload }: IProps) => {
     const trainScriptInput = useRef<HTMLInputElement | null>(null)
     // const requirementInput = useRef<HTMLInputElement | null>(null)
     const dataSetInput = useRef<HTMLInputElement | null>(null)
@@ -185,27 +185,13 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
 
 
 
-    const startTrain = async (cid: string) => {
 
-        //call backend
-        const trainData = await axios.post("/api/bacalhau", {
-            trainScript: `${trainScript}`,
-            cid: `${cid}`
-        });
-        console.log((trainData.data.result))
-        //decode cid
-        const decodedCid = decodeCid(trainData.data.result)
-        setDecodedCid(decodedCid)
-
-        //change modal
-        setModal(2)
-        setTrain(false)
-    }
 
     const startProcess = () => {
         //show authorization modal
         if (modelName && trainScript && dataSet) {
-            setModal(0)
+            startUpload(dataSet, trainScript, modelName)
+            setPage(2)
         }
     }
 
@@ -222,13 +208,7 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal }: IProps) => {
     }
 
 
-    useEffect(() => {
 
-        if (train) {
-            //process uploaded files
-            uploadFile(dataSet, startTrain)
-        }
-    }, [train])
 
     useEffect(() => {
 
