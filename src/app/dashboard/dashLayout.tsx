@@ -2,18 +2,17 @@
 import Image from 'next/image'
 import React from 'react'
 
-import {usePathname} from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
-import {RxDashboard} from 'react-icons/rx'
-import {HiOutlineChip} from 'react-icons/hi'
-import {BsDatabase} from 'react-icons/bs'
-import {PiClipboardLight, PiTrophyBold, PiUsersThree} from 'react-icons/pi'
-import {IoSettingsOutline} from 'react-icons/io5'
-import {GoBell, GoSearch} from 'react-icons/go'
+import { RxDashboard } from 'react-icons/rx'
+import { HiOutlineChip } from 'react-icons/hi'
+import { BsDatabase } from 'react-icons/bs'
+import { PiClipboardLight, PiTrophyBold, PiUsersThree } from 'react-icons/pi'
+import { IoSettingsOutline } from 'react-icons/io5'
+import { GoBell, GoSearch } from 'react-icons/go'
 import Link from 'next/link'
-import {useUserContext} from '../userContext'
-
+import { useUserContext } from '../userContext'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext()
@@ -23,7 +22,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="w-screen h-screen flex  bg-primary_12 relative">
       <aside className="h-full w-[10%] border-r border-primary_8">
         <Link href="/">
-          <div className='w-full h-[10%] flex flex-col gap-2 pt-2 items-center justify-center'>
+          <div className="w-full h-[10%] flex flex-col gap-2 pt-2 items-center justify-center">
             <Image
               src={imageDecenterLogoWhite}
               alt="DECENTER Icon"
@@ -37,19 +36,16 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               alt="DECENTER Icon"
               width={100}
               height={150}
-              style={{ maxWidth: "100%" }}
+              style={{ maxWidth: '100%' }}
             />
           </div>
-
-
-
-
         </Link>
         <div className="w-full h-[90%] overflow-y-auto font-archivo ">
           <Link href="/dashboard">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <RxDashboard size={25} />
@@ -59,8 +55,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/train">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <HiOutlineChip size={25} />
@@ -70,8 +67,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/repository">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />

@@ -1,6 +1,6 @@
-import {PrismaClient} from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import * as argon from 'argon2'
-import {LIGHTHOUSE} from '../enums/ipfsProviders'
+import { LIGHTHOUSE } from '../enums/ipfsProviders'
 
 const prisma = new PrismaClient()
 
