@@ -21,7 +21,7 @@ export default function ModelDownload({ download, setPage }: IProps) {
 
             <div className='h-[20%]' >
                 <h1 className='text-center text-3xl font-logirentBold'>Model Is Ready For Download</h1>
-                <p className='font-archivo text-xs font-light text-center text-primary_6'>Your AI model is now ready for download! We're excited to see what you'll create with it.</p>
+                <p className='font-archivo text-xs font-light text-center text-primary_6'>{`Your AI model is now ready for download! We're excited to see what you'll create with it.`}</p>
             </div>
 
             <div className='flex flex-col items-center justify-start w-[80%] md:w-[60%]  h-[80%] gap-3'>
