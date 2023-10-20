@@ -1,5 +1,5 @@
 import {jest} from '@jest/globals'
-import {compute, computeDemo} from './compute'
+import {BACALHAU_TIMEOUT, compute, computeDemo} from './compute'
 import {isCid} from './cid'
 
 jest.mock('axios')
@@ -13,7 +13,7 @@ describe('compute()', () => {
 
     // expect(result).toBe(cid);
     expect(isCid(result)).toBe(true)
-  })
+  }, BACALHAU_TIMEOUT)
 })
 
 describe('computeDemo()', () => {
@@ -25,5 +25,5 @@ describe('computeDemo()', () => {
 
     // expect(result).toBe('QmYw4384z3x26j165x9968n65362y53689h53487987');
     expect(isCid(result)).toBe(true)
-  })
+  }, BACALHAU_TIMEOUT)
 })

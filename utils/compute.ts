@@ -16,6 +16,7 @@ let data = {
 }
 
 const BACALHAU_API = 'http://dashboard.bacalhau.org:1000/api/v1/run'
+export const BACALHAU_TIMEOUT =  60*60*1000  //1hr
 
 export async function compute(train_script: string, cid: string): Promise<string> {
   let dto = {
@@ -80,7 +81,7 @@ export async function compute(train_script: string, cid: string): Promise<string
   return output['cid']
 }
 
-/*export async function computeDemo(
+export async function computeDemo(
     train_script: string,
     input_archive: string,
 ): Promise<string> {
@@ -111,15 +112,21 @@ export async function compute(train_script: string, cid: string): Promise<string
     },
   }
 
-  const res = await axios.post(BACALHAU_API, dto)
-  //     most likely gives a status of 200 even for errors.
+  const res = await fetch(BACALHAU_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dto)
+  });
+  const output = await res.json()
+
   console.log({
     resStatus: res.status,
-    data: res.data,
+    data: output,
   })
-  // output IPFS CID: is reliable for 1st 5-10 minutes
-  return res.data['cid']
-}*/
+  return output['cid']
+}
 
 async function main() {
   const sample = {
