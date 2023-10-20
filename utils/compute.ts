@@ -1,4 +1,3 @@
-import axios from 'axios'
 
 let data = {
   Engine: 'Docker',
@@ -17,6 +16,7 @@ let data = {
 }
 
 const BACALHAU_API = 'http://dashboard.bacalhau.org:1000/api/v1/run'
+export const BACALHAU_TIMEOUT =  60*60*1000  //1hr
 
 export async function compute(train_script: string, cid: string): Promise<string> {
   let dto = {
@@ -27,7 +27,6 @@ export async function compute(train_script: string, cid: string): Promise<string
         train_script, //headbrain.ipynb
         `/inputs/${cid}`,
       ],
-
       EnvironmentVariables: [
         'OUTPUT_DIR=/outputs',
         'OUTPUT_ARCHIVE=decenter-model',
@@ -60,19 +59,31 @@ export async function compute(train_script: string, cid: string): Promise<string
     Resources: { CPU: '1', GPU: '1', MEMORY: '1Gb' },
   }
 
-  const res = await axios.post(BACALHAU_API, dto)
+  // const {axios} = await import('axios')
+
+  // const res = await axios.post(BACALHAU_API, dto)
+
+  const res = await fetch(BACALHAU_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dto)
+  });
   //     most likely gives a status of 200 even for errors.
+  const output = await res.json()
+
   console.log({
     resStatus: res.status,
-    data: res.data,
+    data: output,
   })
   // output IPFS CID: is reliable for 1st 5-10 minutes
-  return res.data['cid']
+  return output['cid']
 }
 
 export async function computeDemo(
-  train_script: string,
-  input_archive: string,
+    train_script: string,
+    input_archive: string,
 ): Promise<string> {
   let dto = {
     Engine: 'Docker',
@@ -101,14 +112,20 @@ export async function computeDemo(
     },
   }
 
-  const res = await axios.post(BACALHAU_API, dto)
-  //     most likely gives a status of 200 even for errors.
+  const res = await fetch(BACALHAU_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dto)
+  });
+  const output = await res.json()
+
   console.log({
     resStatus: res.status,
-    data: res.data,
+    data: output,
   })
-  // output IPFS CID: is reliable for 1st 5-10 minutes
-  return res.data['cid']
+  return output['cid']
 }
 
 async function main() {
@@ -147,11 +164,11 @@ async function main() {
     },
     // {train_script: 'boston-housing-price-prediction.ipynb', input_archive:'/app/samples/kaggle/inputs/boston-housing-price-prediction.zip'},
   ]
-
+/*
   for (let { train_script, input_archive } of samples) {
     console.log('train:', train_script)
     await computeDemo(train_script, input_archive)
-  }
+  }*/
 }
 
 // main()

@@ -41,3 +41,4 @@ next-env.d.ts
 build/
 
 .vercel/
+prisma/generated/
