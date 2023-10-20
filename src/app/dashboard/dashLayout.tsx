@@ -1,17 +1,18 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import { usePathname } from 'next/navigation'
+
+import {usePathname} from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
-import { RxDashboard } from 'react-icons/rx'
-import { HiOutlineChip } from 'react-icons/hi'
-import { BsDatabase } from 'react-icons/bs'
-import { PiClipboardLight, PiTrophyBold, PiUsersThree } from 'react-icons/pi'
-import { IoSettingsOutline } from 'react-icons/io5'
-import { GoBell, GoSearch } from 'react-icons/go'
+import {RxDashboard} from 'react-icons/rx'
+import {HiOutlineChip} from 'react-icons/hi'
+import {BsDatabase} from 'react-icons/bs'
+import {PiClipboardLight, PiTrophyBold, PiUsersThree} from 'react-icons/pi'
+import {IoSettingsOutline} from 'react-icons/io5'
+import {GoBell, GoSearch} from 'react-icons/go'
 import Link from 'next/link'
-import { useUserContext } from '../userContext'
+import {useUserContext} from '../userContext'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext()
@@ -25,20 +26,18 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             <Image
               src={imageDecenterLogoWhite}
               alt="DECENTER Icon"
-              width={50}
+              width={0}
               height={150}
               className="max-w-[25%] max-h-[50%]"
             />
-
             <Image
               src={imageDecenterLogoSubtitle}
               alt="DECENTER Icon"
               width={100}
               height={150}
-              style={{ maxWidth: "100%" }}
+              style={{ maxWidth: '100%' }}
             />
           </div>
-          <div className="grid justify-center"></div>
         </Link>
         <div className="w-full h-[90%] overflow-y-auto font-archivo ">
           <Link href="/dashboard">

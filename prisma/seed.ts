@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import * as argon from 'argon2'
+import { LIGHTHOUSE } from '../enums/ipfsProviders'
 
 const prisma = new PrismaClient()
 
@@ -8,7 +9,7 @@ async function create_user(dto) {
   const user = await prisma.user.create({
     data: {
       email: dto.email,
-      hash: hash,
+      password: hash,
     },
   })
   console.log({ created: user })
@@ -42,12 +43,29 @@ async function main() {
   }
   const user1 = await create_user(hiro)
 
-  // const ds = await prisma.dataStore.create({
-  //   data: {
-  //     cid: "Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw",
-  //     provider: "LIGHTHOUSE"
-  //   }
-  // })
+  const inputDataset = {
+    cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
+    provider: LIGHTHOUSE,
+  }
+
+  const inputArchive = await prisma.dataStore.upsert({
+    create: inputDataset,
+    update: inputDataset,
+    where: {
+      cid: inputDataset.cid,
+    },
+  })
+
+  console.log({ inputArchive })
+
+  const orderReq1 = await prisma.trainingRequest.create({
+    data: {
+      userId: user1.id,
+      cid: inputDataset.cid,
+    },
+  })
+
+  console.log({ orderReq1 })
 }
 
 main()

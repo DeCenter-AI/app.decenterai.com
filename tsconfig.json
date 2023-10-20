@@ -1,19 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "target": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -23,22 +17,38 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@Components/*": [
-        "./src/components/*"
-      ],
-      "@Svg/*": [
-        "./src/svg/*"
-      ],
-      "@public/*": [
-        "./public/*"
-      ],
-      "@utils/*": [
-        "./utils/*"
-      ]
-    }
+      "@/*": ["./src/*"],
+      "@Components/*": ["./src/components/*"],
+      "@Svg/*": ["./src/svg/*"],
+      "@public/*": ["./public/*"],
+      "@utils/*": ["./utils/*"]
+    },
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noEmitOnError": true,
+    "emitDeclarationOnly": false,
+    "declarationMap": true,
+    "composite": true,
+    // linter checks
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    // advanced
+    "verbatimModuleSyntax": false,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "resolveJsonModule": true
   },
   "include": [
     "next-env.d.ts",
@@ -49,8 +59,5 @@
     "src/app/loading.js",
     "build/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "./jest.config.ts"
-  ]
+  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts"]
 }
