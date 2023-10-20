@@ -1,19 +1,22 @@
-import {jest} from '@jest/globals'
-import {BACALHAU_TIMEOUT, compute} from './compute'
+import { jest } from '@jest/globals'
+import { BACALHAU_TIMEOUT, compute } from './compute'
 
 jest.mock('axios')
 
 describe('compute()', () => {
-  it('should return a valid IPFS CID', async () => {
-    const train_script = 'linear-regression.ipynb'
-    const cid = 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw'
-    const result = await compute(train_script, cid)
+  it(
+    'should return a valid IPFS CID',
+    async () => {
+      const train_script = 'linear-regression.ipynb'
+      const cid = 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw'
+      const result = await compute(train_script, cid)
 
-    expect(typeof cid).toBe('string');
-    expect(typeof result).toBe('string');
-    // expect(isCid(result)).toBe(true) //FIXME: uncomment once is-ipfs not found error resolved
-
-  }, BACALHAU_TIMEOUT)
+      expect(typeof cid).toBe('string')
+      expect(typeof result).toBe('string')
+      // expect(isCid(result)).toBe(true) //FIXME: uncomment once is-ipfs not found error resolved
+    },
+    BACALHAU_TIMEOUT,
+  )
 })
 
 /*
