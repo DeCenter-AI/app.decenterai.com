@@ -19,6 +19,7 @@
     "test": "jest --passWithNoTests",
     "run-cid-archived": "ts-node utils/archived/cid.ts",
     "run-cid": "ts-node utils/cid.ts",
+    "run-compute": "ts-node utils/compute.ts",
     "clean": "rimraf .next build",
     "prisma:seed": "prisma db seed",
     "prisma:generate": "prisma generate",
