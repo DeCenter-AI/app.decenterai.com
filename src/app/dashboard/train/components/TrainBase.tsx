@@ -1,5 +1,5 @@
 import React from 'react'
-import {AiOutlinePlus} from 'react-icons/ai'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 interface IProps {
   setPage: (page: number | null) => void

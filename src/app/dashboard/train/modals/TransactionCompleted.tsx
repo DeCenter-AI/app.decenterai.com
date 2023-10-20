@@ -1,5 +1,5 @@
 import React from 'react'
-import {FaRegCircleCheck} from 'react-icons/fa6'
+import { FaRegCircleCheck } from 'react-icons/fa6'
 
 interface IProps {
   setModal: (page: number | null) => void

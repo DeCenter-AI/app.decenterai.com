@@ -1,6 +1,6 @@
 'use client'
-import React, {useState} from 'react'
-import {DashLayout} from '../dashLayout'
+import React, { useState } from 'react'
+import { DashLayout } from '../dashLayout'
 import TransactionAuthorization from './modals/TransactionAuthorization'
 import TransactionProcessing from './modals/TransactionProcessing'
 import TransactionCompleted from './modals/TransactionCompleted'
@@ -9,9 +9,9 @@ import NewModel from './components/NewModel'
 import DownloadSignal from './modals/DownloadSignal'
 import ModelTraining from './components/ModelTraining'
 import ModelDownload from './components/ModelDownload'
-import {uploadFile} from '@utils/upload'
+import { uploadFile } from '@utils/upload'
 import axios from 'axios'
-import {decodeCid, retrieve} from '@utils/fileCoinIpfs'
+import { decodeCid, retrieve } from '@utils/fileCoinIpfs'
 
 export default function Page() {
   const [page, setPage] = useState<number | null>(null)

@@ -1,5 +1,5 @@
-import {jest} from '@jest/globals'
-import {BACALHAU_TIMEOUT, compute} from './compute'
+import { jest } from '@jest/globals'
+import { BACALHAU_TIMEOUT, compute } from './compute'
 
 jest.mock('axios')
 

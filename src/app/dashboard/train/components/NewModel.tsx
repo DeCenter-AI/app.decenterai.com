@@ -1,10 +1,10 @@
 'use client'
-import React, {useEffect, useRef, useState} from 'react'
-import {CiTrash} from 'react-icons/ci'
-import {FiUploadCloud} from 'react-icons/fi'
-import {MdKeyboardArrowLeft} from 'react-icons/md'
-import {extractFile} from '@utils/upload'
-import {retrieve} from '@utils/fileCoinIpfs'
+import React, { useEffect, useRef, useState } from 'react'
+import { CiTrash } from 'react-icons/ci'
+import { FiUploadCloud } from 'react-icons/fi'
+import { MdKeyboardArrowLeft } from 'react-icons/md'
+import { extractFile } from '@utils/upload'
+import { retrieve } from '@utils/fileCoinIpfs'
 
 interface IProps {
   setPage: (page: number | null) => void
