@@ -8,12 +8,19 @@ import {ContextProvider} from './userContext'
 import Favicon from '@public/favicon.ico'
 import {AppDescription, AppName, AppSiteManifest} from "@enums/app";
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  applicationName: AppName,
+    authors: [
+        {name: "Hiro", url: "https://bit.ly/m/laciferin"}
+    ],
   title: AppName,
   description: AppDescription,
-  icons: [{ rel: 'icon', url: Favicon.src }],
+  icons: [
+      { rel: 'icon', url: Favicon.src }
+  ],
   manifest: AppSiteManifest,
 }
 
