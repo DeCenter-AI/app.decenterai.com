@@ -1,0 +1,10 @@
+locations:
+  - title
+  - label_name
+  - commit_subject
+terms:
+  - do not merge
+  - ⛔
+
+
+# https://github.com/wip/app#configuration
