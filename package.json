@@ -16,7 +16,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --passWithNoTests",
     "run-cid-archived": "ts-node utils/archived/cid.ts",
     "run-cid": "ts-node utils/cid.ts",
     "run-compute": "ts-node utils/compute.ts",
@@ -32,7 +31,8 @@
     "test:cov": "MODE=test jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "MODE=test jest --config ./test/jest-e2e.json --passWithNoTests",
-    "test:e2e:watch": "MODE=test jest --watch --no-cache --config ./test/jest-e2e.json"
+    "test:e2e:watch": "MODE=test jest --watch --no-cache --config ./test/jest-e2e.json",
+    "style": "prettier -w ."
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
