@@ -34,6 +34,9 @@ export const metadata: Metadata = {
   ],
   manifest: AppSiteManifest,
   themeColor: "#ffffff",
+    other: {
+      "msapplication-TileColor": '#da532c'
+    },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
