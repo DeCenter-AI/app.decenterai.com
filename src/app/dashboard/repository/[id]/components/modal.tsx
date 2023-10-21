@@ -1,6 +1,6 @@
 'use client'
-import {useSearchParams} from 'next/navigation'
-import React, {useEffect, useRef} from 'react'
+import { useSearchParams } from 'next/navigation'
+import React, { useEffect, useRef } from 'react'
 
 type Props = {
   title: string
