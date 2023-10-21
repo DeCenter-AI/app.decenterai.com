@@ -88,7 +88,7 @@ jobs:
         run: |
           echo $envfile > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
-          source .env
+#          source .env for windows
 
       - name: Install dependencies
         run: pnpm install
