@@ -10,7 +10,7 @@ import Image from 'next/image';
 import avatar from '@public/Rectangle 75.png'
 
 export default function Page() {
-    const pathname = usePathname();
+
     return (
         <DashLayout >
             <div className='h-full max-h-screen w-full px-2 overflow-y-scroll  text-white'>
