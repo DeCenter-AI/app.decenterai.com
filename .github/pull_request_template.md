@@ -1,8 +1,6 @@
 ## Related Issue(s)
 
-Fixes #
-<br>
-For #
+Fixes # Resolves # Closes #
 
 ## Proposed Changes
 
