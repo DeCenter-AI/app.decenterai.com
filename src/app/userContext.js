@@ -1,5 +1,5 @@
 'use client'
-import React, {createContext, useContext, useState} from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
 const AppContext = createContext()
 
@@ -8,7 +8,7 @@ export const ContextProvider = ({ children }) => {
   // Define any functions or values you want to provide
   const value = {
     user,
-    setUser
+    setUser,
   }
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
