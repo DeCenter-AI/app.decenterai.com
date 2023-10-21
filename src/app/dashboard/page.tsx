@@ -14,8 +14,8 @@ export default function Page() {
     return (
         <DashLayout >
             <div className='h-full max-h-screen w-full px-2 overflow-y-scroll  text-white'>
-                <div className='border border-[#494949] px-4 mt-6 rounded-xl py-4 flex'>
-                    <div className='pt-6'>
+                <div className='border border-[#494949] px-4 mt-6 rounded-xl py-4 flex max-w-[90%] mx-auto '>
+                    <div className='pt-6 grow'>
                         <div>
                             <h1 className='font-logirentBold text-3xl'>Train your AI model to the  stars instantly.</h1>
                         </div>
@@ -26,7 +26,7 @@ export default function Page() {
                         </div>
                     </div>
                     <div className='-mt-8 -mb-11'>
-                        <Image src={RocketImg} alt='rocket-img' />
+                        <Image className='grayscale' src={RocketImg} alt='rocket-img' />
 
                     </div>
 
