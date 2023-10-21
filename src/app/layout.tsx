@@ -6,6 +6,8 @@ import '@rainbow-me/rainbowkit/styles.css'
 import {Providers} from './providers'
 import {ContextProvider} from './userContext'
 import Favicon from '@public/favicon.ico'
+import Favicon16x16 from '@public/favicon-16x16.png'
+import Favicon32x32 from '@public/favicon-32x32.png'
 import SafariPinnedTab from '@public/safari-pinned-tab.svg'
 import AppleTouchIcon from '@public/apple-touch-icon.png'
 import {AppDescription, AppName, AppSiteManifest} from "@enums/app";
@@ -25,11 +27,13 @@ export const metadata: Metadata = {
   description: AppDescription,
   icons: [
       { rel: 'icon', url: Favicon.src },
+      { rel: 'icon',    sizes: '16x16',url: Favicon16x16.src },
+      { rel: 'icon',    sizes: '32x32',url: Favicon32x32.src },
       { rel: 'mask-icon', url: SafariPinnedTab.src  },
       { rel: 'apple-touch-icon', url:  AppleTouchIcon.src },
   ],
   manifest: AppSiteManifest,
-    themeColor: "#ffffff",
+  themeColor: "#ffffff",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
