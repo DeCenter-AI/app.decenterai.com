@@ -30,7 +30,6 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               height={150}
               className="max-w-[25%] max-h-[50%]"
             />
-
             <Image
               src={imageDecenterLogoSubtitle}
               alt="DECENTER Icon"

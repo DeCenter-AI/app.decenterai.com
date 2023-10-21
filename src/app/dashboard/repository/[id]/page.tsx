@@ -5,7 +5,7 @@ import { DashLayout } from '../../dashLayout'
 import { BiArrowBack } from 'react-icons/bi'
 import { BiLike } from 'react-icons/bi'
 import RightSide from './components/right_side'
-import Modal from './components/modal'
+
 export default function Page() {
   const pathname = usePathname()
   return (

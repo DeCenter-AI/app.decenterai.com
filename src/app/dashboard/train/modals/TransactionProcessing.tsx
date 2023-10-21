@@ -1,5 +1,4 @@
 import React from 'react'
-import { FiLoader } from 'react-icons/fi'
 import { FadeLoader } from 'react-spinners'
 
 const TransactionProcessing = () => {
