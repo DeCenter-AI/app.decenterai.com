@@ -1,112 +1,112 @@
-import type {IProvider} from "@web3auth/base";
-import {ethers} from "ethers";
+import type { IProvider } from '@web3auth/base'
+import { ethers } from 'ethers'
 
 export default class EthereumRpc {
-  private provider: IProvider;
+  private provider: IProvider
 
   constructor(provider: IProvider) {
-    this.provider = provider;
+    this.provider = provider
   }
 
   async getChainId(): Promise<any> {
     try {
-      const ethersProvider = new ethers.BrowserProvider(this.provider);
+      const ethersProvider = new ethers.BrowserProvider(this.provider)
       // Get the connected Chain's ID
-      const networkDetails = await ethersProvider.getNetwork();
+      const networkDetails = await ethersProvider.getNetwork()
 
-      return networkDetails.chainId;
+      return networkDetails.chainId
     } catch (error) {
-      return error;
+      return error
     }
   }
 
   async getAccounts(): Promise<any> {
     try {
-      const ethersProvider = new ethers.BrowserProvider(this.provider);
-      const signer = await ethersProvider.getSigner();
+      const ethersProvider = new ethers.BrowserProvider(this.provider)
+      const signer = await ethersProvider.getSigner()
 
       // Get user's Ethereum public address
-      const address = signer.getAddress();
+      const address = signer.getAddress()
 
-      return address;
+      return address
     } catch (error) {
-      return error;
+      return error
     }
   }
 
   async getBalance(): Promise<string> {
     try {
-      const ethersProvider = new ethers.BrowserProvider(this.provider);
-      const signer = await ethersProvider.getSigner();
+      const ethersProvider = new ethers.BrowserProvider(this.provider)
+      const signer = await ethersProvider.getSigner()
 
       // Get user's Ethereum public address
-      const address = signer.getAddress();
+      const address = signer.getAddress()
 
       // Get user's balance in ether
       const balance = ethers.formatEther(
-        await ethersProvider.getBalance(address) // Balance is in wei
-      );
+        await ethersProvider.getBalance(address), // Balance is in wei
+      )
 
-      return balance;
+      return balance
     } catch (error) {
-      return error as string;
+      return error as string
     }
   }
 
-//   async sendTransaction(): Promise<any> {
-//     try {
-//       const ethersProvider = new ethers.BrowserProvider(this.provider);
-//       const signer = ethersProvider.getSigner();
+  //   async sendTransaction(): Promise<any> {
+  //     try {
+  //       const ethersProvider = new ethers.BrowserProvider(this.provider);
+  //       const signer = ethersProvider.getSigner();
 
-//       const destination = "0x40e1c367Eca34250cAF1bc8330E9EddfD403fC56";
+  //       const destination = "0x40e1c367Eca34250cAF1bc8330E9EddfD403fC56";
 
-//       // Convert 1 ether to wei
-//       const amount = ethers.parseEther("0.001");
+  //       // Convert 1 ether to wei
+  //       const amount = ethers.parseEther("0.001");
 
-//       // Submit transaction to the blockchain
-//       const tx = await (
-//         await signer
-//       ).sendTransaction({
-//         to: destination,
-//         value: amount,
-//         maxPriorityFeePerGas: "5000000000", // Max priority fee per gas
-//         maxFeePerGas: "6000000000000", // Max fee per gas
-//       });
+  //       // Submit transaction to the blockchain
+  //       const tx = await (
+  //         await signer
+  //       ).sendTransaction({
+  //         to: destination,
+  //         value: amount,
+  //         maxPriorityFeePerGas: "5000000000", // Max priority fee per gas
+  //         maxFeePerGas: "6000000000000", // Max fee per gas
+  //       });
 
-//       // Wait for transaction to be mined
-//       const receipt = await tx.wait();
+  //       // Wait for transaction to be mined
+  //       const receipt = await tx.wait();
 
-//       return receipt;
-//     } catch (error) {
-//       return error as string;
-//     }
-//   }
+  //       return receipt;
+  //     } catch (error) {
+  //       return error as string;
+  //     }
+  //   }
 
-//   async signMessage() {
-//     try {
-//       const ethersProvider = new ethers.BrowserProvider(this.provider);
-//       const signer = ethersProvider.getSigner();
+  //   async signMessage() {
+  //     try {
+  //       const ethersProvider = new ethers.BrowserProvider(this.provider);
+  //       const signer = ethersProvider.getSigner();
 
-//       const originalMessage = "YOUR_MESSAGE";
+  //       const originalMessage = "YOUR_MESSAGE";
 
-//       // Sign the message
-//       const signedMessage = await (await signer).signMessage(originalMessage);
+  //       // Sign the message
+  //       const signedMessage = await (await signer).signMessage(originalMessage);
 
-//       return signedMessage;
-//     } catch (error) {
-//       return error as string;
-//     }
-//   }
+  //       return signedMessage;
+  //     } catch (error) {
+  //       return error as string;
+  //     }
+  //   }
 
-//   async getPrivateKey(): Promise<any> {
-//     try {
-//       const privateKey = await this.provider.request({
-//         method: "eth_private_key",
-//       });
+  //   async getPrivateKey(): Promise<any> {
+  //     try {
+  //       const privateKey = await this.provider.request({
+  //         method: "eth_private_key",
+  //       });
 
-//       return privateKey;
-//     } catch (error) {
-//       return error as string;
-//     }
-//   }
+  //       return privateKey;
+  //     } catch (error) {
+  //       return error as string;
+  //     }
+  //   }
 }

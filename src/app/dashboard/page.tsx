@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import { usePathname } from 'next/navigation';
 import { DashLayout } from './dashLayout';
@@ -243,4 +242,3 @@ export default function Page() {
         </DashLayout>
     );
 }
-

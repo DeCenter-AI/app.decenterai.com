@@ -63,10 +63,7 @@ export async function compute(train_script, cid) {
   return res.data['cid']
 }
 
-export async function computeDemo(
-  train_script,
-  input_archive,
-) {
+export async function computeDemo(train_script, input_archive) {
   let dto = {
     Engine: 'Docker',
     Docker: {
