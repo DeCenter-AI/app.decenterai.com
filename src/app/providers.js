@@ -1,15 +1,12 @@
 "use client";
 
 import * as React from "react";
-import {
-  RainbowKitProvider,
-  getDefaultWallets,
-  midnightTheme,
-} from "@rainbow-me/rainbowkit";
+import {getDefaultWallets, midnightTheme, RainbowKitProvider,} from "@rainbow-me/rainbowkit";
 
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { mainnet, polygon, filecoinCalibration } from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
+import {configureChains, createConfig, WagmiConfig} from "wagmi";
+import {filecoinCalibration, mainnet, polygon} from "wagmi/chains";
+import {publicProvider} from "wagmi/providers/public";
+import {AppName, WagmiProjectId} from "@enums/app";
 // const lilypad = {
 //   id: 1337,
 //   name: "Lilypad Lalechuza testnet",
@@ -44,13 +41,13 @@ const { chains, publicClient } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Paper Stack",
-  projectId: "db1b8a46ffa835bd9a48a89ff540f990",
+  appName: AppName,
+  projectId: WagmiProjectId,
   chains,
 });
 
 const demoAppInfo = {
-  appName: "Paper Stack",
+  appName: AppName,
 };
 
 const wagmiConfig = createConfig({
