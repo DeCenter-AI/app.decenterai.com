@@ -21,7 +21,8 @@
       "@Components/*": ["./src/components/*"],
       "@Svg/*": ["./src/svg/*"],
       "@public/*": ["./public/*"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@enums/*": ["./enums/*"]
     },
     "declaration": true,
     "removeComments": true,

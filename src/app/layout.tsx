@@ -6,7 +6,7 @@ import '@rainbow-me/rainbowkit/styles.css'
 import {Providers} from './providers'
 import {ContextProvider} from './userContext'
 import Favicon from '@public/favicon.ico'
-import {AppDescription, AppName, AppSiteManifest} from "../../enums/app";
+import {AppDescription, AppName, AppSiteManifest} from "@enums/app";
 
 const inter = Inter({ subsets: ['latin'] })
 
