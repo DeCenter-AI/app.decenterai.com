@@ -29,13 +29,13 @@ export const metadata: Metadata = {
       { rel: 'icon', url: Favicon.src },
       { rel: 'icon',    sizes: '16x16',url: Favicon16x16.src },
       { rel: 'icon',    sizes: '32x32',url: Favicon32x32.src },
-      { rel: 'mask-icon', url: SafariPinnedTab.src  },
+      { rel: 'mask-icon', url: SafariPinnedTab.src, color:"#5bbad5"  },
       { rel: 'apple-touch-icon', url:  AppleTouchIcon.src },
   ],
   manifest: AppSiteManifest,
   themeColor: "#ffffff",
     other: {
-      "msapplication-TileColor": '#da532c'
+      "msapplication-TileColor": '#da532c',
     },
 }
 
