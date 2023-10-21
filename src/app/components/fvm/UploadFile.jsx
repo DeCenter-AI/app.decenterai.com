@@ -1,10 +1,10 @@
 'use client'
-import React, {useState} from 'react'
-import {useAccount, useContractWrite, useWaitForTransaction} from 'wagmi'
-import {dealClient} from '@/abi/deal_client'
+import React, { useState } from 'react'
+import { useAccount, useContractWrite, useWaitForTransaction } from 'wagmi'
+import { dealClient } from '@/abi/deal_client'
 import lighthouse from '@lighthouse-web3/sdk'
-import {ClipLoader} from 'react-spinners'
-import {filecoinCalibration} from 'wagmi/chains'
+import { ClipLoader } from 'react-spinners'
+import { filecoinCalibration } from 'wagmi/chains'
 import CID from 'cids'
 
 //@techyNonso add parentCallback function as props to get hash(cid) of data uploaded

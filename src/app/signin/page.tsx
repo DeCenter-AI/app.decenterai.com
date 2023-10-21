@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image'
-import React, {useState} from 'react'
-import {AiOutlineEye} from 'react-icons/ai'
-import {PiEyeClosedLight, PiGoogleLogoBold} from 'react-icons/pi'
-import {SiWalletconnect} from 'react-icons/si'
+import React, { useState } from 'react'
+import { AiOutlineEye } from 'react-icons/ai'
+import { PiEyeClosedLight, PiGoogleLogoBold } from 'react-icons/pi'
+import { SiWalletconnect } from 'react-icons/si'
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)

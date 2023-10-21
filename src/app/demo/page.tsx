@@ -1,10 +1,10 @@
 'use client'
 import JSZip from 'jszip'
-import React, {useState} from 'react'
-import {AiOutlineCloudUpload} from 'react-icons/ai'
-import {ConnectButton} from '@rainbow-me/rainbowkit'
+import React, { useState } from 'react'
+import { AiOutlineCloudUpload } from 'react-icons/ai'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
 import UploadFile from '../components/fvm/UploadFile'
-import {useAccount, useNetwork} from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 
 interface IFile {
   file: {
