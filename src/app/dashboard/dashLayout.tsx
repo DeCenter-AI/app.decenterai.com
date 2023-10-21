@@ -2,17 +2,17 @@
 import Image from 'next/image'
 import React from 'react'
 
-import {usePathname} from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
-import {RxDashboard} from 'react-icons/rx'
-import {HiOutlineChip} from 'react-icons/hi'
-import {BsDatabase} from 'react-icons/bs'
-import {PiClipboardLight, PiTrophyBold, PiUsersThree} from 'react-icons/pi'
-import {IoSettingsOutline} from 'react-icons/io5'
-import {GoBell, GoSearch} from 'react-icons/go'
+import { RxDashboard } from 'react-icons/rx'
+import { HiOutlineChip } from 'react-icons/hi'
+import { BsDatabase } from 'react-icons/bs'
+import { PiClipboardLight, PiTrophyBold, PiUsersThree } from 'react-icons/pi'
+import { IoSettingsOutline } from 'react-icons/io5'
+import { GoBell, GoSearch } from 'react-icons/go'
 import Link from 'next/link'
-import {useUserContext} from '../userContext'
+import { useUserContext } from '../userContext'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext()

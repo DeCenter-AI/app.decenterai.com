@@ -1,5 +1,5 @@
 import React from 'react'
-import {BsChevronDown} from 'react-icons/bs'
+import { BsChevronDown } from 'react-icons/bs'
 
 interface IProps {
   setModal: (page: number | null) => void

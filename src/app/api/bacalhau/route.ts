@@ -1,4 +1,4 @@
-import {compute} from '@utils/compute'
+import { compute } from '@utils/compute'
 
 export async function POST(req: Request) {
   //retrieve body data
