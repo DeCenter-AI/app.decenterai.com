@@ -1,12 +1,16 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import {getDefaultWallets, midnightTheme, RainbowKitProvider,} from "@rainbow-me/rainbowkit";
+import * as React from 'react'
+import {
+  getDefaultWallets,
+  midnightTheme,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit'
 
-import {configureChains, createConfig, WagmiConfig} from "wagmi";
-import {filecoinCalibration, mainnet, polygon} from "wagmi/chains";
-import {publicProvider} from "wagmi/providers/public";
-import {AppName, WagmiProjectId} from "@enums/app";
+import { configureChains, createConfig, WagmiConfig } from 'wagmi'
+import { filecoinCalibration, mainnet, polygon } from 'wagmi/chains'
+import { publicProvider } from 'wagmi/providers/public'
+import { AppName, WagmiProjectId } from '@enums/app'
 // const lilypad = {
 //   id: 1337,
 //   name: "Lilypad Lalechuza testnet",
@@ -37,28 +41,28 @@ import {AppName, WagmiProjectId} from "@enums/app";
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, filecoinCalibration],
-  [publicProvider()]
-);
+  [publicProvider()],
+)
 
 const { connectors } = getDefaultWallets({
   appName: AppName,
   projectId: WagmiProjectId,
   chains,
-});
+})
 
 const demoAppInfo = {
   appName: AppName,
-};
+}
 
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
-});
+})
 
 export function Providers({ children }) {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+  const [mounted, setMounted] = React.useState(false)
+  React.useEffect(() => setMounted(true), [])
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider
@@ -71,5 +75,5 @@ export function Providers({ children }) {
         {mounted && children}
       </RainbowKitProvider>
     </WagmiConfig>
-  );
+  )
 }

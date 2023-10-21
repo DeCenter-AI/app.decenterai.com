@@ -1,26 +1,26 @@
-const axios = require("axios");
+const axios = require('axios')
 
 let data = {
-  Engine: "Docker",
+  Engine: 'Docker',
   Docker: {
-    Image: "ubuntu",
-    Entrypoint: ["echo"],
-    Parameters: ["hello"],
+    Image: 'ubuntu',
+    Entrypoint: ['echo'],
+    Parameters: ['hello'],
   },
   Deal: {
     Concurrency: 1,
   },
-  Verifier: "Noop",
+  Verifier: 'Noop',
   PublisherSpec: {
-    Type: "IPFS",
+    Type: 'IPFS',
   },
-};
+}
 
 axios
-  .post("http://dashboard.bacalhau.org:1000/api/v1/run", data)
+  .post('http://dashboard.bacalhau.org:1000/api/v1/run', data)
   .then((response) => {
-    console.log(response.data);
+    console.log(response.data)
   })
   .catch((error) => {
-    console.error(error);
-  });
+    console.error(error)
+  })
