@@ -8,7 +8,7 @@ export const ContextProvider = ({ children }) => {
   // Define any functions or values you want to provide
   const value = {
     user,
-    setUser
+    setUser,
   }
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

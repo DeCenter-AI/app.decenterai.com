@@ -1,26 +1,26 @@
-import JSZip from "jszip";
-import toBuffer from "blob-to-buffer";
+import JSZip from 'jszip'
+import toBuffer from 'blob-to-buffer'
 
-import lighthouse from "@lighthouse-web3/sdk";
+import lighthouse from '@lighthouse-web3/sdk'
 
 //upload file
 export const uploadFile = async (
   file: File | null,
-  startTrain: (hash: string) => void
+  startTrain: (hash: string) => void,
 ) => {
   if (file) {
     toBuffer(file, async function (err, buffer) {
-      if (err) throw err;
+      if (err) throw err
       const output = await lighthouse.uploadBuffer(
         file,
-        `${process.env.NEXT_PUBLIC_LH_API}`
-      );
-      const hash = output.data.Hash;
+        `${process.env.NEXT_PUBLIC_LH_API}`,
+      )
+      const hash = output.data.Hash
 
-      startTrain(hash);
-    });
+      startTrain(hash)
+    })
   }
-};
+}
 
 //zip files
 // export const processFiles = (
@@ -52,10 +52,10 @@ export const uploadFile = async (
 
 //extract zip file
 export const extractFile = async (selectedFile: File) => {
-  const file = selectedFile;
-  const zip = new JSZip();
-  const extractedFiles = await zip.loadAsync(file);
-  const regex = new RegExp("[^.]+$");
+  const file = selectedFile
+  const zip = new JSZip()
+  const extractedFiles = await zip.loadAsync(file)
+  const regex = new RegExp('[^.]+$')
 
-  return extractedFiles;
-};
+  return extractedFiles
+}
