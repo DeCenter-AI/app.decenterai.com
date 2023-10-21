@@ -8,12 +8,13 @@ import TrainIcon from '@public/trainIcon.png'
 import TrophyIcon from '@public/TrophyIcon.png'
 import TaskIcon from '@public/taskIcon.png'
 import Image from 'next/image';
+import avatar from '@public/Rectangle 75.png'
 
 export default function Page() {
     const pathname = usePathname();
     return (
         <DashLayout >
-            <div className='h-full max-h-screen w-full px-10 overflow-y-scroll  text-white'>
+            <div className='h-full max-h-screen w-full px-2 overflow-y-scroll  text-white'>
                 <div className='border border-[#494949] px-4 mt-6 rounded-xl py-4 flex'>
                     <div className='pt-6'>
                         <div>
@@ -37,18 +38,18 @@ export default function Page() {
                         <div className='mb-4'>
                             <p>Total teams</p>
                         </div>
-                       
+
                         <div className='flex items-center mb-6 pb-4 border-b-2 border-[#494949]'>
                             <span className='grow text-2xl font-bold'>0</span>
-                            <Image src={ TeamIcon} alt='' />
+                            <Image src={TeamIcon} alt='' />
                         </div>
                         <div className='flex items-center mb-4  '>
                             <span className='grow text-xs'>Personal</span>
-                           <span>0</span>
+                            <span>0</span>
                         </div>
                         <div className='flex items-center   '>
                             <span className='grow text-xs'>General</span>
-                           <span>0</span>
+                            <span>0</span>
                         </div>
 
                     </div>
@@ -57,18 +58,18 @@ export default function Page() {
                         <div className='mb-4'>
                             <p>Total trained models</p>
                         </div>
-                       
+
                         <div className='flex items-center mb-6 pb-4 border-b-2 border-[#494949]'>
                             <span className='grow text-2xl font-bold'>0</span>
-                            <Image src={ TrainIcon} alt='' />
+                            <Image src={TrainIcon} alt='' />
                         </div>
                         <div className='flex items-center mb-4  '>
                             <span className='grow text-xs'>Created </span>
-                           <span>0</span>
+                            <span>0</span>
                         </div>
                         <div className='flex items-center   '>
                             <span className='grow text-xs'>Fine-tune/Template</span>
-                           <span>0</span>
+                            <span>0</span>
                         </div>
 
                     </div>
@@ -78,18 +79,18 @@ export default function Page() {
                         <div className='mb-4'>
                             <p>Total tasks</p>
                         </div>
-                       
+
                         <div className='flex items-center mb-6 pb-4 border-b-2 border-[#494949]'>
                             <span className='grow text-2xl font-bold'>0</span>
-                            <Image src={ TaskIcon} alt='' />
+                            <Image src={TaskIcon} alt='' />
                         </div>
                         <div className='flex items-center mb-4  '>
                             <span className='grow text-xs'>Completed </span>
-                           <span>0</span>
+                            <span>0</span>
                         </div>
                         <div className='flex items-center   '>
                             <span className='grow text-xs'>Pending</span>
-                           <span>0</span>
+                            <span>0</span>
                         </div>
 
                     </div>
@@ -99,18 +100,18 @@ export default function Page() {
                         <div className='mb-4'>
                             <p>Total rewards</p>
                         </div>
-                       
+
                         <div className='flex items-center mb-6 pb-4 border-b-2 border-[#494949]'>
                             <span className='grow text-2xl font-bold'>0</span>
-                            <Image src={ TaskIcon} alt='' />
+                            <Image src={TrophyIcon} alt='' />
                         </div>
                         <div className='flex items-center mb-4  '>
                             <span className='grow text-xs'>Personal </span>
-                           <span>0</span>
+                            <span>0</span>
                         </div>
                         <div className='flex items-center   '>
                             <span className='grow text-xs'>General</span>
-                           <span>0</span>
+                            <span>0</span>
                         </div>
 
                     </div>
@@ -122,7 +123,118 @@ export default function Page() {
                     <div className='w-[70%] rounded-xl border border-[#494949] h-[481px] px-8 py-8'>
 
                     </div>
-                    <div className='max-h-[4]'>
+
+                    <div className='max-h-[481px] w-[30%]  bg-primary_11 px-2 rounded-xl '>
+                        <div className='h-[15%] px-2 py-4'>
+                            <span className='font-bold text-xl'>My Task</span>
+                        </div>
+
+                        <div className='overflow-y-scroll h-[85%]'>
+                            <div className='flex items-center gap-5 my-4 '>
+                                <div>
+                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
+
+                                </div>
+                                <div className='grow pb-5 border-b-2 border-[#494949]'>
+                                    <div className='mb-3'>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
+                                    </div>
+                                    <div className='mb-3'>
+                                        <h2 className='text-lg font-bold'>Mohammed </h2>
+                                    </div>
+                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                        <span>Assigned you a task on “Speech...</span>
+                                        <span className=''>12 Minutes ago</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div className='flex items-center gap-5 mb-4'>
+                                <div>
+                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
+
+                                </div>
+                                <div className='grow pb-5 border-b-2 border-[#494949]'>
+                                    <div className='mb-3'>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
+                                    </div>
+                                    <div className='mb-3'>
+                                        <h2 className='text-lg font-bold'>Mohammed </h2>
+                                    </div>
+                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                        <span>Assigned you a task on “Speech...</span>
+                                        <span className=''>12 Minutes ago</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div className='flex items-center gap-5 mb-4'>
+                                <div>
+                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
+
+                                </div>
+                                <div className='grow pb-5 border-b-2 border-[#494949]'>
+                                    <div className='mb-3'>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
+                                    </div>
+                                    <div className='mb-3'>
+                                        <h2 className='text-lg font-bold'>Mohammed </h2>
+                                    </div>
+                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                        <span>Assigned you a task on “Speech...</span>
+                                        <span className=''>12 Minutes ago</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div className='flex items-center gap-5 mb-4'>
+                                <div>
+                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
+
+                                </div>
+                                <div className='grow pb-5 border-b-2 border-[#494949]'>
+                                    <div className='mb-3'>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
+                                    </div>
+                                    <div className='mb-3'>
+                                        <h2 className='text-lg font-bold'>Mohammed </h2>
+                                    </div>
+                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                        <span>Assigned you a task on “Speech...</span>
+                                        <span className=''>12 Minutes ago</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div className='flex items-center gap-5 mb-4'>
+                                <div>
+                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
+
+                                </div>
+                                <div className='grow pb-5 border-b-2 border-[#494949]'>
+                                    <div className='mb-3'>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
+                                    </div>
+                                    <div className='mb-3'>
+                                        <h2 className='text-lg font-bold'>Mohammed </h2>
+                                    </div>
+                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                        <span>Assigned you a task on “Speech...</span>
+                                        <span className=''>12 Minutes ago</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
 
                     </div>
 
