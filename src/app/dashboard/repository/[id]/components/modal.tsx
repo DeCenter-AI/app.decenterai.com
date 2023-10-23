@@ -1,6 +1,6 @@
 'use client'
 import { useSearchParams } from 'next/navigation'
-import { useRef, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 type Props = {
   title: string
@@ -8,8 +8,6 @@ type Props = {
   onOk: () => void
   children: React.ReactNode
 }
-
-import React from 'react'
 
 export default function Modal({ title, onClose, onOk, children }: Props) {
   const searchParams = useSearchParams()

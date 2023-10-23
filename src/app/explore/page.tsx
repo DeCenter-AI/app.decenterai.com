@@ -150,7 +150,7 @@ const Page = () => {
       if (res != null) {
         const user_data = {
           email: res.email,
-          userName: generateFromEmail(res.email),
+          userName: generateFromEmail(res.email,2),
           name: res.name,
           profileImage: generator.generateRandomAvatar(res.name)
         }

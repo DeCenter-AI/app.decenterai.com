@@ -10,6 +10,7 @@ export async function create_user(user: userType){
     }).then(async(res)=>{
         const user_exists = await res.json()
         if(user_exists.exists){
+            console.log("user already exists in db");
             return
         }
     })
