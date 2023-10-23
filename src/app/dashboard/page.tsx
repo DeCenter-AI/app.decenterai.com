@@ -1,5 +1,5 @@
 import React from 'react'
-import { usePathname } from 'next/navigation';
+
 import { DashLayout } from './dashLayout';
 import RocketImg from '@public/rocket.png'
 import TeamIcon from '@public/teamIcon.png'
@@ -13,11 +13,11 @@ export default function Page() {
 
     return (
         <DashLayout >
-            <div className='h-full max-h-screen w-full px-2 overflow-y-scroll  text-white'>
-                <div className='border border-[#494949] px-4 mt-6 rounded-xl py-4 flex max-w-[90%] mx-auto '>
-                    <div className='pt-6 grow'>
+            <div className='h-full max-h-full flex flex-col justify-evenly   w-full px-2   text-white'>
+                <div className='border border-primary_9 px-4  rounded-xl py-4 flex max-h-[20%] max-w-[95%] mx-auto '>
+                    <div className=' grow'>
                         <div>
-                            <h1 className='font-logirentBold text-3xl'>Train your AI model to the  stars instantly.</h1>
+                            <h1 className='font-logirentBold text-xl'>Train your AI model to the  stars instantly.</h1>
                         </div>
                         <div className=' mt-5'>
                             <span className='text-xs'>
@@ -25,24 +25,24 @@ export default function Page() {
                             </span>
                         </div>
                     </div>
-                    <div className='-mt-8 -mb-11'>
-                        <Image className='grayscale' src={RocketImg} alt='rocket-img' />
+                    <div className='-mt-8 -mb-2'>
+                        <Image className='grayscale' width={250} src={RocketImg} alt='rocket-img' />
 
                     </div>
 
                 </div>
 
-                <div className='grid grid-cols-4 gap-5 mt-10'>
-                    <div className='p-4 rounded-xl border border-[#494949] '>
-                        <div className='mb-4'>
+                <div className='grid grid-cols-4 max-h-[40%] gap-5'>
+                    <div className='p-4 rounded-xl border border-primary_9 '>
+                        <div className='mb-2'>
                             <p>Total teams</p>
                         </div>
 
-                        <div className='flex items-center mb-6 pb-4 border-b-2 border-[#494949]'>
-                            <span className='grow text-2xl font-bold'>0</span>
-                            <Image src={TeamIcon} alt='' />
+                        <div className='flex items-center mb-6 pb-4 border-b-2 border-primary_9'>
+                            <span className='grow text-xl font-bold'>0</span>
+                            <Image src={TeamIcon} width={25} height={30} alt='' />
                         </div>
-                        <div className='flex items-center mb-4  '>
+                        <div className='flex items-center mb-2  '>
                             <span className='grow text-xs'>Personal</span>
                             <span>0</span>
                         </div>
@@ -53,16 +53,16 @@ export default function Page() {
 
                     </div>
 
-                    <div className='p-4 rounded-xl border border-[#494949] '>
-                        <div className='mb-4'>
+                    <div className='p-4 rounded-xl border border-primary_9 '>
+                        <div className='mb-2'>
                             <p>Total trained models</p>
                         </div>
 
-                        <div className='flex items-center mb-6 pb-4 border-b-2 border-[#494949]'>
-                            <span className='grow text-2xl font-bold'>0</span>
-                            <Image src={TrainIcon} alt='' />
+                        <div className='flex items-center mb-6 pb-4 border-b-2 border-primary_9'>
+                            <span className='grow text-xl font-bold'>0</span>
+                            <Image src={TrainIcon} width={25} height={30} alt='' />
                         </div>
-                        <div className='flex items-center mb-4  '>
+                        <div className='flex items-center mb-2  '>
                             <span className='grow text-xs'>Created </span>
                             <span>0</span>
                         </div>
@@ -74,16 +74,16 @@ export default function Page() {
                     </div>
 
 
-                    <div className='p-4 rounded-xl border border-[#494949] '>
-                        <div className='mb-4'>
+                    <div className='p-4 rounded-xl border border-primary_9 '>
+                        <div className='mb-2'>
                             <p>Total tasks</p>
                         </div>
 
-                        <div className='flex items-center mb-6 pb-4 border-b-2 border-[#494949]'>
-                            <span className='grow text-2xl font-bold'>0</span>
-                            <Image src={TaskIcon} alt='' />
+                        <div className='flex items-center mb-6 pb-4 border-b-2 border-primary_9'>
+                            <span className='grow text-xl font-bold'>0</span>
+                            <Image src={TaskIcon} width={25} height={30} alt='' />
                         </div>
-                        <div className='flex items-center mb-4  '>
+                        <div className='flex items-center mb-2  '>
                             <span className='grow text-xs'>Completed </span>
                             <span>0</span>
                         </div>
@@ -95,16 +95,16 @@ export default function Page() {
                     </div>
 
 
-                    <div className='p-4 rounded-xl border border-[#494949] '>
+                    <div className='p-4 rounded-xl border border-primary_9 '>
                         <div className='mb-4'>
                             <p>Total rewards</p>
                         </div>
 
-                        <div className='flex items-center mb-6 pb-4 border-b-2 border-[#494949]'>
-                            <span className='grow text-2xl font-bold'>0</span>
-                            <Image src={TrophyIcon} alt='' />
+                        <div className='flex items-center mb-6 pb-2 border-b-2 border-primary_9'>
+                            <span className='grow text-xl font-bold'>0</span>
+                            <Image src={TrophyIcon} width={25} height={30} alt='' />
                         </div>
-                        <div className='flex items-center mb-4  '>
+                        <div className='flex items-center mb-2  '>
                             <span className='grow text-xs'>Personal </span>
                             <span>0</span>
                         </div>
@@ -118,14 +118,14 @@ export default function Page() {
 
                 </div>
 
-                <div className='my-10 flex gap-5 '>
-                    <div className='w-[70%] rounded-xl border border-[#494949] h-[481px] px-8 py-8'>
+                <div className=' flex gap-5 max-h-[40%] '>
+                    <div className='w-[70%] rounded-xl border border-primary_9  px-8 py-8'>
 
                     </div>
 
-                    <div className='max-h-[481px] w-[30%]  bg-primary_11 px-2 rounded-xl '>
-                        <div className='h-[15%] px-2 py-4'>
-                            <span className='font-bold text-xl'>My Task</span>
+                    <div className=' w-[30%]  bg-primary_11 px-2 rounded-xl '>
+                        <div className=' p-2 '>
+                            <span className='font-bold text-lg'>My Task</span>
                         </div>
 
                         <div className='overflow-y-scroll h-[85%]'>
@@ -134,30 +134,9 @@ export default function Page() {
                                     <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
 
                                 </div>
-                                <div className='grow pb-5 border-b-2 border-[#494949]'>
+                                <div className='grow pb-5 border-b-2 border-primary_9'>
                                     <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
-                                    </div>
-                                    <div className='mb-3'>
-                                        <h2 className='text-lg font-bold'>Mohammed </h2>
-                                    </div>
-                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
-                                        <span>Assigned you a task on “Speech...</span>
-                                        <span className=''>12 Minutes ago</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div className='flex items-center gap-5 mb-4'>
-                                <div>
-                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
-
-                                </div>
-                                <div className='grow pb-5 border-b-2 border-[#494949]'>
-                                    <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
                                     </div>
                                     <div className='mb-3'>
                                         <h2 className='text-lg font-bold'>Mohammed </h2>
@@ -176,30 +155,9 @@ export default function Page() {
                                     <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
 
                                 </div>
-                                <div className='grow pb-5 border-b-2 border-[#494949]'>
+                                <div className='grow pb-5 border-b-2 border-primary_9'>
                                     <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
-                                    </div>
-                                    <div className='mb-3'>
-                                        <h2 className='text-lg font-bold'>Mohammed </h2>
-                                    </div>
-                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
-                                        <span>Assigned you a task on “Speech...</span>
-                                        <span className=''>12 Minutes ago</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div className='flex items-center gap-5 mb-4'>
-                                <div>
-                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
-
-                                </div>
-                                <div className='grow pb-5 border-b-2 border-[#494949]'>
-                                    <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
                                     </div>
                                     <div className='mb-3'>
                                         <h2 className='text-lg font-bold'>Mohammed </h2>
@@ -218,9 +176,51 @@ export default function Page() {
                                     <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
 
                                 </div>
-                                <div className='grow pb-5 border-b-2 border-[#494949]'>
+                                <div className='grow pb-5 border-b-2 border-primary_9'>
                                     <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-[#494949]'>Crankshaft</span>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
+                                    </div>
+                                    <div className='mb-3'>
+                                        <h2 className='text-lg font-bold'>Mohammed </h2>
+                                    </div>
+                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                        <span>Assigned you a task on “Speech...</span>
+                                        <span className=''>12 Minutes ago</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div className='flex items-center gap-5 mb-4'>
+                                <div>
+                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
+
+                                </div>
+                                <div className='grow pb-5 border-b-2 border-primary_9'>
+                                    <div className='mb-3'>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
+                                    </div>
+                                    <div className='mb-3'>
+                                        <h2 className='text-lg font-bold'>Mohammed </h2>
+                                    </div>
+                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                        <span>Assigned you a task on “Speech...</span>
+                                        <span className=''>12 Minutes ago</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div className='flex items-center gap-5 mb-4'>
+                                <div>
+                                    <Image src={avatar} alt='' className='w-[40px] h-[40px] rounded-full' />
+
+                                </div>
+                                <div className='grow pb-5 border-b-2 border-primary_9'>
+                                    <div className='mb-3'>
+                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
                                     </div>
                                     <div className='mb-3'>
                                         <h2 className='text-lg font-bold'>Mohammed </h2>
