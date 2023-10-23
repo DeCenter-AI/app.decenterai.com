@@ -1,27 +1,10 @@
 'use client'
 import JSZip from 'jszip'
-import { parseEther } from 'viem'
 import React, { useState } from 'react'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
-import { AiOutlineCloudDownload } from 'react-icons/ai'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import UploadFile from '../components/fvm/UploadFile'
-import { switchNetwork } from '@wagmi/core'
-import { useNetwork } from 'wagmi'
-import { readContracts } from '@wagmi/core'
-import CID from 'cids'
-import { saveAs } from 'file-saver'
-import { Web3Storage } from 'web3.storage'
-
-import {
-  useContractWrite,
-  useAccount,
-  useWaitForTransaction,
-  useContractRead,
-} from 'wagmi'
-import SDXL from '@/abi/SDXLCaller_metadata.json'
-import DECENTERPAD from '@/abi/DecenterPad_metadata.json'
-import DatasetNFT from '@/abi/DatasetNFT_metadata.json'
+import { useAccount, useNetwork } from 'wagmi'
 
 interface IFile {
   file: {

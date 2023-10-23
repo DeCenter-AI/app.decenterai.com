@@ -26,11 +26,10 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             <Image
               src={imageDecenterLogoWhite}
               alt="DECENTER Icon"
-              width={0}
+              width={50}
               height={150}
               className="max-w-[25%] max-h-[50%]"
             />
-
             <Image
               src={imageDecenterLogoSubtitle}
               alt="DECENTER Icon"
@@ -125,17 +124,21 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               Connect Wallet
             </button>
             <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
-              <button className="flex flex-row">
-                <img
-                  className="rounded-full w-6 h-6 mr-3"
-                  src={user?.profileImage}
-                  alt="profile pic"
-                />
+              {user && (
+                <button className="flex flex-row">
+                  <Image
+                    src={user?.profileImage}
+                    alt="profile pic"
+                    width={100}
+                    height={100}
+                    className="max-w-[100%] max-h-[100%] rounded-full"
+                  />
 
-                <div className="font-semibold font-primaryArchivo">
-                  {user?.name.split(' ')[0]}
-                </div>
-              </button>
+                  <div className="font-semibold font-primaryArchivo">
+                    {user?.name.split(' ')[0]}
+                  </div>
+                </button>
+              )}
             </div>
           </div>
         </div>
