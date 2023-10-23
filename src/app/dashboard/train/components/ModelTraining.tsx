@@ -31,7 +31,7 @@ export default function ModelTraining({ setPage }: IProps) {
       </div>
       <div className="absolute top-0 inset-0 leading-8 pt-8 ">
         <h1 className="text-center text-3xl font-logirentBold">
-          Model Is now Being TraIned
+          Model is now being trained
         </h1>
         <p className="font-archivo text-xs font-light text-center text-primary_6">
           Training takes less than 3 minutes, please wait...

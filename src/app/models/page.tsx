@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Models = () => {
   return (
@@ -48,7 +48,7 @@ const Models = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Models;
+export default Models

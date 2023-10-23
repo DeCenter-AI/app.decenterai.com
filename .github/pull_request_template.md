@@ -1,9 +1,6 @@
 ## Related Issue(s)
 
-Fixes #
-Resolves #
-Closes #
-
+Fixes # Resolves # Closes #
 
 ## Proposed Changes
 

@@ -119,11 +119,11 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal, startUpload }: IP
   // }
 
   //dataset logic begins
-  const handleDataSetDragOver = (e: React.DragEvent<Blob | HTMLDivElement>) => { //FIXME: @Codypharm finalize on the types
+  const handleDataSetDragOver = (e: React.DragEvent<Blob | HTMLDivElement>) => {
     e.preventDefault()
   }
 
-  const handleDataSetDrop = async (e: React.DragEvent<Blob | HTMLDivElement>) => { //FIXME: @Codypharm finalize on the types
+  const handleDataSetDrop = async (e: React.DragEvent<Blob | HTMLDivElement>) => {
     e.preventDefault()
     const files = e.dataTransfer.files
 

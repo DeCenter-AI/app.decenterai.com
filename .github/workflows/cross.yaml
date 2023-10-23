@@ -55,7 +55,6 @@ jobs:
       - name: Build
         run: npm run build
 
-
   test:
     timeout-minutes: 10
 
@@ -63,9 +62,9 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, macos-latest, windows-latest ]
-        node_version: [ 18, 19, 20 ]
-        architecture: [ x64 ] #, arm64 ] # arm,
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node_version: [18, 19, 20]
+        architecture: [x64] #, arm64 ] # arm,
 
     runs-on: ${{ matrix.os }}
     name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
@@ -88,11 +87,8 @@ jobs:
         run: |
           echo $envfile > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
-          source .env
-
+      #          source .env for windows
       - name: Install dependencies
         run: pnpm install
-
-
 #      - name: Run tests for ${{runner.os}} TODO: once jest tests pass
 #        run: npm run test
