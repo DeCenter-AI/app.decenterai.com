@@ -21,7 +21,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
 
   const myImageLoader = ({ src }) => {
     return src
-  };
+  }
   return (
     <div className="w-screen h-screen flex  bg-primary_12 relative">
       <aside className="h-full w-[10%] border-r border-primary_8">
@@ -46,8 +46,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full h-[90%] overflow-y-auto font-archivo ">
           <Link href="/dashboard">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <RxDashboard size={25} />
@@ -57,8 +58,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/train">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <HiOutlineChip size={25} />
@@ -68,8 +70,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/repository">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
@@ -130,7 +133,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
                 <button className="flex flex-row items-center ">
                   <Image
                     src={user?.profileImage}
-                    alt='profile pic'
+                    alt="profile pic"
                     loader={myImageLoader}
                     width={40}
                     height={40}
@@ -142,11 +145,13 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
                   </span>
                 </button>
               </div>
-            ) : (<div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
-              <button className="flex flex-row" onClick={redirect('/explore')}>
-                Log In
-              </button>
-            </div>)}
+            ) : (
+              <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
+                <button className="flex flex-row" onClick={redirect('/explore')}>
+                  Log In
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="w-full h-[90%] px-10">{children}</div>
