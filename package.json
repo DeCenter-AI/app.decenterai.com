@@ -34,7 +34,6 @@
     "test:e2e:watch": "MODE=test jest --watch --no-cache --config ./test/jest-e2e.json",
     "style": "prettier -w .",
     "prepare": "husky install"
-
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
@@ -118,8 +117,7 @@
     "url": "https://github.com/Decenter-AI/app.decenterai.com/issues"
   },
   "homepage": "https://app.decenterai.com",
-  "packageManager": "pnpm@8.6.6", 
-
+  "packageManager": "pnpm@8.6.6",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -128,5 +126,4 @@
   "lint-staged": {
     "*.{js,jsx}": "eslint --fix"
   }
-  
 }
