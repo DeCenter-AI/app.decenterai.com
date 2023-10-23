@@ -60,5 +60,5 @@
     "src/app/loading.js",
     "build/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts"]
+  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
 }
