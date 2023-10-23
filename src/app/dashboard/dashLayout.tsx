@@ -126,20 +126,20 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             </button>
 
             {user.email ? (
-              <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
-                <button className="flex flex-row">
+              <div className="flex items-center bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
+                <button className="flex flex-row items-center">
                   <Image
                     src={user?.profileImage}
                     alt='profile pic'
                     loader={myImageLoader}
-                    width={30}
-                    height={30}
+                    width={40}
+                    height={40}
                     className="max-w-[100%] max-h-[100%] rounded-full mr-3"
                   />
 
-                  <div className="font-semibold font-primaryArchivo">
+                  <span className="flex items-center font-semibold font-primaryArchivo">
                     {user.userName.charAt(0).toUpperCase() + user.userName.slice(1)}
-                  </div>
+                  </span>
                 </button>
               </div>
             ) : (<div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
