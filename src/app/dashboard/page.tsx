@@ -136,12 +136,12 @@ export default function Page() {
                                 </div>
                                 <div className='grow pb-5 border-b-2 border-primary_9'>
                                     <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
+                                        <span className='px-2 py-1 text-[12px] text-primary_7 rounded-full bg-prborder-primary_9'>Crankshaft</span>
                                     </div>
                                     <div className='mb-3'>
                                         <h2 className='text-lg font-bold'>Mohammed </h2>
                                     </div>
-                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                    <div className='flex justify-between text-[10px] text-primary_7'>
                                         <span>Assigned you a task on “Speech...</span>
                                         <span className=''>12 Minutes ago</span>
                                     </div>
@@ -157,12 +157,12 @@ export default function Page() {
                                 </div>
                                 <div className='grow pb-5 border-b-2 border-primary_9'>
                                     <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
+                                        <span className='px-2 py-1 text-[12px] text-primary_7 rounded-full bg-prborder-primary_9'>Crankshaft</span>
                                     </div>
                                     <div className='mb-3'>
                                         <h2 className='text-lg font-bold'>Mohammed </h2>
                                     </div>
-                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                    <div className='flex justify-between text-[10px] text-primary_7'>
                                         <span>Assigned you a task on “Speech...</span>
                                         <span className=''>12 Minutes ago</span>
                                     </div>
@@ -178,12 +178,12 @@ export default function Page() {
                                 </div>
                                 <div className='grow pb-5 border-b-2 border-primary_9'>
                                     <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
+                                        <span className='px-2 py-1 text-[12px] text-primary_7 rounded-full bg-prborder-primary_9'>Crankshaft</span>
                                     </div>
                                     <div className='mb-3'>
                                         <h2 className='text-lg font-bold'>Mohammed </h2>
                                     </div>
-                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                    <div className='flex justify-between text-[10px] text-primary_7'>
                                         <span>Assigned you a task on “Speech...</span>
                                         <span className=''>12 Minutes ago</span>
                                     </div>
@@ -199,12 +199,12 @@ export default function Page() {
                                 </div>
                                 <div className='grow pb-5 border-b-2 border-primary_9'>
                                     <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
+                                        <span className='px-2 py-1 text-[12px] text-primary_7 rounded-full bg-prborder-primary_9'>Crankshaft</span>
                                     </div>
                                     <div className='mb-3'>
                                         <h2 className='text-lg font-bold'>Mohammed </h2>
                                     </div>
-                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                    <div className='flex justify-between text-[10px] text-primary_7'>
                                         <span>Assigned you a task on “Speech...</span>
                                         <span className=''>12 Minutes ago</span>
                                     </div>
@@ -220,12 +220,12 @@ export default function Page() {
                                 </div>
                                 <div className='grow pb-5 border-b-2 border-primary_9'>
                                     <div className='mb-3'>
-                                        <span className='px-2 py-1 text-[12px] text-[#8F8F8F] rounded-full bg-prborder-primary_9'>Crankshaft</span>
+                                        <span className='px-2 py-1 text-[12px] text rounded-full bg-prborder-primary_9'>Crankshaft</span>
                                     </div>
                                     <div className='mb-3'>
                                         <h2 className='text-lg font-bold'>Mohammed </h2>
                                     </div>
-                                    <div className='flex justify-between text-[10px] text-[ #8F8F8F]'>
+                                    <div className='flex justify-between text-[10px] text-'>
                                         <span>Assigned you a task on “Speech...</span>
                                         <span className=''>12 Minutes ago</span>
                                     </div>
