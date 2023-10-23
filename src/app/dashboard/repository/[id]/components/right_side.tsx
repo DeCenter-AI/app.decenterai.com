@@ -1,7 +1,7 @@
 import React from 'react'
-import img from '../../../../../../public/Rectangle 75.png'
+import img from '@public/Rectangle75.png'
 import Image from 'next/image'
-import Modal from './modal'
+// import Modal from './modal'
 function RightSide() {
   return (
     <div className=" h-[100%] max-h-screen  overflow-y-scroll px-4 ">

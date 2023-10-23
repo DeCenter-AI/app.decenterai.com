@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { useContractWrite, useAccount, useWaitForTransaction } from 'wagmi'
+import { useAccount, useContractWrite, useWaitForTransaction } from 'wagmi'
 import { dealClient } from '@/abi/deal_client'
 import lighthouse from '@lighthouse-web3/sdk'
 import { ClipLoader } from 'react-spinners'
