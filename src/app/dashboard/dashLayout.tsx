@@ -127,7 +127,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
 
             {user.email ? (
               <div className="flex items-center bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
-                <button className="flex flex-row items-center">
+                <button className="flex flex-row items-center ">
                   <Image
                     src={user?.profileImage}
                     alt='profile pic'
