@@ -51,7 +51,19 @@
     "stripInternal": true,
     "resolveJsonModule": true
   },
+  "files": [
+    "src/abi/deal_client.js",
+    "src/app/components/fvm/UploadFile.jsx",
+    "src/app/demo/page.tsx",
+    "src/app/test/page.jsx",
+    "test/jest-e2e.ts",
+    "tsconfig.json"
+  ],
+
   "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "test/**/*.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
