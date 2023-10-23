@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 import { userType } from '@/lib/global_types';
 
-const default_user_values = { 'email': '', 'name': '', 'profileImage': '', 'userName': '' }
+const default_user_values = { 'email': null, 'name': null, 'profileImage': null, 'userName': null }
 
 type Props = {
   children: ReactNode;

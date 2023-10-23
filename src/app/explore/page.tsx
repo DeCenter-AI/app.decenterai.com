@@ -154,7 +154,7 @@ const Page = () => {
           name: res.name,
           profileImage: generator.generateRandomAvatar(res.name)
         }
-        create_user(user_data);
+        await create_user(user_data);
         setUser(user_data)
         push('/dashboard')
       }
