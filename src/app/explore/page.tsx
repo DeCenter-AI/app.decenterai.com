@@ -10,8 +10,8 @@ import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
 import { useRouter } from 'next/navigation'
 import { useUserContext } from '../userContext'
 import { create_user } from '@/lib/prismaUtils'
-import { generateFromEmail } from "unique-username-generator";
-import { AvatarGenerator } from 'random-avatar-generator';
+import { generateFromEmail } from 'unique-username-generator'
+import { AvatarGenerator } from 'random-avatar-generator'
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
@@ -19,9 +19,8 @@ const Page = () => {
   const [provider, setProvider] = useState<IProvider | null>(null)
   const { push } = useRouter()
   const { user, setUser } = useUserContext()
-  const [email, setEmail] = useState<string>('');
-  const generator = new AvatarGenerator();
-
+  const [email, setEmail] = useState<string>('')
+  const generator = new AvatarGenerator()
 
   const clientId: string = process.env.NEXT_PUBLIC_AUTH_CID
 
@@ -150,11 +149,11 @@ const Page = () => {
       if (res != null) {
         const user_data = {
           email: res.email,
-          userName: generateFromEmail(res.email,2),
+          userName: generateFromEmail(res.email, 2),
           name: res.name,
-          profileImage: generator.generateRandomAvatar(res.name)
+          profileImage: generator.generateRandomAvatar(res.name),
         }
-        await create_user(user_data);
+        await create_user(user_data)
         setUser(user_data)
         push('/dashboard')
       }
