@@ -1,17 +1,16 @@
 'use client'
 import React from 'react'
-import { usePathname } from 'next/navigation';
-import { DashLayout } from '../../dashLayout';
-import { BiArrowBack } from 'react-icons/bi'
-import { BiLike } from 'react-icons/bi';
-import RightSide from './components/right_side';
-// import Modal from './components/modal';
+import { usePathname } from 'next/navigation'
+import { DashLayout } from '../../dashLayout'
+import { BiArrowBack, BiLike } from 'react-icons/bi'
+import RightSide from './components/right_side'
+
 export default function Page() {
   const pathname = usePathname();
   return (
     <DashLayout >
 
-  
+
       <div className='h-full w-full px-4 py-6 text-white'>
         <div className='flex gap-2 items-center'>
           <BiArrowBack />
@@ -63,7 +62,7 @@ export default function Page() {
        </div>
 
         </div>
-       
+
       </div>
     </DashLayout>
   );

@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { usePathname } from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
 import { RxDashboard } from 'react-icons/rx'
@@ -17,7 +17,10 @@ import { useUserContext } from '../userContext'
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext()
   const pathname = usePathname()
-  console.log(user)
+
+  const myImageLoader = ({ src }) => {
+    return src
+  }
   return (
     <div className="w-screen h-screen flex  bg-primary_12 relative">
       <aside className="h-full w-[10%] border-r border-primary_8">
@@ -129,23 +132,31 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             <button className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl">
               Connect Wallet
             </button>
-            <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
-              {user && (
-                <button className="flex flex-row">
+
+            {user.email ? (
+              <div className="flex items-center bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
+                <button className="flex flex-row items-center ">
                   <Image
                     src={user?.profileImage}
                     alt="profile pic"
-                    width={100}
-                    height={100}
-                    className="max-w-[100%] max-h-[100%] rounded-full"
+                    loader={myImageLoader}
+                    width={40}
+                    height={40}
+                    className="max-w-[100%] max-h-[100%] rounded-full mr-3"
                   />
 
-                  <div className="font-semibold font-primaryArchivo">
-                    {user?.name.split(' ')[0]}
-                  </div>
+                  <span className="flex items-center font-semibold font-primaryArchivo">
+                    {user.userName.charAt(0).toUpperCase() + user.userName.slice(1)}
+                  </span>
                 </button>
-              )}
-            </div>
+              </div>
+            ) : (
+              <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
+                <button className="flex flex-row" onClick={redirect('/explore')}>
+                  Log In
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="w-full h-[90%] px-10">{children}</div>
