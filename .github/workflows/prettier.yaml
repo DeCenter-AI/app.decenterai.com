@@ -1,0 +1,161 @@
+name: Prettier
+
+on:
+  #  push:
+  #    branches:
+  #      - main
+  #    branches-ignore:
+  #      - main
+
+  #  pull_request_review:
+  #    types: [ submitted ]
+
+  pull_request:
+    branches:
+
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - 'main'
+  #    paths: ['**.yaml','**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
+
+  workflow_dispatch:
+    inputs:
+      only_changed:
+        description: 'Only changed'
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  actions: write
+  contents: write
+
+#env:
+#  TOKEN_GITHUB: ${{github.token}}
+
+env:
+  ONLY_CHANGED: ${{ inputs.only_changed }}
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+          ref: ${{ github.head_ref }}
+          persist-credentials: true
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.6
+
+      #      - name: Git config
+      #        run: |
+      #          git config --global user.name Hiro
+      #          git config --global user.email laciferin@gmail.com
+      #      - name: Prettify code
+      #        shell: bash
+      #        run: |
+      #          find . -type f -not -name "prettier.yaml"
+      #        doesn't work as the prettier complains argument list is too long
+
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     cache: 'pnpm'
+      #     node-version: 19.9.0
+      #     check-latest: false
+
+      # - name: Install dependencies
+      #   continue-on-error: true
+      #   run: pnpm install
+
+      # - name: Lint
+      #   continue-on-error: true
+      #   run: |
+      #     npm run lint --fix .
+
+      - name: Create .prettierignore
+        shell: bash
+        run: |
+          cp .prettierignore .prettierignore.ci
+          echo ".github/workflows/${GITHUB_WORKFLOW}.yaml" >> .prettierignore.ci
+          echo ".github/workflows/*.yaml" >> .prettierignore.ci
+
+      #        uses: "DamianReeves/write-file-action@master"
+      #        with:
+      #          path: .prettierignore
+      #          write-mode: append
+      #          contents: |
+      #            .github/workflows/${ github.workflow}.yaml
+
+      #      - name: Check if workflow was dispatched manually
+      #        run: |
+      #          if [[ "${{  github.event }}" ==  "workflow_dispatch" ]]; then
+      #            echo "Workflow was dispatched manually."
+      #            export ONLY_CHANGED=false
+      #          else
+      #            echo "Workflow was triggered by another event."
+      #            export ONLY_CHANGED=true
+      #          fi
+
+      - name: Prettify code
+        #        continue-on-error: true
+        uses: creyD/prettier_action@v4.3
+        env:
+          GITHUB_ACTOR: Baymax # ${{github.actor}}
+        with:
+          dry: false
+          github_token: ${{ github.token }}
+          same_commit: false
+          commit_message: 'style: pretty code'
+          commit_description: 'by ci'
+          #          file_pattern: "**/*.{js,jsx,ts,tsx,css,scss,html,vue,json,md}`"
+          #          file_pattern: '*'
+          only_changed: ${{ env.ONLY_CHANGED }}
+          prettier_options: '--write . --ignore-path .prettierignore.ci'
+#          ignore path not necessary
+#          commit_options: '-c user.email laciferin@gmail.com'
+
+#  eslint:
+#    runs-on: ubuntu-latest
+#    needs: [prettier]
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 1
+#          ref: ${{ github.head_ref }}
+#          persist-credentials: true
+#
+#      - uses: pnpm/action-setup@v2
+#        with:
+#          version: 8.6.6
+#
+#      - name: Set up Node.js
+#        uses: actions/setup-node@v3
+#        with:
+#          cache: 'pnpm'
+#          node-version: 19.9.0
+#          check-latest: false
+#
+#      - name: Install dependencies
+#        run: pnpm install
+#
+#      - name: Lint
+#        run: npm run lint
+#      - uses: sibiraj-s/action-eslint@v3
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }} # optional
+#          eslint-args: '--ignore-path=.gitignore --quiet'
+#          extensions: 'js,jsx,ts,tsx'
+#          annotations: true
+

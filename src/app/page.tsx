@@ -1,14 +1,10 @@
-"use client"
+'use client'
 import { redirect } from 'next/navigation'
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
 export default function Home() {
   useEffect(() => {
-    redirect('/signup')
+    redirect('/explore')
   })
-  return (
-    <main className="bg-primary_13">
-
-    </main>
-  );
+  return <main className="bg-primary_13"></main>
 }
