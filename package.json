@@ -15,7 +15,6 @@
     "prebuild": "npm run prisma:generate",
     "build": "next build",
     "start": "next start",
-    "prelint": "npm run lint:ts ; npm run lint:eslint",
     "lint": "next lint",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --fix .",

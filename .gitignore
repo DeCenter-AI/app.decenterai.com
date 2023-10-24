@@ -54,3 +54,4 @@ typechain-types
 cache
 artifacts
 
+/.vscode/settings.json

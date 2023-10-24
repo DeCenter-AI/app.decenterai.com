@@ -3,4 +3,5 @@
 
 #npx tsc --noEmit #type errors are fine as long as npm run build works!:
 npx eslint --fix .
+# npm run lint
 #npx prettier --write . #ci takes care of it
