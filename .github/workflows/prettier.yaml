@@ -66,21 +66,22 @@ jobs:
       #        run: |
       #          find . -type f -not -name "prettier.yaml"
       #        doesn't work as the prettier complains argument list is too long
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: 'pnpm'
-          node-version: 19.9.0
-          check-latest: false
+    
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     cache: 'pnpm'
+      #     node-version: 19.9.0
+      #     check-latest: false
 
-      - name: Install dependencies
-        continue-on-error: true
-        run: pnpm install
+      # - name: Install dependencies
+      #   continue-on-error: true
+      #   run: pnpm install
 
-      - name: Lint
-        continue-on-error: true
-        run: |
-          npm run lint --fix .
+      # - name: Lint
+      #   continue-on-error: true
+      #   run: |
+      #     npm run lint --fix .
 
       - name: Create .prettierignore
         shell: bash
