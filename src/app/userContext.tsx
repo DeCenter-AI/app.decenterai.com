@@ -1,6 +1,6 @@
 'use client'
-import React, {createContext, ReactNode, useContext, useState} from 'react'
-import {userType} from '@/lib/global_types'
+import React, { createContext, ReactNode, useContext, useState } from 'react'
+import { userType } from '@/lib/global_types'
 
 const default_user_values = {
   email: null,

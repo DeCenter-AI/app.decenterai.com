@@ -1,5 +1,5 @@
-import {PrismaClient} from '@prisma/client'
-import {LIGHTHOUSE} from '../enums/ipfsProviders'
+import { PrismaClient } from '@prisma/client'
+import { LIGHTHOUSE } from '../enums/ipfsProviders'
 
 const prisma = new PrismaClient()
 

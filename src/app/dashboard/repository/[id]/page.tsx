@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import {usePathname} from 'next/navigation'
-import {DashLayout} from '../../dashLayout'
-import {BiArrowBack, BiLike} from 'react-icons/bi'
+import { usePathname } from 'next/navigation'
+import { DashLayout } from '../../dashLayout'
+import { BiArrowBack, BiLike } from 'react-icons/bi'
 import RightSide from './components/right_side'
 
 export default function Page() {

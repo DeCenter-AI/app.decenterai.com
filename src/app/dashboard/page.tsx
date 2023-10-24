@@ -1,5 +1,5 @@
 import React from 'react'
-import {DashLayout} from './dashLayout'
+import { DashLayout } from './dashLayout'
 
 export default function Page() {
   return (
