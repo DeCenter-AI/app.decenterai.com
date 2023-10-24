@@ -66,7 +66,7 @@ jobs:
       #        run: |
       #          find . -type f -not -name "prettier.yaml"
       #        doesn't work as the prettier complains argument list is too long
-    
+
       # - name: Set up Node.js
       #   uses: actions/setup-node@v3
       #   with:
@@ -113,7 +113,7 @@ jobs:
         env:
           GITHUB_ACTOR: Baymax # ${{github.actor}}
         with:
-          dry: true
+          dry: false
           github_token: ${{ github.token }}
           same_commit: false
           commit_message: 'style: pretty code'
