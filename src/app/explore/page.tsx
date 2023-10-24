@@ -12,7 +12,7 @@ import {useUserContext} from '../userContext'
 import {create_user} from '@/lib/prismaUtils'
 import {generateFromEmail} from 'unique-username-generator'
 import {AvatarGenerator} from 'random-avatar-generator'
-import {Web3AuthConfig, Web3AuthEthPrivateKeyProviderConfig} from "@enums/app";
+import {AppName, Web3AuthConfig, Web3AuthEthPrivateKeyProviderConfig} from "@enums/app";
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
@@ -32,11 +32,13 @@ const Page = () => {
           config: Web3AuthEthPrivateKeyProviderConfig,
         })
 
+        // TODO: refactor to app.ts
+        
         const openloginAdapter = new OpenloginAdapter({
           adapterSettings: {
             whiteLabel: {
-              appName: 'DecenterAi',
-              logoDark: '/icon.png',
+              appName: AppName,
+              logoDark: '/icon.png',//TODO:@Abhay import it don't use magic urls
               defaultLanguage: 'en',
               mode: 'dark',
             },
