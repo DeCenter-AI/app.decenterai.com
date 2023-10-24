@@ -1,4 +1,5 @@
 import { userType } from './global_types'
+
 export async function create_user(user: userType) {
   const res = await check_user(user.email)
   const count = await res.json()

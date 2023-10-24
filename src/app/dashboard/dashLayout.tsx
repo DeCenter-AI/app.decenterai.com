@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { usePathname } from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
 import { RxDashboard } from 'react-icons/rx'
@@ -13,7 +13,6 @@ import { IoSettingsOutline } from 'react-icons/io5'
 import { GoBell, GoSearch } from 'react-icons/go'
 import Link from 'next/link'
 import { useUserContext } from '../userContext'
-import { redirect } from 'next/navigation'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext()
