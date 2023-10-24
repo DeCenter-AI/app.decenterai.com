@@ -5,6 +5,7 @@ import { GoSortDesc, GoDownload } from 'react-icons/go'
 import { PiListChecks, PiGridFourLight, PiOptionBold, PiChecks } from 'react-icons/pi'
 import { RxCaretDown } from 'react-icons/rx'
 import Link from 'next/link'
+import notifications from '@/data/notification'
 
 const Notification = () => {
   return (
@@ -40,6 +41,12 @@ const Notification = () => {
             <span className="text-primary_9 hover:text-primary_6">Task</span>
           </div>
         </header>
+
+        <main>
+          {notifications.map(notification => (
+            <Notification key={notification.id} />
+          ))}
+        </main>
       </section>
     </DashLayout>
   )
