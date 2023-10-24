@@ -1,17 +1,18 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import { PiGoogleLogoBold } from 'react-icons/pi'
-import { Web3AuthNoModal } from '@web3auth/no-modal'
-import type { IProvider } from '@web3auth/base'
-import { CHAIN_NAMESPACES, WALLET_ADAPTERS } from '@web3auth/base'
-import { EthereumPrivateKeyProvider } from '@web3auth/ethereum-provider'
-import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
-import { useRouter } from 'next/navigation'
-import { useUserContext } from '../userContext'
-import { create_user } from '@/lib/prismaUtils'
-import { generateFromEmail } from 'unique-username-generator'
-import { AvatarGenerator } from 'random-avatar-generator'
+import React, {useEffect, useState} from 'react'
+import {PiGoogleLogoBold} from 'react-icons/pi'
+import {Web3AuthNoModal} from '@web3auth/no-modal'
+import type {IProvider} from '@web3auth/base'
+import {WALLET_ADAPTERS} from '@web3auth/base'
+import {EthereumPrivateKeyProvider} from '@web3auth/ethereum-provider'
+import {OpenloginAdapter} from '@web3auth/openlogin-adapter'
+import {useRouter} from 'next/navigation'
+import {useUserContext} from '../userContext'
+import {create_user} from '@/lib/prismaUtils'
+import {generateFromEmail} from 'unique-username-generator'
+import {AvatarGenerator} from 'random-avatar-generator'
+import {Web3AuthConfig, Web3AuthEthPrivateKeyProviderConfig} from "@enums/app";
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
@@ -22,32 +23,13 @@ const Page = () => {
   const [email, setEmail] = useState<string>('')
   const generator = new AvatarGenerator()
 
-  const clientId: string = process.env.NEXT_PUBLIC_AUTH_CID
 
   useEffect(() => {
     const init = async () => {
       try {
-        const web3auth = new Web3AuthNoModal({
-          clientId,
-          web3AuthNetwork: 'sapphire_devnet',
-          chainConfig: {
-            chainNamespace: CHAIN_NAMESPACES.EIP155,
-            chainId: '0x13881',
-            rpcTarget: 'https://rpc-mumbai.maticvigil.com', // This is the public RPC we have added, please pass on your own endpoint while creating an app
-          },
-        })
-        // @note: change to mainnet once ready for prod
+        const web3auth = new Web3AuthNoModal(Web3AuthConfig)
         const privateKeyProvider = new EthereumPrivateKeyProvider({
-          config: {
-            chainConfig: {
-              chainId: '0x13881',
-              rpcTarget: 'https://rpc-mumbai.maticvigil.com',
-              displayName: 'Polygon Mumbai',
-              blockExplorer: 'https://mumbai.polygonscan.com/',
-              ticker: 'MATIC',
-              tickerName: 'Matic',
-            },
-          },
+          config: Web3AuthEthPrivateKeyProviderConfig,
         })
 
         const openloginAdapter = new OpenloginAdapter({
