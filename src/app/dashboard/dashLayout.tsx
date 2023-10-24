@@ -118,7 +118,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
           <div className="h-full w-[50%] flex gap-6 items-center justify-end font-archivo ">
             <div className="text-primary_8 ">
-              <GoBell size={25} />
+              <GoBell size={25}  />
             </div>
             <button className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl">
               Connect Wallet
