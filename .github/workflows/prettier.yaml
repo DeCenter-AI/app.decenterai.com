@@ -91,30 +91,60 @@ jobs:
         #        continue-on-error: true
         uses: creyD/prettier_action@v4.3
         env:
-          GITHUB_ACTOR: Baymax
+          GITHUB_ACTOR: Baymax # ${{github.actor}}
         with:
           dry: false
           github_token: ${{ github.token }}
           same_commit: false
           commit_message: 'style: pretty code'
-          commit_description: 'automated via ci'
+          commit_description: 'by ci'
+          #          file_pattern: "**/*.{js,jsx,ts,tsx,css,scss,html,vue,json,md}`"
           #          file_pattern: '*'
           only_changed: ${{ env.ONLY_CHANGED }}
           prettier_options: '--write . --ignore-path .prettierignore.ci'
 #          ignore path not necessary
 #          commit_options: '-c user.email laciferin@gmail.com'
 
-#      - name: Prettify code except yaml files [executed cuz the actions tries to update ${{github.workflow}}.yaml
-#        if: $(failure())
-#        uses: creyD/prettier_action@v4.3
-#        env:
-#          GITHUB_ACTOR: ${{github.actor}}
+  eslint:
+    runs-on: ubuntu-latest
+    needs: [prettier]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+          persist-credentials: true
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+          node-version: 19.9.0
+          check-latest: false
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: npm run lint
+
+
+
+#      - uses: sibiraj-s/action-eslint@v3
 #        with:
-#          dry: false
-#          github_token: ${{ github.token }}
-#          same_commit: false
-#          commit_message: 'style: pretty code'
-#          commit_description: 'automated via ci'
-#          file_pattern: "**/*.{js,jsx,ts,tsx,css,scss,html,vue,json,md}`"
-#          only_changed: false
-#          prettier_options: '--write .'
+#          token: ${{ secrets.GITHUB_TOKEN }} # optional
+#          eslint-args: '--ignore-path=.gitignore --quiet'
+#          extensions: 'js,jsx,ts,tsx'
+#          annotations: true
+
+
+
+
+
+
+
