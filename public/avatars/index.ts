@@ -7,4 +7,4 @@ import avatar5 from '/avatar-5.png'
 
 const avatars = { avatar, avatar1, avatar2, avatar3, avatar4, avatar5 }
 
-export default avatar
+export default avatars
