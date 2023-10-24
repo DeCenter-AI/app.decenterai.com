@@ -53,6 +53,10 @@ jobs:
           ref: ${{ github.head_ref }}
           persist-credentials: true
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.6
+
       #      - name: Git config
       #        run: |
       #          git config --global user.name Hiro
