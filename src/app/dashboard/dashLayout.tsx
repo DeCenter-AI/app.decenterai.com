@@ -20,7 +20,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   console.log(user)
   return (
     <div className="w-screen h-screen flex  bg-primary_12 relative">
-      <aside className="h-full w-[10%] border-r border-primary_8">
+      <aside className="h-full w-[10%] border-r border-primary_8 ">
         <Link href="/">
           <div className="w-full h-[10%] flex flex-col gap-2 pt-2 items-center justify-center">
             <Image

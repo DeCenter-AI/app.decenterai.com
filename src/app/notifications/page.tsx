@@ -1,11 +1,11 @@
 import notIcon from 'public/notification.png'
 import { DashLayout } from '../dashboard/dashLayout'
 import Image from 'next/image'
-import { GoSortDesc, GoDownload } from 'react-icons/go'
-import { PiListChecks, PiGridFourLight, PiOptionBold, PiChecks } from 'react-icons/pi'
+import { GoSortDesc } from 'react-icons/go'
+import { PiGridFourLight, PiOptionBold, PiChecks } from 'react-icons/pi'
+import { Messages } from '../components/notifications/Notification'
 import { RxCaretDown } from 'react-icons/rx'
 import Link from 'next/link'
-import notifications from '@/data/notification'
 
 const Notification = () => {
   return (
@@ -37,15 +37,21 @@ const Notification = () => {
             <Link href="/notifications" className="text-primary_6">
               All
             </Link>
-            <span className="text-primary_9 hover:text-primary_6">Downloads</span>
-            <span className="text-primary_9 hover:text-primary_6">Task</span>
+            <span className="text-primary_9 hover:text-primary_6 cursor-pointer">
+              Downloads
+            </span>
+            <span className="text-primary_9 hover:text-primary_6 cursor-pointer">
+              Task
+            </span>
           </div>
         </header>
 
-        <main>
-          {notifications.map(notification => (
-            <Notification key={notification.id} />
-          ))}
+        <main className="flex gap-4 w-full pt-16 items-start ">
+          <Messages />
+          <button className="flex gap-2 items-center">
+            <PiChecks />
+            <span className="text-primary_3">Mark all as read</span>
+          </button>
         </main>
       </section>
     </DashLayout>
