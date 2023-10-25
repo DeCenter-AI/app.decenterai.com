@@ -13,14 +13,11 @@ datasource db {
 model User {
   id Int @id @default(sequence(minValue: 1))
 
-  web3AuthId String? @map("web3authId") @db.String()
-
   userName String? @unique
   email    String? @unique
-  password String? // hash
 
-  firstName String?
-  lastName  String?
+  name         String?
+  profileImage String?
 
   createdAt    DateTime          @default(now()) @db.Timestamptz()
   updatedAt    DateTime          @updatedAt @db.Timestamptz()

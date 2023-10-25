@@ -2,8 +2,7 @@
 import React from 'react'
 import { usePathname } from 'next/navigation'
 import { DashLayout } from '../../dashLayout'
-import { BiArrowBack } from 'react-icons/bi'
-import { BiLike } from 'react-icons/bi'
+import { BiArrowBack, BiLike } from 'react-icons/bi'
 import RightSide from './components/right_side'
 
 export default function Page() {

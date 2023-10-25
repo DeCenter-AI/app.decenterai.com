@@ -1,6 +1,7 @@
 import React from 'react'
 import img from '@public/Rectangle75.png'
 import Image from 'next/image'
+
 // import Modal from './modal'
 function RightSide() {
   return (
