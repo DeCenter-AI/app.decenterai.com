@@ -1,9 +1,10 @@
 import { userType } from './global_types'
+
 export async function create_user(user: userType) {
-  const res = await check_user(user.email);
-  const count = await (res.json());
+  const res = await check_user(user.email)
+  const count = await res.json()
   if (count !== 0) {
-    console.log("User already exists in db");
+    console.log('User already exists in db')
     return
   }
   await fetch('/api/prisma/add_user', {

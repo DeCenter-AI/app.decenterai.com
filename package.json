@@ -16,6 +16,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:ts": "tsc --noEmit",
+    "lint:eslint": "eslint --fix .",
     "run-cid-archived": "ts-node utils/archived/cid.ts",
     "run-cid": "ts-node utils/cid.ts",
     "run-compute": "ts-node utils/compute.ts",
@@ -136,6 +138,6 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --fix"
+    "*.{ts,tsx}": "eslint --fix"
   }
 }

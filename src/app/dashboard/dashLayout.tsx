@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { usePathname } from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
 import { RxDashboard } from 'react-icons/rx'
@@ -98,12 +98,18 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
             <p className="text-sm">Rewards</p>
           </div>
-          <div className="flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1">
-            <div className="flex justify-center ">
-              <IoSettingsOutline size={25} />
+          <Link href="/dashboard/settings">
+            <div
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
+              }`}
+            >
+              <div className="flex justify-center ">
+                <BsDatabase size={25} />
+              </div>
+              <p className="text-sm">Settings</p>
             </div>
-            <p className="text-sm">Settings</p>
-          </div>
+          </Link>
         </div>
       </aside>
 
