@@ -15,8 +15,9 @@ describe('compute()', () => {
       expect(typeof result).toBe('string')
       // expect(isCid(result)).toBe(true) //FIXME: uncomment once is-ipfs not found error resolved
     },
-    BACALHAU_TIMEOUT,
   )
+  jest.setTimeout(BACALHAU_TIMEOUT)
+
 })
 
 /*
