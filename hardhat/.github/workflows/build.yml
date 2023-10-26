@@ -30,13 +30,13 @@ jobs:
         uses: actions/setup-node@v3
         continue-on-error: true
         with:
-          cache: "pnpm"
+          cache: 'pnpm'
           node-version: 19.9.0
 
       - name: Setup node v20
         uses: actions/setup-node@v3
         with:
-          cache: "pnpm"
+          cache: 'pnpm'
           node-version: 20
           check-latest: true
 
