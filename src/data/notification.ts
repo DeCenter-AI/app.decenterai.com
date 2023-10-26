@@ -73,7 +73,7 @@ const notifications: Notification[] = [
     msg: 'Downloaded your model “Speech therapy TXT” ',
     time: '12 Minutes ago',
     avatar: avatars.avatar5,
-    read:true,
+    read: true,
   },
 ]
 
