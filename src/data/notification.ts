@@ -59,6 +59,22 @@ const notifications: Notification[] = [
     avatar: avatars.avatar4,
     read: true,
   },
+  {
+    id: 7,
+    name: 'Folasayo Ogunnaike',
+    msg: 'Downloaded your model “Speech therapy TXT” ',
+    time: '12 Minutes ago',
+    avatar: avatars.avatar1,
+    read: true,
+  },
+  {
+    id: 8,
+    name: 'Israel Faizul',
+    msg: 'Downloaded your model “Speech therapy TXT” ',
+    time: '12 Minutes ago',
+    avatar: avatars.avatar5,
+    read:true,
+  },
 ]
 
 export default notifications

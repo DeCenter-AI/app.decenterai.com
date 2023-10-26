@@ -10,7 +10,7 @@ import Link from 'next/link'
 const Notification = () => {
   return (
     <DashLayout>
-      <section className=" py-10">
+      <section className="py-10  font-archivo h-full ">
         <header className="flex flex-col">
           <div className="flex justify-between gap-4 items-center px-6 border border-primary_8 py-3 rounded-lg rounded-b-none">
             <Image src={notIcon} alt="notification" />
@@ -48,8 +48,8 @@ const Notification = () => {
 
         <main className="flex gap-4 w-full pt-16 items-start ">
           <Messages />
-          <button className="flex gap-2 items-center">
-            <PiChecks />
+          <button className="flex gap-2 items-center bg-primary_10 rounded-full px-4 py-3 mt-2">
+            <PiChecks  className='text-primary_8' size={20}/>
             <span className="text-primary_3">Mark all as read</span>
           </button>
         </main>
