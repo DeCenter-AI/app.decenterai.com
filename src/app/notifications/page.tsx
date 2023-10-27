@@ -7,13 +7,17 @@ import { Messages } from '../components/notifications/Notification'
 import { RxCaretDown } from 'react-icons/rx'
 import Link from 'next/link'
 
-const Notification = () => {
+const Notifications = () => {
   return (
     <DashLayout>
-      <section className="py-10  font-archivo h-full ">
-        <header className="flex flex-col">
+      <section className="py-10  font-archivo h-full bg-primary_12 ">
+        <header className="flex flex-col h-[20%] bg-red-400">
           <div className="flex justify-between gap-4 items-center px-6 border border-primary_8 py-3 rounded-lg rounded-b-none">
-            <Image src={notIcon} alt="notification" />
+            <Image
+              src={notIcon}
+              alt="notification"
+              className="hidden  sm:block md:block"
+            />
             <div className="flex items-center rounded-full bg-primary_9 py-2 px-4  ">
               <PiOptionBold className="mr-2 text-primary_7" size={30} />
               <input
@@ -46,11 +50,11 @@ const Notification = () => {
           </div>
         </header>
 
-        <main className="flex gap-4 w-full pt-16 items-start ">
+        <main className="flex flex-col md:flex-row gap-4 w-full pt-16 items-start h-[80%]">
           <Messages />
           <button className="flex gap-2 items-center bg-primary_10 rounded-full px-4 py-3 mt-2">
-            <PiChecks  className='text-primary_8' size={20}/>
-            <span className="text-primary_3">Mark all as read</span>
+            <PiChecks className="text-primary_8" size={20} />
+            <span className="text-primary_3 font-light text-sm">Mark all as read</span>
           </button>
         </main>
       </section>
@@ -58,4 +62,4 @@ const Notification = () => {
   )
 }
 
-export default Notification
+export default Notifications
