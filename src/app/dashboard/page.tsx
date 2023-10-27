@@ -12,7 +12,7 @@ import avatar from '@public/Rectangle 75.png'
 export default function Page() {
   return (
     <DashLayout>
-      <div className="h-full max-h-full flex flex-col justify-evenly   w-full px-2   text-white">
+      <div className="h-full max-h-full overflow-y-scroll flex flex-col justify-evenly   w-full px-2   text-white">
         <div className="border border-primary_9 px-4  rounded-xl py-4 flex max-h-[20%] max-w-[95%] mx-auto ">
           <div className=" grow">
             <div>
