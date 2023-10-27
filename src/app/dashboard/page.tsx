@@ -8,7 +8,7 @@ import TrophyIcon from '@public/TrophyIcon.png'
 import TaskIcon from '@public/taskIcon.png'
 import Image from 'next/image'
 import avatar from '@public/Rectangle 75.png'
-import { BsClipboard } from "react-icons/bs"
+import { BsClipboard } from 'react-icons/bs'
 import { PiTrophyBold, PiUsersThree } from 'react-icons/pi'
 import { HiOutlineChip } from 'react-icons/hi'
 
@@ -46,7 +46,7 @@ export default function Page() {
         <div className="grid grid-cols-4 gap-5 h-[30%] ">
           <div className=" rounded-xl flex flex-col gap-2 border  border-primary_9 h-full px-4 py-4">
             <div className="h-[15%] flex items-center">
-              <p className='text-sm'>Total teams</p>
+              <p className="text-sm">Total teams</p>
             </div>
 
             <div className="flex items-center h-[30%] pb-4 border-b-2 border-primary_9">
@@ -64,7 +64,7 @@ export default function Page() {
           </div>
           <div className=" rounded-xl flex flex-col gap-2 border  border-primary_9 h-full px-4 py-4">
             <div className="h-[15%] flex items-center">
-              <p className='text-sm'>Total trained models</p>
+              <p className="text-sm">Total trained models</p>
             </div>
 
             <div className="flex items-center h-[30%] pb-4 border-b-2 border-primary_9">
@@ -82,12 +82,12 @@ export default function Page() {
           </div>
           <div className=" rounded-xl flex flex-col gap-2 border  border-primary_9 h-full px-4 py-4">
             <div className="h-[15%] flex items-center">
-              <p className='text-sm'>Total tasks</p>
+              <p className="text-sm">Total tasks</p>
             </div>
 
             <div className="flex items-center h-[30%] pb-4 border-b-2 border-primary_9">
               <span className="grow text-2xl font-bold">0</span>
-              <BsClipboard size={25} className='text-primary_8' />
+              <BsClipboard size={25} className="text-primary_8" />
             </div>
             <div className="flex items-center h-[30%] ">
               <span className="grow text-xs">Completed</span>
@@ -100,7 +100,7 @@ export default function Page() {
           </div>
           <div className=" rounded-xl flex flex-col gap-2 border  border-primary_9 h-full px-4 py-4">
             <div className="h-[15%] flex items-center">
-              <p className='text-sm'>Total rewards</p>
+              <p className="text-sm">Total rewards</p>
             </div>
 
             <div className="flex items-center h-[30%] pb-4 border-b-2 border-primary_9">
@@ -116,8 +116,6 @@ export default function Page() {
               <span>0</span>
             </div>
           </div>
-
-
         </div>
 
         <div className="flex gap-5  h-[40%] overflow-auto">
@@ -130,7 +128,7 @@ export default function Page() {
 
             <div className="overflow-y-auto flex flex-col gap-6 h-[85%] relative">
               <div className="flex items-center gap-1  min-h-[100px] 0">
-                <div className='w-[15%] flex items-center justify-center '>
+                <div className="w-[15%] flex items-center justify-center ">
                   <Image src={avatar} alt="" className="w-[40px] h-[40px] rounded-full" />
                 </div>
                 <div className=" w-[85%]  border-b-2 h-full border-primary_9 px-2">
@@ -149,7 +147,7 @@ export default function Page() {
                 </div>
               </div>
               <div className="flex items-center gap-1  min-h-[100px] 0">
-                <div className='w-[15%] flex items-center justify-center '>
+                <div className="w-[15%] flex items-center justify-center ">
                   <Image src={avatar} alt="" className="w-[40px] h-[40px] rounded-full" />
                 </div>
                 <div className=" w-[85%]  border-b-2 h-full border-primary_9 px-2">
@@ -168,7 +166,7 @@ export default function Page() {
                 </div>
               </div>
               <div className="flex items-center gap-1  min-h-[100px] 0">
-                <div className='w-[15%] flex items-center justify-center '>
+                <div className="w-[15%] flex items-center justify-center ">
                   <Image src={avatar} alt="" className="w-[40px] h-[40px] rounded-full" />
                 </div>
                 <div className=" w-[85%]  border-b-2 h-full border-primary_9 px-2">
@@ -186,8 +184,6 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
