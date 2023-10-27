@@ -12,7 +12,8 @@ const Messages = () => {
           key={item.id}
           className={`flex  flex-wrap md:justify-between gap-12 items-center  py-2 rounded-3xl px-6 border border-primary_8  ${
             !item.read ? '' : 'opacity-30'
-          }`}>
+          }`}
+        >
           <div className="flex items-center gap-2">
             <Image src={item.avatar} alt={`${item.name} avatar`} />
             <div>
@@ -43,7 +44,8 @@ const ModalNotification = () => {
               key={item.id}
               className={`flex md:justify-between gap-8 items-center  py-2 rounded-3xl px-2 border border-primary_8 ${
                 !item.read ? ' ' : 'opacity-30'
-              }`}>
+              }`}
+            >
               <div className="flex items-center gap-2">
                 <Image
                   src={item.avatar}

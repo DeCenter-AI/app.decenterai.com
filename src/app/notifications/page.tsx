@@ -54,7 +54,7 @@ const Notifications = () => {
           <Messages />
           <button className="flex gap-2 items-center bg-primary_10 rounded-full px-4 py-3 mt-2">
             <PiChecks className="text-primary_8" size={20} />
-            <span className="text-primary_3 font-light text-sm">Mark all as read</span>
+            <span className="text-primary_3">Mark all as read</span>
           </button>
         </main>
       </section>
