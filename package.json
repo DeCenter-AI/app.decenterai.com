@@ -134,6 +134,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --fix"
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "!hardhat/**": "true" 
   }
+  
 }
