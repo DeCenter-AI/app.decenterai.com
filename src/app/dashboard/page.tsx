@@ -17,13 +17,13 @@ export default function Page() {
     <DashLayout>
       <div className="h-full w-full flex flex-col gap-6 px-2 py-2  text-white ">
         <div className="border h-[30%] border-primary_9 0 px-4  rounded-xl py-4 flex max-w-[90%]  mx-auto ">
-          <div className="pt-6 grow">
-            <div>
+          <div className="h-full">
+            <div className='h-[50%] flex items-center '>
               <h1 className="font-logirentBold text-3xl">
                 Train your AI model to the stars instantly.
               </h1>
             </div>
-            <div className=" mt-5">
+            <div className=" h-[50%] flex items-center ">
               <span className="text-xs">
                 Launch your AI project into orbit with our instant training platform. We
                 use the latest AI technology to help you train your model quickly and
@@ -31,8 +31,8 @@ export default function Page() {
               </span>
             </div>
           </div>
-          <div className="-mt-8 -mb-11">
-            <Image className="grayscale" src={RocketImg} alt="rocket-img" />
+          <div className="h-full -mt-6">
+            <Image className="grayscale" src={RocketImg} height={300} width={300} alt="rocket-img" style={{ maxWidth: "100%" }} />
           </div>
         </div>
 
