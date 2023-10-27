@@ -6,13 +6,12 @@ import { PiListChecks, PiDotsThree } from 'react-icons/pi'
 
 const Messages = () => {
   return (
-    <main className="flex flex-col gap-4  w-[80%] ">
+    <main className="flex flex-col gap-4 h-full  px-2 overflow-y-auto">
       {notifications.map((item) => (
         <div
           key={item.id}
-          className={`flex justify-between gap-12 items-center  py-2 rounded-3xl px-6 border border-primary_8  ${
-            !item.read ? '' : 'opacity-30'
-          }`}
+          className={`flex justify-between gap-12 items-center  py-2 rounded-3xl px-6 border border-primary_8  ${!item.read ? '' : 'opacity-30'
+            }`}
         >
           <div className="flex items-center gap-2">
             <Image src={item.avatar} alt={`${item.name} avatar`} />
@@ -42,9 +41,8 @@ const ModalNotification = () => {
           return (
             <div
               key={item.id}
-              className={`flex justify-between gap-8 items-center  py-2 rounded-3xl px-2 border border-primary_8 ${
-                !item.read ? ' ' : 'opacity-30'
-              }`}
+              className={`flex justify-between gap-8 items-center  py-2 rounded-3xl px-2 border border-primary_8 ${!item.read ? ' ' : 'opacity-30'
+                }`}
             >
               <div className="flex items-center gap-2">
                 <Image
