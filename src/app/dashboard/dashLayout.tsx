@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 
 import { redirect, usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
@@ -8,12 +8,7 @@ import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
 import { RxDashboard } from 'react-icons/rx'
 import { HiOutlineChip } from 'react-icons/hi'
 import { BsDatabase } from 'react-icons/bs'
-import {
-  PiClipboardLight,
-  PiTrophyBold,
-  PiUsersThree,
-  PiCaretDoubleUp,
-} from 'react-icons/pi'
+import { PiClipboardLight, PiTrophyBold, PiUsersThree } from 'react-icons/pi'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { GoBell, GoSearch } from 'react-icons/go'
 import Link from 'next/link'
@@ -21,25 +16,17 @@ import { useUserContext } from '../userContext'
 import notIcon from 'public/notification.png'
 import { ModalNotification } from '../components/notifications/Notification'
 
-
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext()
   const pathname = usePathname()
   const [isNotificationOpen, setNotificationOpen] = useState(false)
   const [showBackdrop, setShowBackdrop] = useState(false)
-   const asideRef = useRef(null)
 
   const openNotification = () => {
     setNotificationOpen(true)
     setShowBackdrop(true)
   }
 
-
- const scrollToTop = () => {
-   
-   asideRef.current.scrollTo(0, 0)
-   document.body.scrollTo(0, 0)
- }
   const closeNotification = () => {
     setNotificationOpen(false)
     setShowBackdrop(false)
@@ -49,14 +36,14 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     return src
   }
   return (
-    <div className="w-screen h-screen flex  bg-primary_12 relative">
+    <div className={`w-screen min-h-screen flex  bg-primary_12 relative `}>
       {showBackdrop && (
         <div
           className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
           onClick={closeNotification}
         />
       )}
-      <aside className="h-full w-[10%] border-r border-primary_8">
+      <aside className="h-full w-[10%] border-r border-primary_8  min-h-screen">
         <Link href="/">
           <div className="w-full h-[10%] flex flex-col gap-2 pt-2 items-center justify-center">
             <Image
@@ -197,7 +184,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
       {isNotificationOpen && (
         <aside
           className={`absolute z-50 right-8 mt-14 rounded-3xl max-w-[450px] shadow-xl bg-primary_11 flex flex-col px-4 py-6  gap-6 max-h-screen  `}
-          ref={asideRef}>
+        >
           <div className="flex justify-between items-center ">
             <Image src={notIcon} alt="notification" className="w-[30%]" />
             <Link href="/notifications" className="text-sm text-[#C1C1C1]">
@@ -205,12 +192,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             </Link>
           </div>
           <ModalNotification />
-          <button
-            className="flex gap-2 items-center justify-center text-[#92929D]"
-            onClick={scrollToTop}>
-            <PiCaretDoubleUp size={20} />
-            <span>To the top</span>
-          </button>
+          <button>To the top</button>
         </aside>
       )}
     </div>
