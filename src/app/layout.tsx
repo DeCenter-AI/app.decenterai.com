@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@rainbow-me/rainbowkit/styles.css'
-// @ts-ignore
 import { Providers } from './providers'
 import { ContextProvider } from './userContext'
 import Favicon from '@public/favicon.ico'
