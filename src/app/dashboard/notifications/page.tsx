@@ -10,7 +10,6 @@ import Link from 'next/link'
 const Notification = () => {
   return (
     <DashLayout>
-
       <div className="py-6 flex flex-col gap-6  font-archivo h-full w-full ">
         <div className="flex flex-col  h-[20%]">
           <div className="flex justify-between gap-4 items-center px-6 border border-primary_8 py-3 rounded-lg rounded-b-none">
@@ -48,11 +47,10 @@ const Notification = () => {
         </div>
 
         <div className="flex h-[80%] gap-4 w-full items-start  ">
-
-          <div className='h-full w-[85%] '>
+          <div className="h-full w-[85%] ">
             <Messages />
           </div>
-          <div className='w-[15%] h-full'>
+          <div className="w-[15%] h-full">
             <button className="flex gap-2 items-center bg-primary_10 rounded-full px-4 py-3 mt-2">
               <PiChecks className="text-primary_8" size={20} />
               <span className="text-primary_3">Mark all as read</span>
