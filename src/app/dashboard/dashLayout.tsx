@@ -36,7 +36,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     return src
   }
   return (
-    <div className={`w-screen min-h-screen flex  bg-primary_12 relative `}>
+    <div className={`w-screen h-screen flex  bg-primary_12 relative `}>
       {showBackdrop && (
         <div
           className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
