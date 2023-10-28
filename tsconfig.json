@@ -72,5 +72,8 @@
     "src/app/loading.js",
     "build/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
+  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts",  "/hardhat/scripts/deploy.ts"],
+  "references": [
+    { "path": "./hardhat/tsconfig.json" },
+  ],
 }
