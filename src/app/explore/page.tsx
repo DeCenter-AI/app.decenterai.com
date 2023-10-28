@@ -202,7 +202,7 @@ const Page = () => {
                 className="border flex  items-center justify-center gap-4 border-primary_11 hover:border-primary_7 text-primary_7 font-semibold font-primaryArchivo text-sm w-full h-12 cursor-pointer rounded-xl"
                 onClick={login}
               >
-                <PiGoogleLogoBold size={20} className="text-primary_7" /> Sign up with
+                <PiGoogleLogoBold size={20} className="text-primary_7" /> Continue with
                 Google
               </button>
             </div>
