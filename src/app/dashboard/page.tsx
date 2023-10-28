@@ -15,7 +15,6 @@ import { HiOutlineChip } from 'react-icons/hi'
 export default function Page() {
   return (
     <DashLayout>
-
       <div className="h-full w-full flex flex-col gap-6 px-2 py-2  text-white ">
         <div className="border h-[30%] border-primary_9 0 px-4  rounded-xl py-4 flex max-w-[90%]  mx-auto ">
           <div className="h-full">
