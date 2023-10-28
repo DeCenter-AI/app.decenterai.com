@@ -1,17 +1,17 @@
 import notIcon from 'public/notification.png'
-import { DashLayout } from '../dashboard/dashLayout'
+import { DashLayout } from '../dashLayout'
 import Image from 'next/image'
 import { GoSortDesc } from 'react-icons/go'
 import { PiGridFourLight, PiOptionBold, PiChecks } from 'react-icons/pi'
-import { Messages } from '../components/notifications/Notification'
+import { Messages } from './components/Notification'
 import { RxCaretDown } from 'react-icons/rx'
 import Link from 'next/link'
 
 const Notification = () => {
   return (
     <DashLayout>
-      <section className="py-10  font-archivo h-full ">
-        <header className="flex flex-col">
+      <div className="py-6 flex flex-col gap-6  font-archivo h-full w-full ">
+        <div className="flex flex-col  h-[20%]">
           <div className="flex justify-between gap-4 items-center px-6 border border-primary_8 py-3 rounded-lg rounded-b-none">
             <Image src={notIcon} alt="notification" />
             <div className="flex items-center rounded-full bg-primary_9 py-2 px-4  ">
@@ -44,16 +44,20 @@ const Notification = () => {
               Task
             </span>
           </div>
-        </header>
+        </div>
 
-        <main className="flex gap-4 w-full pt-16 items-start ">
-          <Messages />
-          <button className="flex gap-2 items-center bg-primary_10 rounded-full px-4 py-3 mt-2">
-            <PiChecks className="text-primary_8" size={20} />
-            <span className="text-primary_3">Mark all as read</span>
-          </button>
-        </main>
-      </section>
+        <div className="flex h-[80%] gap-4 w-full items-start  ">
+          <div className="h-full w-[85%] ">
+            <Messages />
+          </div>
+          <div className="w-[15%] h-full">
+            <button className="flex gap-2 items-center bg-primary_10 rounded-full px-4 py-3 mt-2">
+              <PiChecks className="text-primary_8" size={20} />
+              <span className="text-primary_3">Mark all as read</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </DashLayout>
   )
 }
