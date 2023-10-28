@@ -1,0 +1,2 @@
+# Exclude the hardhat directory from Vercel deployments
+/hardhat
