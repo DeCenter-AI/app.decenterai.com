@@ -22,7 +22,8 @@
       "@Svg/*": ["./src/svg/*"],
       "@public/*": ["./public/*"],
       "@utils/*": ["./utils/*"],
-      "@enums/*": ["./enums/*"]
+      "@enums/*": ["./enums/*"],
+      "@hardhat/*": ["./hardhat/*"]
     },
     "declaration": true,
     "removeComments": true,
@@ -72,7 +73,7 @@
     "src/app/loading.js",
     "build/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts",  "/hardhat/scripts/deploy.ts"],
+  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "/hardhat/scripts/deploy.ts", "/hardhat/hardhat.config.ts"],
   "references": [
     { "path": "./hardhat/tsconfig.json" },
   ],
