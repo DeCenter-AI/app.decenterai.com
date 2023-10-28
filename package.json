@@ -40,6 +40,7 @@
   "dependencies": {
     "@jest/globals": "^29.7.0",
     "@lighthouse-web3/sdk": "^0.2.8",
+    "@nextui-org/react": "^2.1.13",
     "@prisma/client": "^5.4.2",
     "@rainbow-me/rainbowkit": "^1.1.1",
     "@types/node": "20.6.2",
