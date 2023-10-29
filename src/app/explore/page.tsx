@@ -1,18 +1,19 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import { PiGoogleLogoBold } from 'react-icons/pi'
-import { Web3AuthNoModal } from '@web3auth/no-modal'
-import type { IProvider } from '@web3auth/base'
-import { WALLET_ADAPTERS } from '@web3auth/base'
-import { EthereumPrivateKeyProvider } from '@web3auth/ethereum-provider'
-import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
-import { useRouter } from 'next/navigation'
-import { useUserContext } from '../userContext'
-import { create_user } from '@/lib/prismaUtils'
-import { generateFromEmail } from 'unique-username-generator'
-import { AvatarGenerator } from 'random-avatar-generator'
-import { AppName, Web3AuthConfig, Web3AuthEthPrivateKeyProviderConfig } from '@enums/app'
+import React, {useEffect, useState} from 'react'
+import {PiGoogleLogoBold} from 'react-icons/pi'
+import {Web3AuthNoModal} from '@web3auth/no-modal'
+import type {IProvider} from '@web3auth/base'
+import {WALLET_ADAPTERS} from '@web3auth/base'
+import {EthereumPrivateKeyProvider} from '@web3auth/ethereum-provider'
+import {OpenloginAdapter} from '@web3auth/openlogin-adapter'
+import {useRouter} from 'next/navigation'
+import {useUserContext} from '../userContext'
+import {create_user} from '@/lib/prismaUtils'
+import {generateFromEmail} from 'unique-username-generator'
+import {AvatarGenerator} from 'random-avatar-generator'
+import {AppName} from '@config/app'
+import {Web3AuthConfig, Web3AuthEthPrivateKeyProviderConfig,} from '@config/authConfig'
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
@@ -202,7 +203,7 @@ const Page = () => {
                 className="border flex  items-center justify-center gap-4 border-primary_11 hover:border-primary_7 text-primary_7 font-semibold font-primaryArchivo text-sm w-full h-12 cursor-pointer rounded-xl"
                 onClick={login}
               >
-                <PiGoogleLogoBold size={20} className="text-primary_7" /> Sign up with
+                <PiGoogleLogoBold size={20} className="text-primary_7" /> Continue with
                 Google
               </button>
             </div>

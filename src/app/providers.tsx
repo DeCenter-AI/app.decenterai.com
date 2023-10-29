@@ -10,7 +10,9 @@ import {
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { filecoinCalibration, mainnet, polygon } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
-import { AppName, WagmiProjectId } from '@enums/app'
+import { AppName } from '@config/app'
+import { WagmiProjectId } from '@config/authConfig'
+
 // const lilypad = {
 //   id: 1337,
 //   name: "Lilypad Lalechuza testnet",

@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 import { redirect, usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
@@ -13,18 +13,37 @@ import { IoSettingsOutline } from 'react-icons/io5'
 import { GoBell, GoSearch } from 'react-icons/go'
 import Link from 'next/link'
 import { useUserContext } from '../userContext'
-import { redirect } from 'next/navigation'
+import notIcon from 'public/notification.png'
+import { ModalNotification } from './notifications/components/Notification'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext()
   const pathname = usePathname()
+  const [isNotificationOpen, setNotificationOpen] = useState(false)
+  const [showBackdrop, setShowBackdrop] = useState(false)
+
+  const openNotification = () => {
+    setNotificationOpen(true)
+    setShowBackdrop(true)
+  }
+
+  const closeNotification = () => {
+    setNotificationOpen(false)
+    setShowBackdrop(false)
+  }
 
   const myImageLoader = ({ src }) => {
     return src
   }
   return (
-    <div className="w-screen h-screen flex  bg-primary_12 relative">
-      <aside className="h-full w-[10%] border-r border-primary_8">
+    <div className={`w-screen min-h-screen flex  bg-primary_12 relative `}>
+      {showBackdrop && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+          onClick={closeNotification}
+        />
+      )}
+      <aside className="w-[10%] border-r border-primary_8  h-screen">
         <Link href="/">
           <div className="w-full h-[10%] flex flex-col gap-2 pt-2 items-center justify-center">
             <Image
@@ -113,7 +132,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </aside>
 
-      <main className="h-full w-[90%] ">
+      <main className=" w-[90%] h-screen  ">
         <div className="w-full h-[10%] flex items-center   border-b border-primary_8 px-10">
           <div className="h-full w-[50%] flex items-center">
             <div className="rounded-full h-[60%] max-h-[50px] w-[80%] max-w-[500px]  bg-primary_11 relative text-primary_8 pb-1">
@@ -127,8 +146,8 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </div>
           <div className="h-full w-[50%] flex gap-6 items-center justify-end font-archivo ">
-            <div className="text-primary_8 ">
-              <GoBell size={25} />
+            <div className="text-primary_8  cursor-pointer">
+              <GoBell size={25} onClick={openNotification} />
             </div>
             <button className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl">
               Connect Wallet
@@ -160,8 +179,22 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             )}
           </div>
         </div>
-        <div className="w-full h-[90%] px-10">{children}</div>
+        <div className="w-full h-[90%] px-10 ">{children}</div>
       </main>
+      {isNotificationOpen && (
+        <aside
+          className={`absolute z-50 right-8 mt-14 rounded-3xl max-w-[450px] shadow-xl bg-primary_11 flex flex-col px-4 py-6  gap-6 max-h-screen  `}
+        >
+          <div className="flex justify-between items-center ">
+            <Image src={notIcon} alt="notification" className="w-[30%]" />
+            <Link href="/dashboard/notifications" className="text-sm text-[#C1C1C1]">
+              View All
+            </Link>
+          </div>
+          <ModalNotification />
+          <button>To the top</button>
+        </aside>
+      )}
     </div>
   )
 }

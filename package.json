@@ -35,11 +35,13 @@
     "test:e2e": "MODE=test jest --config ./test/jest-e2e.json --passWithNoTests",
     "test:e2e:watch": "MODE=test jest --watch --no-cache --config ./test/jest-e2e.json",
     "style": "prettier -w .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ngrok": "ngrok http 3000"
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
     "@lighthouse-web3/sdk": "^0.2.8",
+    "@nextui-org/react": "^2.1.13",
     "@prisma/client": "^5.4.2",
     "@rainbow-me/rainbowkit": "^1.1.1",
     "@types/node": "20.6.2",
