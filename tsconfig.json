@@ -22,7 +22,8 @@
       "@Svg/*": ["./src/svg/*"],
       "@public/*": ["./public/*"],
       "@utils/*": ["./utils/*"],
-      "@enums/*": ["./enums/*"]
+      "@enums/*": ["./enums/*"],
+      "@config/*": ["./config/*"]
     },
     "declaration": true,
     "removeComments": true,

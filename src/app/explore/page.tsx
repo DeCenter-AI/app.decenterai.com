@@ -12,7 +12,8 @@ import { useUserContext } from '../userContext'
 import { create_user } from '@/lib/prismaUtils'
 import { generateFromEmail } from 'unique-username-generator'
 import { AvatarGenerator } from 'random-avatar-generator'
-import { AppName, Web3AuthConfig, Web3AuthEthPrivateKeyProviderConfig } from '@enums/app'
+import { AppName } from '@config/app'
+import { Web3AuthConfig, Web3AuthEthPrivateKeyProviderConfig } from '@config/authConfig'
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
