@@ -1,5 +1,5 @@
-import {CHAIN_NAMESPACES} from '@web3auth/base'
-import {Web3AuthNoModalOptions} from '@web3auth/no-modal'
+import { CHAIN_NAMESPACES } from '@web3auth/base'
+import { Web3AuthNoModalOptions } from '@web3auth/no-modal'
 
 export const AppName = 'Decenter AI'
 export const AppDescription = `

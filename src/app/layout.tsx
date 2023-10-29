@@ -1,15 +1,15 @@
 import './globals.css'
-import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import '@rainbow-me/rainbowkit/styles.css'
-import {Providers} from './providers'
-import {ContextProvider} from './userContext'
+import { Providers } from './providers'
+import { ContextProvider } from './userContext'
 import Favicon from '@public/favicon.ico'
 import Favicon16x16 from '@public/favicon-16x16.png'
 import Favicon32x32 from '@public/favicon-32x32.png'
 import SafariPinnedTab from '@public/meta/safari-pinned-tab.svg'
 import AppleTouchIcon from '@public/meta/apple-touch-icon.png'
-import {AppDescription, AppName, AppSiteManifest} from '@enums/app'
+import { AppDescription, AppName, AppSiteManifest } from '@enums/app'
 
 const inter = Inter({ subsets: ['latin'] })
 
