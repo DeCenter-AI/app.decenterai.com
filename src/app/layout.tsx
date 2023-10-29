@@ -1,9 +1,9 @@
 import './globals.css'
-import {Inter} from 'next/font/google'
+import { Inter } from 'next/font/google'
 import '@rainbow-me/rainbowkit/styles.css'
-import {Providers} from './providers'
-import {ContextProvider} from './userContext'
-import {AppMetaData} from "../../config/app";
+import { Providers } from './providers'
+import { ContextProvider } from './userContext'
+import { AppMetaData } from '../../config/app'
 
 const inter = Inter({ subsets: ['latin'] })
 
