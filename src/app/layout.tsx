@@ -3,7 +3,7 @@ import {Inter} from 'next/font/google'
 import '@rainbow-me/rainbowkit/styles.css'
 import {Providers} from './providers'
 import {ContextProvider} from './userContext'
-import {AppMetaData} from "@enums/app";
+import {AppMetaData} from "../../config/app";
 
 const inter = Inter({ subsets: ['latin'] })
 
