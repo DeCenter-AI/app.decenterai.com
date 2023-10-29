@@ -161,7 +161,7 @@ const Page = () => {
         <div className="w-[80%] lg:w-[30%] h-[80%] ">
           <div className="h-[10%] ">
             <h1 className="font-logirentBold text-primary_1 text-center font-bold text-4xl">
-              {' '}
+              {' '} 
               Explore
             </h1>
           </div>
