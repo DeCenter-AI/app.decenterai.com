@@ -10,11 +10,11 @@
   },
   "scripts": {
     "postinstall": "npm run build",
-    "dev": "next dev",
-    "start:dev": "concurrently \"pnpm:dev\" \"pnpm:prisma:generate:watch\"",
     "prebuild": "npm run prisma:generate",
     "build": "next build",
     "start": "next start",
+    "start:dev": "concurrently \"pnpm:dev\" \"pnpm:prisma:generate:watch\"",
+    "dev": "next dev",
     "lint": "next lint",
     "lint:ts": "tsc --noEmit",
     "lint:eslint": "eslint --fix .",
