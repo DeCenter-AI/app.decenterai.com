@@ -1,6 +1,6 @@
 generator client {
   provider            = "prisma-client-js"
-  previewFeatures     = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
+  previewFeatures     = ["tracing", "metrics", "fieldReference", "fullTextIndex"]
   output          = "./generated"
   formatGeneratedCode = false
 }
