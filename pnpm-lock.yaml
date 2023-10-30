@@ -15,8 +15,8 @@ dependencies:
     specifier: ^2.1.13
     version: 2.1.13(@types/react@18.2.21)(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
   '@prisma/client':
-    specifier: ^5.4.2
-    version: 5.4.2(prisma@5.4.2)
+    specifier: ^5.5.2
+    version: 5.5.2(prisma@5.5.2)
   '@rainbow-me/rainbowkit':
     specifier: ^1.1.1
     version: 1.1.1(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)(viem@1.16.0)(wagmi@1.4.3)
@@ -34,16 +34,16 @@ dependencies:
     version: 1.4.3(@types/react@18.2.21)(encoding@0.1.13)(lokijs@1.5.12)(react@18.2.0)(typescript@5.2.2)(viem@1.16.0)
   '@web3auth/base':
     specifier: ^7.0.4
-    version: 7.0.4(@babel/runtime@7.22.15)
+    version: 7.0.4(@babel/runtime@7.23.2)
   '@web3auth/ethereum-provider':
     specifier: ^7.0.4
-    version: 7.0.4(@babel/runtime@7.22.15)(lokijs@1.5.12)
+    version: 7.0.4(@babel/runtime@7.23.2)(lokijs@1.5.12)
   '@web3auth/no-modal':
     specifier: ^7.0.4
-    version: 7.0.4(@babel/runtime@7.22.15)
+    version: 7.0.4(@babel/runtime@7.23.2)
   '@web3auth/openlogin-adapter':
     specifier: ^7.0.4
-    version: 7.0.4(@babel/runtime@7.22.15)(@solana/web3.js@1.78.5)
+    version: 7.0.4(@babel/runtime@7.23.2)(@solana/web3.js@1.87.3)
   argon2:
     specifier: ^0.31.1
     version: 0.31.1(encoding@0.1.13)
@@ -145,7 +145,7 @@ dependencies:
     version: 1.4.3(@types/react@18.2.21)(encoding@0.1.13)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.16.0)
   web3.storage:
     specifier: ^4.5.5
-    version: 4.5.5(encoding@0.1.13)(node-fetch@2.7.0)
+    version: 4.5.5(encoding@0.1.13)(node-fetch@3.3.2)
 
 devDependencies:
   '@types/blob-to-buffer':
@@ -171,7 +171,7 @@ devDependencies:
     version: 8.2.1
   eslint-config-airbnb:
     specifier: 18.2.1
-    version: 18.2.1(eslint-plugin-import@2.28.1)(eslint-plugin-jsx-a11y@6.5.1)(eslint-plugin-react-hooks@4.3.0)(eslint-plugin-react@7.27.0)(eslint@8.49.0)
+    version: 18.2.1(eslint-plugin-import@2.29.0)(eslint-plugin-jsx-a11y@6.5.1)(eslint-plugin-react-hooks@4.3.0)(eslint-plugin-react@7.27.0)(eslint@8.49.0)
   eslint-config-prettier:
     specifier: 8.4.0
     version: 8.4.0(eslint@8.49.0)
@@ -209,8 +209,8 @@ devDependencies:
     specifier: ^15.0.2
     version: 15.0.2
   prisma:
-    specifier: ^5.4.2
-    version: 5.4.2
+    specifier: ^5.5.2
+    version: 5.5.2
   react-devtools:
     specifier: ^4.28.4
     version: 4.28.4
@@ -522,6 +522,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
+
+  /@babel/runtime@7.23.2:
+    resolution: {integrity: sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.0
+    dev: false
 
   /@babel/template@7.22.15:
     resolution: {integrity: sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==}
@@ -2707,8 +2714,8 @@ packages:
     dev: true
     optional: true
 
-  /@prisma/client@5.4.2(prisma@5.4.2):
-    resolution: {integrity: sha512-2xsPaz4EaMKj1WS9iW6MlPhmbqtBsXAOeVttSePp8vTFTtvzh2hZbDgswwBdSCgPzmmwF+tLB259QzggvCmJqA==}
+  /@prisma/client@5.5.2(prisma@5.5.2):
+    resolution: {integrity: sha512-54XkqR8M+fxbzYqe+bIXimYnkkcGqgOh0dn0yWtIk6CQT4IUCAvNFNcQZwk2KqaLU+/1PHTSWrcHtx4XjluR5w==}
     engines: {node: '>=16.13'}
     requiresBuild: true
     peerDependencies:
@@ -2717,16 +2724,16 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574
-      prisma: 5.4.2
+      '@prisma/engines-version': 5.5.1-1.aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
+      prisma: 5.5.2
     dev: false
 
-  /@prisma/engines-version@5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574:
-    resolution: {integrity: sha512-wvupDL4AA1vf4TQNANg7kR7y98ITqPsk6aacfBxZKtrJKRIsWjURHkZCGcQliHdqCiW/hGreO6d6ZuSv9MhdAA==}
+  /@prisma/engines-version@5.5.1-1.aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a:
+    resolution: {integrity: sha512-O+qHFnZvAyOFk1tUco2/VdiqS0ym42a3+6CYLScllmnpbyiTplgyLt2rK/B9BTjYkSHjrgMhkG47S0oqzdIckA==}
     dev: false
 
-  /@prisma/engines@5.4.2:
-    resolution: {integrity: sha512-fqeucJ3LH0e1eyFdT0zRx+oETLancu5+n4lhiYECyEz6H2RDskPJHJYHkVc0LhkU4Uv7fuEnppKU3nVKNzMh8g==}
+  /@prisma/engines@5.5.2:
+    resolution: {integrity: sha512-Be5hoNF8k+lkB3uEMiCHbhbfF6aj1GnrTBnn5iYFT7GEr3TsOEp1soviEcBR0tYCgHbxjcIxJMhdbvxALJhAqg==}
     requiresBuild: true
 
   /@protobufjs/aspromise@1.1.2:
@@ -3699,6 +3706,30 @@ packages:
       - utf-8-validate
     dev: false
 
+  /@solana/web3.js@1.87.3(encoding@0.1.13):
+    resolution: {integrity: sha512-WGLzTZpi00vP443qGK3gL+LZXQJwaWkh6bzNXYpMTCAH2Z102y3YbPWOoQzJUeRSZWSXKh7MFkA3vDMFlMvGZQ==}
+    dependencies:
+      '@babel/runtime': 7.23.2
+      '@noble/curves': 1.2.0
+      '@noble/hashes': 1.3.2
+      '@solana/buffer-layout': 4.0.1
+      agentkeepalive: 4.5.0
+      bigint-buffer: 1.1.5
+      bn.js: 5.2.1
+      borsh: 0.7.0
+      bs58: 4.0.1
+      buffer: 6.0.3
+      fast-stable-stringify: 1.0.0
+      jayson: 4.1.0
+      node-fetch: 2.7.0(encoding@0.1.13)
+      rpc-websockets: 7.6.2
+      superstruct: 0.14.2
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - utf-8-validate
+    dev: false
+
   /@stablelib/aead@1.0.1:
     resolution: {integrity: sha512-q39ik6sxGHewqtO0nP4BuSe3db5G1fEJE8ukvngS2gLkBXyy6E7pLubhbYgnkDFv6V8cWaxcE4Xn0t6LWcJkyg==}
     dev: false
@@ -3884,18 +3915,18 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@toruslabs/base-controllers@4.5.2(@babel/runtime@7.22.15):
+  /@toruslabs/base-controllers@4.5.2(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-DEaeKREzY8OJ74k6nuOP1x2a8Z1HeCfV2uQE835QhLKuCDgqRomDwCwRcrCGT3rqxT/AVhWmBj+ykO/XS/4lZw==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
+      '@babel/runtime': 7.23.2
       '@ethereumjs/util': 9.0.0
       '@metamask/rpc-errors': 6.1.0
       '@toruslabs/broadcast-channel': 9.0.0
-      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.22.15)
+      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.23.2)
       async-mutex: 0.4.0
       bignumber.js: 9.1.2
       bowser: 2.11.0
@@ -3909,14 +3940,14 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@toruslabs/base-session-manager@3.0.0(@babel/runtime@7.22.15):
+  /@toruslabs/base-session-manager@3.0.0(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-+EqwizmSFkVEczUtaw+swbAxRIIxC/EaFE040rwfgC5fixaQMNLw2cVYXWN67Ra47wC9A7Om6xwQTuGFR+dy4w==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
-      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.22.15)
+      '@babel/runtime': 7.23.2
+      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.23.2)
     transitivePeerDependencies:
       - '@sentry/types'
     dev: false
@@ -3959,13 +3990,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@toruslabs/constants@13.0.3(@babel/runtime@7.22.15):
+  /@toruslabs/constants@13.0.3(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-DiksceNFwzV4XBwcPdKpV6tfrvWIxhmwseTJbNnlzdy6uXgzvtagfapu+98pjrkNrjoRLiM17QBgBi8sNw7oGQ==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
+      '@babel/runtime': 7.23.2
     dev: false
 
   /@toruslabs/eccrypto@4.0.0:
@@ -3990,6 +4021,21 @@ packages:
       loglevel: 1.8.1
     dev: false
 
+  /@toruslabs/http-helpers@5.0.0(@babel/runtime@7.23.2):
+    resolution: {integrity: sha512-GmezWz9JeF6YyhjLSm+9XDF4YaeICEckY0Jbo43i86SjhfJYgRWqEi63VSiNsaqc/z810Q0FQvEk1TnBRX2tgA==}
+    engines: {node: '>=18.x', npm: '>=9.x'}
+    peerDependencies:
+      '@babel/runtime': ^7.x
+      '@sentry/types': ^7.x
+    peerDependenciesMeta:
+      '@sentry/types':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.2
+      lodash.merge: 4.6.2
+      loglevel: 1.8.1
+    dev: false
+
   /@toruslabs/metadata-helpers@5.0.0(@babel/runtime@7.22.15):
     resolution: {integrity: sha512-ZUFfOHJVJC53c8wJYHjdF3bIgN2ZvfqehbTZ/zJ7oVFfrrd6O66V3gQ1i1zxBjH3yhOvZKQwc0DaMmh3G0NUXQ==}
     engines: {node: '>=18.x', npm: '>=9.x'}
@@ -4006,15 +4052,31 @@ packages:
       - '@sentry/types'
     dev: false
 
-  /@toruslabs/openlogin-jrpc@5.3.0(@babel/runtime@7.22.15):
+  /@toruslabs/metadata-helpers@5.0.0(@babel/runtime@7.23.2):
+    resolution: {integrity: sha512-ZUFfOHJVJC53c8wJYHjdF3bIgN2ZvfqehbTZ/zJ7oVFfrrd6O66V3gQ1i1zxBjH3yhOvZKQwc0DaMmh3G0NUXQ==}
+    engines: {node: '>=18.x', npm: '>=9.x'}
+    peerDependencies:
+      '@babel/runtime': 7.x
+    dependencies:
+      '@babel/runtime': 7.23.2
+      '@toruslabs/eccrypto': 4.0.0
+      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.23.2)
+      elliptic: 6.5.4
+      ethereum-cryptography: 2.1.2
+      json-stable-stringify: 1.0.2
+    transitivePeerDependencies:
+      - '@sentry/types'
+    dev: false
+
+  /@toruslabs/openlogin-jrpc@5.3.0(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-tM1XHG5UulvENhZYewo9eVWF5r9SffGru8+09qFED7g/PFupKs/rccaXYwyWRGVenQSMgj6ipgUd72zliuen+A==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
+      '@babel/runtime': 7.23.2
       '@metamask/rpc-errors': 6.1.0
-      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.22.15)
+      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.23.2)
       end-of-stream: 1.4.4
       events: 3.3.0
       fast-safe-stringify: 2.1.1
@@ -4025,43 +4087,43 @@ packages:
       - supports-color
     dev: false
 
-  /@toruslabs/openlogin-session-manager@3.0.0(@babel/runtime@7.22.15):
+  /@toruslabs/openlogin-session-manager@3.0.0(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-S+nnZQ+Y+XCHvTYaov3ltiV2hAAPpKpwxvB4TmbMvi7KWOZ8BcUJQykSITlIXV4aE5y5BD96rsmjQ3C3MyVtUQ==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
-      '@toruslabs/base-session-manager': 3.0.0(@babel/runtime@7.22.15)
+      '@babel/runtime': 7.23.2
+      '@toruslabs/base-session-manager': 3.0.0(@babel/runtime@7.23.2)
       '@toruslabs/eccrypto': 4.0.0
-      '@toruslabs/metadata-helpers': 5.0.0(@babel/runtime@7.22.15)
+      '@toruslabs/metadata-helpers': 5.0.0(@babel/runtime@7.23.2)
     transitivePeerDependencies:
       - '@sentry/types'
     dev: false
 
-  /@toruslabs/openlogin-utils@5.3.0(@babel/runtime@7.22.15):
+  /@toruslabs/openlogin-utils@5.3.0(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-WfwadC7ZqKOTVqfI4rFANu7IzEgI7H4A/0TiIQihxHpFWdFM23yVuCCIm5zCzQ1QtA2mwBbBZYwOJ0YHVrV6HQ==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
-      '@toruslabs/constants': 13.0.3(@babel/runtime@7.22.15)
+      '@babel/runtime': 7.23.2
+      '@toruslabs/constants': 13.0.3(@babel/runtime@7.23.2)
       base64url: 3.0.1
     dev: false
 
-  /@toruslabs/openlogin@5.3.0(@babel/runtime@7.22.15):
+  /@toruslabs/openlogin@5.3.0(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-I6bVBPDlqcnF/11+disyS0kUClJLavYcLi3dBEx2a1mEv18jOy1kuG+FSenDMzF733MCk1Y3Iikox0evPzhpvQ==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
+      '@babel/runtime': 7.23.2
       '@toruslabs/broadcast-channel': 8.0.0
       '@toruslabs/eccrypto': 4.0.0
-      '@toruslabs/metadata-helpers': 5.0.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-session-manager': 3.0.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.22.15)
+      '@toruslabs/metadata-helpers': 5.0.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-session-manager': 3.0.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.23.2)
       bowser: 2.11.0
       events: 3.3.0
       loglevel: 1.8.1
@@ -4333,8 +4395,8 @@ packages:
     dependencies:
       '@types/yargs-parser': 21.0.1
 
-  /@types/yauzl@2.10.1:
-    resolution: {integrity: sha512-CHzgNU3qYBnp/O4S3yv2tXPlvMTq0YWSTVg2/JYLqWZGHwwgJGAwd00poay/11asPq8wLFwHzubyInqHIFmmiw==}
+  /@types/yauzl@2.10.2:
+    resolution: {integrity: sha512-Km7XAtUIduROw7QPgvcft0lIupeG8a8rdKL8RiSyKvlE7dYY31fEn41HVuQsRFDuROA8tA4K2UVL+WdfFmErBA==}
     requiresBuild: true
     dependencies:
       '@types/node': 20.6.2
@@ -5133,11 +5195,11 @@ packages:
     resolution: {integrity: sha512-K1undnK70vLLauqdE8bq/l98isTF2FDhcP0UPpXVSjkSWe3xhAn5eRXk5jfA1E5ycNm84Ws/rQFUD7ue11nciw==}
     dev: false
 
-  /@web3auth/base-plugin@7.0.4(@babel/runtime@7.22.15):
+  /@web3auth/base-plugin@7.0.4(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-JTqf4RYcm1QiFq2EQOgHlPFHMcIJy75BnM5nY1kumEqeTuuViz4xuinbLyYdMK163mSXHrZt2cvE19kMVBSPaA==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     dependencies:
-      '@web3auth/base': 7.0.4(@babel/runtime@7.22.15)
+      '@web3auth/base': 7.0.4(@babel/runtime@7.23.2)
     transitivePeerDependencies:
       - '@babel/runtime'
       - '@sentry/types'
@@ -5146,17 +5208,17 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@web3auth/base-provider@7.0.4(@babel/runtime@7.22.15):
+  /@web3auth/base-provider@7.0.4(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-DDE/K6AP2UBRQqBJUoFggGt7ylQ96pexVnaps9Yw8JOtx573yzVUPs2tYEjhxmAfRGgmDD1J8juokgvCEeKf4g==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
+      '@babel/runtime': 7.23.2
       '@metamask/rpc-errors': 6.1.0
-      '@toruslabs/base-controllers': 4.5.2(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.22.15)
-      '@web3auth/base': 7.0.4(@babel/runtime@7.22.15)
+      '@toruslabs/base-controllers': 4.5.2(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.23.2)
+      '@web3auth/base': 7.0.4(@babel/runtime@7.23.2)
       json-rpc-random-id: 1.0.1
     transitivePeerDependencies:
       - '@sentry/types'
@@ -5166,17 +5228,17 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@web3auth/base@7.0.4(@babel/runtime@7.22.15):
+  /@web3auth/base@7.0.4(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-ufpJ0uqOp7k7uGqDS1DohOeIIrsTLUAdyiExM5D+SQYYIXri3M9wbFgyCeAqHbJbfBO6hI9PDcY82QvOGCMI3w==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': ^7.x
     dependencies:
-      '@babel/runtime': 7.22.15
-      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin': 5.3.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.22.15)
+      '@babel/runtime': 7.23.2
+      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin': 5.3.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.23.2)
       jwt-decode: 3.1.2
       loglevel: 1.8.1
       ts-custom-error: 3.3.1
@@ -5187,25 +5249,25 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@web3auth/ethereum-provider@7.0.4(@babel/runtime@7.22.15)(lokijs@1.5.12):
+  /@web3auth/ethereum-provider@7.0.4(@babel/runtime@7.23.2)(lokijs@1.5.12):
     resolution: {integrity: sha512-A0r6O+Bwwx6k1qvB2p5zp3pVJtxxpad0Fv/lotGYh5OMFqi6Ggz1lnYnbQAc4PdznUNVV2zwsQGMi71a4c/JsQ==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.22.15
+      '@babel/runtime': 7.23.2
       '@ethereumjs/common': 4.0.0
       '@ethereumjs/tx': 5.0.0
       '@ethereumjs/util': 9.0.0
       '@metamask/eth-sig-util': 7.0.0
       '@metamask/rpc-errors': 6.1.0
-      '@toruslabs/base-controllers': 4.5.2(@babel/runtime@7.22.15)
-      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.22.15)
+      '@toruslabs/base-controllers': 4.5.2(@babel/runtime@7.23.2)
+      '@toruslabs/http-helpers': 5.0.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.23.2)
       '@walletconnect/legacy-types': 2.0.0
       '@walletconnect/utils': 2.10.2(lokijs@1.5.12)
-      '@web3auth/base': 7.0.4(@babel/runtime@7.22.15)
-      '@web3auth/base-provider': 7.0.4(@babel/runtime@7.22.15)
+      '@web3auth/base': 7.0.4(@babel/runtime@7.23.2)
+      '@web3auth/base-provider': 7.0.4(@babel/runtime@7.23.2)
       assert: 2.1.0
       bignumber.js: 9.1.2
       bn.js: 5.2.1
@@ -5221,19 +5283,19 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@web3auth/no-modal@7.0.4(@babel/runtime@7.22.15):
+  /@web3auth/no-modal@7.0.4(@babel/runtime@7.23.2):
     resolution: {integrity: sha512-STSmN/JtCHx8mRTqVxVaBoWDBBFtykh9cG1Ud06l0qHRItOoWU5oJc0HB2dy9INcBYNe6WUBqgNeZ2jiPFq4Ow==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': ^7.x
     dependencies:
-      '@babel/runtime': 7.22.15
-      '@toruslabs/openlogin': 5.3.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.22.15)
-      '@web3auth/base': 7.0.4(@babel/runtime@7.22.15)
-      '@web3auth/base-plugin': 7.0.4(@babel/runtime@7.22.15)
-      '@web3auth/base-provider': 7.0.4(@babel/runtime@7.22.15)
+      '@babel/runtime': 7.23.2
+      '@toruslabs/openlogin': 5.3.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-jrpc': 5.3.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.23.2)
+      '@web3auth/base': 7.0.4(@babel/runtime@7.23.2)
+      '@web3auth/base-plugin': 7.0.4(@babel/runtime@7.23.2)
+      '@web3auth/base-provider': 7.0.4(@babel/runtime@7.23.2)
     transitivePeerDependencies:
       - '@sentry/types'
       - bufferutil
@@ -5242,19 +5304,19 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@web3auth/openlogin-adapter@7.0.4(@babel/runtime@7.22.15)(@solana/web3.js@1.78.5):
+  /@web3auth/openlogin-adapter@7.0.4(@babel/runtime@7.23.2)(@solana/web3.js@1.87.3):
     resolution: {integrity: sha512-B1yJYrIE3PDiiJcexu5QWH1PWbDh4m1jLIre4OZlGsja2/Rc5z8r51RxKmKRC/vdFfKtPSg5SiTzj/FGNZCzRQ==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': ^7.x
       '@solana/web3.js': ^1.x
     dependencies:
-      '@babel/runtime': 7.22.15
-      '@solana/web3.js': 1.78.5(encoding@0.1.13)
-      '@toruslabs/openlogin': 5.3.0(@babel/runtime@7.22.15)
-      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.22.15)
-      '@web3auth/base': 7.0.4(@babel/runtime@7.22.15)
-      '@web3auth/base-provider': 7.0.4(@babel/runtime@7.22.15)
+      '@babel/runtime': 7.23.2
+      '@solana/web3.js': 1.87.3(encoding@0.1.13)
+      '@toruslabs/openlogin': 5.3.0(@babel/runtime@7.23.2)
+      '@toruslabs/openlogin-utils': 5.3.0(@babel/runtime@7.23.2)
+      '@web3auth/base': 7.0.4(@babel/runtime@7.23.2)
+      '@web3auth/base-provider': 7.0.4(@babel/runtime@7.23.2)
       lodash.merge: 4.6.2
     transitivePeerDependencies:
       - '@sentry/types'
@@ -5973,8 +6035,8 @@ packages:
       ieee754: 1.2.1
     dev: false
 
-  /bufferutil@4.0.7:
-    resolution: {integrity: sha512-kukuqc39WOHtdxtw4UScxF/WVnMFVSQVKhtx3AjZJzhd0RGZZldcrfSEbVsWWe6KNH253574cq5F+wpv0G9pJw==}
+  /bufferutil@4.0.8:
+    resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
     engines: {node: '>=6.14.2'}
     requiresBuild: true
     dependencies:
@@ -6494,6 +6556,11 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
+  /data-uri-to-buffer@4.0.1:
+    resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
+    engines: {node: '>= 12'}
+    dev: false
+
   /date-fns@2.30.0:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
@@ -6673,11 +6740,11 @@ packages:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
     dev: false
 
-  /dns-over-http-resolver@1.2.3(node-fetch@2.7.0):
+  /dns-over-http-resolver@1.2.3(node-fetch@3.3.2):
     resolution: {integrity: sha512-miDiVSI6KSNbi4SVifzO/reD8rMnxgrlnkrlkugOLQpWQTe2qMdHsZp5DmfKjxNE+/T3VAAYLQUZMv9SMr6+AA==}
     dependencies:
       debug: 4.3.4
-      native-fetch: 3.0.0(node-fetch@2.7.0)
+      native-fetch: 3.0.0(node-fetch@3.3.2)
       receptacle: 1.3.2
     transitivePeerDependencies:
       - node-fetch
@@ -6955,7 +7022,7 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  /eslint-config-airbnb-base@14.2.1(eslint-plugin-import@2.28.1)(eslint@8.49.0):
+  /eslint-config-airbnb-base@14.2.1(eslint-plugin-import@2.29.0)(eslint@8.49.0):
     resolution: {integrity: sha512-GOrQyDtVEc1Xy20U7vsB2yAoB4nBlfH5HZJeatRXHleO+OS5Ot+MWij4Dpltw4/DyIkqUfqz1epfhVR5XWWQPA==}
     engines: {node: '>= 6'}
     peerDependencies:
@@ -6964,12 +7031,12 @@ packages:
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 8.49.0
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0)(eslint@8.49.0)
+      eslint-plugin-import: 2.29.0(@typescript-eslint/parser@5.62.0)(eslint@8.49.0)
       object.assign: 4.1.4
       object.entries: 1.1.7
     dev: true
 
-  /eslint-config-airbnb@18.2.1(eslint-plugin-import@2.28.1)(eslint-plugin-jsx-a11y@6.5.1)(eslint-plugin-react-hooks@4.3.0)(eslint-plugin-react@7.27.0)(eslint@8.49.0):
+  /eslint-config-airbnb@18.2.1(eslint-plugin-import@2.29.0)(eslint-plugin-jsx-a11y@6.5.1)(eslint-plugin-react-hooks@4.3.0)(eslint-plugin-react@7.27.0)(eslint@8.49.0):
     resolution: {integrity: sha512-glZNDEZ36VdlZWoxn/bUR1r/sdFKPd1mHPbqUtkctgNG4yT2DLLtJ3D+yCV+jzZCc2V1nBVkmdknOJBZ5Hc0fg==}
     engines: {node: '>= 6'}
     peerDependencies:
@@ -6980,8 +7047,8 @@ packages:
       eslint-plugin-react-hooks: ^4 || ^3 || ^2.3.0 || ^1.7.0
     dependencies:
       eslint: 8.49.0
-      eslint-config-airbnb-base: 14.2.1(eslint-plugin-import@2.28.1)(eslint@8.49.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@5.62.0)(eslint@8.49.0)
+      eslint-config-airbnb-base: 14.2.1(eslint-plugin-import@2.29.0)(eslint@8.49.0)
+      eslint-plugin-import: 2.29.0(@typescript-eslint/parser@5.62.0)(eslint@8.49.0)
       eslint-plugin-jsx-a11y: 6.5.1(eslint@8.49.0)
       eslint-plugin-react: 7.27.0(eslint@8.49.0)
       eslint-plugin-react-hooks: 4.3.0(eslint@8.49.0)
@@ -7114,41 +7181,6 @@ packages:
       - supports-color
     dev: false
 
-  /eslint-plugin-import@2.28.1(@typescript-eslint/parser@5.62.0)(eslint@8.49.0):
-    resolution: {integrity: sha512-9I9hFlITvOV55alzoKBI+K9q74kv0iKMeY6av5+umsNwayt59fz692daGyjR+oStBQgx6nwR9rXldDev3Clw+A==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 5.62.0(eslint@8.49.0)(typescript@5.2.2)
-      array-includes: 3.1.7
-      array.prototype.findlastindex: 1.2.3
-      array.prototype.flat: 1.3.2
-      array.prototype.flatmap: 1.3.2
-      debug: 3.2.7
-      doctrine: 2.1.0
-      eslint: 8.49.0
-      eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint@8.49.0)
-      has: 1.0.3
-      is-core-module: 2.13.0
-      is-glob: 4.0.3
-      minimatch: 3.1.2
-      object.fromentries: 2.0.7
-      object.groupby: 1.0.1
-      object.values: 1.1.7
-      semver: 6.3.1
-      tsconfig-paths: 3.14.2
-    transitivePeerDependencies:
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - supports-color
-    dev: true
-
   /eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.7.2)(eslint-import-resolver-typescript@3.6.1)(eslint@8.49.0):
     resolution: {integrity: sha512-9I9hFlITvOV55alzoKBI+K9q74kv0iKMeY6av5+umsNwayt59fz692daGyjR+oStBQgx6nwR9rXldDev3Clw+A==}
     engines: {node: '>=4'}
@@ -7183,6 +7215,41 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
     dev: false
+
+  /eslint-plugin-import@2.29.0(@typescript-eslint/parser@5.62.0)(eslint@8.49.0):
+    resolution: {integrity: sha512-QPOO5NO6Odv5lpoTkddtutccQjysJuFxoPS7fAHO+9m9udNHvTCPSAMW9zGAYj8lAIdr40I8yPCdUYrncXtrwg==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      '@typescript-eslint/parser': '*'
+      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
+    peerDependenciesMeta:
+      '@typescript-eslint/parser':
+        optional: true
+    dependencies:
+      '@typescript-eslint/parser': 5.62.0(eslint@8.49.0)(typescript@5.2.2)
+      array-includes: 3.1.7
+      array.prototype.findlastindex: 1.2.3
+      array.prototype.flat: 1.3.2
+      array.prototype.flatmap: 1.3.2
+      debug: 3.2.7
+      doctrine: 2.1.0
+      eslint: 8.49.0
+      eslint-import-resolver-node: 0.3.9
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint@8.49.0)
+      hasown: 2.0.0
+      is-core-module: 2.13.1
+      is-glob: 4.0.3
+      minimatch: 3.1.2
+      object.fromentries: 2.0.7
+      object.groupby: 1.0.1
+      object.values: 1.1.7
+      semver: 6.3.1
+      tsconfig-paths: 3.14.2
+    transitivePeerDependencies:
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+    dev: true
 
   /eslint-plugin-jsx-a11y@6.5.1(eslint@8.49.0):
     resolution: {integrity: sha512-sVCFKX9fllURnXT2JwLN5Qgo24Ug5NF6dxhkmxsMEUZhXRcGg+X3e1JbJ84YePQKBl5E0ZjAH5Q4rkdcGY99+g==}
@@ -7586,7 +7653,7 @@ packages:
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
-      '@types/yauzl': 2.10.1
+      '@types/yauzl': 2.10.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7655,6 +7722,14 @@ packages:
     dependencies:
       pend: 1.2.0
     dev: true
+
+  /fetch-blob@3.2.0:
+    resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
+    engines: {node: ^12.20 || >= 14.13}
+    dependencies:
+      node-domexception: 1.0.0
+      web-streams-polyfill: 3.2.1
+    dev: false
 
   /file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
@@ -7759,6 +7834,13 @@ packages:
       mime-types: 2.1.35
     dev: false
 
+  /formdata-polyfill@4.0.10:
+    resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
+    engines: {node: '>=12.20.0'}
+    dependencies:
+      fetch-blob: 3.2.0
+    dev: false
+
   /fraction.js@4.3.6:
     resolution: {integrity: sha512-n2aZ9tNfYDwaHhvFTkhFErqOMIb8uyzSQ+vGJBjZyanAKZVbGUQ1sngfk9FdkBw7G26O7AgNjLcecLffD1c7eg==}
     dev: false
@@ -7826,6 +7908,10 @@ packages:
 
   /function-bind@1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
+
+  /function-bind@1.1.2:
+    resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
+    dev: true
 
   /function.prototype.name@1.1.6:
     resolution: {integrity: sha512-Z5kx79swU5P27WEayXM1tBi5Ze/lbIyiNgU3qyXUOf9b2rgXYyF9Dy9Cx+IQv/Lc8WCG6L82zwUPpSS9hGehIg==}
@@ -8160,6 +8246,13 @@ packages:
       minimalistic-assert: 1.0.1
     dev: false
 
+  /hasown@2.0.0:
+    resolution: {integrity: sha512-vUptKVTpIJhcczKBbgnS+RtcuYMB8+oNzPK2/Hp3hanz8JmpATdmmgLgSaadVREkDm+e2giHwY3ZRkyjSIDDFA==}
+    engines: {node: '>= 0.4'}
+    dependencies:
+      function-bind: 1.1.2
+    dev: true
+
   /help-me@4.2.0:
     resolution: {integrity: sha512-TAOnTB8Tz5Dw8penUuzHVrKNKlCIbwwbHnXraNJxPwf8LRtE2HlM84RYuezMFcwOJmoYOCWVDyJ8TQGxn9PgxA==}
     dependencies:
@@ -8362,7 +8455,7 @@ packages:
     resolution: {integrity: sha512-PuExPYUiu6qMBQb4l06ecm6T6ujzhmh+MeJcW9wa89PoAz5pvd4zPgN5WJV104mb6S2T1AwNIAaB70JNrLQWhg==}
     dev: true
 
-  /ipfs-car@0.7.0(encoding@0.1.13)(node-fetch@2.7.0):
+  /ipfs-car@0.7.0(encoding@0.1.13)(node-fetch@3.3.2):
     resolution: {integrity: sha512-9ser6WWZ1ZMTCGbcVkRXUzOrpQ4SIiLfzIEnk+3LQsXbV09yeZg3ijhRuEXozEIYE68Go9JmOFshamsK9iKlNQ==}
     hasBin: true
     dependencies:
@@ -8373,8 +8466,8 @@ packages:
       browser-readablestream-to-it: 1.0.3
       idb-keyval: 6.2.1
       interface-blockstore: 2.0.3
-      ipfs-core-types: 0.8.4(node-fetch@2.7.0)
-      ipfs-core-utils: 0.12.2(encoding@0.1.13)(node-fetch@2.7.0)
+      ipfs-core-types: 0.8.4(node-fetch@3.3.2)
+      ipfs-core-utils: 0.12.2(encoding@0.1.13)(node-fetch@3.3.2)
       ipfs-unixfs-exporter: 7.0.11
       ipfs-unixfs-importer: 9.0.10(encoding@0.1.13)
       ipfs-utils: 9.0.14(encoding@0.1.13)
@@ -8393,19 +8486,19 @@ packages:
       - supports-color
     dev: false
 
-  /ipfs-core-types@0.8.4(node-fetch@2.7.0):
+  /ipfs-core-types@0.8.4(node-fetch@3.3.2):
     resolution: {integrity: sha512-sbRZA1QX3xJ6ywTiVQZMOxhlhp4osAZX2SXx3azOLxAtxmGWDMkHYt722VV4nZ2GyJy8qyk5GHQIZ0uvQnpaTg==}
     deprecated: js-IPFS has been deprecated in favour of Helia - please see https://github.com/ipfs/js-ipfs/issues/4336 for details
     dependencies:
       interface-datastore: 6.1.1
-      multiaddr: 10.0.1(node-fetch@2.7.0)
+      multiaddr: 10.0.1(node-fetch@3.3.2)
       multiformats: 9.9.0
     transitivePeerDependencies:
       - node-fetch
       - supports-color
     dev: false
 
-  /ipfs-core-utils@0.12.2(encoding@0.1.13)(node-fetch@2.7.0):
+  /ipfs-core-utils@0.12.2(encoding@0.1.13)(node-fetch@3.3.2):
     resolution: {integrity: sha512-RfxP3rPhXuqKIUmTAUhmee6fmaV3A7LMnjOUikRKpSyqESz/DR7aGK7tbttMxkZdkSEr0rFXlqbyb0vVwmn0wQ==}
     deprecated: js-IPFS has been deprecated in favour of Helia - please see https://github.com/ipfs/js-ipfs/issues/4336 for details
     dependencies:
@@ -8414,7 +8507,7 @@ packages:
       browser-readablestream-to-it: 1.0.3
       debug: 4.3.4
       err-code: 3.0.1
-      ipfs-core-types: 0.8.4(node-fetch@2.7.0)
+      ipfs-core-types: 0.8.4(node-fetch@3.3.2)
       ipfs-unixfs: 6.0.9
       ipfs-utils: 9.0.14(encoding@0.1.13)
       it-all: 1.0.6
@@ -8422,8 +8515,8 @@ packages:
       it-peekable: 1.0.3
       it-to-stream: 1.0.0
       merge-options: 3.0.4
-      multiaddr: 10.0.1(node-fetch@2.7.0)
-      multiaddr-to-uri: 8.0.0(node-fetch@2.7.0)
+      multiaddr: 10.0.1(node-fetch@3.3.2)
+      multiaddr-to-uri: 8.0.0(node-fetch@3.3.2)
       multiformats: 9.9.0
       nanoid: 3.3.6
       parse-duration: 1.1.0
@@ -8588,6 +8681,12 @@ packages:
     resolution: {integrity: sha512-Z7dk6Qo8pOCp3l4tsX2C5ZVas4V+UxwQodwZhLopL91TX8UyyHEXafPcyoeeWuLrwzHcr3igO78wNLwHJHsMCQ==}
     dependencies:
       has: 1.0.3
+
+  /is-core-module@2.13.1:
+    resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
+    dependencies:
+      hasown: 2.0.0
+    dev: true
 
   /is-date-object@1.0.5:
     resolution: {integrity: sha512-9YQaSxsAiSwcvS33MBk3wTCVnWK+HhF8VZR2jRxehM16QcVOdHqPn4VPHmRK4lSr38n9JriurInLcP90xsYNfQ==}
@@ -10085,21 +10184,21 @@ packages:
   /ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  /multiaddr-to-uri@8.0.0(node-fetch@2.7.0):
+  /multiaddr-to-uri@8.0.0(node-fetch@3.3.2):
     resolution: {integrity: sha512-dq4p/vsOOUdVEd1J1gl+R2GFrXJQH8yjLtz4hodqdVbieg39LvBOdMQRdQnfbg5LSM/q1BYNVf5CBbwZFFqBgA==}
     deprecated: This module is deprecated, please upgrade to @multiformats/multiaddr-to-uri
     dependencies:
-      multiaddr: 10.0.1(node-fetch@2.7.0)
+      multiaddr: 10.0.1(node-fetch@3.3.2)
     transitivePeerDependencies:
       - node-fetch
       - supports-color
     dev: false
 
-  /multiaddr@10.0.1(node-fetch@2.7.0):
+  /multiaddr@10.0.1(node-fetch@3.3.2):
     resolution: {integrity: sha512-G5upNcGzEGuTHkzxezPrrD6CaIHR9uo+7MwqhNVcXTs33IInon4y7nMiGxl2CY5hG7chvYQUQhz5V52/Qe3cbg==}
     deprecated: This module is deprecated, please upgrade to @multiformats/multiaddr
     dependencies:
-      dns-over-http-resolver: 1.2.3(node-fetch@2.7.0)
+      dns-over-http-resolver: 1.2.3(node-fetch@3.3.2)
       err-code: 3.0.1
       is-ip: 3.1.0
       multiformats: 9.9.0
@@ -10191,6 +10290,14 @@ packages:
       node-fetch: 2.7.0(encoding@0.1.13)
     dev: false
 
+  /native-fetch@3.0.0(node-fetch@3.3.2):
+    resolution: {integrity: sha512-G3Z7vx0IFb/FQ4JxvtqGABsOTIqRWvgQz6e+erkB+JJD6LrszQtMozEHI4EkmgZQvnGHrpLVzUWk7t4sJCIkVw==}
+    peerDependencies:
+      node-fetch: '*'
+    dependencies:
+      node-fetch: 3.3.2
+    dev: false
+
   /native-fetch@4.0.2(undici@5.26.4):
     resolution: {integrity: sha512-4QcVlKFtv2EYVS5MBgsGX5+NWKtbDbIECdUXDBGDMAZXq3Jkv9zf+y8iS7Ub8fEdga3GpYeazp9gauNqXHJOCg==}
     peerDependencies:
@@ -10261,6 +10368,11 @@ packages:
     resolution: {integrity: sha512-vgbBJTS4m5/KkE16t5Ly0WW9hz46swAstv0hYYwMtbG7AznRhNyfLRe8HZAiWIpcHzoO7HxhLuBQj9rJ/Ho0ZA==}
     dev: false
 
+  /node-domexception@1.0.0:
+    resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
+    engines: {node: '>=10.5.0'}
+    dev: false
+
   /node-fetch@2.7.0(encoding@0.1.13):
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
     engines: {node: 4.x || >=6.0.0}
@@ -10272,6 +10384,15 @@ packages:
     dependencies:
       encoding: 0.1.13
       whatwg-url: 5.0.0
+    dev: false
+
+  /node-fetch@3.3.2:
+    resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      data-uri-to-buffer: 4.0.1
+      fetch-blob: 3.2.0
+      formdata-polyfill: 4.0.10
     dev: false
 
   /node-forge@1.3.1:
@@ -10883,13 +11004,13 @@ packages:
       ansi-styles: 5.2.0
       react-is: 18.2.0
 
-  /prisma@5.4.2:
-    resolution: {integrity: sha512-GDMZwZy7mysB2oXU+angQqJ90iaPFdD0rHaZNkn+dio5NRkGLmMqmXs31//tg/qXT3iB0cTQwnGGQNuirhSTZg==}
+  /prisma@5.5.2:
+    resolution: {integrity: sha512-WQtG6fevOL053yoPl6dbHV+IWgKo25IRN4/pwAGqcWmg7CrtoCzvbDbN9fXUc7QS2KK0LimHIqLsaCOX/vHl8w==}
     engines: {node: '>=16.13'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 5.4.2
+      '@prisma/engines': 5.5.2
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
@@ -11520,9 +11641,21 @@ packages:
       '@babel/runtime': 7.22.15
       eventemitter3: 4.0.7
       uuid: 8.3.2
-      ws: 8.14.2(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      ws: 8.14.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
     optionalDependencies:
-      bufferutil: 4.0.7
+      bufferutil: 4.0.8
+      utf-8-validate: 5.0.10
+    dev: false
+
+  /rpc-websockets@7.6.2:
+    resolution: {integrity: sha512-+M1fOYMPxvOQDHbSItkD/an4fRwPZ1Nft1zv48G84S0TyChG2A1GXmjWkbs3o2NxW+q36H9nM2uLo5yojTrPaA==}
+    dependencies:
+      '@babel/runtime': 7.23.2
+      eventemitter3: 4.0.7
+      uuid: 8.3.2
+      ws: 8.14.2(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+    optionalDependencies:
+      bufferutil: 4.0.8
       utf-8-validate: 5.0.10
     dev: false
 
@@ -12893,7 +13026,7 @@ packages:
     engines: {node: '>= 8'}
     dev: false
 
-  /web3.storage@4.5.5(encoding@0.1.13)(node-fetch@2.7.0):
+  /web3.storage@4.5.5(encoding@0.1.13)(node-fetch@3.3.2):
     resolution: {integrity: sha512-ABW1Gk4gpkVkEIgeQTcoqZ1pI1YKQiBbZDploAcyldFWCXtdBpsijrRHg0S5Mwlvllw4E8OsRm/9HG2nVaGsCg==}
     dependencies:
       '@ipld/car': 3.2.4
@@ -12905,7 +13038,7 @@ packages:
       carbites: 1.0.6
       cborg: 1.10.2
       files-from-path: 0.2.6
-      ipfs-car: 0.7.0(encoding@0.1.13)(node-fetch@2.7.0)
+      ipfs-car: 0.7.0(encoding@0.1.13)(node-fetch@3.3.2)
       libp2p-crypto: 0.21.2
       p-retry: 4.6.2
       streaming-iterables: 6.2.0
@@ -13099,7 +13232,7 @@ packages:
         optional: true
     dev: false
 
-  /ws@8.14.2(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+  /ws@8.14.2(bufferutil@4.0.8)(utf-8-validate@5.0.10):
     resolution: {integrity: sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -13111,7 +13244,7 @@ packages:
       utf-8-validate:
         optional: true
     dependencies:
-      bufferutil: 4.0.7
+      bufferutil: 4.0.8
       utf-8-validate: 5.0.10
     dev: false
 
