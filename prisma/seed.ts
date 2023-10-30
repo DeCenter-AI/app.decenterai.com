@@ -1,5 +1,5 @@
 import {PrismaClient} from '@prisma/client'
-import {LIGHTHOUSE} from '@enums/ipfsProviders'
+import {IPFSProviders, LIGHTHOUSE} from '@enums/ipfsProviders'
 
 const prisma = new PrismaClient()
 
@@ -35,17 +35,39 @@ async function main() {
   }
   const user1 = await create_user(hiro)
 
+  const modelInput = {
+    cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
+    // @ts-ignore FIXME:
+    provider: LIGHTHOUSE,
+  }
+
   const tr1 = await prisma.trainingRequest.create({
     data: {
       userId: user1.id,
-      inputs: {
-        cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
-        // @ts-ignore FIXME:
-        provider: LIGHTHOUSE,
+      // @ts-ignore FIXME:
+      inputs: modelInput ,
+      config: {
+        trainScript:'linear-regression.ipynb',
+        inputArchive: `/inputs/${modelInput.cid}`
       }
     },
   })
   console.log({ orderReq1: tr1 })
+
+  const m1 = await prisma.model.create({
+    data:{
+      userId: user1.id,
+      name: "Prisma Seed Model",
+      description: "seeded by prisma",
+      trainingRequestId: tr1.id,
+      data: {
+          cid: "QmTsdCTu3MNFQWWQS9oYrrH1gwYcVADFZXRUbzbcZjkSi7",
+          provider: IPFSProviders.IPFS,
+      },
+    }
+  })
+
+  console.log({m1})
 
 }
 
