@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -58,7 +58,8 @@
     "src/app/demo/page.tsx",
     "src/app/test/page.jsx",
     "test/jest-e2e.ts",
-    "tsconfig.json"
+    "tsconfig.json",
+    "tsconfig.node.json"
   ],
 
   "include": [
@@ -71,7 +72,9 @@
     ".next/types/**/*.ts",
     "src/app/userContext.tsx",
     "src/app/loading.js",
-    "build/types/**/*.ts"
+    "build/types/**/*.ts",
+    "prisma/generated/**/*.ts",
+    "enums/**/*.ts",
   ],
   "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
 }
