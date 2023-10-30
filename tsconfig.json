@@ -67,8 +67,6 @@
     "src/**/*.tsx",
     "test/**/*.ts",
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/userContext.tsx",
     "src/app/loading.js",
