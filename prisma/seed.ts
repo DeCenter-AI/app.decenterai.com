@@ -62,6 +62,7 @@ async function main() {
       trainingRequestId: tr1.id,
       data: {
           cid: "QmTsdCTu3MNFQWWQS9oYrrH1gwYcVADFZXRUbzbcZjkSi7",
+        // @ts-ignore
           provider: IPFSProviders.IPFS,
       },
     }
