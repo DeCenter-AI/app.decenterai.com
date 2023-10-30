@@ -13,11 +13,6 @@ async function create_user(dto) {
   return user
 }
 
-function addDays(date: Date, days: number): Date {
-  date.setDate(date.getDate() + days)
-  return date
-}
-
 async function main() {
   // await prisma.user.deleteMany()
 
@@ -40,29 +35,21 @@ async function main() {
   }
   const user1 = await create_user(hiro)
 
-  const inputDataset = {
-    cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
-    provider: LIGHTHOUSE,
-  }
-
-  const inputArchive = await prisma.dataStore.upsert({
-    create: inputDataset,
-    update: inputDataset,
-    where: {
-      cid: inputDataset.cid,
-    },
-  })
-
-  console.log({ inputArchive })
-
-  const orderReq1 = await prisma.trainingRequest.create({
+  const tr1 = await prisma.trainingRequest.create({
     data: {
       userId: user1.id,
-      cid: inputDataset.cid,
+      inputs: {
+        cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
+        // @ts-ignore FIXME:
+        provider: LIGHTHOUSE,
+      }
     },
   })
+  console.log({ orderReq1: tr1 })
 
-  console.log({ orderReq1 })
+
+
+
 }
 
 main()
