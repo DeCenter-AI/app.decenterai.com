@@ -51,18 +51,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Prisma Migration
-        continue-on-error: true
-        run: |
-          echo "Migrating DB"
-          #npx prisma migrate reset --force
-          npx prisma migrate deploy
-
-      - name: Reset the DB
-        if: ${{ failure() }}
-        run: |
-          npx prisma migrate dev
-
       - name: Run tests
         run: npm run test
 
