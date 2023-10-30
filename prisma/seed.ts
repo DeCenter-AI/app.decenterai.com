@@ -47,9 +47,6 @@ async function main() {
   })
   console.log({ orderReq1: tr1 })
 
-
-
-
 }
 
 main()
