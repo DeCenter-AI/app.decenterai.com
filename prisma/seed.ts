@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 // FIXME: use @enums, @utils
-import { IPFSProviders, LIGHTHOUSE } from '../enums/ipfsProviders'
-import { getTimeNow } from '../utils/time'
+import { IPFSProviders, LIGHTHOUSE } from "@enums/ipfsProviders'
+import { getTimeNow } from '@utils/time'
 
 const prisma = new PrismaClient()
 
