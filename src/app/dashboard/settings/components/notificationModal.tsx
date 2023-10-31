@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 function NotificationModal({ show, onClose }) {
   // Define the state and logic for the Notification Modal
-  const [notificationContent, setNotificationContent] = useState('');
+  const [notificationContent, setNotificationContent] = useState('')
 
   return (
     <div className={`modal ${show ? 'block' : 'hidden'}`}>
@@ -13,16 +13,15 @@ function NotificationModal({ show, onClose }) {
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-primary_11 outline-none focus:outline-none">
             {/*header*/}
             <div className="flex items-start justify-between p-5 rounded-t-3xl">
-              <h3 className="text-2xl font-semibold font-logirentBold">
-                Notification
-              </h3>
+              <h3 className="text-2xl font-semibold font-logirentBold">Notification</h3>
             </div>
             {/*body*/}
             <div className="relative px-6 flex-auto">
               {notificationContent}
               <div className="pb-4 border-b-2 mb-6 border-primary_9">
                 <span className="text-xs text-primary_7">
-                  We may still send you important notifications about your account outside of your notification settings.
+                  We may still send you important notifications about your account outside
+                  of your notification settings.
                 </span>
               </div>
               <div className="flex justify-between">
@@ -56,7 +55,7 @@ function NotificationModal({ show, onClose }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default NotificationModal;
+export default NotificationModal
