@@ -1,7 +1,7 @@
 generator client {
   provider            = "prisma-client-js"
   previewFeatures     = ["tracing", "metrics", "fieldReference", "fullTextIndex"]
-  output          = "./generated"
+  // output          = "./generated" FIXME causes conflicts with /node_modules/.pnpm/@prisma+client@5.4.2_prisma@5.4.2/node_modules/.prisma/client/schema.prisma. Make sure to remove it
   formatGeneratedCode = false
 }
 
