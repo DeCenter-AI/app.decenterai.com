@@ -13,11 +13,25 @@ async function create_user(dto) {
   return user
 }
 
+function getCurrentDateInDDMMYYYYFormat() {
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so we add 1.
+  const year = today.getFullYear();
+
+  return `${day}-${month}-${year}`;
+}
+
+function addDays(date: Date, days: number): Date {
+  date.setDate(date.getDate() + days)
+  return date
+}
+
 async function main() {
   // await prisma.user.deleteMany()
 
   const hiro = {
-    email: 'hiro@decenterai.com',
+    email: `hiro-${getCurrentDateInDDMMYYYYFormat()}@decenterai.com`,
     password: 'hiro@1234',
   }
   const deleteHiro = await prisma.user.findFirst({
