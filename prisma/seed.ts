@@ -24,6 +24,8 @@ async function main() {
   }
   console.log({hiro})
 
+  /*
+  // Skipping due to relation conflicts, go to do cascade
   const deleteHiro = await prisma.user.findFirst({
     where: {
       email: hiro.email,
@@ -36,7 +38,7 @@ async function main() {
         email: hiro.email,
       },
     })
-  }
+  }*/
   const user1 = await create_user(hiro)
 
   const modelInput = {
