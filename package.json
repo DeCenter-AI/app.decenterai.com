@@ -65,6 +65,7 @@
     "fs": "0.0.1-security",
     "jszip": "^3.10.1",
     "lokijs": "^1.5.12",
+    "moment": "^2.29.4",
     "multiformats": "^12.1.2",
     "next": "13.4.19",
     "pino-pretty": "^10.2.3",

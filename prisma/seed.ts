@@ -1,5 +1,6 @@
 import {PrismaClient} from '@prisma/client'
 import {IPFSProviders, LIGHTHOUSE} from '../enums/ipfsProviders'
+import {getCurrentDateInDDMMYYYYFormat} from "../utils/time";
 
 const prisma = new PrismaClient()
 
@@ -11,20 +12,6 @@ async function create_user(dto) {
   })
   console.log({ created: user })
   return user
-}
-
-function getCurrentDateInDDMMYYYYFormat() {
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, '0');
-  const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so we add 1.
-  const year = today.getFullYear();
-
-  return `${day}-${month}-${year}`;
-}
-
-function addDays(date: Date, days: number): Date {
-  date.setDate(date.getDate() + days)
-  return date
 }
 
 async function main() {
