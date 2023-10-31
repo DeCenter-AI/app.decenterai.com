@@ -34,11 +34,11 @@ Versions Affected:
 
 **Environment:**
 
-- [x] [Decenter-AI](https://decenter-ai.streamlit.app)
-- [ ] [Local](https://localhost:8501)
+- [x] [Decenter-AI](https://app.decenterai.com/explore)
+- [ ] [Local](https://localhost:3000)
 - [ ] [Public Hosted]()
 
-_**Ignore the following for  [Decenter-AI](https://decenter-ai.streamlit.app)**_
+_**Ignore the following for  [Decenter-AI](https://app.decenterai.com/explore)**_
 
 - Python Version:
 - Operating System:
