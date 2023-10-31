@@ -1,8 +1,7 @@
-import {PrismaClient} from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 // FIXME: use @enums, @utils
-import {IPFSProviders, LIGHTHOUSE} from '../enums/ipfsProviders'
-import {getTimeNow} from "../utils/time";
-
+import { IPFSProviders, LIGHTHOUSE } from '../enums/ipfsProviders'
+import { getTimeNow } from '../utils/time'
 
 const prisma = new PrismaClient()
 
@@ -20,7 +19,7 @@ async function main() {
   // await prisma.user.deleteMany()
 
   const hiro = {
-    email: `hiro-${getTimeNow("DD-MM-YYYY-HH-mm-ss")}@decenterai.com`,
+    email: `hiro-${getTimeNow('DD-MM-YYYY-HH-mm-ss')}@decenterai.com`,
     password: 'hiro@1234',
   }
   // console.log({hiro})
@@ -50,31 +49,30 @@ async function main() {
   const tr1 = await prisma.trainingRequest.create({
     data: {
       userId: user1.id,
-      inputs: modelInput ,
+      inputs: modelInput,
       config: {
-        trainScript:'linear-regression.ipynb',
-        inputArchive: `/inputs/${modelInput.cid}`
-      }
+        trainScript: 'linear-regression.ipynb',
+        inputArchive: `/inputs/${modelInput.cid}`,
+      },
     },
   })
   console.log({ orderReq1: tr1 })
 
   const m1 = await prisma.model.create({
-    data:{
+    data: {
       userId: user1.id,
-      name: "Prisma Seed Model",
-      description: "seeded by prisma",
+      name: 'Prisma Seed Model',
+      description: 'seeded by prisma',
       trainingRequestId: tr1.id,
       data: {
-          cid: "QmTsdCTu3MNFQWWQS9oYrrH1gwYcVADFZXRUbzbcZjkSi7",
+        cid: 'QmTsdCTu3MNFQWWQS9oYrrH1gwYcVADFZXRUbzbcZjkSi7',
         // @ts-ignore
-          provider: IPFSProviders.IPFS,
+        provider: IPFSProviders.IPFS,
       },
-    }
+    },
   })
 
-  console.log({m1})
-
+  console.log({ m1 })
 }
 
 main()
