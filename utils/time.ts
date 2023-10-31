@@ -9,12 +9,13 @@ export function getCurrentDateInDDMMYYYYFormat() {
     return `${day}-${month}-${year}`;
 }
 
-function getCurrentDate() {
+export function getTimeNow(format:string=moment.defaultFormat) {
+    // 'DD-MM-YYYY'
     const today = moment();
-    return today.format('DD-MM-YYYY');
+    return today.format(format);
 }
 
-function addDays(date: Date, days: number): Date {
+export function addDays(date: Date, days: number): Date {
     date.setDate(date.getDate() + days)
     return date
 }

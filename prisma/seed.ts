@@ -1,6 +1,7 @@
 import {PrismaClient} from '@prisma/client'
 import {IPFSProviders, LIGHTHOUSE} from '../enums/ipfsProviders'
-import {getCurrentDateInDDMMYYYYFormat} from "../utils/time";
+import {getTimeNow} from "../utils/time";
+
 
 const prisma = new PrismaClient()
 
@@ -18,9 +19,11 @@ async function main() {
   // await prisma.user.deleteMany()
 
   const hiro = {
-    email: `hiro-${getCurrentDateInDDMMYYYYFormat()}@decenterai.com`,
+    email: `hiro-${getTimeNow("DD-MM-YYYY-HH-mm-ss")}@decenterai.com`,
     password: 'hiro@1234',
   }
+  console.log({hiro})
+
   const deleteHiro = await prisma.user.findFirst({
     where: {
       email: hiro.email,
@@ -38,14 +41,12 @@ async function main() {
 
   const modelInput = {
     cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
-    // @ts-ignore FIXME:
     provider: LIGHTHOUSE,
   }
 
   const tr1 = await prisma.trainingRequest.create({
     data: {
       userId: user1.id,
-      // @ts-ignore FIXME:
       inputs: modelInput ,
       config: {
         trainScript:'linear-regression.ipynb',
