@@ -1,13 +1,14 @@
 ---
 name: Bug
 about: Report a bug
-title: "bug: "
+title: 'bug: '
 labels: bug
 ---
 
 **Bug Description:**
 
-[Describe the bug in detail here. Include any error messages, unexpected behavior, or other relevant information.]
+[Describe the bug in detail here. Include any error messages, unexpected behavior, or
+other relevant information.]
 
 Versions Affected:
 
@@ -17,7 +18,8 @@ Versions Affected:
 
 **Steps to Reproduce:**
 
-1. [Provide a step-by-step guide on how to reproduce the bug. Include any specific inputs or configurations needed.]
+1. [Provide a step-by-step guide on how to reproduce the bug. Include any specific inputs
+   or configurations needed.]
 2. [Continue with additional steps if necessary.]
 
 **Expected Behavior:**
@@ -30,7 +32,8 @@ Versions Affected:
 
 **Additional Information:**
 
-[Include any additional information that may be helpful in understanding and resolving the bug. This may include screenshots, code snippets, or logs.]
+[Include any additional information that may be helpful in understanding and resolving the
+bug. This may include screenshots, code snippets, or logs.]
 
 **Environment:**
 
@@ -38,11 +41,11 @@ Versions Affected:
 - [ ] [Local](https://localhost:3000)
 - [ ] [Public Hosted]()
 
-_**Ignore the following for  [Decenter-AI](https://app.decenterai.com/explore)**_
+_**Ignore the following for [Decenter-AI](https://app.decenterai.com/explore)**_
 
 - Python Version:
 - Operating System:
 
 **Relevant Code Snippet:**
 
-[//]: # ( Optional)
+[//]: # ' Optional'
