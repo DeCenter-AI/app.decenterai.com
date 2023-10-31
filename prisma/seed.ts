@@ -22,7 +22,7 @@ async function main() {
     email: `hiro-${getTimeNow("DD-MM-YYYY-HH-mm-ss")}@decenterai.com`,
     password: 'hiro@1234',
   }
-  console.log({hiro})
+  // console.log({hiro})
 
   /*
   // Skipping due to relation conflicts, go to do cascade
