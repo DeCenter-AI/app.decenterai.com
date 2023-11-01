@@ -72,13 +72,10 @@ export default function Page() {
           </div>
 
           <div className=" w-[85%]  h-full  ">
-
-            <div className='w-full h-[80%] flex flex-col gap-6  overflow-y-scroll'>
-
+            <div className="w-full h-[80%] flex flex-col gap-6  overflow-y-scroll">
               <div className=" border border-primary_9 flex px-5 py-3 items-center rounded-xl  h-[170px] min-h-[170px]">
-
                 <div className="w-[80%] h-full">
-                  <div className=' flex h-[25%] items-start '>
+                  <div className=" flex h-[25%] items-start ">
                     <span className="bg-primary_11 rounded-full text-primary_8 py-1 px-3">
                       Text Generation
                     </span>
@@ -110,9 +107,8 @@ export default function Page() {
                 <div className="w-[20%] h-full bg-primary_11 "></div>
               </div>
               <div className=" border border-primary_9 flex px-5 py-3 items-center rounded-xl  h-[170px] min-h-[170px]">
-
                 <div className="w-[80%] h-full">
-                  <div className=' flex h-[25%] items-start '>
+                  <div className=" flex h-[25%] items-start ">
                     <span className="bg-primary_11 rounded-full text-primary_8 py-1 px-3">
                       Text Generation
                     </span>
@@ -143,11 +139,7 @@ export default function Page() {
 
                 <div className="w-[20%] h-full bg-primary_11 "></div>
               </div>
-
-
-
             </div>
-
 
             <div className="flex h-[20%] justify-center text-primary_7  items-center ">
               <div>
@@ -159,17 +151,10 @@ export default function Page() {
               <div>
                 <button className="w-24 bg-primary_11 py-2 rounded-full">Previous</button>
               </div>
-
             </div>
           </div>
-
-
-
         </div>
-
-
       </div>
-
     </DashLayout>
   )
 }
