@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { PiGoogleLogoBold } from 'react-icons/pi'
 import { Web3AuthNoModal } from '@web3auth/no-modal'
-import { IProvider} from '@web3auth/base'
+import { IProvider } from '@web3auth/base'
 import { WALLET_ADAPTERS, CHAIN_NAMESPACES } from '@web3auth/base'
 import { EthereumPrivateKeyProvider } from '@web3auth/ethereum-provider'
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
@@ -22,11 +22,11 @@ const Page = () => {
   const { user, setUser } = useUserContext()
   const [email, setEmail] = useState<string>('')
   const generator = new AvatarGenerator()
-  
+
   useEffect(() => {
     const init = async () => {
       try {
-        console.log(process.env.NEXT_PUBLIC_AUTH_CID, process.env.NEXT_PUBLIC_GOOGLE_CID);
+        console.log(process.env.NEXT_PUBLIC_AUTH_CID, process.env.NEXT_PUBLIC_GOOGLE_CID)
         const web3auth = new Web3AuthNoModal({
           // @note: TODO: change to mainnet once ready for prod
           clientId: process.env.NEXT_PUBLIC_AUTH_CID,
@@ -63,8 +63,8 @@ const Page = () => {
             loginConfig: {
               google: {
                 name: 'Google Login',
-                verifier: "decenterai-google-auth",
-                typeOfLogin: "google",
+                verifier: 'decenterai-google-auth',
+                typeOfLogin: 'google',
                 clientId: process.env.NEXT_PUBLIC_GOOGLE_CID,
               },
             },
@@ -98,11 +98,11 @@ const Page = () => {
     }
     try {
       const web3authProvider = await web3auth.connectTo(WALLET_ADAPTERS.OPENLOGIN, {
-        loginProvider: "google",
+        loginProvider: 'google',
       })
       setProvider(web3authProvider)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
@@ -134,7 +134,7 @@ const Page = () => {
       const user = await web3auth.getUserInfo()
       return user
     } catch (error) {
-      console.log(error);
+      console.log(error)
       console.log('User not logged in')
       return null
     }
@@ -151,7 +151,7 @@ const Page = () => {
 
   if (web3auth) {
     getUserInfo().then(async (res) => {
-      console.log(res);
+      console.log(res)
       if (res !== null) {
         const user_data = {
           email: res.email,

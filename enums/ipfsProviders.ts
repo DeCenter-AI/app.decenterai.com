@@ -11,9 +11,9 @@ export const S3: IPFSProvider = 'S3'
     INFURA='INFURA'
     S3='S3'
 }*/
-export const IPFSProviders =  {
-    LIGHTHOUSE : 'LIGHTHOUSE',
-    IPFS:'IPFS',
-    INFURA:'INFURA',
-    S3:'S3',
+export const IPFSProviders = {
+  LIGHTHOUSE: 'LIGHTHOUSE',
+  IPFS: 'IPFS',
+  INFURA: 'INFURA',
+  S3: 'S3',
 }

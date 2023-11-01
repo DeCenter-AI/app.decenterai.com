@@ -72,7 +72,7 @@
     "src/app/loading.js",
     "build/types/**/*.ts",
     "prisma/generated/**/*.ts",
-    "enums/**/*.ts",
+    "enums/**/*.ts"
   ],
   "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
 }
