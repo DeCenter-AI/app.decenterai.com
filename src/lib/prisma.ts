@@ -34,7 +34,7 @@ export default prisma
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 prisma.$on('query', (e) => {
-  console.log(chalkStderr.bgGreen('Query: ') + e.query + '\n Params: '+ e.params+ '\n Time: '+ e.timestamp)
+  console.log(chalkStderr.bgGreen('Query: ') + e.query + '\n Time: '+ e.timestamp)
 })
 
 prisma.$on('error', (e)=>{
