@@ -1,30 +1,29 @@
 generator client {
   provider            = "prisma-client-js"
-  previewFeatures     = ["tracing", "metrics", "fieldReference", "fullTextIndex", "postgresqlExtensions"]
-  // output          = "./generated"
+  previewFeatures     = ["tracing", "metrics", "fieldReference", "fullTextIndex"]
+  // output          = "./generated" FIXME causes conflicts with /node_modules/.pnpm/@prisma+client@5.4.2_prisma@5.4.2/node_modules/.prisma/client/schema.prisma. Make sure to remove it
   formatGeneratedCode = false
 }
 
 datasource db {
-  provider = "cockroachdb"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id Int @id @default(sequence(minValue: 1))
-
-  web3AuthId String? @map("web3authId") @db.String()
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
 
   userName String? @unique
   email    String? @unique
-  password String? // hash
 
-  firstName String?
-  lastName  String?
+  name         String?
+  profileImage String?
 
-  createdAt    DateTime          @default(now()) @db.Timestamptz()
-  updatedAt    DateTime          @updatedAt @db.Timestamptz()
+  createdAt    DateTime          @default(now()) @db.Timestamp
+  updatedAt    DateTime          @updatedAt @db.Timestamp
   OrderRequest TrainingRequest[]
+
+  models Model[]
 
   @@map("users")
 }
@@ -34,19 +33,21 @@ enum Category {
 }
 
 model Model {
-  id          Int        @id @default(sequence(minValue: 1))
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  description String
-  category    Category[] // can be String[] FIXME unsure
+  description String? @default("Trained by DecenterAI") //FIXME:
+  category    Category[]
 
-  trainingRequestId Int
-  trainingRequest   TrainingRequest @relation(fields: [trainingRequestId], references: [id])
+  userId String @db.ObjectId
+  user User @relation(fields: [userId], references: [id])
 
-  cid       String
-  DataStore DataStore @relation(fields: [cid], references: [cid])
+  trainingRequestId String? @db.ObjectId
+  trainingRequest   TrainingRequest? @relation(fields: [trainingRequestId], references: [id])
 
-  createdAt DateTime @default(now()) @db.Timestamptz()
-  updatedAt DateTime @updatedAt @db.Timestamptz()
+  data DataStore
+
+  createdAt DateTime @default(now()) @db.Timestamp
+  updatedAt DateTime @updatedAt @db.Timestamp
 
   @@map("models")
 }
@@ -58,31 +59,26 @@ enum IPFSProvider {
   S3
 }
 
-model DataStore {
-  id       Int          @id @default(sequence(minValue: 1))
-  cid      String       @unique
+type DataStore {
+  cid      String
   provider IPFSProvider @default(LIGHTHOUSE)
+}
 
-  createdAt DateTime @default(now()) @db.Timestamptz()
-  updatedAt DateTime @updatedAt @db.Timestamptz()
-
-  TrainingRequest TrainingRequest[]
-  Model           Model[]
-
-  @@map("datastores")
+type ModelTrainConfig {
+  trainScript String
+  inputArchive String
 }
 
 model TrainingRequest {
-  id     Int  @id @default(sequence(minValue: 1))
-  userId Int
-  user   User @relation(fields: [userId], references: [id])
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  userId String? @db.ObjectId
+  user   User? @relation(fields: [userId], references: [id])
 
-  cid String
+  inputs DataStore
+  config ModelTrainConfig
 
-  createdAt DateTime @default(now()) @db.Timestamptz()
-  updatedAt DateTime @updatedAt @db.Timestamptz()
-
-  DataStore DataStore @relation(fields: [cid], references: [cid])
+  createdAt DateTime @default(now()) @db.Timestamp
+  updatedAt DateTime @updatedAt @db.Timestamp
 
   Model Model[]
 

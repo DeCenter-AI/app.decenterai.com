@@ -1,33 +1,31 @@
 import { PrismaClient } from '@prisma/client'
-import * as argon from 'argon2'
-import { LIGHTHOUSE } from '../enums/ipfsProviders'
+// FIXME: use @enums, @utils
+import { IPFSProviders, LIGHTHOUSE } from '../enums/ipfsProviders'
+import { getTimeNow } from '../utils/time'
 
 const prisma = new PrismaClient()
 
 async function create_user(dto) {
-  const hash = await argon.hash(dto.password)
   const user = await prisma.user.create({
     data: {
       email: dto.email,
-      password: hash,
     },
   })
   console.log({ created: user })
   return user
 }
 
-function addDays(date: Date, days: number): Date {
-  date.setDate(date.getDate() + days)
-  return date
-}
-
 async function main() {
   // await prisma.user.deleteMany()
 
   const hiro = {
-    email: 'hiro@decenterai.com',
+    email: `hiro-${getTimeNow('DD-MM-YYYY-HH-mm-ss')}@decenterai.com`,
     password: 'hiro@1234',
   }
+  // console.log({hiro})
+
+  /*
+  // Skipping due to relation conflicts, go to do cascade
   const deleteHiro = await prisma.user.findFirst({
     where: {
       email: hiro.email,
@@ -40,32 +38,41 @@ async function main() {
         email: hiro.email,
       },
     })
-  }
+  }*/
   const user1 = await create_user(hiro)
 
-  const inputDataset = {
+  const modelInput = {
     cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
     provider: LIGHTHOUSE,
   }
 
-  const inputArchive = await prisma.dataStore.upsert({
-    create: inputDataset,
-    update: inputDataset,
-    where: {
-      cid: inputDataset.cid,
-    },
-  })
-
-  console.log({ inputArchive })
-
-  const orderReq1 = await prisma.trainingRequest.create({
+  const tr1 = await prisma.trainingRequest.create({
     data: {
       userId: user1.id,
-      cid: inputDataset.cid,
+      inputs: modelInput,
+      config: {
+        trainScript: 'linear-regression.ipynb',
+        inputArchive: `/inputs/${modelInput.cid}`,
+      },
+    },
+  })
+  console.log({ orderReq1: tr1 })
+
+  const m1 = await prisma.model.create({
+    data: {
+      userId: user1.id,
+      name: 'Prisma Seed Model',
+      description: 'seeded by prisma',
+      trainingRequestId: tr1.id,
+      data: {
+        cid: 'QmTsdCTu3MNFQWWQS9oYrrH1gwYcVADFZXRUbzbcZjkSi7',
+        // @ts-ignore
+        provider: IPFSProviders.IPFS,
+      },
     },
   })
 
-  console.log({ orderReq1 })
+  console.log({ m1 })
 }
 
 main()

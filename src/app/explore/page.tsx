@@ -3,12 +3,16 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { PiGoogleLogoBold } from 'react-icons/pi'
 import { Web3AuthNoModal } from '@web3auth/no-modal'
-import type { IProvider } from '@web3auth/base'
-import { CHAIN_NAMESPACES, WALLET_ADAPTERS } from '@web3auth/base'
+import { IProvider} from '@web3auth/base'
+import { WALLET_ADAPTERS, CHAIN_NAMESPACES } from '@web3auth/base'
 import { EthereumPrivateKeyProvider } from '@web3auth/ethereum-provider'
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
 import { useRouter } from 'next/navigation'
 import { useUserContext } from '../userContext'
+import { create_user } from '@/lib/prismaUtils'
+import { generateFromEmail } from 'unique-username-generator'
+import { AvatarGenerator } from 'random-avatar-generator'
+import { AppName } from '@config/app'
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
@@ -17,14 +21,15 @@ const Page = () => {
   const { push } = useRouter()
   const { user, setUser } = useUserContext()
   const [email, setEmail] = useState<string>('')
-
-  const clientId: string = process.env.NEXT_PUBLIC_AUTH_CID
-
+  const generator = new AvatarGenerator()
+  
   useEffect(() => {
     const init = async () => {
       try {
+        console.log(process.env.NEXT_PUBLIC_AUTH_CID, process.env.NEXT_PUBLIC_GOOGLE_CID);
         const web3auth = new Web3AuthNoModal({
-          clientId,
+          // @note: TODO: change to mainnet once ready for prod
+          clientId: process.env.NEXT_PUBLIC_AUTH_CID,
           web3AuthNetwork: 'sapphire_devnet',
           chainConfig: {
             chainNamespace: CHAIN_NAMESPACES.EIP155,
@@ -32,7 +37,6 @@ const Page = () => {
             rpcTarget: 'https://rpc-mumbai.maticvigil.com', // This is the public RPC we have added, please pass on your own endpoint while creating an app
           },
         })
-        // @note: change to mainnet once ready for prod
         const privateKeyProvider = new EthereumPrivateKeyProvider({
           config: {
             chainConfig: {
@@ -46,19 +50,21 @@ const Page = () => {
           },
         })
 
+        // TODO: refactor to app.ts
+
         const openloginAdapter = new OpenloginAdapter({
           adapterSettings: {
             whiteLabel: {
-              appName: 'DecenterAi',
-              logoDark: '/icon.png',
+              appName: AppName,
+              logoDark: '/icon.png', //TODO:@Abhay import it don't use magic urls
               defaultLanguage: 'en',
               mode: 'dark',
             },
             loginConfig: {
               google: {
                 name: 'Google Login',
-                verifier: 'decenterai-google-auth',
-                typeOfLogin: 'google',
+                verifier: "decenterai-google-auth",
+                typeOfLogin: "google",
                 clientId: process.env.NEXT_PUBLIC_GOOGLE_CID,
               },
             },
@@ -77,7 +83,6 @@ const Page = () => {
         console.error(error)
       }
     }
-
     init()
   }, [])
 
@@ -91,11 +96,14 @@ const Page = () => {
       console.log('web3auth not initialized yet')
       return
     }
-    const web3authProvider = await web3auth.connectTo(WALLET_ADAPTERS.OPENLOGIN, {
-      mfaLevel: 'none', // Pass on the mfa level of your choice: default, optional, mandatory, none
-      loginProvider: 'google',
-    })
-    setProvider(web3authProvider)
+    try {
+      const web3authProvider = await web3auth.connectTo(WALLET_ADAPTERS.OPENLOGIN, {
+        loginProvider: "google",
+      })
+      setProvider(web3authProvider)
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const loginPassswordLess = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -126,6 +134,7 @@ const Page = () => {
       const user = await web3auth.getUserInfo()
       return user
     } catch (error) {
+      console.log(error);
       console.log('User not logged in')
       return null
     }
@@ -141,9 +150,17 @@ const Page = () => {
   }
 
   if (web3auth) {
-    getUserInfo().then((res) => {
-      if (res != null) {
-        setUser(res)
+    getUserInfo().then(async (res) => {
+      console.log(res);
+      if (res !== null) {
+        const user_data = {
+          email: res.email,
+          userName: generateFromEmail(res.email, 2),
+          name: res.name,
+          profileImage: generator.generateRandomAvatar(res.name),
+        }
+        await create_user(user_data)
+        setUser(user_data)
         push('/dashboard')
       }
     })
@@ -205,10 +222,10 @@ const Page = () => {
             </div>
             <div className="h-[60%] flex flex-col gap-3">
               <button
-                className="border flex  items-center justify-center gap-4 border-primary_11 hover:border-primary_7 text-primary_7 font-semibold font-primaryArchivo text-sm w-full h-12 cursor-pointer rounded-xl"
+                className="border flex items-center justify-center gap-4 border-primary_11 hover:border-primary_7 text-primary_7 font-semibold font-primaryArchivo text-sm w-full h-12 cursor-pointer rounded-xl"
                 onClick={login}
               >
-                <PiGoogleLogoBold size={20} className="text-primary_7" /> Sign up with
+                <PiGoogleLogoBold size={20} className="text-primary_7" /> Continue with
                 Google
               </button>
             </div>

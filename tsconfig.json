@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -22,7 +22,8 @@
       "@Svg/*": ["./src/svg/*"],
       "@public/*": ["./public/*"],
       "@utils/*": ["./utils/*"],
-      "@enums/*": ["./enums/*"]
+      "@enums/*": ["./enums/*"],
+      "@config/*": ["./config/*"]
     },
     "declaration": true,
     "removeComments": true,
@@ -51,14 +52,27 @@
     "stripInternal": true,
     "resolveJsonModule": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "src/app/userContext.js",
-    "src/app/loading.js",
-    "build/types/**/*.ts"
+  "files": [
+    "src/abi/deal_client.js",
+    "src/app/components/fvm/UploadFile.jsx",
+    "src/app/demo/page.tsx",
+    "src/app/test/page.jsx",
+    "test/jest-e2e.ts",
+    "tsconfig.json",
+    "tsconfig.node.json"
   ],
-  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts"]
+
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "test/**/*.ts",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "src/app/userContext.tsx",
+    "src/app/loading.js",
+    "build/types/**/*.ts",
+    "prisma/generated/**/*.ts",
+    "enums/**/*.ts",
+  ],
+  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
 }
