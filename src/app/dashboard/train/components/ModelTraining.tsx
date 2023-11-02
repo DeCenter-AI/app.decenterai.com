@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import rocket from '@public/rocket.png'
+import rocket from '@public/straightRocket.png'
 import Image from 'next/image'
 
 interface IProps {
@@ -16,7 +16,7 @@ interface IFile {
 
 export default function ModelTraining({ setPage }: IProps) {
   return (
-    <div className="w-full h-full px-5 py-3 relative flex items-end justify-center">
+    <div className="w-full h-full px-5 pt-3 relative flex items-end justify-center">
       <div className=" h-[40%] w-[40%] flex items-end justify-center">
         <Image
           src={rocket}
