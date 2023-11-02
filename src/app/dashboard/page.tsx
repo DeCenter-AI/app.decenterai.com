@@ -7,7 +7,7 @@ import TrainIcon from '@public/trainIcon.png'
 import TrophyIcon from '@public/TrophyIcon.png'
 import TaskIcon from '@public/taskIcon.png'
 import Image from 'next/image'
-import Emptyimg from "@public/magnify.png"
+import Emptyimg from '@public/magnify.png'
 import avatar from '@public/Rectangle 75.png'
 import { BsClipboard } from 'react-icons/bs'
 import { PiTrophyBold, PiUsersThree } from 'react-icons/pi'
@@ -26,7 +26,9 @@ export default function Page() {
             </div>
             <div className=" h-[50%] flex items-center ">
               <span className="text-sm overflow-hidden">
-              Launch your AI project into orbit with our instant training platform. We use the latest AI technology to help you train your model quickly and efficiently.
+                Launch your AI project into orbit with our instant training platform. We
+                use the latest AI technology to help you train your model quickly and
+                efficiently.
               </span>
             </div>
           </div>
@@ -48,57 +50,50 @@ export default function Page() {
               <p className="text-sm">Total trained models</p>
             </div>
             <div>
-              <span className= "text-xl font-bold">0</span>
+              <span className="text-xl font-bold">0</span>
             </div>
-
           </div>
           <div className=" rounded-xl flex flex-col justify-between gap-2 border  border-primary_9 h-full px-4 py-4">
             <div className="h-[15%] flex items-center">
               <p className="text-sm">New models</p>
             </div>
             <div>
-              <span className= "text-xl font-bold">0</span>
+              <span className="text-xl font-bold">0</span>
             </div>
-
           </div>
           <div className=" rounded-xl flex flex-col justify-between gap-2 border  border-primary_9 h-full px-4 py-4">
             <div className="h-[15%] flex items-center">
               <p className="text-sm">Fine-tune models</p>
             </div>
             <div>
-              <span className= "text-xl font-bold">0</span>
+              <span className="text-xl font-bold">0</span>
             </div>
-
           </div>
           <div className=" rounded-xl flex flex-col justify-between gap-2 border  border-primary_9 h-full px-4 py-4">
             <div className="h-[15%] flex items-center">
               <p className="text-sm">Template models</p>
             </div>
             <div>
-              <span className= "text-xl font-bold">0</span>
+              <span className="text-xl font-bold">0</span>
             </div>
-
           </div>
-         
-          
-       
         </div>
 
         <div className=" h-[50%]">
           <div>
-            <span className='text-lg'>Recently created models</span>
+            <span className="text-lg">Recently created models</span>
           </div>
           <div className="w-full overflow-y-scroll   max-h-full px-8 py-8">
-            <div className='flex justify-center items-center'>
-
-              <Image src={Emptyimg} className='grayscale' height={136} width={171.67} alt='' />
-
+            <div className="flex justify-center items-center">
+              <Image
+                src={Emptyimg}
+                className="grayscale"
+                height={136}
+                width={171.67}
+                alt=""
+              />
             </div>
-
-
           </div>
-
-        
         </div>
       </div>
     </DashLayout>
