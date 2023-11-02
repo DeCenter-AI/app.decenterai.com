@@ -44,7 +44,14 @@ export default function ModelDownload({ download, setPage, cid }: IProps) {
             // onClick={() => download()}
             className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm h-full w-[30%] cursor-pointer rounded-2xl"
           >
-            <Link href={`https://dweb.link/ipfs/${cid}`} target='_blank' className='flex items-center justify-center h-full w-full'> Download Model</Link>
+            <Link
+              href={`https://dweb.link/ipfs/${cid}`}
+              target="_blank"
+              className="flex items-center justify-center h-full w-full"
+            >
+              {' '}
+              Download Model
+            </Link>
           </button>
         </div>
       </div>
