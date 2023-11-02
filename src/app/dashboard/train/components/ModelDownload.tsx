@@ -1,12 +1,14 @@
 'use client'
+import Link from 'next/link'
 import React from 'react'
 
 interface IProps {
   download: () => void
   setPage: (page: number | null) => void
+  cid: string
 }
 
-export default function ModelDownload({ download, setPage }: IProps) {
+export default function ModelDownload({ download, setPage, cid }: IProps) {
   return (
     <div className="w-full h-full px-5 py-3 relative flex flex-col items-center justify-center ">
       <div className="h-[20%]">
@@ -37,11 +39,12 @@ export default function ModelDownload({ download, setPage }: IProps) {
           >
             Train again
           </button>
+
           <button
-            onClick={() => download()}
+            // onClick={() => download()}
             className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm h-full w-[30%] cursor-pointer rounded-2xl"
           >
-            Download Model
+            <Link href={`https://dweb.link/ipfs/${cid}`} target='_blank' className='flex items-center justify-center h-full w-full'> Download Model</Link>
           </button>
         </div>
       </div>

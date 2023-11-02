@@ -66,7 +66,7 @@ export default function Page() {
         />
       )}
       {page == 2 && <ModelTraining setPage={setPage} />}
-      {page == 3 && <ModelDownload setPage={setPage} download={download} />}
+      {page == 3 && <ModelDownload setPage={setPage} download={download} cid={decodedCid} />}
 
       {modal === 0 && (
         <TransactionAuthorization setModal={setModal} setTrain={setTrain} />
