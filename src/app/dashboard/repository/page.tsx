@@ -69,14 +69,12 @@ export default function Page() {
               <span className="text-xs border border-primary_11 px-3 mt-4 py-1 rounded-full">
                 Feature Extraction
               </span>
-
             </div>
           </div>
 
           <div className=" w-[85%]  h-full  ">
             <div className="w-full h-[80%] flex flex-col gap-6  overflow-y-scroll">
-             <Repository />
-              
+              <Repository />
             </div>
 
             <div className="flex h-[20%] justify-center text-primary_7  items-center ">
@@ -93,7 +91,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-
     </DashLayout>
   )
 }
