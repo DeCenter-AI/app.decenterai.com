@@ -1,7 +1,7 @@
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
 name: Bug report
 description: Create a bug report to help us improve our app
-labels: [ 'kind/bug', 'bug' ]
+labels: ['kind/bug', 'bug']
 body:
   - type: markdown
     attributes:
