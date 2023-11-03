@@ -9,6 +9,7 @@ import { AvatarGenerator } from 'random-avatar-generator'
 import { GiDigitalTrace } from "react-icons/gi"
 import particle from '@config/authConfig'
 
+
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
   const { push } = useRouter()
@@ -16,16 +17,20 @@ const Page = () => {
   const [email, setEmail] = useState<string>('')
   const generator = new AvatarGenerator()
 
-
   const login = async () => {
     const userInfo = await particle.auth.login({
-      supportAuthTypes: "email,google",
+      supportAuthTypes: 'email,google',
     })
     console.log(userInfo)
     const email = userInfo.email || userInfo.google_email
-    const name = userInfo.name || userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.name : ""
-    const profileImage = userInfo.avatar || userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.picture : ""
-
+    const name =
+      userInfo.name || userInfo.thirdparty_user_info
+        ? userInfo.thirdparty_user_info.user_info.name
+        : ''
+    const profileImage =
+      userInfo.avatar || userInfo.thirdparty_user_info
+        ? userInfo.thirdparty_user_info.user_info.picture
+        : ''
 
     if (userInfo) {
       const res = await get_user(email)
@@ -33,8 +38,7 @@ const Page = () => {
         email,
         userName: generateFromEmail(email, 2),
         name,
-        profileImage
-
+        profileImage,
       }
 
       if (!res.data.user) {
@@ -42,12 +46,8 @@ const Page = () => {
       }
       setUser(user_data)
       push('/dashboard')
-
     }
-
   }
-
-
 
   const checkStatus = async () => {
     const info = await particle.auth.getUserInfo()
@@ -70,8 +70,6 @@ const Page = () => {
   useMemo(() => {
     checkStatus()
   }, [])
-
-
 
   return (
     <div className="bg-primary_13 h-screen flex flex-col gap-4 ">
