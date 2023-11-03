@@ -7,7 +7,7 @@ import { create_user, get_user } from '@/lib/prismaUtils'
 import { generateFromEmail } from 'unique-username-generator'
 import { AvatarGenerator } from 'random-avatar-generator'
 import { GiDigitalTrace } from "react-icons/gi"
-import particle from '@config/authConfig'
+import particle from '@/lib/particle'
 
 
 const Page = () => {

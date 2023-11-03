@@ -1,7 +1,5 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import '@rainbow-me/rainbowkit/styles.css'
-import { Providers } from './providers'
 import { ContextProvider } from './userContext'
 import { AppMetaData } from '@config/app'
 
@@ -14,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <ContextProvider>
-          <Providers>{children}</Providers>
+          {children}
         </ContextProvider>
       </body>
     </html>

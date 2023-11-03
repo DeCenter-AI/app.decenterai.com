@@ -4,9 +4,9 @@ import { ParticleProvider } from '@particle-network/provider'
 import { Polygon, PolygonMumbai, EthereumSepolia } from '@particle-network/chains'
 
 const particle = new ParticleNetwork({
-  projectId: `${process.env.NEXT_PUBLIC_PROJECT_ID}`,
-  clientKey: `${process.env.NEXT_PUBLIC_CLIENT_KEY}`,
-  appId: `${process.env.NEXT_PUBLIC_APP_ID}`,
+  projectId: `${process.env.NEXT_PUBLIC_PARTICLE_NETWORK_PROJECT_ID}`,
+  clientKey: `${process.env.NEXT_PUBLIC_PARTICLE_NETWORK_CLIENT_KEY}`,
+  appId: `${process.env.NEXT_PUBLIC_PARTICLE_NETWORK_APP_ID}`,
   chainName: PolygonMumbai.name, //optional: current chain name, default Ethereum.
   chainId: PolygonMumbai.id, //optional: current chain id, default 1.
   wallet: {
