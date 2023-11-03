@@ -1,18 +1,20 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { PiGoogleLogoBold } from 'react-icons/pi'
 import { Web3AuthNoModal } from '@web3auth/no-modal'
 import { IProvider } from '@web3auth/base'
 import { WALLET_ADAPTERS, CHAIN_NAMESPACES } from '@web3auth/base'
 import { EthereumPrivateKeyProvider } from '@web3auth/ethereum-provider'
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import { useUserContext } from '../userContext'
-import { create_user } from '@/lib/prismaUtils'
+import { create_user, get_user } from '@/lib/prismaUtils'
 import { generateFromEmail } from 'unique-username-generator'
 import { AvatarGenerator } from 'random-avatar-generator'
 import { AppName } from '@config/app'
+import particle from '@/lib/particle'
+import { GiDigitalTrace } from "react-icons/gi"
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
@@ -91,20 +93,9 @@ const Page = () => {
     setEmail(e.currentTarget.value)
   }
 
-  const login = async () => {
-    if (!web3auth) {
-      console.log('web3auth not initialized yet')
-      return
-    }
-    try {
-      const web3authProvider = await web3auth.connectTo(WALLET_ADAPTERS.OPENLOGIN, {
-        loginProvider: 'google',
-      })
-      setProvider(web3authProvider)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+
+
+
 
   const loginPassswordLess = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -125,46 +116,56 @@ const Page = () => {
     }
   }
 
-  const getUserInfo = async () => {
-    if (!web3auth) {
-      console.log('web3auth not initialized yet')
-      return
-    }
-    try {
-      const user = await web3auth.getUserInfo()
-      return user
-    } catch (error) {
-      console.log(error)
-      console.log('User not logged in')
-      return null
-    }
-  }
-
-  const logout = async () => {
-    if (!web3auth) {
-      console.log('web3auth not initialized yet')
-      return
-    }
-    await web3auth.logout()
-    setProvider(null)
-  }
-
-  if (web3auth) {
-    getUserInfo().then(async (res) => {
-      console.log(res)
-      if (res !== null) {
-        const user_data = {
-          email: res.email,
-          userName: generateFromEmail(res.email, 2),
-          name: res.name,
-          profileImage: generator.generateRandomAvatar(res.name),
-        }
-        await create_user(user_data)
-        setUser(user_data)
-        push('/dashboard')
-      }
+  const login = async () => {
+    const userInfo = await particle.auth.login({
+      supportAuthTypes: "email,google",
     })
+    const email = userInfo.email || userInfo.google_email
+    console.log(userInfo)
+    if (userInfo) {
+      const res = await get_user(email)
+      const user_data = {
+        email,
+        userName: generateFromEmail(email, 2),
+        name: userInfo.thirdparty_user_info.user_info.name,
+        profileImage: generator.generateRandomAvatar(userInfo.thirdparty_user_info.user_info.picture),
+
+      }
+
+      if (!res.data.user) {
+        await create_user(user_data)
+      }
+      setUser(user_data)
+      push('/dashboard')
+
+    }
+
   }
+
+
+
+  const checkStatus = async () => {
+    const info = await particle.auth.getUserInfo()
+    const email = info.email || info.google_email
+    const res = await get_user(email)
+    if (res.data.user) {
+      const user_data = {
+        email: res.data.user.email,
+        userName: res.data.user.userName,
+        name: res.data.user.name,
+        profileImage: generator.generateRandomAvatar(res.data.user.profileImage),
+      }
+      setUser(user_data)
+      console.log(user_data)
+      push('/dashboard')
+    }
+  }
+
+  useMemo(() => {
+    checkStatus()
+  }, [])
+
+
 
   return (
     <div className="bg-primary_13 h-screen flex flex-col gap-4 ">
@@ -189,7 +190,7 @@ const Page = () => {
             </h1>
           </div>
           <div className="h-[90%]">
-            <form
+            {/* <form
               className="h-[30%] flex flex-col gap-4 text-primary_1"
               onSubmit={loginPassswordLess}
             >
@@ -219,14 +220,14 @@ const Page = () => {
                 or
               </div>
               <div className="border border-primary_11 w-full"></div>
-            </div>
-            <div className="h-[60%] flex flex-col gap-3">
+            </div> */}
+            <div className="h-[60%] flex flex-col gap-3 pt-10">
               <button
                 className="border flex items-center justify-center gap-4 border-primary_11 hover:border-primary_7 text-primary_7 font-semibold font-primaryArchivo text-sm w-full h-12 cursor-pointer rounded-xl"
                 onClick={login}
               >
-                <PiGoogleLogoBold size={20} className="text-primary_7" /> Continue with
-                Google
+                <GiDigitalTrace size={20} className="text-primary_7" />
+                Start here
               </button>
             </div>
           </div>
