@@ -1,13 +1,7 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect, useMemo, useState } from 'react'
-import { PiGoogleLogoBold } from 'react-icons/pi'
-import { Web3AuthNoModal } from '@web3auth/no-modal'
-import { IProvider } from '@web3auth/base'
-import { WALLET_ADAPTERS, CHAIN_NAMESPACES } from '@web3auth/base'
-import { EthereumPrivateKeyProvider } from '@web3auth/ethereum-provider'
-import { OpenloginAdapter } from '@web3auth/openlogin-adapter'
-import { redirect, useRouter } from 'next/navigation'
+import React, { useMemo, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useUserContext } from '../userContext'
 import { create_user, get_user } from '@/lib/prismaUtils'
 import { generateFromEmail } from 'unique-username-generator'
@@ -18,117 +12,29 @@ import { GiDigitalTrace } from "react-icons/gi"
 
 const Page = () => {
   const [view, setView] = useState<boolean>(false)
-  const [web3auth, setWeb3auth] = useState<Web3AuthNoModal | null>(null)
-  const [provider, setProvider] = useState<IProvider | null>(null)
   const { push } = useRouter()
   const { user, setUser } = useUserContext()
   const [email, setEmail] = useState<string>('')
   const generator = new AvatarGenerator()
 
-  useEffect(() => {
-    const init = async () => {
-      try {
-        console.log(process.env.NEXT_PUBLIC_AUTH_CID, process.env.NEXT_PUBLIC_GOOGLE_CID)
-        const web3auth = new Web3AuthNoModal({
-          // @note: TODO: change to mainnet once ready for prod
-          clientId: process.env.NEXT_PUBLIC_AUTH_CID,
-          web3AuthNetwork: 'sapphire_devnet',
-          chainConfig: {
-            chainNamespace: CHAIN_NAMESPACES.EIP155,
-            chainId: '0x13881',
-            rpcTarget: 'https://rpc-mumbai.maticvigil.com', // This is the public RPC we have added, please pass on your own endpoint while creating an app
-          },
-        })
-        const privateKeyProvider = new EthereumPrivateKeyProvider({
-          config: {
-            chainConfig: {
-              chainId: '0x13881',
-              rpcTarget: 'https://rpc-mumbai.maticvigil.com',
-              displayName: 'Polygon Mumbai',
-              blockExplorer: 'https://mumbai.polygonscan.com/',
-              ticker: 'MATIC',
-              tickerName: 'Matic',
-            },
-          },
-        })
-
-        // TODO: refactor to app.ts
-
-        const openloginAdapter = new OpenloginAdapter({
-          adapterSettings: {
-            whiteLabel: {
-              appName: AppName,
-              logoDark: '/icon.png', //TODO:@Abhay import it don't use magic urls
-              defaultLanguage: 'en',
-              mode: 'dark',
-            },
-            loginConfig: {
-              google: {
-                name: 'Google Login',
-                verifier: 'decenterai-google-auth',
-                typeOfLogin: 'google',
-                clientId: process.env.NEXT_PUBLIC_GOOGLE_CID,
-              },
-            },
-          },
-          privateKeyProvider,
-        })
-        web3auth.configureAdapter(openloginAdapter)
-
-        setWeb3auth(web3auth)
-
-        await web3auth.init()
-        if (web3auth.provider) {
-          setProvider(web3auth.provider)
-        }
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    init()
-  }, [])
-
-  const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    setEmail(e.currentTarget.value)
-  }
-
-
-
-
-
-  const loginPassswordLess = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-      if (!web3auth) {
-        console.log('web3auth not initialized yet')
-        return
-      }
-      const web3authProvider = await web3auth.connectTo(WALLET_ADAPTERS.OPENLOGIN, {
-        loginProvider: 'email_passwordless',
-        extraLoginOptions: {
-          login_hint: email, // email to send the OTP to
-        },
-      })
-      setProvider(web3authProvider)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   const login = async () => {
     const userInfo = await particle.auth.login({
       supportAuthTypes: "email,google",
     })
-    const email = userInfo.email || userInfo.google_email
     console.log(userInfo)
+    const email = userInfo.email || userInfo.google_email
+    const name = userInfo.name || userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.name : ""
+    const profileImage = userInfo.avatar || userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.picture : ""
+
+
     if (userInfo) {
       const res = await get_user(email)
       const user_data = {
         email,
         userName: generateFromEmail(email, 2),
-        name: userInfo.thirdparty_user_info.user_info.name,
-        profileImage: generator.generateRandomAvatar(userInfo.thirdparty_user_info.user_info.picture),
+        name,
+        profileImage
 
       }
 
@@ -147,6 +53,7 @@ const Page = () => {
   const checkStatus = async () => {
     const info = await particle.auth.getUserInfo()
     const email = info.email || info.google_email
+
     const res = await get_user(email)
     if (res.data.user) {
       const user_data = {

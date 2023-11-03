@@ -2,9 +2,9 @@ import { userType } from './global_types'
 import axios from 'axios'
 
 export async function create_user(user: userType) {
-  const res = await check_user(user.email)
-  const count = await res.json()
-  if (count !== 0) {
+  const res = await get_user(user.email)
+  const currUser = await res.data.user
+  if (currUser) {
     console.log('User already exists in db')
     return
   }
