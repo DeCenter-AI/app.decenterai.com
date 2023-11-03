@@ -1,5 +1,3 @@
-node_modules/
 .next/
 pnpm-lock.yaml
-.git/
 prisma/generated

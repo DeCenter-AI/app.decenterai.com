@@ -1,7 +1,7 @@
 ---
 name: Proposals
 about: Submit a proposal for consideration
-title: "proposal: "
+title: 'proposal: '
 labels: proposal
 ---
 
