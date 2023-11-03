@@ -39,7 +39,7 @@ const particleProvider = new ParticleProvider(particle.auth)
 
 //if you use ethers.js
 import { ethers } from 'ethers'
-const ethersProvider = new ethers.JsonRpcProvider(`${particleProvider}`) // new ethers.Jproviders.Web3Provider(particleProvider, 'any')
+const ethersProvider = new ethers.providers.Web3Provider(particleProvider, 'any')
 const ethersSigner = ethersProvider.getSigner()
 
 export default particle

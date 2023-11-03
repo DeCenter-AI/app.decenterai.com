@@ -38,7 +38,7 @@ const Page = () => {
         email,
         userName: generateFromEmail(email, 2),
         name,
-        profileImage,
+        profileImage: generator.generateRandomAvatar(profileImage),
       }
 
       if (!res.data.user) {
@@ -51,6 +51,7 @@ const Page = () => {
 
   const checkStatus = async () => {
     const info = await particle.auth.getUserInfo()
+    if (!info) return
     const email = info.email || info.google_email
 
     const res = await get_user(email)
@@ -59,7 +60,7 @@ const Page = () => {
         email: res.data.user.email,
         userName: res.data.user.userName,
         name: res.data.user.name,
-        profileImage: generator.generateRandomAvatar(res.data.user.profileImage),
+        profileImage: res.data.user.profileImage
       }
       setUser(user_data)
       console.log(user_data)
