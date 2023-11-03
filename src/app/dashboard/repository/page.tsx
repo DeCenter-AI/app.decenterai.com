@@ -7,6 +7,7 @@ import { GoFilter } from 'react-icons/go'
 import { GoDownload } from 'react-icons/go'
 import { GoSortAsc } from 'react-icons/go'
 import { BiLike } from 'react-icons/bi'
+import Repository from './components/repository'
 
 export default function Page() {
   const pathname = usePathname()
@@ -68,77 +69,14 @@ export default function Page() {
               <span className="text-xs border border-primary_11 px-3 mt-4 py-1 rounded-full">
                 Feature Extraction
               </span>
+
             </div>
           </div>
 
           <div className=" w-[85%]  h-full  ">
             <div className="w-full h-[80%] flex flex-col gap-6  overflow-y-scroll">
-              <div className=" border border-primary_9 flex px-5 py-3 items-center rounded-xl  h-[170px] min-h-[170px]">
-                <div className="w-[80%] h-full">
-                  <div className=" flex h-[25%] items-start ">
-                    <span className="bg-primary_11 rounded-full text-primary_8 py-1 px-3">
-                      Text Generation
-                    </span>
-                  </div>
-                  <div className="h-[20%]">
-                    <span className="text-lg ">Model name</span>
-                  </div>
-                  <div className="flex items-center h-[40%]">
-                    <p className="text-xs">
-                      Identifies a variety of concepts in images and video including
-                      objects, themes, and more.{' '}
-                    </p>
-                  </div>
-                  <div className=" h-[15%] text-xs text-primary_8 flex gap-4">
-                    <div>
-                      <span>Updated Sep, 12 2023</span>
-                    </div>
-                    <div className="flex">
-                      <GoDownload />
-                      <span>12k</span>
-                    </div>
-                    <div className="flex">
-                      <BiLike />
-                      <span>127</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-[20%] h-full bg-primary_11 "></div>
-              </div>
-              <div className=" border border-primary_9 flex px-5 py-3 items-center rounded-xl  h-[170px] min-h-[170px]">
-                <div className="w-[80%] h-full">
-                  <div className=" flex h-[25%] items-start ">
-                    <span className="bg-primary_11 rounded-full text-primary_8 py-1 px-3">
-                      Text Generation
-                    </span>
-                  </div>
-                  <div className="h-[20%]">
-                    <span className="text-lg ">Model name</span>
-                  </div>
-                  <div className="flex items-center h-[40%]">
-                    <p className="text-xs">
-                      Identifies a variety of concepts in images and video including
-                      objects, themes, and more.{' '}
-                    </p>
-                  </div>
-                  <div className=" h-[15%] text-xs text-primary_8 flex gap-4">
-                    <div>
-                      <span>Updated Sep, 12 2023</span>
-                    </div>
-                    <div className="flex">
-                      <GoDownload />
-                      <span>12k</span>
-                    </div>
-                    <div className="flex">
-                      <BiLike />
-                      <span>127</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-[20%] h-full bg-primary_11 "></div>
-              </div>
+             <Repository />
+              
             </div>
 
             <div className="flex h-[20%] justify-center text-primary_7  items-center ">
@@ -155,6 +93,7 @@ export default function Page() {
           </div>
         </div>
       </div>
+
     </DashLayout>
   )
 }
