@@ -1,5 +1,5 @@
 # Build stage
-FROM node:19 AS builder
+FROM node:20 AS builder
 WORKDIR /app
 
 #COPY package*.json pnpm-lock.yaml ./
@@ -11,12 +11,9 @@ RUN sed -i '/provider = "prisma-client-js"/a \ \ binaryTargets = ["native", "lin
 RUN npm install -g pnpm
 RUN pnpm install
 
-RUN #npm run build already post-install
 
 # Deploy stage
-FROM node:19-alpine
-
-#only required for railway deployment
+FROM node:20-alpine
 
 ENV PORT=8080
 ENV NODE_ENV="production"
