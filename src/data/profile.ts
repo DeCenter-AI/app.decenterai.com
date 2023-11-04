@@ -72,3 +72,5 @@ const models: Model[] = [
     like: 127
   },
 ]
+
+export {profileInfo, models}
