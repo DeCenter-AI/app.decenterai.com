@@ -3,39 +3,39 @@
 import { useRouter } from 'next/navigation'
 import { DashLayout } from '../../dashLayout'
 import { PiCaretLeft, PiCpu, PiPencilSimpleLight, PiUsersThree } from 'react-icons/pi'
-import {AiOutlineDownload, AiOutlineHeart} from "react-icons/ai"
+import { AiOutlineDownload, AiOutlineHeart } from 'react-icons/ai'
 import { BiMoney } from 'react-icons/bi'
 import Image from 'next/image'
 import avatars from '@public/avatars'
 import { useState } from 'react'
 import { models, profileInfo } from '@/data/profile'
-import box from "public/model-box.png"
+import box from 'public/model-box.png'
 import Link from 'next/link'
+import EditProfile from './components/EditProfile'
 export default function Page() {
   const router = useRouter()
   const [isModalOpen, setIsModalOPen] = useState<boolean>(false)
   const [showBackdrop, setShowBackdrop] = useState<boolean>(false)
-  const openModal = () => {
-    setIsModalOPen(true)
-    setShowBackdrop(true)
-  }
-
+const openModal = () => {
+  setIsModalOPen(true)
+  setShowBackdrop(true)
+}
   const closeModal = () => {
     setIsModalOPen(false)
     setShowBackdrop(false)
   }
   return (
     <DashLayout>
+      {isModalOpen && <EditProfile />}
       {isModalOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm "
+          className="fixed inset-0 bg-black/50 z-20 backdrop-blur-sm"
           onClick={closeModal}
         />
       )}
       <section className="h-full w-full py-4 flex flex-col gap-4 font-archivo">
         <div className="flex gap-4  items-center text-[#8F8F8F] text-sm">
           <Link
-            
             href="/dashboard/settings"
             className="flex gap-2 items-center border-none outline-none">
             <PiCaretLeft />
