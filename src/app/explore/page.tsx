@@ -1,12 +1,12 @@
 'use client'
 import Image from 'next/image'
-import React, { useMemo, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { useUserContext } from '../userContext'
-import { create_user, get_user } from '@/lib/prismaUtils'
-import { generateFromEmail } from 'unique-username-generator'
-import { AvatarGenerator } from 'random-avatar-generator'
-import { GiDigitalTrace } from "react-icons/gi"
+import React, {useMemo, useState} from 'react'
+import {useRouter} from 'next/navigation'
+import {useUserContext} from '../userContext'
+import {create_user, get_user} from '@/lib/prismaUtils'
+import {generateFromEmail} from 'unique-username-generator'
+import {AvatarGenerator} from 'random-avatar-generator'
+import {GiDigitalTrace} from "react-icons/gi"
 import particle from '@/lib/particle'
 import Loading from '../components/Loading'
 
@@ -52,6 +52,10 @@ const Page = () => {
   }
 
   const checkStatus = async () => {
+    if (typeof window === "undefined") {
+      console.error("particle.network: window undefined")
+      return
+    }
     const info = await particle.auth.getUserInfo()
     if (!info) return
     const email = info.email || info.google_email
