@@ -20,7 +20,7 @@ type contextType = {
 
 const AppContext = createContext<contextType>({
   user: default_user_values,
-  setUser: () => {},
+  setUser: () => { },
 })
 
 export function ContextProvider({ children }: Props) {

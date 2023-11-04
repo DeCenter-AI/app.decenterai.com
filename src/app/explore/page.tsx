@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useUserContext } from '../userContext'
 import { create_user, get_user } from '@/lib/prismaUtils'
@@ -51,11 +51,9 @@ const Page = () => {
   }
 
   const checkStatus = async () => {
-    if (typeof window === 'undefined') {
-      console.error('particle.network: window undefined')
-      return
-    }
-    const info = await particle.auth.getUserInfo()
+    console.log("ok")
+    const info = particle.auth.getUserInfo()
+    console.log(info)
     if (!info) return
     const email = info.email || info.google_email
 
@@ -69,12 +67,14 @@ const Page = () => {
       }
       setUser(user_data)
       console.log(user_data)
+      setIsLoading(true)
       push('/dashboard')
     }
   }
 
-  useMemo(() => {
+  useEffect(() => {
     checkStatus()
+    return
   }, [])
 
   return (
