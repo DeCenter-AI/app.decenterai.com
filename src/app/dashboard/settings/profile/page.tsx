@@ -12,6 +12,7 @@ import { models, profileInfo } from '@/data/profile'
 import box from 'public/model-box.png'
 import Link from 'next/link'
 import EditProfile from './components/EditProfile'
+import profile from "public/profile-1.png"
 export default function Page() {
   const router = useRouter()
   const [isModalOpen, setIsModalOPen] = useState<boolean>(false)
@@ -46,7 +47,7 @@ const openModal = () => {
           </p>
         </div>
         <div className="flex justify-between items-center  rounded-2xl px-4 py-2 border border-primary_8 ">
-          <h2 className="font-logirentBold text-2xl uppercase">Profile</h2>
+          <Image src={profile} alt='profile icon'/>
           <button className=" bg-primary_10 rounded-full px-4 py-2 ">
             Delete Account
           </button>
