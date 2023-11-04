@@ -8,10 +8,11 @@ import { generateFromEmail } from 'unique-username-generator'
 import { AvatarGenerator } from 'random-avatar-generator'
 import { GiDigitalTrace } from "react-icons/gi"
 import particle from '@/lib/particle'
+import Loading from '../components/Loading'
 
 
 const Page = () => {
-  const [view, setView] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const { push } = useRouter()
   const { user, setUser } = useUserContext()
   const [email, setEmail] = useState<string>('')
@@ -33,6 +34,7 @@ const Page = () => {
         : ''
 
     if (userInfo) {
+      setIsLoading(true)
       const res = await get_user(email)
       const user_data = {
         email,
@@ -73,7 +75,8 @@ const Page = () => {
   }, [])
 
   return (
-    <div className="bg-primary_13 h-screen flex flex-col gap-4 ">
+    <div className="bg-primary_13 h-screen flex flex-col gap-4  relative ">
+      {isLoading && <Loading />}
       <div className="h-[10%] flex pl-10">
         <div className="w-[20%] lg:w-[10%] relative">
           <Image
