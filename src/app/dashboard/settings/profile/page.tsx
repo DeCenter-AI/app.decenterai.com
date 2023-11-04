@@ -10,6 +10,7 @@ import avatars from '@public/avatars'
 import { useState } from 'react'
 import { models, profileInfo } from '@/data/profile'
 import box from "public/model-box.png"
+import Link from 'next/link'
 export default function Page() {
   const router = useRouter()
   const [isModalOpen, setIsModalOPen] = useState<boolean>(false)
@@ -31,15 +32,15 @@ export default function Page() {
           onClick={closeModal}
         />
       )}
-      <section className="h-full w-full py-4 flex flex-col gap-4">
+      <section className="h-full w-full py-4 flex flex-col gap-4 font-archivo">
         <div className="flex gap-4  items-center text-[#8F8F8F] text-sm">
-          <button
-            type="button"
-            onClick={() => router.push('/dashboard/settings/profile')}
+          <Link
+            
+            href="/dashboard/settings"
             className="flex gap-2 items-center border-none outline-none">
             <PiCaretLeft />
             <span>Back</span>
-          </button>
+          </Link>
           <p>
             Settings / <span className="text-primary_5">Profile</span>
           </p>
@@ -50,69 +51,71 @@ export default function Page() {
             Delete Account
           </button>
         </div>
-        <main className='sm:w-[80%]'>
-          <div className=" border border-primary_8 rounded-xl py-3 px-4 flex gap-8">
-            <div className="flex items-center gap-2">
-              <Image src={avatars.avatar} alt="" />
-              <div>
-                <h3 className="text-primary_5">David Ayegoro</h3>
-                <p className="text-primary_7">Dayegoro@gmail.com</p>
+
+        <div className=" border border-primary_8 rounded-xl py-3 px-4 flex gap-6 md:w-[80%] items-center">
+          <div className="flex items-center gap-2">
+            <Image src={avatars.avatar} alt="" />
+            <div>
+              <h3 className="text-primary_5 text-xl">David Ayegoro</h3>
+              <p className="text-primary_7">Dayegoro@gmail.com</p>
+            </div>
+          </div>
+          <button
+            className="flex items-center justify-center p-2 bg-primary_7 text-primary_6 rounded-full"
+            onClick={openModal}>
+            <PiPencilSimpleLight size={20} />
+          </button>
+        </div>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3  gap-8 md:w-[80%]">
+          {profileInfo.map((item) => (
+            <div
+              key={item.id}
+              className="border border-primary_8 rounded-xl py-2 w-full flex flex-col gap-4 px-4">
+              <p className="text-[#C1C1C1]">{item.text}</p>
+              <div className="flex justify-between items-center">
+                <h4 className="text-lg">{item.count}</h4>
+                <div className="text-[#5D5D5D]">
+                  {item.id === 1 ? (
+                    <BiMoney size={30} />
+                  ) : item.id === 2 ? (
+                    <PiUsersThree size={30} />
+                  ) : (
+                    <PiCpu size={30} />
+                  )}
+                </div>
               </div>
             </div>
-            <button
-              className="flex items-center justify-center p-2 bg-primary_7 text-primary_6 rounded-full"
-              onClick={openModal}>
-              <PiPencilSimpleLight size={20} />
-            </button>
-          </div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3  gap-8">
-            {profileInfo.map((item) => (
-              <div
-                key={item.id}
-                className="border border-primary_8 rounded-xl py-2 w-full flex flex-col gap-6 px-4">
-                <p className="text-[#C1C1C1]">{item.text}</p>
-                <div className="flex justify-between items-center">
-                  <h4 className="text-lg">{item.count}</h4>
-                  <div className="text-[#5D5D5D]">
-                    {item.id === 1 ? (
-                      <BiMoney size={30} />
-                    ) : item.id === 2 ? (
-                      <PiUsersThree size={30} />
-                    ) : (
-                      <PiCpu size={30} />
-                    )}
-                  </div>
+          ))}
+        </div>
+        <h3 className="font-medium text-lg md:text-xl">Models</h3>
+        <div className="overflow-y-auto  grid  md:grid-cols-2  gap-8 pr-2 lg:w-[80%]">
+          {models.map((model) => (
+            <div
+              key={model.id}
+              className="w-full p-2 flex gap-4 items-center border border-primary_8 rounded-xl">
+              <div className="flex flex-col gap-3">
+                <span className="text-xs bg-[#232323] py-1 px-2 w-max rounded-full text-[#8F8F8F]">
+                  {model.title}
+                </span>
+                <h4>{model.name}</h4>
+                <small className="text-sm text-[#C1C1C1]">{model.desc}</small>
+                <div className="text-[#5D5D5D] flex gap-4 items-center text-xs">
+                  <span>{model.date}</span>
+                  <span className="flex gap-1 items-center">
+                    <AiOutlineDownload />
+                    {model.download}K
+                  </span>
+                  <span className="flex gap-1 items-center">
+                    <AiOutlineHeart />
+                    {model.like}
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="overflow-y-auto  grid sm:grid-cols-2 md:grid-cols-2  gap-8 pr-2">
-            {models.map((model) => (
-              <div
-                key={model.id}
-                className="w-full p-2 flex gap-4 items-center border border-primary_8 rounded-xl">
-                <div className="flex flex-col gap-3">
-                  <span>{model.title}</span>
-                  <h4>{model.name}</h4>
-                  <small>{model.desc}</small>
-                  <div className="text-[#5D5D5D] flex gap-4 items-center text-[12px]">
-                    <span>{model.date}</span>
-                    <span className="flex gap-2 items-center">
-                      <AiOutlineDownload />
-                      {model.download}
-                    </span>
-                    <span className="flex gap-2 items-center">
-                      <AiOutlineHeart />
-                      {model.like}
-                    </span>
-                  </div>
-                </div>
-                <Image src={box} alt="model image" />
-              </div>
-            ))}
-          </div>
-        </main>
+              <Image src={box} alt="model image" />
+            </div>
+          ))}
+        </div>
       </section>
     </DashLayout>
   )
