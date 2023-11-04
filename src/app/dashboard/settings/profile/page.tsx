@@ -10,8 +10,8 @@ import { useState } from 'react'
 import { profileInfo } from '@/data/profile'
 export default function Page() {
   const router = useRouter()
-  const [isModalOpen, setIsModalOPen] = useState(false)
-  const [showBackdrop, setShowBackdrop] = useState(false)
+  const [isModalOpen, setIsModalOPen] = useState<boolean>(false)
+  const [showBackdrop, setShowBackdrop] = useState<boolean>(false)
   const openModal = () => {
     setIsModalOPen(true)
     setShowBackdrop(true)
