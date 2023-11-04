@@ -51,7 +51,7 @@ const Page = () => {
   }
 
   const checkStatus = async () => {
-    console.log("ok")
+    console.log('ok')
     const info = particle.auth.getUserInfo()
     console.log(info)
     if (!info) return
