@@ -4,7 +4,7 @@ import editProfile from 'public/edit-profile.png'
 import { AiOutlineCamera } from 'react-icons/ai'
 const EditProfile = () => {
   return (
-    <div className="absolute inset-0 z-50 bg-primary_11 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] h-[85%]  my-16 mx-auto transition-all duration-500 ease-in-out rounded-xl p-6 flex flex-col gap-6">
+    <div className="absolute inset-0 z-50 bg-primary_11 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] h-[85%]  my-16 mx-auto transition-all duration-500 ease-in-out rounded-xl p-6 flex flex-col gap-6 shadow-xl">
       <Image src={editProfile} alt="edit profile" />
       <div className="relative w-[25%]">
         <Image src={avatars.avatar} alt="profile icon" className="w-full h-full" />
@@ -13,7 +13,7 @@ const EditProfile = () => {
           <AiOutlineCamera size={20} />
         </button>
       </div>
-      <form action="" className="text-[#5D5D5D] text-sm flex flex-col gap-4">
+      <form action="" className="text-[#5D5D5D] text-sm flex flex-col gap-4 relative">
         <div className="grid grid-cols-2 gap-4 w-full">
           <div className="flex flex-col gap-2">
             <label htmlFor="firstName" className="font-bold ">
@@ -58,6 +58,14 @@ const EditProfile = () => {
             id="email"
             name="email"
           />
+        </div>
+        <div className="font-semibold flex justify-end gap-4 items-center mt-2">
+          <button className=" bg-transparent border border-primary_8 rounded-full px-4 py-3 text-[#F5F5F5] w-[140px] text-center">
+            Cancel
+          </button>
+          <button className=" bg-primary_10 rounded-full px-4 py-3 w-[140px] text-center">
+            Save changes
+          </button>
         </div>
       </form>
     </div>
