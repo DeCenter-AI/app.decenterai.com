@@ -156,6 +156,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
                     src={user?.profileImage}
                     alt="profile pic"
                     loader={myImageLoader}
+                    unoptimized
                     width={40}
                     height={40}
                     className="max-w-[100%] max-h-[100%] rounded-full mr-3"
