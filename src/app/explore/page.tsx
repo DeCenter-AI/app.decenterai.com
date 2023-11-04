@@ -1,15 +1,14 @@
 'use client'
 import Image from 'next/image'
-import React, {useMemo, useState} from 'react'
-import {useRouter} from 'next/navigation'
-import {useUserContext} from '../userContext'
-import {create_user, get_user} from '@/lib/prismaUtils'
-import {generateFromEmail} from 'unique-username-generator'
-import {AvatarGenerator} from 'random-avatar-generator'
-import {GiDigitalTrace} from "react-icons/gi"
+import React, { useMemo, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useUserContext } from '../userContext'
+import { create_user, get_user } from '@/lib/prismaUtils'
+import { generateFromEmail } from 'unique-username-generator'
+import { AvatarGenerator } from 'random-avatar-generator'
+import { GiDigitalTrace } from 'react-icons/gi'
 import particle from '@/lib/particle'
 import Loading from '../components/Loading'
-
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -52,8 +51,8 @@ const Page = () => {
   }
 
   const checkStatus = async () => {
-    if (typeof window === "undefined") {
-      console.error("particle.network: window undefined")
+    if (typeof window === 'undefined') {
+      console.error('particle.network: window undefined')
       return
     }
     const info = await particle.auth.getUserInfo()
@@ -66,7 +65,7 @@ const Page = () => {
         email: res.data.user.email,
         userName: res.data.user.userName,
         name: res.data.user.name,
-        profileImage: res.data.user.profileImage
+        profileImage: res.data.user.profileImage,
       }
       setUser(user_data)
       console.log(user_data)
