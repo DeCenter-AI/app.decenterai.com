@@ -1,5 +1,3 @@
-
-
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { AppMetaData } from '@config/app'
@@ -14,14 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-
-
         <NetworkProvider>
-          <ContextProvider>
-            {children}
-          </ContextProvider>
+          <ContextProvider>{children}</ContextProvider>
         </NetworkProvider>
-
       </body>
     </html>
   )
