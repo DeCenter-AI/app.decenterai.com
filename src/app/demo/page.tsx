@@ -446,12 +446,8 @@
 
 // export default Demo
 
-
 import React from 'react'
 
 export default function page() {
-    return (
-        <div>page</div>
-    )
-
+  return <div>page</div>
 }
