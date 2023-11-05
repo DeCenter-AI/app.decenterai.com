@@ -70,7 +70,6 @@ export default function Page() {
               <span className="text-xs border border-primary_11 px-3 mt-4 py-1 rounded-full">
                 Feature Extraction
               </span>
-
             </div>
           </div>
 
@@ -93,7 +92,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-
     </DashLayout>
   )
 }
