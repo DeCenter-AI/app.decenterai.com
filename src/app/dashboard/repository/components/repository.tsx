@@ -7,7 +7,7 @@ export default function Repository({repository}) {
   return (
     <div>
       <div className="">
-        {repository?.map((item) => (
+        {repository.map((item) => (
           <div
             key={item.id}
             className=" border border-primary_9 flex px-5 mb-5 py-3 items-center rounded-xl  h-[170px] min-h-[170px]"
