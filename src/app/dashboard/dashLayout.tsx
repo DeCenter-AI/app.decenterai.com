@@ -16,6 +16,7 @@ import { useUserContext } from '../userContext'
 import notIcon from 'public/notification.png'
 import { ModalNotification } from './notifications/components/Notification'
 
+
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext()
   const pathname = usePathname()
