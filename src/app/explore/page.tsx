@@ -75,7 +75,7 @@ const Page = () => {
   useEffect(() => {
     checkStatus()
     return
-  }, [])
+  })
 
   return (
     <div className="bg-primary_13 h-screen flex flex-col gap-4  relative ">
