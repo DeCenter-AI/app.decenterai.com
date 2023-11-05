@@ -1,12 +1,12 @@
 'use client'
 import Image from 'next/image'
-import React, {useEffect, useState} from 'react'
-import {useRouter} from 'next/navigation'
-import {useUserContext} from '../userContext'
-import {create_user, get_user} from '@/lib/prismaUtils'
-import {generateFromEmail} from 'unique-username-generator'
-import {AvatarGenerator} from 'random-avatar-generator'
-import {GiDigitalTrace} from 'react-icons/gi'
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useUserContext } from '../userContext'
+import { create_user, get_user } from '@/lib/prismaUtils'
+import { generateFromEmail } from 'unique-username-generator'
+import { AvatarGenerator } from 'random-avatar-generator'
+import { GiDigitalTrace } from 'react-icons/gi'
 import particle from '@/lib/particle'
 import Loading from '../components/Loading'
 
@@ -50,9 +50,8 @@ const Page = () => {
     }
   }
 
-
   useEffect(() => {
-    console.log("checkStatus:prisma")
+    console.log('checkStatus:prisma')
     const checkStatus = async () => {
       console.log('ok')
       const info = particle.auth.getUserInfo()
@@ -76,7 +75,7 @@ const Page = () => {
     }
     checkStatus()
     return
-  },[])
+  }, [])
 
   return (
     <div className="bg-primary_13 h-screen flex flex-col gap-4  relative ">
