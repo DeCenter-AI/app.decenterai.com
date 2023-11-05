@@ -65,9 +65,8 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full h-[90%] overflow-y-auto font-archivo ">
           <Link href="/dashboard">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
-                pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
-              }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
+                }`}
             >
               <div className="flex justify-center ">
                 <RxDashboard size={25} />
@@ -77,9 +76,8 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/train">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
-                pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
-              }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
+                }`}
             >
               <div className="flex justify-center ">
                 <HiOutlineChip size={25} />
@@ -89,9 +87,8 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/repository">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
-                pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
-              }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
+                }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
@@ -99,7 +96,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               <p className="text-sm">Repository</p>
             </div>
           </Link>
-          <div className="flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 text-primary_8 hover:bg-primary_11 hover:text-primary_1">
+          {/* <div className="flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 text-primary_8 hover:bg-primary_11 hover:text-primary_1">
             <div className="flex justify-center ">
               <PiUsersThree size={25} />
             </div>
@@ -116,12 +113,11 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               <PiTrophyBold size={25} />
             </div>
             <p className="text-sm">Rewards</p>
-          </div>
+          </div> */}
           <Link href="/dashboard/settings">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
-                pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
-              }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
+                }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
@@ -149,9 +145,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
             <div className="text-primary_8  cursor-pointer">
               <GoBell size={25} onClick={openNotification} />
             </div>
-            <button className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl">
+            {/* <button className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl">
               Connect Wallet
-            </button>
+            </button> */}
 
             {user.email ? (
               <div className="flex items-center bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
@@ -160,6 +156,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
                     src={user?.profileImage}
                     alt="profile pic"
                     loader={myImageLoader}
+                    unoptimized
                     width={40}
                     height={40}
                     className="max-w-[100%] max-h-[100%] rounded-full mr-3"
