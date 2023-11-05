@@ -83,7 +83,7 @@ export default function Page() {
           <div>
             <span className="text-lg">Recently created models</span>
           </div>
-          <div className="w-full overflow-y-scroll   max-h-full px-8 py-8">
+          <div className="w-full overflow-y-auto   max-h-full px-8 py-8">
             <div className="flex flex-col justify-center items-center">
               <div className="mb-2">
                 <Image

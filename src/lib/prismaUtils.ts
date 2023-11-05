@@ -1,9 +1,10 @@
 import { userType } from './global_types'
+import axios from 'axios'
 
 export async function create_user(user: userType) {
-  const res = await check_user(user.email)
-  const count = await res.json()
-  if (count !== 0) {
+  const res = await get_user(user.email)
+  const currUser = await res.data.user
+  if (currUser) {
     console.log('User already exists in db')
     return
   }
@@ -16,13 +17,9 @@ export async function create_user(user: userType) {
   })
 }
 
-async function check_user(email) {
-  const res = await fetch('/api/prisma/user_exists', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({ email: email }),
+export async function get_user(email) {
+  const res = await axios.post('/api/prisma/user_exists', {
+    email,
   })
 
   return res

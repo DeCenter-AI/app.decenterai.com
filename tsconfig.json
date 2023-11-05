@@ -56,7 +56,8 @@
     "src/abi/deal_client.js",
     "src/app/components/fvm/UploadFile.jsx",
     "src/app/demo/page.tsx",
-    "src/app/test/page.jsx",
+    "config/app.ts",
+    //"src/app/test/page.jsx",
     "test/jest-e2e.ts",
     "tsconfig.json",
     "tsconfig.node.json"
