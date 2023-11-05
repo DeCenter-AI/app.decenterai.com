@@ -32,12 +32,12 @@ export default function Modal() {
       <DashLayout>
         <div className="h-full w-full px-4 flex gap-5 pt-10 text-white">
           <div className="w-[80%]">
-            <button className="rounded-2xl border mb-4 w-full gap-2 items-cente border-primary_9 flex px-4 py-5">
+            <Link href="/dashboard/settings/profile" className="rounded-2xl border mb-4 w-full gap-2 items-cente border-primary_9 flex px-4 py-5">
               <div className="text-primary_8">
                 <BsPerson size={24} />
               </div>
               <span>Profile </span>
-            </button>
+            </Link>
             <button
               className="rounded-2xl w-full border mb-4 gap-2 items-cente border-primary_9 flex px-4 py-5"
               type="button"

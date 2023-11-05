@@ -2,6 +2,7 @@ import React from 'react'
 import { FadeLoader } from 'react-spinners'
 
 const Loading = () => {
+
     return (
         <div className="fixed inset-0 bg-primary_13 bg-opacity-80 flex items-center justify-center">
             <div className="w-[25%] h-[50%] bg-primary_12 rounded-xl p-4">
@@ -18,6 +19,7 @@ const Loading = () => {
             </div>
         </div>
     )
+
 }
 
 export default Loading
