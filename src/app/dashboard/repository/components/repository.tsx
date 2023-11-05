@@ -1,13 +1,13 @@
 import React from 'react'
 import { BiLike } from 'react-icons/bi'
 import { GoDownload } from 'react-icons/go'
-import repository from '@/data/repository'
 
-export default function Repository() {
+
+export default function Repository({repository}) {
   return (
     <div>
       <div className="">
-        {repository.map((item) => (
+        {repository?.map((item) => (
           <div
             key={item.id}
             className=" border border-primary_9 flex px-5 mb-5 py-3 items-center rounded-xl  h-[170px] min-h-[170px]"

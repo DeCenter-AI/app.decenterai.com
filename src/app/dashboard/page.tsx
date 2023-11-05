@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { DashLayout } from './dashLayout'
 import RocketImg from '@public/rocket.png'
@@ -7,7 +9,7 @@ import TrainIcon from '@public/trainIcon.png'
 import TrophyIcon from '@public/TrophyIcon.png'
 import TaskIcon from '@public/taskIcon.png'
 import Image from 'next/image'
-import Emptyimg from '@public/magnify.png'
+
 import avatar from '@public/Rectangle 75.png'
 import { BsClipboard } from 'react-icons/bs'
 import { PiTrophyBold, PiUsersThree } from 'react-icons/pi'
@@ -16,8 +18,14 @@ import repository from '@/data/repository'
 import Repository from './repository/components/repository'
 import { GoDownload } from 'react-icons/go'
 import { BiLike } from 'react-icons/bi'
+import EmptyRepository from './repository/components/empty_repo'
+
 
 export default function Page() {
+  const [toggle, setToggle] = useState<boolean>(false)
+  const handleToggle = ()=>{
+    setToggle(!toggle)
+  }
   return (
     <DashLayout>
       <div className="h-full w-full flex flex-col gap-6 px-2 py-2  text-white ">
@@ -84,19 +92,14 @@ export default function Page() {
         </div>
 
         <div className=" h-[40%]">
-          <div>
+          <div className='flex gap-2'>
             <span className="text-lg">Recently created models</span>
+            <input type='checkbox' onClick={handleToggle}/>
           </div>
           <div className="w-full overflow-auto   max-h-full px-8 py-8">
             {
-              repository.length == 0 ?(
-                <div className='flex flex-col justify-center items-center'>
-
-                <div className='mb-2'>
-                <Image src={Emptyimg} className='grayscale' height={136} width={171.67} alt='' />
-                </div>
-                <span className="text-center text-xs ">No models created yet.</span>
-              </div>
+              !toggle  ?(
+               <EmptyRepository />
             ) : (
               <div className="grid gap-5 grid-cols-2">
                 {repository.map((item) => (
