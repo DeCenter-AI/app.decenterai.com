@@ -50,33 +50,33 @@ const Page = () => {
     }
   }
 
-  const checkStatus = async () => {
-    console.log('ok')
-    const info = particle.auth.getUserInfo()
-    console.log(info)
-    if (!info) return
-    const email = info.email || info.google_email
-
-    const res = await get_user(email)
-    if (res.data.user) {
-      const user_data = {
-        email: res.data.user.email,
-        userName: res.data.user.userName,
-        name: res.data.user.name,
-        profileImage: res.data.user.profileImage,
-      }
-      setUser(user_data)
-      console.log(user_data)
-      setIsLoading(true)
-      push('/dashboard')
-    }
-  }
 
   useEffect(() => {
     console.log("checkStatus:prisma")
+    const checkStatus = async () => {
+      console.log('ok')
+      const info = particle.auth.getUserInfo()
+      console.log(info)
+      if (!info) return
+      const email = info.email || info.google_email
+
+      const res = await get_user(email)
+      if (res.data.user) {
+        const user_data = {
+          email: res.data.user.email,
+          userName: res.data.user.userName,
+          name: res.data.user.name,
+          profileImage: res.data.user.profileImage,
+        }
+        setUser(user_data)
+        console.log(user_data)
+        setIsLoading(true)
+        push('/dashboard')
+      }
+    }
     checkStatus()
     return
-  })
+  },[])
 
   return (
     <div className="bg-primary_13 h-screen flex flex-col gap-4  relative ">
