@@ -76,7 +76,6 @@ export default function Page() {
       {modal === 1 && <TransactionProcessing />}
       {modal === 2 && <TransactionCompleted setModal={setModal} />}
       {modal === 3 && <DownloadSignal />}
-      
     </DashLayout>
   )
 }

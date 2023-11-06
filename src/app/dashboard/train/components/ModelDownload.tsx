@@ -1,9 +1,9 @@
 'use client'
 import Link from 'next/link'
 import React from 'react'
-import flower from "public/flower.png"
+import flower from 'public/flower.png'
 import Image from 'next/image'
-import {PiCloudArrowUp} from "react-icons/pi"
+import { PiCloudArrowUp } from 'react-icons/pi'
 interface IProps {
   download: () => void
   setPage: (page: number | null) => void
@@ -21,12 +21,12 @@ export default function ModelDownload({ download, setPage, cid }: IProps) {
       </div>
 
       <div className="flex  gap-8 items-center my-6 h-[20%]">
-        <Image src={flower} alt="flower" className='h-full object-contain' />
+        <Image src={flower} alt="flower" className="h-full object-contain" />
 
         <button className="border-2 border-[#2B2B2B] border-dashed flex flex-col py-3 px-2 text-[#DADADA] gap-3 items-center rounded-lg">
           <PiCloudArrowUp size={25} />
 
-          <span className='text-sm'>Change picture</span>
+          <span className="text-sm">Change picture</span>
         </button>
       </div>
 
@@ -36,11 +36,12 @@ export default function ModelDownload({ download, setPage, cid }: IProps) {
           <p className="text-primary_8">size 152MB</p>
         </div>
         <div className="w-full h-[20%] flex flex-col gap-2">
-          <div className="text-sm font-semibold font-archivo w-full h-[10%] px-2 mb-2">Description</div>
+          <div className="text-sm font-semibold font-archivo w-full h-[10%] px-2 mb-2">
+            Description
+          </div>
           <div className="h-full border border-primary_8 rounded-2xl w-full  text-sm flex justify-between items-center font-archivo px-4">
             <textarea
               className="w-full h-full rounded-2xl bg-transparent focus:ring-0 outline-none p-2 resize-none py-6 overflow-y-hidden"
-              
               placeholder="what is the model about..."
             />
           </div>
