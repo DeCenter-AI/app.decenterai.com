@@ -1,19 +1,20 @@
-import React from 'react'
-import { usePathname } from 'next/navigation'
+'use client'
+
+import { useState } from 'react'
 import { DashLayout } from './dashLayout'
 import RocketImg from '@public/rocket.png'
-import TeamIcon from '@public/teamIcon.png'
-import TrainIcon from '@public/trainIcon.png'
-import TrophyIcon from '@public/TrophyIcon.png'
-import TaskIcon from '@public/taskIcon.png'
 import Image from 'next/image'
-import Emptyimg from '@public/magnify.png'
-import avatar from '@public/Rectangle 75.png'
-import { BsClipboard } from 'react-icons/bs'
-import { PiTrophyBold, PiUsersThree } from 'react-icons/pi'
-import { HiOutlineChip } from 'react-icons/hi'
+
+import repository from '@/data/repository'
+import { GoDownload } from 'react-icons/go'
+import { BiLike } from 'react-icons/bi'
+import EmptyRepository from './components/emptyRepo'
 
 export default function Page() {
+  const [toggle, setToggle] = useState<boolean>(false)
+  const handleToggle = () => {
+    setToggle(!toggle)
+  }
   return (
     <DashLayout>
       <div className="h-full w-full flex flex-col gap-6 px-2 py-2  text-white ">
@@ -79,23 +80,53 @@ export default function Page() {
           </div>
         </div>
 
-        <div className=" h-[50%]">
-          <div>
+        <div className=" h-[40%] ">
+          <div className="flex gap-2 h-[10%] bg-inherit">
             <span className="text-lg">Recently created models</span>
+            <input type="checkbox" onClick={handleToggle} />
           </div>
-          <div className="w-full overflow-y-auto   max-h-full px-8 py-8">
-            <div className="flex flex-col justify-center items-center">
-              <div className="mb-2">
-                <Image
-                  src={Emptyimg}
-                  className="grayscale"
-                  height={136}
-                  width={171.67}
-                  alt=""
-                />
+          <div className="w-full overflow-auto   h-[90%]  pr-2 pt-6 ">
+            {!toggle ? (
+              <EmptyRepository />
+            ) : (
+              <div className="grid gap-5 grid-cols-2 h-full">
+                {repository.map((item) => (
+                  <div
+                    key={item.id}
+                    className=" border border-primary_9 flex px-5  py-3 items-center rounded-xl  h-[170px] "
+                  >
+                    <div className="w-[80%] h-full">
+                      <div className=" flex h-[25%] items-start ">
+                        <span className="bg-primary_11 rounded-full text-primary_8 py-1 px-3">
+                          {item.label}
+                        </span>
+                      </div>
+                      <div className="h-[20%]">
+                        <span className="text-lg ">{item.title}</span>
+                      </div>
+                      <div className="flex items-center h-[40%]">
+                        <p className="text-xs">{item.description} </p>
+                      </div>
+                      <div className=" h-[15%] text-xs text-primary_8 flex gap-4">
+                        <div>
+                          <span>Updated {item.time}</span>
+                        </div>
+                        <div className="flex">
+                          <GoDownload />
+                          <span>{item.dowloaded}</span>
+                        </div>
+                        <div className="flex">
+                          <BiLike />
+                          <span>{item.likes}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="w-[20%] h-full bg-primary_11 "></div>
+                  </div>
+                ))}
               </div>
-              <span className="text-center text-xs ">No models created yet.</span>
-            </div>
+            )}
           </div>
         </div>
       </div>
