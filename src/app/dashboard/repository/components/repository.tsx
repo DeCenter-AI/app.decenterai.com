@@ -2,8 +2,7 @@ import React from 'react'
 import { BiLike } from 'react-icons/bi'
 import { GoDownload } from 'react-icons/go'
 
-
-export default function Repository({repository}) {
+export default function Repository({ repository }) {
   return (
     <div>
       <div className="">
