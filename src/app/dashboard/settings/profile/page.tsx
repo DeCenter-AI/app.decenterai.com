@@ -48,7 +48,9 @@ export default function Page() {
           </p>
         </div>
         <div className="flex justify-between items-center  rounded-2xl px-4 py-2 border border-primary_8 ">
-          <Image src={profile} alt="profile icon" />
+           <h1 className=" text-xl font-logirentBold">
+          Profile
+        </h1>
           <button className=" bg-primary_10 rounded-full px-4 py-2 ">
             Delete Account
           </button>

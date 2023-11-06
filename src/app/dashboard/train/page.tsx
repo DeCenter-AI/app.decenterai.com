@@ -54,7 +54,7 @@ export default function Page() {
 
   return (
     <DashLayout>
-      {!page && <TrainBase setPage={setPage} />}
+      {/* {!page && <TrainBase setPage={setPage} />}
       {page == 1 && (
         <NewModel
           setPage={setPage}
@@ -75,7 +75,8 @@ export default function Page() {
       )}
       {modal === 1 && <TransactionProcessing />}
       {modal === 2 && <TransactionCompleted setModal={setModal} />}
-      {modal === 3 && <DownloadSignal />}
+      {modal === 3 && <DownloadSignal />} */}
+      <ModelDownload setPage={setPage} download={download} cid={decodedCid} />
     </DashLayout>
   )
 }

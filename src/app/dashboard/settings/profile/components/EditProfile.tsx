@@ -5,7 +5,9 @@ import { AiOutlineCamera } from 'react-icons/ai'
 const EditProfile = () => {
   return (
     <div className="absolute inset-0 z-50 bg-primary_11 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] h-[85%]  my-16 mx-auto transition-all duration-500 ease-in-out rounded-xl p-6 flex flex-col gap-6 shadow-xl">
-      <Image src={editProfile} alt="edit profile" />
+      <h1 className="text-xl font-logirentBold">
+          Edit Profile
+        </h1>
       <div className="relative w-[25%]">
         <Image src={avatars.avatar} alt="profile icon" className="w-full h-full" />
 
