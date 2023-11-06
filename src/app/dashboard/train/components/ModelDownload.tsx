@@ -49,7 +49,8 @@ export default function ModelDownload({ download, setPage, cid }: IProps) {
         <div className="h-[15%] rounded-2xl w-full  text-sm flex justify-between items-center font-archivo mt-4 ">
           <button
             onClick={() => setPage(1)}
-            className="border border-primary_8 text-primary_1 font-semibold font-primaryArchivo text-sm h-full w-[30%] cursor-pointer rounded-2xl">
+            className="border border-primary_8 text-primary_1 font-semibold font-primaryArchivo text-sm h-full w-[30%] cursor-pointer rounded-2xl"
+          >
             Train again
           </button>
 
@@ -57,18 +58,21 @@ export default function ModelDownload({ download, setPage, cid }: IProps) {
             <Link
               href={`https://dweb.link/ipfs/${cid}`}
               target="_blank"
-              className="flex items-center justify-center h-full w-full">
+              className="flex items-center justify-center h-full w-full"
+            >
               Share model
             </Link>
           </button>
         </div>
         <button
           // onClick={() => download()}
-          className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm w-full cursor-pointer rounded-2xl py-2.5 mt-2">
+          className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm w-full cursor-pointer rounded-2xl py-2.5 mt-2"
+        >
           <Link
             href={`https://dweb.link/ipfs/${cid}`}
             target="_blank"
-            className="flex items-center justify-center h-full w-full">
+            className="flex items-center justify-center h-full w-full"
+          >
             Download model
           </Link>
         </button>
