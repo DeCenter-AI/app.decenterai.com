@@ -26,7 +26,7 @@ export default function ModelDownload({ download, setPage, cid }: IProps) {
         <button className="border-2 border-[#2B2B2B] border-dashed flex flex-col py-3 px-2 text-[#DADADA] gap-3 items-center rounded-lg">
           <PiCloudArrowUp size={25} />
 
-          <span>Change picture</span>
+          <span className='text-sm'>Change picture</span>
         </button>
       </div>
 
