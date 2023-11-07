@@ -1,7 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
-import { AppMetaData } from '@config/app'
-import { ContextProvider } from './userContext'
+import {Inter} from 'next/font/google'
+import {AppMetaData} from '@config/app'
+import {ContextProvider} from '@state/userContext'
 import NetworkProvider from './NetworkProvider'
 
 const inter = Inter({ subsets: ['latin'] })

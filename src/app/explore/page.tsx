@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
-import {useUserContext} from '../userContext';
+import {useUserContext} from '@state/userContext';
 import {get_user} from '@lib/prismaUtils';
 import {generateFromEmail} from 'unique-username-generator';
 import {AvatarGenerator} from 'random-avatar-generator';
