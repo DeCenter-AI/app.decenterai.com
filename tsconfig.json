@@ -18,6 +18,11 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
+      "@api/*": ["./src/app/api/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@data/*": ["./src/app/data/*"],
+      "@state/*": ["./src/state/*"],
       "@Components/*": ["./src/components/*"],
       "@Svg/*": ["./src/svg/*"],
       "@public/*": ["./public/*"],
@@ -54,7 +59,6 @@
   },
   "files": [
     "src/abi/deal_client.js",
-    "src/app/components/fvm/UploadFile.jsx",
     "src/app/demo/page.tsx",
     "config/app.ts",
     //"src/app/test/page.jsx",
@@ -69,11 +73,10 @@
     "test/**/*.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "src/app/userContext.tsx",
-    "src/app/loading.js",
-    "build/types/**/*.ts",
     "prisma/generated/**/*.ts",
-    "enums/**/*.ts"
+    "enums/**/*.ts",
+    "config/**/*.ts",
+    "public/**/*.ts"
   ],
   "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
 }
