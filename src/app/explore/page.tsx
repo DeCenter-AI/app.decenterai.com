@@ -29,32 +29,32 @@ export default function Page()  {
       supportAuthTypes: 'email,google',
     })
     console.log(userInfo)
-    const email = userInfo.email || userInfo.google_email
+    const email = userInfo.email ?? userInfo.google_email
     const name =
-      userInfo.name || userInfo.thirdparty_user_info
+      userInfo.name ?? userInfo.thirdparty_user_info
         ? userInfo.thirdparty_user_info.user_info.name
         : ''
     const profileImage =
-      userInfo.avatar || userInfo.thirdparty_user_info
+      userInfo.avatar ?? userInfo.thirdparty_user_info
         ? userInfo.thirdparty_user_info.user_info.picture
         : ''
 
-    if (userInfo) {
-      setIsLoading(true)
-      const res = await get_user(email)
-      // FIXME:
-      const user_data: userType = {
-        email,
-        userName: generateFromEmail(email, 2),
-        name,
-        profileImage: generator.generateRandomAvatar(profileImage),
-      }
+    if(!userInfo){
+      console.error({particle: "user not logged in"})
+      return
+    }
 
-      if (!res.data.user) {
-        await upsert_user(user_data)
-      }
-      setUser(user_data)
-      push('/dashboard')
+    setIsLoading(true)
+    // const res = await get_user(email)
+    const user_data: userType = {
+      email,
+      userName: generateFromEmail(email, 2),
+      name,
+      profileImage: generator.generateRandomAvatar(profileImage),
+    }
+    const res = await upsert_user(user_data)
+    setUser(user_data)
+    push('/dashboard')
     }
   }
 
@@ -82,7 +82,6 @@ export default function Page()  {
       }
     }
     checkStatus()
-    return
   }, [])
 
   return (
