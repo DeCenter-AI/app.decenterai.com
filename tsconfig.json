@@ -56,7 +56,6 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "resolveJsonModule": true,
-    "lib": ["dom", "dom.iterable", "esnext"]
   },
   "files": [
     "src/abi/deal_client.js",
