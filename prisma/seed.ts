@@ -9,6 +9,7 @@ async function create_user(dto) {
   const user = await prisma.user.create({
     data: {
       email: dto.email,
+      name: dto.name,
     },
   })
   console.log({ created: user })
@@ -21,6 +22,7 @@ async function main() {
   const hiro = {
     email: `hiro-${getTimeNow('DD-MM-YYYY-HH-mm-ss')}@decenterai.com`,
     password: 'hiro@1234',
+    name: "Hiro",
   }
   // console.log({hiro})
 
@@ -41,7 +43,7 @@ async function main() {
   }*/
   const user1 = await create_user(hiro)
 
-  const modelInput = {
+  const modelInput  = {
     cid: 'Qme1HnwLHVzRxra7mT5gRkG7WbyE4FhnGFn9inETSj33Hw',
     provider: LIGHTHOUSE,
   }
