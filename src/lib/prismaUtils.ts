@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {userType} from "@/app/api/prisma/add_user/route";
+import {userType} from "@app/api/prisma/add_user/route";
 
 export async function create_user(user: userType) {
   const res = await get_user(user.email)
