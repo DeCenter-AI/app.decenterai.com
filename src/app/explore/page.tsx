@@ -3,13 +3,20 @@ import Image from 'next/image'
 import React, {useEffect, useState} from 'react'
 import {useRouter} from 'next/navigation'
 import {useUserContext} from '../userContext'
-import {create_user, get_user} from '@/lib/prismaUtils'
+import {get_user} from '@/lib/prismaUtils'
 import {generateFromEmail} from 'unique-username-generator'
 import {AvatarGenerator} from 'random-avatar-generator'
 import {GiDigitalTrace} from 'react-icons/gi'
 import particle from '@/lib/particle'
 import Loading from '../components/Loading'
+import {userType} from "@app/api/prisma/add_user/route";
+import axios from "axios";
 
+export async function upsert_user(user: userType) {
+  const res =  await axios.put('/api/prisma/add_user', user)
+  console.debug({upsert_user: res})
+  return res
+}
 export default function Page()  {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { push } = useRouter()
@@ -35,7 +42,8 @@ export default function Page()  {
     if (userInfo) {
       setIsLoading(true)
       const res = await get_user(email)
-      const user_data = {
+      // FIXME:
+      const user_data: userType = {
         email,
         userName: generateFromEmail(email, 2),
         name,
@@ -43,7 +51,7 @@ export default function Page()  {
       }
 
       if (!res.data.user) {
-        await create_user(user_data)
+        await upsert_user(user_data)
       }
       setUser(user_data)
       push('/dashboard')
