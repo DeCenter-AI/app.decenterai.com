@@ -29,7 +29,7 @@ export default function Page() {
     const userInfo = await particle.auth.login({
       supportAuthTypes: 'email,google',
     });
-    console.log(userInfo);
+    console.log({primsa:userInfo});
     const email = userInfo.email || userInfo.google_email;
     const name = userInfo.name || (userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.name : '');
     const profileImage = userInfo.avatar || (userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.picture : '');
