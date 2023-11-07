@@ -51,6 +51,7 @@ async function main() {
   const tr1 = await prisma.trainingRequest.create({
     data: {
       userId: user1.id,
+      // ts:ignore
       inputs: modelInput,
       config: {
         trainScript: 'linear-regression.ipynb',
