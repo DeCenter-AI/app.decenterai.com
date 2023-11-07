@@ -65,7 +65,6 @@
     "test/jest-e2e.ts",
     "tsconfig.json",
     "tsconfig.node.json",
-    "prisma/seed.ts"
   ],
 
   "include": [
