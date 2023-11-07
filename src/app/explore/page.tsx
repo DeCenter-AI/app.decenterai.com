@@ -9,7 +9,7 @@ import {AvatarGenerator} from 'random-avatar-generator';
 import {GiDigitalTrace} from 'react-icons/gi';
 import particle from '@/lib/particle';
 import Loading from '../components/Loading';
-import {userType} from "@app/api/prisma/add_user/route";
+import {userType} from "@app/api/prisma/upsert_user/route";
 import axios from "axios";
 
 export async function upsert_user(user: userType) {

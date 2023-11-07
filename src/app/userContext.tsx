@@ -1,6 +1,6 @@
 'use client'
 import React, {createContext, ReactNode, useContext, useState} from 'react'
-import {userType} from "@app/api/prisma/add_user/route";
+import {userType} from "@app/api/prisma/upsert_user/route";
 
 
 const default_user_values = {
