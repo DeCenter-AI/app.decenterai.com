@@ -1,6 +1,7 @@
 'use client'
-import React, { createContext, ReactNode, useContext, useState } from 'react'
-import { userType } from '@/lib/global_types'
+import React, {createContext, ReactNode, useContext, useState} from 'react'
+import {userType} from "@/app/api/prisma/add_user/route";
+
 
 const default_user_values = {
   email: null,

@@ -1,5 +1,11 @@
-import { userType } from '@/lib/global_types'
 import prisma from '@/lib/prisma'
+
+export type userType = {
+  name: string
+  email: string
+  profileImage: string
+  userName: string
+}
 
 export async function POST(req: Request) {
   const user: userType = await req.json()

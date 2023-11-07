@@ -1,5 +1,5 @@
-import { userType } from './global_types'
 import axios from 'axios'
+import {userType} from "@enums/user";
 
 export async function create_user(user: userType) {
   const res = await get_user(user.email)
