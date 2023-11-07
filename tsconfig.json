@@ -55,7 +55,12 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "stripInternal": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
   },
   "files": [
     "src/abi/deal_client.js",
@@ -64,7 +69,8 @@
     //"src/app/test/page.jsx",
     "test/jest-e2e.ts",
     "tsconfig.json",
-    "tsconfig.node.json"
+    "tsconfig.node.json",
+    "prisma/seed.ts",
   ],
 
   "include": [
