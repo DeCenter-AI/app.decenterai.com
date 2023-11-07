@@ -64,7 +64,7 @@
     //"src/app/test/page.jsx",
     "test/jest-e2e.ts",
     "tsconfig.json",
-    "tsconfig.node.json",
+    "tsconfig.node.json"
   ],
 
   "include": [
@@ -76,7 +76,7 @@
     "prisma/generated/**/*.ts",
     "enums/**/*.ts",
     "config/**/*.ts",
-    "public/**/*.ts",
+    "public/**/*.ts"
   ],
   "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
 }
