@@ -56,11 +56,7 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "resolveJsonModule": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ]
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
   "files": [
     "src/abi/deal_client.js",
@@ -70,7 +66,7 @@
     "test/jest-e2e.ts",
     "tsconfig.json",
     "tsconfig.node.json",
-    "prisma/seed.ts",
+    "prisma/seed.ts"
   ],
 
   "include": [
