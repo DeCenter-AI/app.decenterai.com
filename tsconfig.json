@@ -20,7 +20,7 @@
       "@/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
       "@api/*": ["./src/app/api/*"],
-      "@lib/*": ["./src/app/lib/*"],
+      "@lib/*": ["./src/lib/*"],
       "@data/*": ["./src/app/data/*"],
       "@Components/*": ["./src/components/*"],
       "@Svg/*": ["./src/svg/*"],
