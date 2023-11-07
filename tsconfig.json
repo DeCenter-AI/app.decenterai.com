@@ -64,7 +64,8 @@
     //"src/app/test/page.jsx",
     "test/jest-e2e.ts",
     "tsconfig.json",
-    "tsconfig.node.json"
+    "tsconfig.node.json",
+    "./src/app/explore/upsert_user.tsx"
   ],
 
   "include": [
