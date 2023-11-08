@@ -1,84 +1,83 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useUserContext } from '../userContext'
-import { create_user, get_user } from '@/lib/prismaUtils'
+// import { useUserContext } from '@state/userContext';
+import { get_user } from '@lib/prismaUtils'
 import { generateFromEmail } from 'unique-username-generator'
 import { AvatarGenerator } from 'random-avatar-generator'
 import { GiDigitalTrace } from 'react-icons/gi'
-import particle from '@/lib/particle'
+import particle from '@lib/particle'
 import Loading from '../components/Loading'
+import { userType } from '@app/api/prisma/upsert_user/route'
+import { upsert_user } from './upsert_user'
+import useUserStore from '@/state/userStore'
 
-const Page = () => {
+export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const { push } = useRouter()
-  const { user, setUser } = useUserContext()
+  // const { user, setUser } = useUserContext();
   const [email, setEmail] = useState<string>('')
   const generator = new AvatarGenerator()
+  const userStore = useUserStore()
 
   const login = async () => {
     const userInfo = await particle.auth.login({
       supportAuthTypes: 'email,google',
     })
-    console.log(userInfo)
+    console.log({ primsa: userInfo })
     const email = userInfo.email || userInfo.google_email
     const name =
-      userInfo.name || userInfo.thirdparty_user_info
-        ? userInfo.thirdparty_user_info.user_info.name
-        : ''
+      userInfo.name ||
+      (userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.name : '')
     const profileImage =
-      userInfo.avatar || userInfo.thirdparty_user_info
+      userInfo.avatar ||
+      (userInfo.thirdparty_user_info
         ? userInfo.thirdparty_user_info.user_info.picture
-        : ''
+        : '')
+    const particleUUID = userInfo.uuid
 
-    if (userInfo) {
-      setIsLoading(true)
-      const res = await get_user(email)
-      const user_data = {
-        email,
-        userName: generateFromEmail(email, 2),
-        name,
-        profileImage: generator.generateRandomAvatar(profileImage),
-      }
-
-      if (!res.data.user) {
-        await create_user(user_data)
-      }
-      setUser(user_data)
-      push('/dashboard')
+    if (!userInfo) {
+      console.error({ particle: 'user not logged in' })
+      return
     }
-  }
 
-  const checkStatus = async () => {
-    console.log('ok')
-    const info = particle.auth.getUserInfo()
-    console.log(info)
-    if (!info) return
-    const email = info.email || info.google_email
+    setIsLoading(true)
 
-    const res = await get_user(email)
-    if (res.data.user) {
-      const user_data = {
-        email: res.data.user.email,
-        userName: res.data.user.userName,
-        name: res.data.user.name,
-        profileImage: res.data.user.profileImage,
-      }
-      setUser(user_data)
-      console.log(user_data)
-      setIsLoading(true)
-      push('/dashboard')
+    const user_data: userType = {
+      email,
+      userName: generateFromEmail(email, 2),
+      name,
+      profileImage: generator.generateRandomAvatar(profileImage),
+      particleUUID,
     }
+
+    const res = await upsert_user(user_data)
+    console.log(res)
+    userStore.setUser(res.data.created_user)
+    push('/dashboard')
   }
 
   useEffect(() => {
+    console.log('checkStatus:prisma')
+    const checkStatus = async () => {
+      const info = particle.auth.getUserInfo()
+      console.log(info)
+      if (!info) return
+      const email = info.email || info.google_email
+      const res = await get_user(email)
+      console.log(res)
+      if (res.data.user) {
+        userStore.setUser(res.data.user)
+        setIsLoading(true)
+        push('/dashboard')
+      }
+    }
     checkStatus()
-    return
   }, [])
 
   return (
-    <div className="bg-primary_13 h-screen flex flex-col gap-4  relative ">
+    <div className="bg-primary_13 h-screen flex flex-col gap-4 relative">
       {isLoading && <Loading />}
       <div className="h-[10%] flex pl-10">
         <div className="w-[20%] lg:w-[10%] relative">
@@ -92,9 +91,9 @@ const Page = () => {
           />
         </div>
       </div>
-      <div className="h-[90%] w-full flex  justify-center items-center">
-        <div className="w-[80%] lg:w-[30%] h-[80%] ">
-          <div className="h-[10%] ">
+      <div className="h-[90%] w-full flex justify-center items-center">
+        <div className="w-[80%] lg:w-[30%] h-[80%]">
+          <div className="h-[10%]">
             <h1 className="font-logirentBold text-primary_1 text-center font-bold text-4xl">
               {' '}
               Explore
@@ -147,5 +146,3 @@ const Page = () => {
     </div>
   )
 }
-
-export default Page

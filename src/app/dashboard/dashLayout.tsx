@@ -8,16 +8,16 @@ import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
 import { RxDashboard } from 'react-icons/rx'
 import { HiOutlineChip } from 'react-icons/hi'
 import { BsDatabase } from 'react-icons/bs'
-import { PiClipboardLight, PiTrophyBold, PiUsersThree } from 'react-icons/pi'
-import { IoSettingsOutline } from 'react-icons/io5'
 import { GoBell, GoSearch } from 'react-icons/go'
 import Link from 'next/link'
-import { useUserContext } from '../userContext'
+//import { useUserContext } from '@state/userContext'
 import notIcon from 'public/notification.png'
 import { ModalNotification } from './notifications/components/Notification'
+import useUserStore from '@/state/userStore'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
-  const { user } = useUserContext()
+  //const { user } = useUserContext()
+  const { user } = useUserStore()
   const pathname = usePathname()
   const [isNotificationOpen, setNotificationOpen] = useState(false)
   const [showBackdrop, setShowBackdrop] = useState(false)
@@ -153,7 +153,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               Connect Wallet
             </button> */}
 
-            {user.email ? (
+            {user ? (
               <div className="flex items-center bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
                 <button className="flex flex-row items-center ">
                   <Image

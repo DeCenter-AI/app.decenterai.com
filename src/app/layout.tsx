@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { AppMetaData } from '@config/app'
-import { ContextProvider } from './userContext'
+//import {ContextProvider} from '@state/userContext'
 import NetworkProvider from './NetworkProvider'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -13,7 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <NetworkProvider>
-          <ContextProvider>{children}</ContextProvider>
+          {/* <ContextProvider>{children}</ContextProvider> */}
+          {children}
         </NetworkProvider>
       </body>
     </html>

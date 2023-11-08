@@ -1,0 +1,38 @@
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+
+interface IUser {
+  id: string
+  particleUUID: string | null
+  userName: string
+  email: string | null
+  name: string
+  profileImage: string
+  createdAt: string
+  updatedAt: string
+}
+
+type Store = {
+  user: IUser | null
+  setUser: (user: IUser) => void
+}
+
+const useUserStore = create<Store>()(
+  persist(
+    (set) => ({
+      user: null,
+
+      setUser(userData: IUser) {
+        set((state) => ({
+          ...state,
+          user: userData,
+        }))
+      },
+    }),
+    {
+      name: 'userData',
+    },
+  ),
+)
+
+export default useUserStore
