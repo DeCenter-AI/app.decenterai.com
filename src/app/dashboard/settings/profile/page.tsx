@@ -1,5 +1,5 @@
 'use client'
-
+import useUserStore from '@/state/userStore'
 import { useRouter } from 'next/navigation'
 import { DashLayout } from '../../dashLayout'
 import { PiCaretLeft, PiCpu, PiPencilSimpleLight, PiUsersThree } from 'react-icons/pi'
@@ -14,6 +14,8 @@ import Link from 'next/link'
 import EditProfile from './components/EditProfile'
 import profile from 'public/profile-1.png'
 export default function Page() {
+  const { user } = useUserStore()
+  
   const router = useRouter()
   const [isModalOpen, setIsModalOPen] = useState<boolean>(false)
   const [showBackdrop, setShowBackdrop] = useState<boolean>(false)
@@ -25,6 +27,9 @@ export default function Page() {
     setIsModalOPen(false)
     setShowBackdrop(false)
   }
+    if (!user) {
+      return <div>User Not found</div>
+    }
   return (
     <DashLayout>
       {isModalOpen && <EditProfile />}
@@ -56,10 +61,10 @@ export default function Page() {
 
         <div className=" border border-primary_8 rounded-xl py-3 px-4 flex gap-6 lg:w-[80%] items-center">
           <div className="flex items-center gap-2">
-            <Image src={avatars.avatar} alt="" />
+            <Image src={user.profileImage} alt="" />
             <div>
-              <h3 className="text-primary_5 text-xl">David Ayegoro</h3>
-              <p className="text-primary_7">Dayegoro@gmail.com</p>
+              <h3 className="text-primary_5 text-xl">{user.name}</h3>
+              <p className="text-primary_7">{user.email}</p>
             </div>
           </div>
           <button
