@@ -35,6 +35,7 @@ const useUserStore = create<Store>()(
                     }))
                     console.log("userStore: init")
                 },
+                // TODO: setUser implement in profile/EditProfile
                 async setUser(userData: IUser) {
                     set((state) => ({
                         ...state,
