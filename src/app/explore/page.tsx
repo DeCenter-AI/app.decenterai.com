@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 // import { useUserContext } from '@state/userContext';
 import { get_user } from '@lib/prismaUtils'
@@ -58,9 +58,9 @@ export default function Page() {
     push('/dashboard')
   }
 
-  useMemo(() => {
+  useEffect(() => {
     console.log('checkStatus:prisma')
-    const checkStatus = (async () => {
+    const checkStatus = async () => {
       const info = particle.auth.getUserInfo()
       console.log(info)
       if (!info) return
@@ -72,12 +72,9 @@ export default function Page() {
         setIsLoading(true)
         push('/dashboard')
       }
-    })()
-
+    }
+    checkStatus()
   }, [])
-
-
-
 
   return (
     <div className="bg-primary_13 h-screen flex flex-col gap-4 relative">
