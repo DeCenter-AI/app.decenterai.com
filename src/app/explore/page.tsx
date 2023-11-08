@@ -70,7 +70,7 @@ export default function Page() {
       if (res.data.user) {
         userStore.setUser(res.data.user)
         setIsLoading(true)
-        //push('/dashboard')
+        push('/dashboard')
       }
     })()
 
