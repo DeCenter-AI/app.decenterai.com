@@ -20,6 +20,7 @@ export async function PUT(req: Request) {
     },
     update: {
       ...user,
+      //@ts-ignore
       id: undefined,
     },
   })
