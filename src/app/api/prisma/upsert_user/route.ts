@@ -8,14 +8,20 @@ export type userType = {
   particleUUID: string
 }
 
-export async function POST(req: Request) {
+export async function PUT(req: Request) {
   const user: userType = await req.json()
   const created_user = await prisma.user.upsert({
     where: {
       email: user.email,
     },
-    create: user,
-    update: user,
+    create: {
+      ...user,
+      id: undefined,
+    },
+    update: {
+      ...user,
+      id: undefined,
+    },
   })
   return new Response(JSON.stringify({ status: 200, created_user }))
 }
