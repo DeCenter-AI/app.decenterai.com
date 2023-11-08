@@ -32,7 +32,7 @@ export default function Page() {
     }
   return (
     <DashLayout>
-      {isModalOpen && <EditProfile />}
+      {isModalOpen && <EditProfile onclick={closeModal} />}
       {isModalOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-20 backdrop-blur-sm"
