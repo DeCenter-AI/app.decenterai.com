@@ -1,8 +1,22 @@
+'use client'
 import avatars from '@public/avatars'
 import Image from 'next/image'
+import { useState } from 'react'
 import editProfile from 'public/edit-profile.png'
 import { AiOutlineCamera } from 'react-icons/ai'
-const EditProfile = ({onclick}) => {
+import useUserStore from '@/state/userStore'
+const EditProfile = ({ onclick }) => {
+  const { user } = useUserStore()
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
+
+  const handleNameChange = (event) => {
+    setName(event.target.value)
+  }
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value)
+  }
   return (
     <div className="absolute inset-0 z-50 bg-primary_11 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] h-[85%]  my-16 mx-auto transition-all duration-500 ease-in-out rounded-xl p-6 flex flex-col gap-6 shadow-xl">
       <Image src={editProfile} alt="edit profile" />
@@ -21,7 +35,8 @@ const EditProfile = ({onclick}) => {
             </label>
             <input
               type="text"
-              value="Dave"
+              value={name}
+              onChange={handleNameChange}
               className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent"
             />
           </div>
@@ -53,17 +68,22 @@ const EditProfile = ({onclick}) => {
           </label>
           <input
             type="text"
-            value="Dayegoro@email.com"
+            value={email}
+            onChange={handleEmailChange}
             className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent"
             id="email"
             name="email"
           />
         </div>
         <div className="font-semibold flex justify-end gap-4 items-center mt-2">
-          <button className=" bg-transparent border border-primary_8 rounded-full px-4 py-3 text-[#F5F5F5] w-[140px] text-center" onClick={onclick}>
+          <button
+            className=" bg-transparent border border-primary_8 rounded-full px-4 py-3 text-[#F5F5F5] w-[140px] text-center"
+            onClick={onclick}>
             Cancel
           </button>
-          <button className=" bg-primary_10 rounded-full px-4 py-3 w-[140px] text-center" onClick={onclick}>
+          <button
+            className=" bg-primary_10 rounded-full px-4 py-3 w-[140px] text-center"
+            onClick={onclick}>
             Save changes
           </button>
         </div>
