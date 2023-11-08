@@ -8,12 +8,11 @@ import Image from 'next/image'
 import repository from '@/data/repository'
 import { GoDownload } from 'react-icons/go'
 import { BiLike } from 'react-icons/bi'
-import EmptyRepository from './repository/components/empty_repo'
-
+import EmptyRepository from './components/emptyRepo'
 
 export default function Page() {
   const [toggle, setToggle] = useState<boolean>(false)
-  const handleToggle = ()=>{
+  const handleToggle = () => {
     setToggle(!toggle)
   }
   return (
@@ -81,17 +80,16 @@ export default function Page() {
           </div>
         </div>
 
-        <div className=" h-[40%]">
-          <div className='flex gap-2'>
+        <div className=" h-[40%] ">
+          <div className="flex gap-2 h-[10%] bg-inherit">
             <span className="text-lg">Recently created models</span>
-            <input type='checkbox' onClick={handleToggle}/>
+            <input type="checkbox" onClick={handleToggle} />
           </div>
-          <div className="w-full overflow-auto   max-h-full px-8 py-8">
-            {
-              !toggle  ?(
-               <EmptyRepository />
+          <div className="w-full overflow-auto   h-[90%]  pr-2 pt-6 ">
+            {!toggle ? (
+              <EmptyRepository />
             ) : (
-              <div className="grid gap-5 grid-cols-2">
+              <div className="grid gap-5 grid-cols-2 h-full">
                 {repository.map((item) => (
                   <div
                     key={item.id}

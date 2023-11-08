@@ -42,7 +42,7 @@ const models: Model[] = [
     desc: 'Identifies a variety of concepts in images and video including objects, themes, and more. ',
     date: 'Updated Sep, 12 2023',
     download: 12,
-    like: 127
+    like: 127,
   },
   {
     id: 2,
@@ -51,7 +51,7 @@ const models: Model[] = [
     desc: 'Identifies a variety of concepts in images and video including objects, themes, and more. ',
     date: 'Updated Sep, 12 2023',
     download: 12,
-    like: 127
+    like: 127,
   },
   {
     id: 3,
@@ -60,7 +60,7 @@ const models: Model[] = [
     desc: 'Identifies a variety of concepts in images and video including objects, themes, and more. ',
     date: 'Updated Sep, 12 2023',
     download: 12,
-    like: 127
+    like: 127,
   },
   {
     id: 4,
@@ -69,8 +69,8 @@ const models: Model[] = [
     desc: 'Identifies a variety of concepts in images and video including objects, themes, and more. ',
     date: 'Updated Sep, 12 2023',
     download: 12,
-    like: 127
+    like: 127,
   },
 ]
 
-export {profileInfo, models}
+export { profileInfo, models }
