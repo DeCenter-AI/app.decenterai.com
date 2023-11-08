@@ -82,7 +82,8 @@
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
     "unique-username-generator": "^1.2.0",
-    "web3.storage": "^4.5.5"
+    "web3.storage": "^4.5.5",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@types/blob-to-buffer": "^1.2.0",

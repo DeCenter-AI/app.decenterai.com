@@ -5,16 +5,17 @@ export type userType = {
   email: string
   profileImage: string
   userName: string
+  particleUUID: string
 }
 
 export async function POST(req: Request) {
   const user: userType = await req.json()
   const created_user = await prisma.user.upsert({
     where: {
-      email:user.email,
+      email: user.email,
     },
     create: user,
     update: user,
   })
-  return new Response(JSON.stringify({ status: 200 }))
+  return new Response(JSON.stringify({ status: 200, created_user }))
 }
