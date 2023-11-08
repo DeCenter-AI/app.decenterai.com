@@ -17,3 +17,11 @@ body:
         - []  
     validations:
       required: true
+
+  - type: input
+    attributes: 
+      label: Related Issues
+      placeholder: |
+        Relates #21
+    validations:
+      required: false
