@@ -1,74 +1,80 @@
 'use client'
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 // import { useUserContext } from '@state/userContext';
-import { get_user } from '@lib/prismaUtils';
-import { generateFromEmail } from 'unique-username-generator';
-import { AvatarGenerator } from 'random-avatar-generator';
-import { GiDigitalTrace } from 'react-icons/gi';
-import particle from '@lib/particle';
-import Loading from '../components/Loading';
-import { userType } from "@app/api/prisma/upsert_user/route";
-import { upsert_user } from './upsert_user';
-import useUserStore from '@/state/userStore';
+import { get_user } from '@lib/prismaUtils'
+import { generateFromEmail } from 'unique-username-generator'
+import { AvatarGenerator } from 'random-avatar-generator'
+import { GiDigitalTrace } from 'react-icons/gi'
+import particle from '@lib/particle'
+import Loading from '../components/Loading'
+import { userType } from '@app/api/prisma/upsert_user/route'
+import { upsert_user } from './upsert_user'
+import useUserStore from '@/state/userStore'
 
 export default function Page() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { push } = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const { push } = useRouter()
   // const { user, setUser } = useUserContext();
-  const [email, setEmail] = useState<string>('');
-  const generator = new AvatarGenerator();
+  const [email, setEmail] = useState<string>('')
+  const generator = new AvatarGenerator()
   const userStore = useUserStore()
 
   const login = async () => {
     const userInfo = await particle.auth.login({
       supportAuthTypes: 'email,google',
-    });
-    console.log({ primsa: userInfo });
-    const email = userInfo.email || userInfo.google_email;
-    const name = userInfo.name || (userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.name : '');
-    const profileImage = userInfo.avatar || (userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.picture : '');
+    })
+    console.log({ primsa: userInfo })
+    const email = userInfo.email || userInfo.google_email
+    const name =
+      userInfo.name ||
+      (userInfo.thirdparty_user_info ? userInfo.thirdparty_user_info.user_info.name : '')
+    const profileImage =
+      userInfo.avatar ||
+      (userInfo.thirdparty_user_info
+        ? userInfo.thirdparty_user_info.user_info.picture
+        : '')
     const particleUUID = userInfo.uuid
 
     if (!userInfo) {
-      console.error({ particle: "user not logged in" });
-      return;
+      console.error({ particle: 'user not logged in' })
+      return
     }
 
-    setIsLoading(true);
+    setIsLoading(true)
 
     const user_data: userType = {
       email,
       userName: generateFromEmail(email, 2),
       name,
       profileImage: generator.generateRandomAvatar(profileImage),
-      particleUUID
-    };
+      particleUUID,
+    }
 
-    const res = await upsert_user(user_data);
+    const res = await upsert_user(user_data)
     console.log(res)
     userStore.setUser(res.data.created_user)
-    push('/dashboard');
-  };
+    push('/dashboard')
+  }
 
   useEffect(() => {
-    console.log('checkStatus:prisma');
+    console.log('checkStatus:prisma')
     const checkStatus = async () => {
-      const info = particle.auth.getUserInfo();
-      console.log(info);
-      if (!info) return;
-      const email = info.email || info.google_email;
-      const res = await get_user(email);
+      const info = particle.auth.getUserInfo()
+      console.log(info)
+      if (!info) return
+      const email = info.email || info.google_email
+      const res = await get_user(email)
       console.log(res)
       if (res.data.user) {
         userStore.setUser(res.data.user)
-        setIsLoading(true);
-        push('/dashboard');
+        setIsLoading(true)
+        push('/dashboard')
       }
-    };
-    checkStatus();
-  }, []);
+    }
+    checkStatus()
+  }, [])
 
   return (
     <div className="bg-primary_13 h-screen flex flex-col gap-4 relative">
@@ -138,5 +144,5 @@ export default function Page() {
         </div>
       </div>
     </div>
-  );
+  )
 }
