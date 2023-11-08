@@ -149,7 +149,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               Connect Wallet
             </button> */}
 
-            {user?.email ? (
+            {user ? (
               <div className="flex items-center bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
                 <button className="flex flex-row items-center ">
                   <Image
