@@ -1,22 +1,24 @@
 'use client'
 import Image from 'next/image'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-import {redirect, usePathname} from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
-import {RxDashboard} from 'react-icons/rx'
-import {HiOutlineChip} from 'react-icons/hi'
-import {BsDatabase} from 'react-icons/bs'
-import {GoBell, GoSearch} from 'react-icons/go'
+import { RxDashboard } from 'react-icons/rx'
+import { HiOutlineChip } from 'react-icons/hi'
+import { BsDatabase } from 'react-icons/bs'
+import { GoBell, GoSearch } from 'react-icons/go'
 import Link from 'next/link'
-import {useUserContext} from '@state/userContext'
+//import { useUserContext } from '@state/userContext'
 import notIcon from 'public/notification.png'
-import {ModalNotification} from './notifications/components/Notification'
+import { ModalNotification } from './notifications/components/Notification'
+import useUserStore from '@/state/userStore'
 
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
-  const { user } = useUserContext()
+  //const { user } = useUserContext()
+  const { user } = useUserStore()
   const pathname = usePathname()
   const [isNotificationOpen, setNotificationOpen] = useState(false)
   const [showBackdrop, setShowBackdrop] = useState(false)
