@@ -1,0 +1,47 @@
+name: Proposals
+description: Submit a proposal for consideration
+title: 'proposal: '
+labels: ['proposal']
+
+
+body: 
+  - type: markdown
+    attributes:
+      value: |
+        ## Proposals
+        Thanks for helping us improve! 🙏 Please follow the sections in the template and provide as much information.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Briefly summarize the proposal.
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: Explain the benefits and potential impact of implementing the proposal.
+    validations:
+      required: false
+
+  - type: textarea
+    id: implementation-plan
+    attributes:
+      label: Implementation Plan
+      description: Outline the steps or phases required to implement the proposal.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Include any additional information or references that support the proposal.
+    validations:
+      required: false
+
+    
+  
