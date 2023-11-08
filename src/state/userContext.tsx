@@ -2,7 +2,6 @@
 // import React, {createContext, ReactNode, useContext, useState} from 'react'
 // import {userType} from "@api/prisma/upsert_user/route";
 
-
 // const default_user_values = {
 //   email: null,
 //   name: null,

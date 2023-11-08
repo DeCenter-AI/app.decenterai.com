@@ -15,7 +15,6 @@ import notIcon from 'public/notification.png'
 import { ModalNotification } from './notifications/components/Notification'
 import useUserStore from '@/state/userStore'
 
-
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   //const { user } = useUserContext()
   const { user } = useUserStore()
@@ -66,8 +65,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full h-[90%] overflow-y-auto font-archivo ">
           <Link href="/dashboard">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <RxDashboard size={25} />
@@ -77,8 +77,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/train">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <HiOutlineChip size={25} />
@@ -88,8 +89,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/repository">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
@@ -117,8 +119,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </div> */}
           <Link href="/dashboard/settings">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
