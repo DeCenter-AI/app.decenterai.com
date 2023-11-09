@@ -14,39 +14,41 @@ const EditProfile = ({ onclick }) => {
     setName(event.target.value)
   }
 
+  const myImageLoader = ({ src }) => {
+    return src
+  }
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value)
   }
   return (
-    <div className="absolute inset-0 z-50 bg-primary_11 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] h-[85%]  my-16 mx-auto transition-all duration-500 ease-in-out rounded-xl p-6 flex flex-col gap-6 shadow-xl">
+    <div className="absolute inset-0 z-50 bg-primary_11 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] h-[85%]  my-12 mx-auto transition-all duration-500 ease-in-out rounded-xl px-6 py-6 flex flex-col gap-6 shadow-xl">
       <Image src={editProfile} alt="edit profile" />
       <div className="relative w-[25%]">
-        <Image src={avatars.avatar} alt="profile icon" className="w-full h-full" />
+        <Image
+          src={user?.profileImage}
+          alt="profile pic"
+          loader={myImageLoader}
+          unoptimized
+          width={80}
+          height={70}
+          className="max-w-[100%] max-h-[100%] rounded-full mr-3"
+        />
 
-        <button className="absolute -bottom-2 -right-2 text-[#8F8F8F] bg-[#2B2B2B] p-2 rounded-full">
+        <button className="absolute -bottom-1 -right-1 text-[#8F8F8F] bg-[#2B2B2B] p-2 rounded-full">
           <AiOutlineCamera size={20} />
         </button>
       </div>
       <form action="" className="text-[#5D5D5D] text-sm flex flex-col gap-4 relative">
-        <div className="grid grid-cols-2 gap-4 w-full">
+        <div className="grid gap-4 w-full">
           <div className="flex flex-col gap-2">
             <label htmlFor="firstName" className="font-bold ">
-              First name
+              Name
             </label>
             <input
               type="text"
               value={name}
               onChange={handleNameChange}
-              className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="lastName" className="font-bold ">
-              Last name
-            </label>
-            <input
-              type="text"
-              value="Ayegoro"
               className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent"
             />
           </div>

@@ -1,5 +1,6 @@
 'use client'
 import useUserStore from '@/state/userStore'
+
 import { useRouter } from 'next/navigation'
 import { DashLayout } from '../../dashLayout'
 import { PiCaretLeft, PiCpu, PiPencilSimpleLight, PiUsersThree } from 'react-icons/pi'
@@ -15,8 +16,11 @@ import EditProfile from './components/EditProfile'
 import profile from 'public/profile-1.png'
 export default function Page() {
   const { user } = useUserStore()
-
   const router = useRouter()
+  const myImageLoader = ({ src }) => {
+    return src
+  }
+
   const [isModalOpen, setIsModalOPen] = useState<boolean>(false)
   const [showBackdrop, setShowBackdrop] = useState<boolean>(false)
   const openModal = () => {
@@ -61,12 +65,13 @@ export default function Page() {
         <div className=" border border-primary_8 rounded-xl py-3 px-4 flex gap-6 lg:w-[80%] items-center">
           <div className="flex items-center gap-2">
             <Image
-              src={user.profileImage}
-              alt="profile image"
-              width={40}
+              src={user?.profileImage}
+              alt="profile pic"
+              loader={myImageLoader}
+              unoptimized
+              width={50}
               height={40}
-              loading="lazy"
-              
+              className="max-w-[100%] max-h-[100%] rounded-full mr-3"
             />
             <div>
               <h3 className="text-primary_5 text-xl">{user.name}</h3>

@@ -26,8 +26,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     setNotificationOpen(true)
     setShowBackdrop(true)
   }
-
-  const closeNotification = () => {
+ const closeNotification = () => {
     setNotificationOpen(false)
     setShowBackdrop(false)
   }
