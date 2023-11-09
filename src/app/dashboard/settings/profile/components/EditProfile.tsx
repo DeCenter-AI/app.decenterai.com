@@ -1,8 +1,8 @@
 'use client'
 import Image from 'next/image'
-import {useState} from 'react'
+import { useState } from 'react'
 import editProfile from 'public/edit-profile.png'
-import {AiOutlineCamera} from 'react-icons/ai'
+import { AiOutlineCamera } from 'react-icons/ai'
 import useUserStore from '@/state/userStore'
 
 const EditProfile = ({ onclick }) => {
