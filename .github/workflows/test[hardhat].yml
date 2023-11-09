@@ -1,0 +1,54 @@
+name: Contracts [Test]
+
+on:
+  push:
+
+  pull_request:
+
+  workflow_dispatch:
+
+env:
+  envfile: ${{secrets.ENVHardhat}}
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./hardhat
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.6
+
+      - uses: actions/setup-node@v3
+        with:
+          cache: "pnpm"
+          node-version: "20.9.0"
+          check-latest: true
+
+      - name: Write environment
+        run: |
+          echo $envfile > .env
+          sed -i 's/ /\n/g' .env
+          source .env
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Compile contracts
+        run: npx hardhat compile
+
+      - name: Start Local Node
+        run: |
+          echo "start hardhat node in parallel"
+          npx hardhat node &
+          sleep 4
+
+      - name: Test
+        run: npx hardhat test --network local
