@@ -3,14 +3,10 @@ import { BsChevronDown } from 'react-icons/bs'
 
 interface IProps {
   setModal: (page: number | null) => void
-  setTrain: (train: boolean) => void
+  processPayment: () => void
 }
 
-const TransactionAuthorization = ({ setModal, setTrain }: IProps) => {
-  const startTrain = () => {
-    setModal(1)
-    setTrain(true)
-  }
+const TransactionAuthorization = ({ setModal, processPayment }: IProps) => {
   return (
     <div className="fixed inset-0 bg-primary_13 bg-opacity-80 flex items-center justify-center">
       <div className="w-[25%] h-[50%] bg-primary_12 rounded-xl p-4">
@@ -61,7 +57,7 @@ const TransactionAuthorization = ({ setModal, setTrain }: IProps) => {
             Cancel
           </button>
           <button
-            onClick={() => startTrain()}
+            onClick={() => processPayment()}
             className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo text-sm h-full w-[30%] cursor-pointer rounded-full"
           >
             Proceed
