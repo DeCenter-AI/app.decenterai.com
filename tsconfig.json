@@ -67,13 +67,12 @@
     "test/jest-e2e.ts",
     "tsconfig.json",
     "tsconfig.node.json",
-    "utils/fileCoinIpfs",
-    "utils/upload"
   ],
 
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "src/abi/**/*.json",
     "test/**/*.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts",
