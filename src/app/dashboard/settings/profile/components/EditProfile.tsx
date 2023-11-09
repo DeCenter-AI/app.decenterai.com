@@ -7,7 +7,6 @@ import useUserStore from '@/state/userStore'
 import { myImageLoader } from '@/lib/imageHelper'
 const EditProfile = ({ onclick }) => {
   const userStore = useUserStore()
-  const user = userStore.user
 
   const handleNameChange = (event) => {
     userStore.setUser({
@@ -27,7 +26,7 @@ const EditProfile = ({ onclick }) => {
       <Image src={editProfile} alt="edit profile" />
       <div className="relative w-[25%] mx-auto">
         <Image
-          src={user?.profileImage}
+          src={userStore.user?.profileImage}
           alt="profile pic"
           loader={myImageLoader}
           unoptimized
@@ -49,7 +48,7 @@ const EditProfile = ({ onclick }) => {
             </label>
             <input
               type="text"
-              value={user.name}
+              value={userStore.user.name}
               onChange={handleNameChange}
               className="text-[#8F8F8F] border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
             />
@@ -72,7 +71,7 @@ const EditProfile = ({ onclick }) => {
           </label>
           <input
             type="text"
-            value={user?.email}
+            value={userStore.user?.email}
             className="text-[#8F8F8F] border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
             id="email"
             name="email"
