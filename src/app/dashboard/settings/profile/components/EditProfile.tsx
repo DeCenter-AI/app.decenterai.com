@@ -7,8 +7,8 @@ import { AiOutlineCamera } from 'react-icons/ai'
 import useUserStore from '@/state/userStore'
 const EditProfile = ({ onclick }) => {
   const { user } = useUserStore()
-  const [name, setName] = useState(user.name)
-  const [email, setEmail] = useState(user.email)
+  const [name, setName] = useState(user?.name)
+  const [email, setEmail] = useState(user?.email)
 
   const handleNameChange = (event) => {
     setName(event.target.value)

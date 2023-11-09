@@ -74,8 +74,8 @@ export default function Page() {
               className="max-w-[100%] max-h-[100%] rounded-full mr-3"
             />
             <div>
-              <h3 className="text-primary_5 text-xl">{user.name}</h3>
-              <p className="text-primary_7">{user.email}</p>
+              <h3 className="text-primary_5 text-xl">{user?.name}</h3>
+              <p className="text-primary_7">{user?.email}</p>
             </div>
           </div>
           <button
