@@ -1,4 +1,4 @@
-name: Contracts [Build]
+name: Build Hardhat
 
 on:
   push:
