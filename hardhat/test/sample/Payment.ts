@@ -8,31 +8,35 @@ describe("Payment", function () {
     // Contracts are deployed using the first signer/account by default
     const [owner, otherAccount] = await ethers.getSigners();
 
+    const MultiSigWalletContract = await ethers.getContractFactory("MultiSigWallet");
+    const MultiSigWallet = await MultiSigWalletContract.deploy([owner,otherAccount],1);
+     
+
     const Payment = await ethers.getContractFactory("Payment");
     const payment = await Payment.deploy();
 
-    return { payment, owner, otherAccount };
+    return { MultiSigWallet,payment, owner, otherAccount };
   }
 
   describe("Deposit", function () {
     describe("Validations", function () {
       it("Should revert with the right error ", async function () {
-        const { payment } = await loadFixture(deployOneYearLockFixture);
+        const { payment,MultiSigWallet } = await loadFixture(deployOneYearLockFixture);
         const depositAmount = ethers.parseUnits("1", "ether");
         const expectedAmount = ethers.parseUnits("2", "ether");
 
         await expect(
-          payment.deposit(expectedAmount, { value: depositAmount })
+          payment.deposit(expectedAmount,await MultiSigWallet.getAddress(), { value: depositAmount })
         ).to.be.revertedWith("Invalid deposit amount");
       });
     });
 
     describe("Payment", function () {
       it("Should deposit funds", async function () {
-        const { payment, owner } = await loadFixture(deployOneYearLockFixture);
+        const { payment,MultiSigWallet,owner } = await loadFixture(deployOneYearLockFixture);
         const depositAmount = ethers.parseUnits("1", "ether");
         const expectedAmount = ethers.parseUnits("1", "ether");
-        await payment.deposit(expectedAmount, { value: depositAmount });
+        await payment.deposit(expectedAmount, await MultiSigWallet.getAddress(),{ value: depositAmount });
         const balance = await payment.depositRecord(owner);
         expect(balance).to.equal(depositAmount);
       });
@@ -40,12 +44,12 @@ describe("Payment", function () {
 
     describe("Events", function () {
       it("Should emit an event on deposit", async function () {
-        const { payment, owner } = await loadFixture(deployOneYearLockFixture);
+        const { payment,MultiSigWallet,owner } = await loadFixture(deployOneYearLockFixture);
 
         const depositAmount = ethers.parseUnits("1", "ether");
         const expectedAmount = ethers.parseUnits("1", "ether");
 
-        await expect(payment.deposit(expectedAmount, { value: depositAmount }))
+        await expect(payment.deposit(expectedAmount, await MultiSigWallet.getAddress(),{ value: depositAmount }))
           .to.emit(payment, "Deposit")
           .withArgs(owner.address, depositAmount, true); // We accept any value as `when` arg
       });
