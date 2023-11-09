@@ -81,7 +81,7 @@
     "enums/**/*.ts",
     "config/**/*.ts",
     "public/**/*.ts",
-    "utils/*.ts"
+    "utils/**/*.ts"
   ],
   "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
 }
