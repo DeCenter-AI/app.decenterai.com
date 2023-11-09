@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 import PaymentAbi from '@abi/Payment.json'
-import { ethersProvider, ethersSigner } from '@/lib/particle'
+import { ethersProvider, ethersSigner } from '@lib/particle'
 const PaymentAddr = process.env.NEXT_PUBLIC_PAYMENT_CONTRACT_ADDRESS
 const WalletAddress = process.env.NEXT_PUBLIC_WALLET_CONTRACT_ADDRESS
 export const makePayment = async () => {
