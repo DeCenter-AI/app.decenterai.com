@@ -7,11 +7,9 @@ import { AiOutlineCamera } from 'react-icons/ai'
 import useUserStore from '@/state/userStore'
 const EditProfile = ({ onclick }) => {
   const { user } = useUserStore()
-  const [name, setName] = useState(user?.name)
 
-  const handleNameChange = (event) => {
-    setName(event.target.value)
-  }
+
+  
   const myImageLoader = ({ src }) => {
     return src
   }
@@ -42,8 +40,7 @@ const EditProfile = ({ onclick }) => {
             </label>
             <input
               type="text"
-              value={name}
-              onChange={handleNameChange}
+              
               className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent"
             />
           </div>
