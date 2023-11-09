@@ -1,15 +1,28 @@
 'use client'
-import avatars from '@public/avatars'
 import Image from 'next/image'
 import { useState } from 'react'
 import editProfile from 'public/edit-profile.png'
 import { AiOutlineCamera } from 'react-icons/ai'
 import useUserStore from '@/state/userStore'
+
 const EditProfile = ({ onclick }) => {
-  const { user } = useUserStore()
+  const userStore = useUserStore()
+  const user = userStore.user
 
+  const [email, setEmail] = useState(user?.email) //FIXME: remove
 
-  
+  const handleNameChange = (event) => {
+    userStore.setUser({
+      name: `${event.target.value}`,
+    })
+  }
+
+  const firstLastName = (name: string): [string, string] => {
+    let names = user.name.split(' ')
+    let firstName = names[0]
+    let lastName = names.slice(1).join(' ')
+    return [firstName, lastName]
+  }
   const myImageLoader = ({ src }) => {
     return src
   }
@@ -35,12 +48,14 @@ const EditProfile = ({ onclick }) => {
       <form action="" className="text-[#5D5D5D] text-sm flex flex-col gap-4 relative">
         <div className="grid gap-4 w-full">
           <div className="flex flex-col gap-2">
+            {/*FIXME: keep firstName and last name ; .*/}
             <label htmlFor="firstName" className="font-bold ">
               Name
             </label>
             <input
               type="text"
-              
+              value={user.name}
+              onChange={handleNameChange}
               className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent"
             />
           </div>
@@ -68,15 +83,18 @@ const EditProfile = ({ onclick }) => {
             name="email"
           />
         </div>
+        {/*TODO: add BIO: https://www.figma.com/file/HWwY6JKy3bnnu1SfSeRL8d/DeCenter-AI?type=design&node-id=1819-27457&mode=design&t=6QKT5XLz4cOtdUm6-0*/}
         <div className="font-semibold flex justify-end gap-4 items-center mt-2">
           <button
             className=" bg-transparent border border-primary_8 rounded-full px-4 py-3 text-[#F5F5F5] w-[140px] text-center"
-            onClick={onclick}>
+            onClick={onclick}
+          >
             Cancel
           </button>
           <button
             className=" bg-primary_10 rounded-full px-4 py-3 w-[140px] text-center"
-            onClick={onclick}>
+            onClick={onclick}
+          >
             Save changes
           </button>
         </div>
