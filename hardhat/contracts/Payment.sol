@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.22;
 
-import './MultiSigWallet.sol';
+import 'contracts/MultiSigWallet.sol';
 
 /// @title A Multisig wallet
 /// @author DecenterAI
