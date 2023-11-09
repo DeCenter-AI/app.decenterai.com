@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import { DashLayout } from '../dashLayout'
 import TransactionAuthorization from './modals/TransactionAuthorization'
 import TransactionProcessing from './modals/TransactionProcessing'
@@ -12,6 +12,7 @@ import ModelDownload from './components/ModelDownload'
 import { uploadFile } from '@utils/upload'
 import axios from 'axios'
 import { decodeCid, retrieve } from '@utils/fileCoinIpfs'
+import { makePayment } from '@utils/Payment'
 
 export default function Page() {
   const [page, setPage] = useState<number | null>(null)
@@ -20,6 +21,7 @@ export default function Page() {
   const [decodedCid, setDecodedCid] = useState<string>('')
   const [trainScript, setTrainScript] = useState<string>('')
   const [modelName, setModelName] = useState<string>('')
+  const [dataSet, setDataSet] = useState<File>(null)
 
   const startTrain = async (cid: string) => {
     //call backend
@@ -35,10 +37,25 @@ export default function Page() {
     setPage(3)
   }
 
-  const startUpload = (dataSet: File | null, trainScript: string, modelName: string) => {
+  const processPayment = async () => {
+    setModal(1)
+    //collect money
+    const result = await makePayment()
+    //proceed to upload 
+    if (result) {
+      // setModal(2)
+      //go to model training
+      setPage(2)
+      setModal(null)
+      uploadFile(dataSet, startTrain)
+    }
+  }
+
+  const getData = (dataSet: File | null, trainScript: string, modelName: string) => {
     setTrainScript(trainScript)
     setModelName(modelName)
-    uploadFile(dataSet, startTrain)
+    setDataSet(dataSet)
+
   }
 
   //download trained model
@@ -58,7 +75,7 @@ export default function Page() {
       {page == 1 && (
         <NewModel
           setPage={setPage}
-          startUpload={startUpload}
+          getData={getData}
           setModal={setModal}
           modal={modal}
           train={train}
@@ -71,7 +88,7 @@ export default function Page() {
       )}
 
       {modal === 0 && (
-        <TransactionAuthorization setModal={setModal} setTrain={setTrain} />
+        <TransactionAuthorization setModal={setModal} processPayment={processPayment} />
       )}
       {modal === 1 && <TransactionProcessing />}
       {modal === 2 && <TransactionCompleted setModal={setModal} />}
