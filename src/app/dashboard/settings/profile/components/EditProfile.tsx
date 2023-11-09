@@ -85,18 +85,21 @@ const EditProfile = ({ onclick }) => {
             name="bio"
             id="bio"
             className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent h-12 overflow-y-hidden"
-            placeholder="About you (optional)"></textarea>
+            placeholder="About you (optional)"
+          ></textarea>
         </div>
         {/*TODO: add BIO: https://www.figma.com/file/HWwY6JKy3bnnu1SfSeRL8d/DeCenter-AI?type=design&node-id=1819-27457&mode=design&t=6QKT5XLz4cOtdUm6-0*/}
         <div className="font-semibold flex justify-end gap-4 items-center mt-2">
           <button
             className=" bg-transparent border border-primary_8 rounded-full px-4 py-2 text-[#F5F5F5] w-[140px] text-center"
-            onClick={onclick}>
+            onClick={onclick}
+          >
             Cancel
           </button>
           <button
             className=" bg-primary_10 rounded-full px-4 py-2 w-[140px] text-center"
-            onClick={onclick}>
+            onClick={onclick}
+          >
             Save changes
           </button>
         </div>
