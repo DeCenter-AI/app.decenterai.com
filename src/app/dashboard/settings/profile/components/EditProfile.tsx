@@ -1,17 +1,21 @@
 'use client'
-import avatars from '@public/avatars'
 import Image from 'next/image'
-import { useState } from 'react'
+import {useState} from 'react'
 import editProfile from 'public/edit-profile.png'
-import { AiOutlineCamera } from 'react-icons/ai'
+import {AiOutlineCamera} from 'react-icons/ai'
 import useUserStore from '@/state/userStore'
+
 const EditProfile = ({ onclick }) => {
-  const { user } = useUserStore()
-  const [name, setName] = useState(user?.name)
-  const [email, setEmail] = useState(user?.email)
+  const userStore = useUserStore()
+  const user = userStore.user
+
+  const [email, setEmail] = useState(user?.email) //FIXME: remove
 
   const handleNameChange = (event) => {
-    setName(event.target.value)
+    userStore.setUser({
+      ...user, //FIXME: Remove
+      name: `${event.target.value}`,
+    })
   }
 
   const myImageLoader = ({ src }) => {
@@ -47,7 +51,7 @@ const EditProfile = ({ onclick }) => {
             </label>
             <input
               type="text"
-              value={name}
+              value={user.name}
               onChange={handleNameChange}
               className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent"
             />
