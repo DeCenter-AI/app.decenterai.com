@@ -1,6 +1,6 @@
 export const myImageLoader = ({ src }) => {
-    // Look at the usage in src/app/dashboard/dashLayout.tsx:159
-    /* Typical Usage:
+  // Look at the usage in src/app/dashboard/dashLayout.tsx:159
+  /* Typical Usage:
       <Image
                     src={user?.profileImage}
                     alt="profile pic"
@@ -12,6 +12,5 @@ export const myImageLoader = ({ src }) => {
         />
     */
 
-
-    return src
+  return src
 }
