@@ -14,6 +14,12 @@ const EditProfile = ({ onclick }) => {
     })
   }
 
+  const handleBioChange = (event) => {
+    userStore.setUser({
+      bio: `${event.target.value}`,
+    })
+  }
+
   // const firstLastName = (name: string): [string, string] => {
   //   let names = user.name.split(' ')
   //   let firstName = names[0]
@@ -85,8 +91,10 @@ const EditProfile = ({ onclick }) => {
           <textarea
             name="bio"
             id="bio"
+            value={userStore.user?.bio}
             className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent h-12 overflow-y-hidden"
             placeholder="About you (optional)"
+            onChange={handleBioChange}
           ></textarea>
         </div>
         {/*TODO: add BIO: https://www.figma.com/file/HWwY6JKy3bnnu1SfSeRL8d/DeCenter-AI?type=design&node-id=1819-27457&mode=design&t=6QKT5XLz4cOtdUm6-0*/}
