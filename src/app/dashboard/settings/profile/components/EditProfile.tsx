@@ -61,6 +61,7 @@ const EditProfile = ({ onclick }) => {
           <input
             type="text"
             placeholder="Nick name (optional)"
+            value={userStore.user.userName}
             className="text-[#8F8F8F] border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
             id="Username"
           />
