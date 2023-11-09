@@ -41,7 +41,7 @@ export default function Page() {
     setModal(1)
     //collect money
     const result = await makePayment()
-    //proceed to upload 
+    //proceed to upload
     if (result) {
       // setModal(2)
       //go to model training
@@ -55,7 +55,6 @@ export default function Page() {
     setTrainScript(trainScript)
     setModelName(modelName)
     setDataSet(dataSet)
-
   }
 
   //download trained model

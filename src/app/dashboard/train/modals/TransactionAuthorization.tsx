@@ -7,7 +7,6 @@ interface IProps {
 }
 
 const TransactionAuthorization = ({ setModal, processPayment }: IProps) => {
-
   return (
     <div className="fixed inset-0 bg-primary_13 bg-opacity-80 flex items-center justify-center">
       <div className="w-[25%] h-[50%] bg-primary_12 rounded-xl p-4">
