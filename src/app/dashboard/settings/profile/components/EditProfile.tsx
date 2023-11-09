@@ -1,15 +1,13 @@
 'use client'
 import Image from 'next/image'
-import { useState } from 'react'
+
 import editProfile from 'public/edit-profile.png'
 import { AiOutlineCamera } from 'react-icons/ai'
 import useUserStore from '@/state/userStore'
-
+import { myImageLoader } from '@/lib/imageHelper'
 const EditProfile = ({ onclick }) => {
   const userStore = useUserStore()
   const user = userStore.user
-
-  const [email, setEmail] = useState(user?.email) //FIXME: remove
 
   const handleNameChange = (event) => {
     userStore.setUser({
@@ -22,9 +20,6 @@ const EditProfile = ({ onclick }) => {
     let firstName = names[0]
     let lastName = names.slice(1).join(' ')
     return [firstName, lastName]
-  }
-  const myImageLoader = ({ src }) => {
-    return src
   }
 
   return (
@@ -87,14 +82,12 @@ const EditProfile = ({ onclick }) => {
         <div className="font-semibold flex justify-end gap-4 items-center mt-2">
           <button
             className=" bg-transparent border border-primary_8 rounded-full px-4 py-3 text-[#F5F5F5] w-[140px] text-center"
-            onClick={onclick}
-          >
+            onClick={onclick}>
             Cancel
           </button>
           <button
             className=" bg-primary_10 rounded-full px-4 py-3 w-[140px] text-center"
-            onClick={onclick}
-          >
+            onClick={onclick}>
             Save changes
           </button>
         </div>
