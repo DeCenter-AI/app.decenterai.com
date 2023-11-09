@@ -8,19 +8,14 @@ import useUserStore from '@/state/userStore'
 const EditProfile = ({ onclick }) => {
   const { user } = useUserStore()
   const [name, setName] = useState(user?.name)
-  const [email, setEmail] = useState(user?.email)
 
   const handleNameChange = (event) => {
     setName(event.target.value)
   }
-
   const myImageLoader = ({ src }) => {
     return src
   }
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value)
-  }
   return (
     <div className="absolute inset-0 z-50 bg-primary_11 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] h-[85%]  my-12 mx-auto transition-all duration-500 ease-in-out rounded-xl px-6 py-6 flex flex-col gap-6 shadow-xl">
       <Image src={editProfile} alt="edit profile" />
@@ -70,8 +65,7 @@ const EditProfile = ({ onclick }) => {
           </label>
           <input
             type="text"
-            value={email}
-            onChange={handleEmailChange}
+            value={user?.email}
             className="text-[#8F8F8F] border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent"
             id="email"
             name="email"
