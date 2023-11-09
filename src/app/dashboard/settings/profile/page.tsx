@@ -61,7 +61,7 @@ export default function Page() {
 
         <div className=" border border-primary_8 rounded-xl py-3 px-4 flex gap-6 lg:w-[80%] items-center">
           <div className="flex items-center gap-2">
-            <Image src={user.profileImage} alt="" />
+            <Image src={user.profileImage} alt="" width={30} height={30} />
             <div>
               <h3 className="text-primary_5 text-xl">{user.name}</h3>
               <p className="text-primary_7">{user.email}</p>
