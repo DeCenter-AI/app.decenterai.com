@@ -14,6 +14,7 @@ import Link from 'next/link'
 import notIcon from 'public/notification.png'
 import {ModalNotification} from './notifications/components/Notification'
 import useUserStore from '@/state/userStore'
+import {myImageLoader} from "@lib/imageHelper";
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   //const { user } = useUserContext()
@@ -31,9 +32,6 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     setShowBackdrop(false)
   }
 
-  const myImageLoader = ({ src }) => {
-    return src
-  }
   return (
     <div className={`w-screen h-screen flex  bg-primary_12 relative `}>
       {showBackdrop && (
