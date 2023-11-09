@@ -1,8 +1,8 @@
 'use client'
 import Image from 'next/image'
-import { useState } from 'react'
+import {useState} from 'react'
 import editProfile from 'public/edit-profile.png'
-import { AiOutlineCamera } from 'react-icons/ai'
+import {AiOutlineCamera} from 'react-icons/ai'
 import useUserStore from '@/state/userStore'
 
 const EditProfile = ({ onclick }) => {
@@ -17,6 +17,12 @@ const EditProfile = ({ onclick }) => {
     })
   }
 
+  const firstLastName= (name:string): [string,string]=>{
+    let names = user.name.split(" ")
+    let firstName = names[0]
+    let lastName = names.slice(1,).join(" ")
+    return [firstName,lastName]
+  }
   const myImageLoader = ({ src }) => {
     return src
   }
@@ -45,6 +51,7 @@ const EditProfile = ({ onclick }) => {
       <form action="" className="text-[#5D5D5D] text-sm flex flex-col gap-4 relative">
         <div className="grid gap-4 w-full">
           <div className="flex flex-col gap-2">
+            {/*FIXME: keep firstName and last name ; .*/}
             <label htmlFor="firstName" className="font-bold ">
               Name
             </label>
@@ -80,6 +87,7 @@ const EditProfile = ({ onclick }) => {
             name="email"
           />
         </div>
+        {/*TODO: add BIO: https://www.figma.com/file/HWwY6JKy3bnnu1SfSeRL8d/DeCenter-AI?type=design&node-id=1819-27457&mode=design&t=6QKT5XLz4cOtdUm6-0*/}
         <div className="font-semibold flex justify-end gap-4 items-center mt-2">
           <button
             className=" bg-transparent border border-primary_8 rounded-full px-4 py-3 text-[#F5F5F5] w-[140px] text-center"
