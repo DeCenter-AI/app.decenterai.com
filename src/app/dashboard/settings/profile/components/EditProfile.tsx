@@ -1,8 +1,8 @@
 'use client'
 import Image from 'next/image'
-import {useState} from 'react'
+import { useState } from 'react'
 import editProfile from 'public/edit-profile.png'
-import {AiOutlineCamera} from 'react-icons/ai'
+import { AiOutlineCamera } from 'react-icons/ai'
 import useUserStore from '@/state/userStore'
 
 const EditProfile = ({ onclick }) => {
@@ -17,11 +17,11 @@ const EditProfile = ({ onclick }) => {
     })
   }
 
-  const firstLastName= (name:string): [string,string]=>{
-    let names = user.name.split(" ")
+  const firstLastName = (name: string): [string, string] => {
+    let names = user.name.split(' ')
     let firstName = names[0]
-    let lastName = names.slice(1,).join(" ")
-    return [firstName,lastName]
+    let lastName = names.slice(1).join(' ')
+    return [firstName, lastName]
   }
   const myImageLoader = ({ src }) => {
     return src
