@@ -66,7 +66,6 @@
     //"src/app/test/page.jsx",
     "test/jest-e2e.ts",
     "tsconfig.json",
-    "tsconfig.node.json",
   ],
 
   "include": [
