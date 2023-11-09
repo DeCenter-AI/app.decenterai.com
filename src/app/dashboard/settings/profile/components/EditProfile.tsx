@@ -13,7 +13,6 @@ const EditProfile = ({ onclick }) => {
 
   const handleNameChange = (event) => {
     userStore.setUser({
-      ...user, //FIXME: Remove
       name: `${event.target.value}`,
     })
   }
