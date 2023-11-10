@@ -1,26 +1,31 @@
 'use client'
 import Image from 'next/image'
 import React, { useState } from 'react'
-
+// import { useRouter } from '';
 import { redirect, usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
 import { RxDashboard } from 'react-icons/rx'
 import { HiOutlineChip } from 'react-icons/hi'
-import { BsDatabase } from 'react-icons/bs'
-import { GoBell, GoSearch } from 'react-icons/go'
+
+import { BsDatabase, } from 'react-icons/bs'
+import { GoBell, GoSearch, } from 'react-icons/go'
+import { AiFillSetting } from 'react-icons/ai'
+import { CiLogout } from 'react-icons/ci'
 import Link from 'next/link'
-//import { useUserContext } from '@state/userContext'
+
 import notIcon from 'public/notification.png'
 import { ModalNotification } from './notifications/components/Notification'
 import useUserStore from '@/state/userStore'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
-  //const { user } = useUserContext()
+
   const { user } = useUserStore()
   const pathname = usePathname()
+
   const [isNotificationOpen, setNotificationOpen] = useState(false)
   const [showBackdrop, setShowBackdrop] = useState(false)
+  const [isProfileOpen, setProfileOpen] = useState(false)
 
   const openNotification = () => {
     setNotificationOpen(true)
@@ -32,9 +37,26 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     setShowBackdrop(false)
   }
 
+  const openProfile = () => {
+    setProfileOpen(!isProfileOpen)
+  }
+  const handleLogout = () => {
+
+    localStorage.clear();
+
+
+    userStore.clearUser();
+
+
+    // router.push('/explore');
+  };
+
+
   const myImageLoader = ({ src }) => {
     return src
   }
+
+  const userStore = useUserStore();
   return (
     <div className={`w-screen h-screen flex  bg-primary_12 relative `}>
       {showBackdrop && (
@@ -65,9 +87,8 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full h-[90%] overflow-y-auto font-archivo ">
           <Link href="/dashboard">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
-                pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
-              }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
+                }`}
             >
               <div className="flex justify-center ">
                 <RxDashboard size={25} />
@@ -77,9 +98,8 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/train">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
-                pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
-              }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
+                }`}
             >
               <div className="flex justify-center ">
                 <HiOutlineChip size={25} />
@@ -89,9 +109,8 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/repository">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
-                pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
-              }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
+                }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
@@ -119,9 +138,8 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </div> */}
           <Link href="/dashboard/settings">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
-                pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
-              }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
+                }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
@@ -132,7 +150,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </aside>
 
-      <main className=" w-[90%] h-screen  ">
+      <main className=" w-[90%] h-screen "  >
         <div className="w-full h-[10%] flex items-center   border-b border-primary_8 px-10">
           <div className="h-full w-[50%] flex items-center">
             <div className="rounded-full h-[60%] max-h-[50px] w-[80%] max-w-[500px]  bg-primary_11 relative text-primary_8 pb-1">
@@ -155,7 +173,10 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
 
             {user ? (
               <div className="flex items-center bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
-                <button className="flex flex-row items-center ">
+                <div>
+
+                </div>
+                <button onClick={openProfile} className="flex flex-row items-center ">
                   <Image
                     src={user?.profileImage}
                     alt="profile pic"
@@ -170,6 +191,10 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
                     {user.userName.charAt(0).toUpperCase() + user.userName.slice(1)}
                   </span>
                 </button>
+
+
+
+
               </div>
             ) : (
               <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
@@ -182,6 +207,28 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
         <div className="w-full h-[90%] px-10 ">{children}</div>
       </main>
+      {isProfileOpen && (
+        <div className=' bg-primary_11 px-4 w-[200px] text-primary_6 py-2 rounded-xl top-20  absolute  z-50 right-10'>
+          <div className='py-4 border-b border-primary_8'>
+            <Link href='/dashboard/settings/profile' className='flex items-center gap-3'  >
+              <div className='text-primary_8'>
+                <AiFillSetting size={22} />
+              </div>
+
+              Account settings
+            </Link>
+          </div>
+          <div className='py-4'>
+            <button onClick={handleLogout} className='flex items-center gap-3' >
+              <div className='text-primary_8'>
+                <CiLogout size={22} />
+              </div>
+              LogOut
+            </button>
+          </div>
+        </div>
+      )}
+
       {isNotificationOpen && (
         <aside
           className={`absolute z-50 right-8 mt-14 rounded-3xl max-w-[450px] shadow-xl bg-primary_11 flex flex-col px-4 py-6  gap-6 max-h-screen  `}
