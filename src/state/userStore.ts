@@ -35,8 +35,7 @@ const useUserStore = create<Store>()(
           }))
           console.log('userStore: init')
         },
-        // TODO: setUser implement in profile/EditProfile
-        async setUser(userDto: Partial<IUser>) {
+        async setUser(userDto: Partial<IUser>, syncDB: boolean= true) { //TODO: make this false, too much DB writes!!
           set((state) => ({
             ...state,
             user: {
@@ -45,6 +44,13 @@ const useUserStore = create<Store>()(
             },
           }))
           console.log('userStore: setUser')
+          if (syncDB) {
+            console.log('userStore: syncDB')
+            await upsert_user(this.user)
+          }
+        },
+        async syncDB() { 
+          console.log('userStore: syncDB')
           await upsert_user(this.user)
         },
       /*   async setName(name:string){
