@@ -17,6 +17,7 @@ import Link from 'next/link'
 import notIcon from 'public/notification.png'
 import { ModalNotification } from './notifications/components/Notification'
 import useUserStore from '@/state/userStore'
+import { myImageLoader } from '@lib/imageHelper'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
 
@@ -31,7 +32,6 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     setNotificationOpen(true)
     setShowBackdrop(true)
   }
-
   const closeNotification = () => {
     setNotificationOpen(false)
     setShowBackdrop(false)

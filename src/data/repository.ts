@@ -8,7 +8,7 @@ interface Repository {
   likes: string
 }
 
-const repository: Repository[] = [
+const repositoryList: Repository[] = [
   {
     id: 1,
     label: 'Text Generation',
@@ -61,4 +61,4 @@ const repository: Repository[] = [
   },
 ]
 
-export default repository
+export default repositoryList

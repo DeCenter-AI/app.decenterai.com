@@ -1,10 +1,10 @@
 'use client'
+import { retrieve } from '@utils/fileCoinIpfs'
+import { extractFile } from '@utils/upload'
 import React, { useEffect, useRef, useState } from 'react'
 import { CiTrash } from 'react-icons/ci'
 import { FiUploadCloud } from 'react-icons/fi'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
-import { extractFile } from '@utils/upload'
-import { retrieve } from '@utils/fileCoinIpfs'
 
 interface IProps {
   setPage: (page: number | null) => void
@@ -12,7 +12,7 @@ interface IProps {
   setTrain: (train: boolean) => void
   train: boolean
   modal: number | null
-  startUpload: (dataSet: File | null, trainScript: string, modelName: string) => void
+  getData: (dataSet: File | null, trainScript: string, modelName: string) => void
 }
 
 interface IFile {
@@ -22,7 +22,7 @@ interface IFile {
   path: string
 }
 
-const NewModel = ({ setPage, setModal, setTrain, train, modal, startUpload }: IProps) => {
+const NewModel = ({ setPage, setModal, setTrain, train, modal, getData }: IProps) => {
   const trainScriptInput = useRef<HTMLInputElement | null>(null)
   // const requirementInput = useRef<HTMLInputElement | null>(null)
   const dataSetInput = useRef<HTMLInputElement | null>(null)
@@ -165,8 +165,9 @@ const NewModel = ({ setPage, setModal, setTrain, train, modal, startUpload }: IP
   const startProcess = () => {
     //show authorization modal
     if (modelName && trainScript && dataSet) {
-      startUpload(dataSet, trainScript, modelName)
-      setPage(2)
+      getData(dataSet, trainScript, modelName)
+      setModal(0)
+      //setPage(2)
     }
   }
 
