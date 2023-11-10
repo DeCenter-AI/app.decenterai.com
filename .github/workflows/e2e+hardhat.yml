@@ -59,7 +59,6 @@ jobs:
           pnpm install
           npx hardhat compile
           #TODO: deploy in local network
-          
 
       - name: Build
         run: npm run build

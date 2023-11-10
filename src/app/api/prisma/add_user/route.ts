@@ -1,5 +1,5 @@
 import prisma from '@lib/prisma'
-import {userType} from "@api/prisma/upsert_user/route";
+import { userType } from '@api/prisma/upsert_user/route'
 
 export async function POST(req: Request) {
   const user: userType = await req.json()
