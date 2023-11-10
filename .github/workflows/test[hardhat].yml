@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  envfile: ${{secrets.ENVHardhat}}
+  envfile: ${{secrets.ENVHARDHAT}}
 
 defaults:
   run:

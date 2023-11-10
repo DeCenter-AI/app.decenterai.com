@@ -13,7 +13,7 @@ defaults:
     working-directory: ./hardhat
 
 env:
-  envfile: ${{secrets.ENVHardhat}}
+  envfile: ${{secrets.ENVHARDHAT}}
 
 jobs:
   build:

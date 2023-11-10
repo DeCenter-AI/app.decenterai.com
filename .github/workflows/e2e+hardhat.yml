@@ -18,7 +18,7 @@ concurrency:
 
 env:
   envfile: ${{secrets.ENV}}
-  envHardhat: ${{secrets.ENVHardhat}}
+  ENVHARDHAT: ${{secrets.ENVHARDHAT}}
   MODE: test
   NODE_ENV: testing
 
@@ -52,7 +52,7 @@ jobs:
       - name: Setup Hardhat
         working-directory: ./hardhat
         run: |
-          echo $envHardhat > .env
+          echo $ENVHARDHAT > .env
           sed -i 's/ /\n/g' .env
           source .env
           echo "pnpm install"
