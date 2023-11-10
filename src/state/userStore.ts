@@ -25,11 +25,7 @@ type Store = {
 const useUserStore = create<Store>()(
   devtools(
     persist(
-<<<<<<< HEAD
-      (set,get) => ({
-=======
       (set, get) => ({
->>>>>>> 9fe31aef736971a46ce9957ff3a4371c8e174b94
         user: null,
 
         init(userData: IUser) {
@@ -39,21 +35,6 @@ const useUserStore = create<Store>()(
           }))
           console.log('userStore: init')
         },
-<<<<<<< HEAD
-        // TODO: setUser implement in profile/EditProfile
-        async setUser(userDto: Partial<IUser>) {
-          set((state) => ({
-            ...state,
-            user: {
-                ...state.user,
-                ...userDto,
-            },
-          }))
-          console.log('userStore: setUser')
-          await upsert_user(this.user)
-        },
-      /*   async setName(name:string){
-=======
         async setUser(userDto: Partial<IUser>, syncDB: boolean = true) {
           //TODO: make this false, too much DB writes!!
           set((state) => ({
@@ -74,7 +55,6 @@ const useUserStore = create<Store>()(
           await upsert_user(this.user)
         },
         /*   async setName(name:string){
->>>>>>> 9fe31aef736971a46ce9957ff3a4371c8e174b94
             await this.setUser({
                 name,
                 id:"1",
