@@ -11,18 +11,20 @@ datasource db {
 }
 
 model User {
-  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 
   particleUUID String? @unique
 
   userName String? @unique
-  email    String @unique
+  email    String  @unique
 
-  name         String
-  // firstName String
+  name String
+  // firstName String //TODO:
   // lastName String
 
   profileImage String?
+
+  bio String? @db.String
 
   createdAt    DateTime          @default(now()) @db.Timestamp
   updatedAt    DateTime          @updatedAt @db.Timestamp
@@ -38,15 +40,15 @@ enum Category {
 }
 
 model Model {
-  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  description String? @default("Trained by DecenterAI") //FIXME:
+  description String?    @default("Trained by DecenterAI") // FIXME:
   category    Category[]
 
   userId String @db.ObjectId
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
-  trainingRequestId String? @db.ObjectId
+  trainingRequestId String?          @db.ObjectId
   trainingRequest   TrainingRequest? @relation(fields: [trainingRequestId], references: [id])
 
   data DataStore
@@ -70,14 +72,14 @@ type DataStore {
 }
 
 type ModelTrainConfig {
-  trainScript String
+  trainScript  String
   inputArchive String
 }
 
 model TrainingRequest {
-  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
   userId String? @db.ObjectId
-  user   User? @relation(fields: [userId], references: [id])
+  user   User?   @relation(fields: [userId], references: [id])
 
   inputs DataStore
   config ModelTrainConfig

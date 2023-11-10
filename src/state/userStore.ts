@@ -19,13 +19,13 @@ type IUser = Omit<Omit<User, 'createdAt'>, 'updatedAt'>
 type Store = {
   user: IUser | null
   init: (user: IUser) => void
-  setUser: (user: IUser) => void
+  setUser: (user: Partial<IUser>) => void
 }
 
 const useUserStore = create<Store>()(
   devtools(
     persist(
-      (set) => ({
+      (set, get) => ({
         user: null,
 
         init(userData: IUser) {
@@ -35,15 +35,32 @@ const useUserStore = create<Store>()(
           }))
           console.log('userStore: init')
         },
-        // TODO: setUser implement in profile/EditProfile
-        async setUser(userData: IUser) {
+        async setUser(userDto: Partial<IUser>, syncDB: boolean = true) {
+          //TODO: make this false, too much DB writes!!
           set((state) => ({
             ...state,
-            user: userData,
+            user: {
+              ...state.user,
+              ...userDto,
+            },
           }))
           console.log('userStore: setUser')
-          await upsert_user(userData)
+          if (syncDB) {
+            console.log('userStore: syncDB')
+            await upsert_user(this.user)
+          }
         },
+        async syncDB() {
+          console.log('userStore: syncDB')
+          await upsert_user(this.user)
+        },
+        /*   async setName(name:string){
+            await this.setUser({
+                name,
+                id:"1",
+                particleUUID:null, userName:null, email:null, profileImage:null
+            })
+         }*/
       }),
       {
         name: 'userData',
