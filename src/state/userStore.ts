@@ -20,7 +20,7 @@ type Store = {
   user: IUser | null
   init: (user: IUser) => void
   setUser: (user: Partial<IUser>) => void
-  clearUser: () => void;
+  clearUser: () => void
 }
 
 const useUserStore = create<Store>()(
@@ -52,7 +52,7 @@ const useUserStore = create<Store>()(
           }
         },
         clearUser() {
-          set({ user: null });
+          set({ user: null })
         },
         async syncDB() {
           console.log('userStore: syncDB')
@@ -71,6 +71,6 @@ const useUserStore = create<Store>()(
       },
     ),
   ),
-);
+)
 
-export default useUserStore;
+export default useUserStore
