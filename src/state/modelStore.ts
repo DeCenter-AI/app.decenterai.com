@@ -6,9 +6,27 @@ import { Model, TrainingRequest } from '@prisma/client'
 type IModel = Omit<Omit<Model, 'createdAt'>, 'updatedAt'>
 type ITrainRequest = Omit<Omit<TrainingRequest, 'createdAt'>, 'updatedAt'>
 
+
+export interface Models {
+    [modelId: string] : IModel;
+} 
+
+
 type Store = {
   model: IModel | null
-  models: IModel[] | null
+  // stores all user's models
+  models: Models | null
+  /*
+  prisma.model.findMany({
+    where:{
+      userId; userId
+    }
+  })
+
+  "modelId1": IMOdel,
+  "modelId2<comes from mongo>":  IModel,
+  }
+  */
   init: (model: IModel) => void
   //   setModel: (model: Partial<IModel>) => void
   setModels: (model: Partial<IModel[]>) => void
