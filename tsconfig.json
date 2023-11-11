@@ -3,7 +3,11 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "strict": true,
     "noEmit": true,
@@ -17,25 +21,49 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@app/*": ["./src/app/*"],
-      "@api/*": ["./src/app/api/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@data/*": ["./src/app/data/*"],
-      "@state/*": ["./src/state/*"],
-      "@Components/*": ["./src/components/*"],
-      "@Svg/*": ["./src/svg/*"],
-      "@public/*": ["./public/*"],
-      "@utils/*": ["./utils/*"],
-      "@enums/*": ["./enums/*"],
-      "@config/*": ["./config/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@api/*": [
+        "./src/app/api/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
+      "@data/*": [
+        "./src/app/data/*"
+      ],
+      "@state/*": [
+        "./src/state/*"
+      ],
+      "@Components/*": [
+        "./src/components/*"
+      ],
+      "@Svg/*": [
+        "./src/svg/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@enums/*": [
+        "./enums/*"
+      ],
+      "@config/*": [
+        "./config/*"
+      ]
     },
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    // "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": ".",
     "strictNullChecks": false,
@@ -66,7 +94,6 @@
     "tsconfig.json",
     "tsconfig.node.json"
   ],
-
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
@@ -78,5 +105,10 @@
     "config/**/*.ts",
     "public/**/*.ts"
   ],
-  "exclude": ["node_modules", "./jest.config.ts", "./prisma/seed.ts", "hardhat/*.ts"]
+  "exclude": [
+    "node_modules",
+    "./jest.config.ts",
+    "./prisma/seed.ts",
+    "hardhat/*.ts"
+  ]
 }
