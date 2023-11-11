@@ -1,0 +1,14 @@
+node_modules/
+.idea/
+.github/
+.run/
+.next/
+.vercel/
+
+artifacts/
+.deps/
+venv/
+cache/
+
+typechain
+typechain-types

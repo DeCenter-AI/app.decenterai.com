@@ -1,22 +1,24 @@
 'use client'
 import Image from 'next/image'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-import {redirect, usePathname} from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
-import {RxDashboard} from 'react-icons/rx'
-import {HiOutlineChip} from 'react-icons/hi'
-import {BsDatabase} from 'react-icons/bs'
-import {GoBell, GoSearch} from 'react-icons/go'
+import { RxDashboard } from 'react-icons/rx'
+import { HiOutlineChip } from 'react-icons/hi'
+import { BsDatabase } from 'react-icons/bs'
+import { GoBell, GoSearch } from 'react-icons/go'
 import Link from 'next/link'
-import {useUserContext} from '@state/userContext'
+//import { useUserContext } from '@state/userContext'
 import notIcon from 'public/notification.png'
-import {ModalNotification} from './notifications/components/Notification'
-
+import { ModalNotification } from './notifications/components/Notification'
+import useUserStore from '@/state/userStore'
+import { myImageLoader } from '@lib/imageHelper'
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
-  const { user } = useUserContext()
+  //const { user } = useUserContext()
+  const { user } = useUserStore()
   const pathname = usePathname()
   const [isNotificationOpen, setNotificationOpen] = useState(false)
   const [showBackdrop, setShowBackdrop] = useState(false)
@@ -25,15 +27,11 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     setNotificationOpen(true)
     setShowBackdrop(true)
   }
-
   const closeNotification = () => {
     setNotificationOpen(false)
     setShowBackdrop(false)
   }
 
-  const myImageLoader = ({ src }) => {
-    return src
-  }
   return (
     <div className={`w-screen h-screen flex  bg-primary_12 relative `}>
       {showBackdrop && (
@@ -64,8 +62,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full h-[90%] overflow-y-auto font-archivo ">
           <Link href="/dashboard">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <RxDashboard size={25} />
@@ -75,8 +74,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/train">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/train' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <HiOutlineChip size={25} />
@@ -86,8 +86,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </Link>
           <Link href="/dashboard/repository">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/repository' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
@@ -115,8 +116,9 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </div> */}
           <Link href="/dashboard/settings">
             <div
-              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
-                }`}
+              className={`flex flex-col items-center cursor-pointer justify-center gap-3 w-full py-4 hover:bg-primary_11 text-primary_8 hover:text-primary_1 ${
+                pathname === '/dashboard/settings' ? 'bg-primary_11 text-white' : ''
+              }`}
             >
               <div className="flex justify-center ">
                 <BsDatabase size={25} />
@@ -148,7 +150,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               Connect Wallet
             </button> */}
 
-            {user.email ? (
+            {user ? (
               <div className="flex items-center bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
                 <button className="flex flex-row items-center ">
                   <Image

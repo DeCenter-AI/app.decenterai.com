@@ -143,6 +143,9 @@ dependencies:
   web3.storage:
     specifier: ^4.5.5
     version: 4.5.5(encoding@0.1.13)(node-fetch@2.7.0)
+  zustand:
+    specifier: ^4.4.6
+    version: 4.4.6(@types/react@18.2.21)(react@18.2.0)
 
 devDependencies:
   '@types/blob-to-buffer':
@@ -13102,6 +13105,26 @@ packages:
 
   /zod@3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false
+
+  /zustand@4.4.6(@types/react@18.2.21)(react@18.2.0):
+    resolution: {integrity: sha512-Rb16eW55gqL4W2XZpJh0fnrATxYEG3Apl2gfHTyDSE965x/zxslTikpNch0JgNjJA9zK6gEFW8Fl6d1rTZaqgg==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.21
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   github.com/multiformats/cid/e5b6a3636d05234bc34bef873926c706afc1bd89:
