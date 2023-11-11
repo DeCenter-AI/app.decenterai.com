@@ -6,11 +6,9 @@ import { Model, TrainingRequest } from '@prisma/client'
 type IModel = Omit<Omit<Model, 'createdAt'>, 'updatedAt'>
 type ITrainRequest = Omit<Omit<TrainingRequest, 'createdAt'>, 'updatedAt'>
 
-
 export interface Models {
-    [modelId: string] : IModel;
-} 
-
+  [modelId: string]: IModel
+}
 
 type Store = {
   model: IModel | null
