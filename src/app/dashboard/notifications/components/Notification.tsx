@@ -6,13 +6,13 @@ import { PiListChecks, PiDotsThree } from 'react-icons/pi'
 
 const Messages = () => {
   return (
-    <main className="flex flex-col gap-4 h-full  px-2 overflow-y-auto">
+    <main data-cy="messages" className="flex flex-col gap-4 h-full  px-2 overflow-y-auto">
       {notifications.map((item) => (
         <div
           key={item.id}
-          className={`flex justify-between gap-12 items-center  py-2 rounded-3xl px-6 border border-primary_8  ${
-            !item.read ? '' : 'opacity-30'
-          }`}
+          data-cy="message-item"
+          className={`flex justify-between gap-12 items-center  py-2 rounded-3xl px-6 border border-primary_8  ${!item.read ? '' : 'opacity-30'
+            }`}
         >
           <div className="flex items-center gap-2">
             <Image src={item.avatar} alt={`${item.name} avatar`} />
@@ -36,15 +36,15 @@ const Messages = () => {
 
 const ModalNotification = () => {
   return (
-    <main className="flex flex-col gap-4   text-xs h-[400px] overflow-y-scroll px-2 ">
+    <main data-cy="modal-notification" className="flex flex-col gap-4 text-xs h-[400px] overflow-y-scroll px-2 ">
       {notifications.map((item) => {
         if (item.id < 7) {
           return (
             <div
               key={item.id}
-              className={`flex justify-between gap-8 items-center  py-2 rounded-3xl px-2 border border-primary_8 ${
-                !item.read ? ' ' : 'opacity-30'
-              }`}
+              data-cy="modal-notification-item"
+              className={`flex justify-between gap-8 items-center py-2 rounded-3xl px-2 border border-primary_8 ${!item.read ? ' ' : 'opacity-30'
+                }`}
             >
               <div className="flex items-center gap-2">
                 <Image
