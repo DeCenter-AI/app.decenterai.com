@@ -45,7 +45,8 @@ export default function Page() {
         <div className="flex gap-4  items-center text-[#8F8F8F] text-sm">
           <Link
             href="/dashboard/settings"
-            className="flex gap-2 items-center border-none outline-none">
+            className="flex gap-2 items-center border-none outline-none"
+          >
             <PiCaretLeft />
             <span>Back</span>
           </Link>
@@ -78,7 +79,8 @@ export default function Page() {
           </div>
           <button
             className="flex items-center justify-center p-2 bg-primary_7 text-primary_6 rounded-full"
-            onClick={openModal}>
+            onClick={openModal}
+          >
             <PiPencilSimpleLight size={20} />
           </button>
         </div>
@@ -87,7 +89,8 @@ export default function Page() {
           {profileInfo.map((item) => (
             <div
               key={item.id}
-              className="border border-primary_8 rounded-xl py-2 w-full flex flex-col gap-4 px-4">
+              className="border border-primary_8 rounded-xl py-2 w-full flex flex-col gap-4 px-4"
+            >
               <p className="text-[#C1C1C1]">{item.text}</p>
               <div className="flex justify-between items-center">
                 <h4 className="text-lg">{item.count}</h4>
@@ -109,7 +112,8 @@ export default function Page() {
           {models.map((model) => (
             <div
               key={model.id}
-              className="w-full p-2 flex gap-4 items-center border border-primary_8 rounded-xl">
+              className="w-full p-2 flex gap-4 items-center border border-primary_8 rounded-xl"
+            >
               <div className="flex flex-col gap-3">
                 <span className="text-xs bg-[#232323] py-1 px-2 w-max rounded-full text-[#8F8F8F]">
                   {model.title}

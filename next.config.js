@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const value = 0
 const nextConfig = {
-  
   images: {
     domains: ['avataaars.io'],
   },

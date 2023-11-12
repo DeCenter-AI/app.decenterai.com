@@ -8,7 +8,7 @@ import { GoDownload } from 'react-icons/go'
 import { GoSortAsc } from 'react-icons/go'
 import { BiLike } from 'react-icons/bi'
 import Repository from './components/repository'
-import repository from './components/repository'
+import repositoryList from '@/data/repository'
 
 export default function Page() {
   const pathname = usePathname()
@@ -75,10 +75,10 @@ export default function Page() {
 
           <div className=" w-[85%]  h-full  ">
             <div className="w-full h-[80%] flex flex-col gap-6  overflow-y-scroll">
-              <Repository repository={repository} />
+              <Repository repository={repositoryList} />
             </div>
 
-            <div className="flex h-[20%] justify-center text-primary_7  items-center ">
+            <div className="flex h-[20%] justify-center gap-x-3 text-primary_7  items-center ">
               <div>
                 <button className="w-24 bg-primary_11 py-2 rounded-full">Next</button>
               </div>
