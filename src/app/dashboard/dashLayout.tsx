@@ -41,20 +41,17 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     setProfileOpen(!isProfileOpen)
   }
   const handleLogout = () => {
-    
-    particle.auth.logout().then(()=>{
-      console.log("logout")
+    particle.auth.logout().then(() => {
+      console.log('logout')
     })
 
     localStorage.clear()
 
-
-    userStore.clearUser();
+    userStore.clearUser()
 
     redirect('/explore')
     // router.push('/explore');
-  };
-
+  }
 
   const myImageLoader = ({ src }) => {
     return src
