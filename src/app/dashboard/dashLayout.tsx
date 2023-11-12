@@ -46,21 +46,14 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     await particle.auth.logout().then(() => {
       console.log("logout")
       localStorage.clear();
-
-
       userStore.clearUser();
-
       redirect('/explore')
     })
-
-
   };
-
 
   const myImageLoader = ({ src }) => {
     return src
   }
-
   const userStore = useUserStore();
   return (
     <div className={`w-screen h-screen flex  bg-primary_12 relative `}>
