@@ -19,6 +19,8 @@ import { ModalNotification } from './notifications/components/Notification'
 import useUserStore from '@/state/userStore'
 import { myImageLoader } from '@lib/imageHelper'
 import particle from '@/lib/particle'
+import { useRouter } from 'next/navigation'
+
 
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserStore()
@@ -41,12 +43,12 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     setProfileOpen(!isProfileOpen)
   }
   const handleLogout = async () => {
-    await particle.auth.logout().then(() => {
-      console.log('logout')
-      localStorage.clear()
-      userStore.clearUser()
-      redirect('/explore')
-    })
+    await particle.auth.logout()
+    console.log('logout')
+    localStorage.clear()
+    userStore.clearUser()
+    redirect('/explore')
+    // push('/explore')
   }
 
   const myImageLoader = ({ src }) => {
