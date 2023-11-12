@@ -21,7 +21,6 @@ import { myImageLoader } from '@lib/imageHelper'
 import particle from '@/lib/particle'
 import { useRouter } from 'next/navigation'
 
-
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserStore()
   const pathname = usePathname()
