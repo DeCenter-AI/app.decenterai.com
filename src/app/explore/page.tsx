@@ -1,15 +1,15 @@
 'use client'
 import Image from 'next/image'
-import React, {useEffect, useState} from 'react'
-import {useRouter} from 'next/navigation'
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 // import { useUserContext } from '@state/userContext';
-import {generateFromEmail} from 'unique-username-generator'
-import {AvatarGenerator} from 'random-avatar-generator'
-import {GiDigitalTrace} from 'react-icons/gi'
+import { generateFromEmail } from 'unique-username-generator'
+import { AvatarGenerator } from 'random-avatar-generator'
+import { GiDigitalTrace } from 'react-icons/gi'
 import particle from '@lib/particle'
 import Loading from '../components/Loading'
-import {userType} from '@app/api/prisma/upsert_user/route'
-import {upsert_user} from './upsert_user'
+import { userType } from '@app/api/prisma/upsert_user/route'
+import { upsert_user } from './upsert_user'
 import useUserStore from '@/state/userStore'
 
 export default function Page() {
@@ -61,7 +61,7 @@ export default function Page() {
   useEffect(() => {
     console.log('checkStatus:particle')
 
-    if(userStore.user){
+    if (userStore.user) {
       // TODO: memorize the original route the user was intending:
       push('/dashboard')
     }
