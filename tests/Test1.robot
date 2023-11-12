@@ -1,9 +1,11 @@
 *** Settings ***
 Library           SeleniumLibrary
 Library           Process
+Library    XML
+Library    OperatingSystem
 
 *** Variables ***
-${URL}            http://localhost:8501
+${URL}            http://decenterai.com
 ${BROWSER}        chrome
 
 *** Test Cases ***
@@ -12,28 +14,39 @@ Test Head
     Log To Console    test_head
     Open Browser    ${URL}    ${BROWSER}
     Sleep    5
-    Page Should Contain  Demo
+    Page Should Contain  DecentralIzed and DemocratIzed AI 
+    Page Should Contain  Model TraInIng Infrastructure
     Sleep    2
-    Page Should Contain  v3
-    Page Should Contain  AI Infrastructure for Model training
 
-    Page Should Contain Button  Train
-    Click Button    Train     
-    Click Button    Train
-    Sleep    40
 
-    Page Should Contain    Model Training Request completed successfully!
-    Page Should Contain Button    Download Model
-    Click Button    Download Model
+    Page Should Contain Button  Try Demo
+    Click Button    Try Demo
     Sleep    5
-#    Click Element    //*[contains(text(),'v2') or contains(text(),'v1')]    
 
+    Page Should Contain Button    Start here
+    Click Button    Start here
+    Sleep    2
 
-# ||| FIXME error with locating X path 
-# From what I could tell, rbframework can detect the mainbody page, 
-# but fails to locate anything on the sidebar, hence the issue with locating app, v1 and v2 
+# FIXME: sign in issue
 
+#    Wait Until Element Is Visible    id=login-form_email
+#    Input Text    id=login-form_email    {insertgmail}
+#   sleep    10
 
-#    Sleep    1
-#    Page Should Contain    You didn't select comedy
+    Page Should Contain    Train your AI model to the stars instantly.
+    Page Should Contain Button    Train
+    Click Button    Train
+    Sleep    2
+
+    Page Should Contain Button    Repository
+    Click Button    Repository
+    Sleep    2
+
+    Page Should Contain Button    Settings
+    Click button   Settings
+    Sleep    2
+
+    Page Should Contain Button    Log Out
+    Click button   Log Out
+    Sleep    2
     Close Browser
