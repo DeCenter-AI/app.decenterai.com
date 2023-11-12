@@ -41,18 +41,19 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const openProfile = () => {
     setProfileOpen(!isProfileOpen)
   }
-  const handleLogout = () => {
-    
-    particle.auth.logout().then(()=>{
+  const handleLogout = async () => {
+
+    await particle.auth.logout().then(() => {
       console.log("logout")
+      localStorage.clear();
+
+
+      userStore.clearUser();
+
+      redirect('/explore')
     })
 
-    localStorage.clear();
 
-
-    userStore.clearUser();
-
-    redirect('/explore')
   };
 
 
