@@ -6,7 +6,7 @@ import { Model, TrainingRequest } from '@prisma/client'
 type IModel = Omit<Omit<Model, 'createdAt'>, 'updatedAt'>
 type ITrainRequest = Omit<Omit<TrainingRequest, 'createdAt'>, 'updatedAt'>
 
-export interface Models {
+interface Models {
   [modelId: string]: IModel
 }
 
@@ -25,9 +25,8 @@ type Store = {
   "modelId2<comes from mongo>":  IModel,
   }
   */
-  init: (model: IModel) => void
-  //   setModel: (model: Partial<IModel>) => void
-  setModels: (model: Partial<IModel[]>) => void
+  init: (userId: string) => void
+  setModel: (model: Partial<IModel>) => void
   setTrainRequest: (request: Partial<ITrainRequest>) => void
 }
 
@@ -41,32 +40,31 @@ const useModelStore = create<Store>()(
 
         trainRequest: null,
 
-        init(modelData: IModel, syncDB: boolean = true) {
+        init(userId: string, syncDB: boolean = true) {
+          //make api call
+          const returnedModels = []
+          const userModels: Models = null
+          //create object properties
+          returnedModels.forEach((item) => {
+            userModels.item.userId = item
+          })
           set((state) => ({
             ...state,
-            model: modelData,
+            models: userModels,
           }))
           console.log('modelStore: init')
         },
 
-        // async setModel(modelDto: Partial<IModel>, syncDB: boolean = true) {
-        //   //TODO: make this false, too much DB writes!!
-        //   set((state) => ({
-        //     ...state,
-        //     model: {
-        //       ...state.model,
-        //       ...modelDto,
-        //     },
-        //   }))
-        //   console.log('modelStore: setModel')
-        // },
-
-        async setModels(modelsDto: Partial<IModel[]>, syncDB: boolean = true) {
+        //set user current model in focus
+        async setModel(modelDto: Partial<IModel>, syncDB: boolean = true) {
           set((state) => ({
             ...state,
-            models: modelsDto,
+            model: {
+              ...state.model,
+              ...modelDto,
+            },
           }))
-          console.log('modelStore: setModels')
+          console.log('modelStore: setModel')
         },
 
         async setTrainRequest(
