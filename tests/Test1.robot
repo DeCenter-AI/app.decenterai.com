@@ -27,26 +27,4 @@ Test Head
     Click Button    Start here
     Sleep    2
 
-# FIXME: sign in issue
-
-#    Wait Until Element Is Visible    id=login-form_email
-#    Input Text    id=login-form_email    {insertgmail}
-#   sleep    10
-
-    Page Should Contain    Train your AI model to the stars instantly.
-    Page Should Contain Button    Train
-    Click Button    Train
-    Sleep    2
-
-    Page Should Contain Button    Repository
-    Click Button    Repository
-    Sleep    2
-
-    Page Should Contain Button    Settings
-    Click button   Settings
-    Sleep    2
-
-    Page Should Contain Button    Log Out
-    Click button   Log Out
-    Sleep    2
     Close Browser
