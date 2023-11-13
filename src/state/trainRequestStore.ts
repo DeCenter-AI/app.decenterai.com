@@ -4,19 +4,18 @@ import { Model, TrainingRequest } from '@prisma/client'
 
 type ITrainRequest = Omit<Omit<TrainingRequest, 'createdAt'>, 'updatedAt'>
 
-
 interface ITrainRequsts {
   [requestId: string]: ITrainRequest
 }
 
 type Store = {
   // request: holds the current train request that is yet to be processed to the DB
-  request: Partial<ITrainRequest> 
+  request: Partial<ITrainRequest>
   // requests: holds all all the train requests associated with the user
-  requests: ITrainRequsts 
+  requests: ITrainRequsts
   init: (request: Partial<ITrainRequest>) => void
   setTrainRequest: (request: Partial<ITrainRequest>) => void
-  getTrainRequest: (id:string) =>ITrainRequest
+  getTrainRequest: (id: string) => ITrainRequest
 }
 
 const useTrainRequestStore = create<Store>()(
@@ -38,7 +37,7 @@ const useTrainRequestStore = create<Store>()(
 
         setTrainRequest(requestDto: Partial<ITrainRequest>, syncDB: boolean = true) {
           //update request store
-          const {request} = get()
+          const { request } = get()
 
           set((state) => ({
             ...state,
@@ -48,22 +47,22 @@ const useTrainRequestStore = create<Store>()(
             },
           }))
           console.log('train request: setTrainRequest')
-          
+
           // TODO: see if request is updated, if not use get().request
           console.log(request)
 
-          if (syncDB){
-          // TODO: upsert the request with DB 
-          // set/update the requests[id] = ...
+          if (syncDB) {
+            // TODO: upsert the request with DB
+            // set/update the requests[id] = ...
           }
         },
-        
-        getTrainRequest(id:string){
-          const {requests} = get()
+
+        getTrainRequest(id: string) {
+          const { requests } = get()
 
           let request = requests[id]
 
-          if (!request){
+          if (!request) {
             request = null
             // FIXME: retrieve from the DB with prisma api call
           }
