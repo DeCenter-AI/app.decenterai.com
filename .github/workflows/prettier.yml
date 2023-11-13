@@ -11,12 +11,13 @@ on:
   #    types: [ submitted ]
 
   pull_request:
-    branches:
+    # branches:
 
     types:
       - opened
       - review_requested
       - synchronize
+      - ready_for_review
 
   # TODO: try
   pull_request_target:
