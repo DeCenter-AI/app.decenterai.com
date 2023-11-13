@@ -1,6 +1,6 @@
 name: Task
-title: "task: "
-description: Create a task for the project 
+title: 'task: '
+description: Create a task for the project
 labels: ['task']
 
 body:
@@ -14,12 +14,12 @@ body:
       label: Task description
       description: A clear and concise description of the task
       value: |
-        - [ ]  
+        - [ ]
     validations:
       required: true
 
   - type: input
-    attributes: 
+    attributes:
       label: Related Issues
       placeholder: |
         Relates #21

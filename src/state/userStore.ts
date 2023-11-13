@@ -20,6 +20,7 @@ type Store = {
   user: IUser | null
   init: (user: IUser) => void
   setUser: (user: Partial<IUser>) => void
+  clearUser: () => void
 }
 
 const useUserStore = create<Store>()(
@@ -49,6 +50,9 @@ const useUserStore = create<Store>()(
             console.log('userStore: syncDB')
             await upsert_user(this.user)
           }
+        },
+        clearUser() {
+          set({ user: null })
         },
         async syncDB() {
           console.log('userStore: syncDB')
