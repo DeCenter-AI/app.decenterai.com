@@ -10,42 +10,30 @@ interface Models {
 }
 
 type Store = {
-  model: IModel | null
-  // stores all user's models
-  models: Models | null
-  /*
-  prisma.model.findMany({
-    where:{
-      userId; userId
-    }
-  })
-
-  "modelId1": IMOdel,
-  "modelId2<comes from mongo>":  IModel,
-  }
-  */
+  // manages the state of current model, 
+  // TODO: restricts users to 1 tab
+  model?: IModel 
+  models?: Models 
   init: (userId: string) => void
   setModel: (model: Partial<IModel>) => void
+  getModel: (id: string) => IModel
+
 }
 
 const useModelStore = create<Store>()(
   devtools(
     persist(
       (set, get) => ({
-        model: null,
-
-        models: null,
-
-        trainRequest: null,
-
-        init(userId: string, syncDB: boolean = true) {
+        init(userId: string) {
           //make api call
           const returnedModels = []
-          const userModels: Models = null
+          const userModels: Models = {}
           //create object properties
-          returnedModels.forEach((item) => {
-            userModels.item.userId = item
-          })
+   
+          for (const model of returnedModels) {
+            userModels[model.id] = model
+          }
+
           set((state) => ({
             ...state,
             models: userModels,
@@ -54,15 +42,34 @@ const useModelStore = create<Store>()(
         },
 
         //set user current model in focus
-        async setModel(modelDto: Partial<IModel>, syncDB: boolean = true) {
+        async setModel(modelDto: Partial<IModel>, syncDB: boolean = false) {
+          let {model} = get()
+
+
           set((state) => ({
             ...state,
             model: {
-              ...state.model,
+              ...model,
               ...modelDto,
             },
           }))
           console.log('modelStore: setModel')
+
+          if (syncDB) {
+            // TODO: upsert the model to DB
+            // TODO: set/update the models[id] = ...
+          }
+        },
+        getModel(id: string) {
+          const {  models } = get()
+
+          let model = models[id]
+
+          if (!model) {
+            model = null
+            // FIXME: retrieve from the DB with prisma api call
+          }
+          return model
         },
       }),
       {

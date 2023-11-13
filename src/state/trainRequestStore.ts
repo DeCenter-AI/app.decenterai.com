@@ -53,7 +53,7 @@ const useTrainRequestStore = create<Store>()(
 
           if (syncDB) {
             // TODO: upsert the request with DB
-            // set/update the requests[id] = ...
+            // TODO: set/update the requests[id] = ...
           }
         },
 
