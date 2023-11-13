@@ -16,9 +16,7 @@ on:
     
 
     types:
-      - opened
-      - review_requested
-      - synchronize
+
       - ready_for_review
 
   #    paths: ['**.yaml','**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
