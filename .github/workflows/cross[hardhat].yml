@@ -55,7 +55,7 @@ jobs:
 
       - name: Write environment
         run: |
-          echo "${{ env.envfile }}"" > .env.tmp
+          echo ${{ env.envfile }} > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
 
       - name: Install dependencies
