@@ -17,7 +17,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: ./hardhat
+    working-directory: ${{github.workspace}}/hardhat
 
 env:
   envfile: ${{secrets.ENVHARDHAT}}
@@ -54,6 +54,7 @@ jobs:
           check-latest: true
 
       - name: Write environment
+        working-directory: ${{github.workspace}}/hardhat
         run: |
           echo $envfile > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
