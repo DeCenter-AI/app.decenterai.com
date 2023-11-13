@@ -58,9 +58,9 @@ jobs:
           echo $envfile > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
 
-      - name: Setup tmate session
-        if: ${{matrix.os}}==windows-latest
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   if: ${{matrix.os}}==windows-latest
+      #   uses: mxschmitt/action-tmate@v3
 
       - name: Install dependencies
         run: pnpm install
