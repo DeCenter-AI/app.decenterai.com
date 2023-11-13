@@ -13,14 +13,14 @@ on:
   pull_request:
     branches:
       - 'main'
-    
-
+    # needs to match both the filters
     types:
-
+      # - opened
+      # - review_requested
+      # - synchronize
       - ready_for_review
 
   #    paths: ['**.yaml','**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
-
 
   workflow_dispatch:
     inputs:
@@ -47,7 +47,6 @@ env:
 jobs:
   prettier:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.draft}} == false #or ready_for_review
 
     steps:
       - uses: actions/checkout@v3
