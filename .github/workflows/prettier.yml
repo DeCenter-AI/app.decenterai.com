@@ -53,7 +53,7 @@ jobs:
         with:
           fetch-depth: 2
           ref: ${{ github.head_ref }}
-          persist-credentials: truec
+          persist-credentials: true
 
       - uses: pnpm/action-setup@v2
         with:
