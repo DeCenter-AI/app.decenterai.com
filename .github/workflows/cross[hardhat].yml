@@ -56,7 +56,7 @@ jobs:
       - uses: DamianReeves/write-file-action@master
         with:
           path: .env.tmp
-          write-mode: append
+          write-mode: overwrite
           contents: |
             ${{secrets.ENVHARDHAT}}
 
