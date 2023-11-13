@@ -4,7 +4,6 @@ import { upsert_user } from '@app/explore/upsert_user'
 import { Model, TrainingRequest } from '@prisma/client'
 
 type IModel = Omit<Omit<Model, 'createdAt'>, 'updatedAt'>
-type ITrainRequest = Omit<Omit<TrainingRequest, 'createdAt'>, 'updatedAt'>
 
 interface Models {
   [modelId: string]: IModel
@@ -27,7 +26,6 @@ type Store = {
   */
   init: (userId: string) => void
   setModel: (model: Partial<IModel>) => void
-  setTrainRequest: (request: Partial<ITrainRequest>) => void
 }
 
 const useModelStore = create<Store>()(
@@ -65,17 +63,6 @@ const useModelStore = create<Store>()(
             },
           }))
           console.log('modelStore: setModel')
-        },
-
-        async setTrainRequest(
-          requestDto: Partial<ITrainRequest>,
-          syncDB: boolean = true,
-        ) {
-          set((state) => ({
-            ...state,
-            trainRequest: requestDto,
-          }))
-          console.log('modelStore: setTrainRequest')
         },
       }),
       {

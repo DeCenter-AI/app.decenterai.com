@@ -4,10 +4,19 @@ import { Model, TrainingRequest } from '@prisma/client'
 
 type ITrainRequest = Omit<Omit<TrainingRequest, 'createdAt'>, 'updatedAt'>
 
+
+interface ITrainRequsts {
+  [requestId: string]: ITrainRequest
+}
+
 type Store = {
-  request: Partial<ITrainRequest> | null
+  // request: holds the current train request that is yet to be processed to the DB
+  request: Partial<ITrainRequest> 
+  // requests: holds all all the train requests associated with the user
+  requests: ITrainRequsts 
   init: (request: Partial<ITrainRequest>) => void
   setTrainRequest: (request: Partial<ITrainRequest>) => void
+  getTrainRequest: (id:string) =>ITrainRequest
 }
 
 const useTrainRequestStore = create<Store>()(
@@ -15,24 +24,43 @@ const useTrainRequestStore = create<Store>()(
     persist(
       (set, get) => ({
         request: null,
+        requests: null,
 
-        async init(request: Partial<ITrainRequest>, syncDB: boolean = true) {
-          //make api call
+        async init() {
+          //TODO: fill in the requests with all the training requests associated with the user
 
           set((state) => ({
             ...state,
-            request,
+            // TODO: api call result
           }))
           console.log('train request: init')
         },
 
         setTrainRequest(requestDto: Partial<ITrainRequest>, syncDB: boolean = true) {
           //update request store
+
           set((state) => ({
             ...state,
-            trainRequest: requestDto,
+            request: requestDto,
           }))
           console.log('train request: setTrainRequest')
+
+          if (syncDB){
+          // TODO: update the request with DB 
+          // set/update the requests[id] = ...
+          }
+        },
+        
+        getTrainRequest(id:string){
+          const {requests} = get()
+
+          let request = requests[id]
+
+          if (!request){
+            request = null
+            // FIXME: retrieve from the DB with prisma api call
+          }
+          return request
         },
       }),
       {
