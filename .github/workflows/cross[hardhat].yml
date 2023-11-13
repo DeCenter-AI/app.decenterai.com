@@ -53,9 +53,15 @@ jobs:
           architecture: ${{ matrix.architecture }}
           check-latest: true
 
+      - uses: DamianReeves/write-file-action@master
+        with:
+          path: .env.tmp
+          write-mode: append
+          contents: |
+            ${{secrets.ENVHARDHAT}}
+
       - name: Write environment
         run: |
-          echo ${{ env.envfile }} > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
 
       - name: Install dependencies
