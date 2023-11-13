@@ -38,15 +38,22 @@ const useTrainRequestStore = create<Store>()(
 
         setTrainRequest(requestDto: Partial<ITrainRequest>, syncDB: boolean = true) {
           //update request store
+          const {request} = get()
 
           set((state) => ({
             ...state,
-            request: requestDto,
+            request: {
+              ...request,
+              ...requestDto,
+            },
           }))
           console.log('train request: setTrainRequest')
+          
+          // TODO: see if request is updated, if not use get().request
+          console.log(request)
 
           if (syncDB){
-          // TODO: update the request with DB 
+          // TODO: upsert the request with DB 
           // set/update the requests[id] = ...
           }
         },
