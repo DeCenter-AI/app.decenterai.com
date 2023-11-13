@@ -17,7 +17,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: ${{github.workspace}}/hardhat
+    working-directory: ./hardhat
 
 env:
   envfile: ${{secrets.ENVHARDHAT}}
