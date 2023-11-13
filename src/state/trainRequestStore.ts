@@ -70,7 +70,7 @@ const useTrainRequestStore = create<Store>()(
         },
       }),
       {
-        name: 'trainRequestData',
+        name: 'TrainingRequestStore',
       },
     ),
   ),

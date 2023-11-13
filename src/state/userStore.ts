@@ -67,7 +67,7 @@ const useUserStore = create<Store>()(
          }*/
       }),
       {
-        name: 'userData',
+        name: 'UserStore',
       },
     ),
   ),

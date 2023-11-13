@@ -66,7 +66,7 @@ const useModelStore = create<Store>()(
         },
       }),
       {
-        name: 'modelData',
+        name: 'ModelStore',
       },
     ),
   ),
