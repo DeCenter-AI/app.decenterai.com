@@ -54,7 +54,7 @@ env:
 jobs:
   prettier:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.draft}} == false
+    if: ${{ github.event.pull_request.draft}} == false #or ready_for_review
 
     steps:
       - uses: actions/checkout@v3
