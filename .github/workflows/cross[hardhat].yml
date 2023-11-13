@@ -55,7 +55,7 @@ jobs:
 
       - uses: DamianReeves/write-file-action@master
         with:
-          path: .env.tmp
+          path: ${{github.workspace}}/.env.tmp
           write-mode: overwrite
           contents: |
             ${{secrets.ENVHARDHAT}}
