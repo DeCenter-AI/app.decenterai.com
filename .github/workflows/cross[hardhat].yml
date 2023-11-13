@@ -58,6 +58,15 @@ jobs:
           echo $envfile > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
 
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
+        timeout-minutes: 10000
+        with:
+          wait-timeout-minutes: 60
+          # ssh-known-hosts: ${{ steps.read_pub_key.outputs.pub_key }}
+          limit-access-to-actor: true
+          limit-access-to-users: Nasfame,pythoneerHiro
+
       - name: Install dependencies
         run: pnpm install
 
