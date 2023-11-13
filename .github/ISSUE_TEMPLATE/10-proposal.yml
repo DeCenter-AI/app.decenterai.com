@@ -3,8 +3,7 @@ description: Submit a proposal for consideration
 title: 'proposal: '
 labels: ['proposal']
 
-
-body: 
+body:
   - type: markdown
     attributes:
       value: |
@@ -39,9 +38,7 @@ body:
     id: additional-info
     attributes:
       label: Additional Information
-      description: Include any additional information or references that support the proposal.
+      description:
+        Include any additional information or references that support the proposal.
     validations:
       required: false
-
-    
-  
