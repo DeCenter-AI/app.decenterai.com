@@ -1,0 +1,45 @@
+name: Feature request
+description: Suggest an idea for this project
+title: 'feature-request:'
+labels: ['enhancement', 'feature-request', 'feature']
+assignees: ['Nasfame']
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        Thanks for helping us improve! 🙏 Please follow the sections in the template and provide as much information.
+
+  - type: input
+    attributes:
+      label: Related Issues
+      placeholder: |
+        Relates #21
+    validations:
+      required: false
+
+  - type: textarea
+    id: feature_request
+    attributes:
+      label: Summary
+      description: Briefly summarize the feature.
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation-plan
+    attributes:
+      label: Implementation Plan
+      description: Outline the steps or phases required to implement the feature.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description:
+        Include any additional information or references that support the proposal.
+    validations:
+      required: false
