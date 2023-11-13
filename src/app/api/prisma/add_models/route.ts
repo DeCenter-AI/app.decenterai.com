@@ -2,9 +2,9 @@ import prisma from '@lib/prisma'
 
 export async function POST(req: Request) {
   try {
-    const trainingRequest = await req.json()
-    const create_request = await prisma.trainingRequest.create({
-      data: trainingRequest,
+    const newModel = await req.json()
+    const create_model = await prisma.model.create({
+      data: newModel,
     })
     return new Response(JSON.stringify({ status: 200 }))
   } catch (error) {
