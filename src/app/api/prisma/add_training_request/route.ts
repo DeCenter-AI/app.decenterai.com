@@ -1,33 +1,23 @@
-import { create } from 'zustand'
+import prisma from '@lib/prisma'
+import { NextResponse } from 'next/server'
 
-interface TrainingRequest {
-  // same as before 
-}
-
-interface TrainingRequestStore {
-  trainingRequests: TrainingRequest[],
-  getTrainingRequests: () => void,
-  addTrainingRequest: (request: TrainingRequest) => void
-}
-
-export const useTrainingRequestStore = create<TrainingRequestStore>(set => ({
-  trainingRequests: [],
-
-  getTrainingRequests: async () => {
-    const response = await fetch('/api/training-requests') 
-    const requests = await response.json()
-    set({trainingRequests: requests})
-  },
-
-  addTrainingRequest: async (request) => {
-    const response = await fetch('/api/training-requests', {
-      method: 'POST',
-      body: JSON.stringify(request)
+export async function POST(req: Request) {
+  try {
+    const TrainingRequest = await req.json()
+    const new_training_request= await prisma.trainingRequest.create({
+      data: TrainingRequest,
     })
-    const newRequest = await response.json()
-    set(state => ({
-      ...state,
-      trainingRequests: [...state.trainingRequests, newRequest]  
-    }))
+    return NextResponse.json(new_training_request, { status: 200 })
+  } catch (error) {
+return NextResponse.json({ message: 'Error creating Training Request', error, status: 500 })
   }
-}))
+}
+
+export async function GET() {
+  try {
+    const models = await prisma.model.findMany()
+    return NextResponse.json(models, { status: 200 })
+  } catch (error) {
+    return NextResponse.json({ message: 'Error getting models' }, { status: 500 })
+  }
+}

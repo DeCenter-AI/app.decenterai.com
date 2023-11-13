@@ -7,15 +7,13 @@ export async function POST(req: Request) {
     const create_model = await prisma.model.create({
       data: newModel,
     })
-    return new Response(JSON.stringify({ status: 200 }))
+    return NextResponse.json(newModel, { status: 200 })
   } catch (error) {
-    return new Response(
-      JSON.stringify({ message: 'Error creating model', error, status: 500 }),
-    )
+return NextResponse.json({ message: 'Error creating model', error, status: 500 })
   }
 }
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
    
    const models = await prisma.model.findMany()
