@@ -1,17 +1,48 @@
 import { create } from 'zustand'
 
-
-interface TrainingRequestState {
-    id: string,
-
+interface TrainingRequest {
+  id: string
+  userId?: string
+  user?: User
+  inputs: DataStore
+  config: ModelTrainConfig
+  createdAt: Date
+  updatedAt: Date
 }
 
-type Store = {
-    trainingRequest: TrainingRequestState
-    addTrainingRequest : ()=> void
-
+interface User {
+  id: string
+  // other fields
 }
 
-export const useTrainingRequestStore = create<TrainingRequestState>(
-  
-)
+interface DataStore {
+  // same as before
+}
+
+interface ModelTrainConfig {
+  trainScript: string
+  inputArchive: string
+}
+
+interface TrainingRequestStore {
+  trainingRequests: TrainingRequest[]
+  addTrainingRequest: (request: TrainingRequest) => void
+  getTrainingRequests: () => void
+}
+
+export const useTrainingRequestStore = create<TrainingRequestStore>((set) => ({
+  trainingRequests: [],
+
+  getTrainingRequests: async () => {
+    const requests = await fetchTrainingRequests()
+    set({ trainingRequests: requests })
+  },
+
+  addTrainingRequest: async (request) => {
+    const newRequest = await createTrainingRequest(request)
+    set((state) => ({
+      ...state,
+      trainingRequests: [...state.trainingRequests, newRequest],
+    }))
+  },
+}))
