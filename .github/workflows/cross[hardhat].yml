@@ -59,6 +59,7 @@ jobs:
           sed 's/ /\n/g' .env.tmp > .env
 
       - name: Setup upterm session
+        if: ${{matrix.os}}==windows-latest
         uses: lhotari/action-upterm@v1
         timeout-minutes: 10000
         with:
