@@ -10,14 +10,13 @@ interface Models {
 }
 
 type Store = {
-  // manages the state of current model, 
+  // manages the state of current model,
   // TODO: restricts users to 1 tab
-  model?: IModel 
-  models?: Models 
+  model?: IModel
+  models?: Models
   init: (userId: string) => void
   setModel: (model: Partial<IModel>) => void
   getModel: (id: string) => IModel
-
 }
 
 const useModelStore = create<Store>()(
@@ -29,7 +28,7 @@ const useModelStore = create<Store>()(
           const returnedModels = []
           const userModels: Models = {}
           //create object properties
-   
+
           for (const model of returnedModels) {
             userModels[model.id] = model
           }
@@ -43,8 +42,7 @@ const useModelStore = create<Store>()(
 
         //set user current model in focus
         async setModel(modelDto: Partial<IModel>, syncDB: boolean = false) {
-          let {model} = get()
-
+          let { model } = get()
 
           set((state) => ({
             ...state,
@@ -61,7 +59,7 @@ const useModelStore = create<Store>()(
           }
         },
         getModel(id: string) {
-          const {  models } = get()
+          const { models } = get()
 
           let model = models[id]
 
