@@ -54,17 +54,16 @@ jobs:
           check-latest: true
 
       - name: Write environment
-        working-directory: ${{github.workspace}}/hardhat
         run: |
-          echo $envfile > .env.tmp
+          echo ${{secrets.ENVHARDHAT}} > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
-
-      # - name: Setup tmate session
-      #   if: ${{matrix.os}}==windows-latest
-      #   uses: mxschmitt/action-tmate@v3
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Setup tmate session
+        if: ${{matrix.os}}==windows-latest
+        uses: mxschmitt/action-tmate@v3
 
       - name: Build
         run: npm run build
