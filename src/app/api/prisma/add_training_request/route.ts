@@ -18,6 +18,6 @@ export async function GET() {
     const models = await prisma.trainingRequest.findMany()
     return NextResponse.json(models, { status: 200 })
   } catch (error) {
-    return NextResponse.json({ message: 'Error getting models' }, { status: 500 })
+    return NextResponse.json({ message: 'Error getting Training Request' }, { status: 500 })
   }
 }
