@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 // import { useRouter } from '';
-import { redirect, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import imageDecenterLogoWhite from '@public/Logo White.png'
 import imageDecenterLogoSubtitle from '@public/Logo Texts.png'
 import { RxDashboard } from 'react-icons/rx'
@@ -24,7 +24,7 @@ import { useRouter } from 'next/navigation'
 export const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserStore()
   const pathname = usePathname()
-
+  const { push, replace } = useRouter()
   const [isNotificationOpen, setNotificationOpen] = useState(false)
   const [showBackdrop, setShowBackdrop] = useState(false)
   const [isProfileOpen, setProfileOpen] = useState(false)
@@ -46,7 +46,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
     console.log('logout')
     localStorage.clear()
     userStore.clearUser()
-    redirect('/explore')
+    replace('/explore')
     // push('/explore')
   }
 
@@ -193,7 +193,7 @@ export const DashLayout = ({ children }: { children: React.ReactNode }) => {
               </div>
             ) : (
               <div className="bg-primary_11 text-primary_1 font-semibold font-primaryArchivo py-2 px-3 cursor-pointer rounded-xl relative">
-                <button className="flex flex-row" onClick={redirect('/explore')}>
+                <button className="flex flex-row" onClick={() => replace('/explore')}>
                   Log In
                 </button>
               </div>
