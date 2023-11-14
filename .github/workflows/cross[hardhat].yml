@@ -62,6 +62,7 @@ jobs:
 
       - name: Write environment
         run: |
+          echo $envfile > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
 
       - name: Install dependencies
