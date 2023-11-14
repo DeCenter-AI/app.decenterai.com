@@ -12,12 +12,14 @@ on:
 
   pull_request:
     branches:
-
-  pull_request_target:
-    types:
-      - opened
-    branches:
       - 'main'
+    # needs to match both the filters
+    types:
+      # - opened
+      # - review_requested
+      # - synchronize
+      - ready_for_review
+
   #    paths: ['**.yaml','**.js', '**.jsx', '**.ts', '**.tsx', '**.css', '**.scss', '**.html', '**.vue', '**.json', '**.md']
 
   workflow_dispatch:
