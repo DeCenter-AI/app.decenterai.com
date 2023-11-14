@@ -84,6 +84,7 @@ jobs:
           check-latest: true
 
       - name: Write environment #TODO: add coachroach ssl certificate
+        shell: bash
         run: |
           echo $envfile > .env.tmp
           sed 's/ /\n/g' .env.tmp > .env
