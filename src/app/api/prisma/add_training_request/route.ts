@@ -15,8 +15,8 @@ return NextResponse.json({ message: 'Error creating Training Request', error, st
 
 export async function GET() {
   try {
-    const models = await prisma.trainingRequest.findMany()
-    return NextResponse.json(models, { status: 200 })
+    const trainingRequests = await prisma.trainingRequest.findMany()
+    return NextResponse.json(trainingRequests, { status: 200 })
   } catch (error) {
     return NextResponse.json({ message: 'Error getting Training Request' }, { status: 500 })
   }
