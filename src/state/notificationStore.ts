@@ -1,29 +1,19 @@
-// import notifications from '@/data/notification';
-// import { create } from 'zustand'
 
-// type Notification = {
-//     id: number;
-//     name: string;
-//     msg: string;
-//     avatar: string;
-//     time: string;
-//     read: boolean;
-//   };
+import { devtools, persist } from 'zustand/middleware';
+import { upsert_user } from '@app/explore/upsert_user';
+import { Notification, } from '@prisma/client';
 
-//   type NotificationStore = {
-//     notifications: Notification[];
-//     markAsRead: (id: number) => void;
-//   };
-  
-//   const useNotificationStore = create<NotificationStore>((set) => ({
-//   notifications: [...notifications], // Assuming notifications is your initial data
-//   markAsRead: (id) => {
-//     set((state) => ({
-//       notifications: state.notifications.map((notification) =>
-//         notification.id === id ? { ...notification, read: true } : notification
-//       ),
-//     }));
-//   },
-// }));
+type INotification = Omit<Omit<Notification, 'createdAt'>, 'updatedAt'>;
 
-// export default useNotificationStore;
+interface Notifications {
+    [notificationId: string]: INotification;
+}
+
+interface Store {
+    model?: INotification;
+    models?: Notifications;
+    init: (userId: string) => void;
+    setNotification: (modelDto: Partial<INotification>) => void;
+    getNotification: (id: string) => INotification;
+}
+

@@ -30,7 +30,8 @@ model User {
   updatedAt    DateTime          @updatedAt @db.Timestamp
   OrderRequest TrainingRequest[]
 
-  models Model[]
+  models        Model[]
+  notifications Notification[]
 
   @@map("users")
 }
@@ -90,4 +91,15 @@ model TrainingRequest {
   Model Model[]
 
   @@map("training_requests")
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  message   String
+  createdAt DateTime @default(now()) @db.Timestamp
+  updatedAt DateTime @updatedAt @db.Timestamp
+
+  @@map("notifications")
 }
