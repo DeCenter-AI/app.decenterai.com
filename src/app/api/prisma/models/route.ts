@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     const create_model = await prisma.model.create({
       data: newModel,
     })
-    return NextResponse.json(newModel, { status: 200 })
+    return NextResponse.json(create_model, { status: 200 })
   } catch (error) {
 return NextResponse.json({ message: 'Error creating model', error, status: 500 })
   }
