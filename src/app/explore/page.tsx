@@ -55,7 +55,7 @@ export default function Page() {
     console.log(res)
     userStore.init(res.data.created_user)
 
-    push('/dashboard')
+    push('/welcome')
   }
 
   useEffect(() => {
