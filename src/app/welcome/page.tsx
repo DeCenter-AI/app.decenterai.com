@@ -61,7 +61,7 @@ export default function Page() {
                         </label>
                         <input
                             type="text"
-                            value={userStore.user.name}
+                            value={userStore.user?.name}
                             onChange={handleNameChange}
                             className="text-[#8F8F8F] border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
                         />
@@ -74,7 +74,7 @@ export default function Page() {
                         </label>
                         <input
                             type="text"
-                            value={userStore.user.name}
+                            value={userStore.user?.name}
                             onChange={handleNameChange}
                             className="text-[#8F8F8F] border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
                         />
@@ -87,7 +87,7 @@ export default function Page() {
                     <input
                         type="text"
                         placeholder="Nick name (optional)"
-                        value={userStore.user.userName}
+                        value={userStore.user ? userStore.user.name : ''}
                         className="text-[#8F8F8F] border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
                         id="Username"
                     />
