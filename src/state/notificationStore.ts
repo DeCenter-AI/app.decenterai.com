@@ -19,6 +19,15 @@ const useNotificationStore = create<Store>()(
     devtools((set, get) => ({
       notification: [],
 
+      // fetchNotifications: async () => {
+      //   try {
+      //     const notifications = await useNotificationStore.notification.findMany();
+      //     set({ notification: notifications });
+      //   } catch (error) {
+      //     console.error('Error fetching notifications:', error);
+      //   }
+      // },
+
       addNotification: (notification) => {
         set((state) => ({
           notification: [
