@@ -3,9 +3,9 @@ import { devtools, persist } from 'zustand/middleware'
 import { upsert_user } from '@app/explore/upsert_user'
 import { Model, TrainingRequest } from '@prisma/client'
 
-type IModel = Omit<Omit<Model, 'createdAt'>, 'updatedAt'>
+export type IModel = Omit<Omit<Model, 'createdAt'>, 'updatedAt'>
 
-interface Models {
+export interface Models {
   [modelId: string]: IModel
 }
 
