@@ -1,18 +1,20 @@
 import notifications from '@/data/notification'
 import Image from 'next/image'
 import React from 'react'
+import { useEffect } from 'react';
 import { GoDownload } from 'react-icons/go'
 import { PiListChecks, PiDotsThree } from 'react-icons/pi'
+import useNotificationStore from '@/state/notificationStore';
 
 const Messages = () => {
+  const notificationState = useNotificationStore((state) => state.notification);
   return (
     <main className="flex flex-col gap-4 h-full  px-2 overflow-y-auto">
       {notifications.map((item) => (
         <div
           key={item.id}
-          className={`flex justify-between gap-12 items-center  py-2 rounded-3xl px-6 border border-primary_8  ${
-            !item.read ? '' : 'opacity-30'
-          }`}
+          className={`flex justify-between gap-12 items-center  py-2 rounded-3xl px-6 border border-primary_8  ${!item.read ? '' : 'opacity-30'
+            }`}
         >
           <div className="flex items-center gap-2">
             <Image src={item.avatar} alt={`${item.name} avatar`} />
@@ -35,6 +37,12 @@ const Messages = () => {
 }
 
 const ModalNotification = () => {
+  const notificationState = useNotificationStore((state) => state.notification);
+
+  // useEffect(() => {
+  //   // Fetch notifications when the component mounts
+  //   useNotificationStore.getState().fetchNotifications();
+  // }, []);
   return (
     <main className="flex flex-col gap-4   text-xs h-[400px] overflow-y-scroll px-2 ">
       {notifications.map((item) => {
@@ -42,9 +50,8 @@ const ModalNotification = () => {
           return (
             <div
               key={item.id}
-              className={`flex justify-between gap-8 items-center  py-2 rounded-3xl px-2 border border-primary_8 ${
-                !item.read ? ' ' : 'opacity-30'
-              }`}
+              className={`flex justify-between gap-8 items-center  py-2 rounded-3xl px-2 border border-primary_8 ${!item.read ? ' ' : 'opacity-30'
+                }`}
             >
               <div className="flex items-center gap-2">
                 <Image
