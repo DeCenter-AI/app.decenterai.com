@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+import repository from "../../src/data/repository"
 describe('Train Page Component', () => {
   beforeEach(() => {
     cy.visit('/dashboard/train')

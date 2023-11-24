@@ -41,24 +41,26 @@ describe('Notifications Components', () => {
 
   it('should render ModalNotification component with mock data', () => {
     // Mock data for my ModalNotification component
-    const notifications = [
-      {
-        id: 1,
-        name: 'Mohammed Al El',
-        msg: 'Downloaded your model “Speech therapy TXT” ',
-        time: '12 Minutes ago',
-        avatar: avatarData.avatar.url,
-        read: false,
-      },
-    ]
+    cy.fixture('avatar.json').then((avatarData) => {
+const notifications = [
+  {
+    id: 1,
+    name: 'Mohammed Al El',
+    msg: 'Downloaded your model “Speech therapy TXT” ',
+    time: '12 Minutes ago',
+    avatar: avatarData.avatar.url,
+    read: false,
+  },
+]
 
-    // Render the ModalNotification component with mock data
-    cy.get('[data-cy=modal-notification]').invoke('prop', 'notifications', notifications)
+// Render the ModalNotification component with mock data
+cy.get('[data-cy=modal-notification]').invoke('prop', 'notifications', notifications)
 
-    // Assertion - Check if the component is rendered
-    cy.get('[data-cy=modal-notification] [data-cy=modal-notification-item]').should(
-      'have.length',
-      notifications.length,
-    )
+// Assertion - Check if the component is rendered
+cy.get('[data-cy=modal-notification] [data-cy=modal-notification-item]').should(
+  'have.length',
+  notifications.length,
+)
+     })
   })
 })
