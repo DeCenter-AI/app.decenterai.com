@@ -1,3 +1,5 @@
+"use client"
+
 import notifications from '@/data/notification'
 import Image from 'next/image'
 import React from 'react'
