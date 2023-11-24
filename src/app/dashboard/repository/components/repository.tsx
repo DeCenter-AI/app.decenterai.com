@@ -7,21 +7,6 @@ export default function Repository() {
   const { models } = useModelStore()
 
   return (
-<<<<<<< HEAD
-    <div data-cy="repository">
-      <div className="">
-        {repository.map((item) => (
-          <div
-            key={item.id}
-            data-cy="repository-item"
-            className=" border border-primary_9 flex px-5 mb-5 py-3 items-center rounded-xl  h-[170px] min-h-[170px]"
-          >
-            <div className="w-[80%] h-full">
-              <div className=" flex h-[25%] items-start ">
-                <span className="bg-primary_11 rounded-full text-primary_8 py-1 px-3">
-                  {item.label}
-                </span>
-=======
     <div>
 
       {/* extract the values of the object */}
@@ -45,7 +30,6 @@ export default function Repository() {
             <div className=" h-[15%] text-xs text-primary_8 flex gap-4">
               <div>
                 <span>Updated {"12 2023"}</span>
->>>>>>> ddd83dcd42b5a1eefdc20bf2a3225c4039567352
               </div>
               <div className="flex">
                 <GoDownload />
