@@ -39,7 +39,7 @@ export default function Page() {
             </h1>
             <div className="relative w-[25%] mx-auto">
                 <Image
-                    src={userStore.user?.profileImage}
+                    src={userStore.user.profileImage}
                     alt="profile pic"
                     loader={myImageLoader}
                     unoptimized
@@ -56,7 +56,7 @@ export default function Page() {
                 <div className="flex gap-4">
                     <div className="flex flex-col gap-1">
                         {/*FIXME: keep firstName and last name ; .*/}
-                        <label htmlFor="name" className="font-bold text-sm">
+                        <label htmlFor="name" className="font-bold text-sm text-primary_2">
                             First Name
                         </label>
                         <input
@@ -69,7 +69,7 @@ export default function Page() {
                     </div>
                     <div className="flex flex-col gap-1">
                         {/*FIXME: keep firstName and last name ; .*/}
-                        <label htmlFor="name" className="font-bold text-sm">
+                        <label htmlFor="name" className="font-bold text-sm text-primary_2">
                             Last Name
                         </label>
                         <input
@@ -81,7 +81,7 @@ export default function Page() {
                     </div>
                 </div>
                 <div className="flex flex-col gap-1">
-                    <label htmlFor="Username" className="font-medium text-[#FDFDFD] text-sm">
+                    <label htmlFor="Username" className="font-medium text-primary_2 text-sm">
                         Username
                     </label>
                     <input
@@ -93,7 +93,7 @@ export default function Page() {
                     />
                 </div>
                 <div className="flex flex-col gap-1">
-                    <label htmlFor="email" className="font-bold text-sm">
+                    <label htmlFor="email" className="font-bold text-sm text-primary_2">
                         Email address
                     </label>
                     <input
@@ -105,7 +105,7 @@ export default function Page() {
                     />
                 </div>
                 <div className="flex flex-col gap-1 ">
-                    <label htmlFor="bio" className="font-medium text-[#FDFDFD] text-sm">
+                    <label htmlFor="bio" className="font-medium text-primary_2 text-sm ">
                         Bio
                     </label>
                     <textarea
