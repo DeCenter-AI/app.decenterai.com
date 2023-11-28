@@ -17,7 +17,16 @@ type Store = {
 const useNotificationStore = create<Store>()(
   persist(
     devtools((set, get) => ({
-      notification: [],
+      notification: [
+        {
+          id: "1",
+          avatar: "",
+          message:"Hello world",
+          name:"Hello world",
+          time: new Date() ,
+          userId:"1"
+        }
+      ],
 
       // fetchNotifications: async () => {
       //   try {
