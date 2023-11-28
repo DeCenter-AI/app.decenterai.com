@@ -9,7 +9,7 @@ import { PiListChecks, PiDotsThree } from 'react-icons/pi'
 import useNotificationStore from '@/state/notificationStore';
 
 const Messages = () => {
-  const { Notifications,  } = useNotificationStore()
+  const { Notifications, } = useNotificationStore()
   return (
     <main className="flex flex-col gap-4 h-full  px-2 overflow-y-auto">
       {Notifications && Object.values(Notifications).map(notification => (
@@ -38,7 +38,7 @@ const Messages = () => {
 }
 
 const ModalNotification = () => {
- const { Notifications,  } = useNotificationStore()
+  const { Notifications, } = useNotificationStore()
 
   // useEffect(() => {
   //   // Fetch notifications when the component mounts
@@ -46,13 +46,12 @@ const ModalNotification = () => {
   // }, []);
   return (
     <main className="flex flex-col gap-4   text-xs h-[400px] overflow-y-scroll px-2 ">
-      {notifications.map((notification) => {
-        if (notification.id < 7) {
+      {Notifications && Object.values(Notifications).map(notification => {
+        if (notification.id < "7") {
           return (
             <div
               key={notification.id}
-              className={`flex justify-between gap-8 items-center  py-2 rounded-3xl px-2 border border-primary_8 ${!notification.read ? ' ' : 'opacity-30'
-                }`}
+              className={`flex justify-between gap-8 items-center  py-2 rounded-3xl px-2 border border-primary_8 `}
             >
               <div className="flex items-center gap-2">
                 <Image
@@ -61,12 +60,12 @@ const ModalNotification = () => {
                   className="w-[12%]"
                 />
                 <div>
-                  <h4 className="text-[#F0F0F0]">{notification.name}</h4>
-                  <span className="text-[#92929D]">{notification.msg}</span>
+                  <h4 className="text-primary_4">{notification.name}</h4>
+                  <span className="text-primary_6">{notification.message}</span>
                 </div>
               </div>
 
-              <span className="text-[#5D5D5D]">{notification.time}</span>
+              {/* <span className="text-[#5D5D5D]">{notification.time}</span> */}
             </div>
           )
         }
