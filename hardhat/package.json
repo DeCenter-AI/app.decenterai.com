@@ -1,0 +1,66 @@
+{
+  "name": "hardhat-template",
+  "private": true,
+  "version": "0.6.0",
+  "description": "Hardhat-Template is a ready-to-use repository for web3 developers, providing a seamless environment for decentralized application (Dapp) development using Hardhat. It includes smart contract development, testing, deployment scripts, and an example frontend for easy interaction with deployed smart contracts.",
+  "author": "laciferin@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "style": "prettier -w .",
+    "start": "hardhat node",
+    "build": "hardhat compile",
+    "pretest": "npm run start",
+    "clean": "hardhat clean",
+    "compile": "hardhat compile",
+    "deploy:sepolia": "hardhat run scripts/deploy.ts --network sepolia",
+    "deploy:mumbai": "hardhat run scripts/deploy.ts --network mumbai",
+    "deploy:local": "hardhat run scripts/deploy.ts --network local",
+    "test": "hardhat test",
+    "test:sepolia": "hardhat test --network sepolia",
+    "test:mumbai": "hardhat test --network mumbai",
+    "pretest:local": "npm run start & sleep 2",
+    "test:local": "hardhat test --network local",
+    "test:local:dev": "concurrently \"pnpm:start\" \"pnpm:test:local\""
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@nomicfoundation/hardhat-verify": "^1.0.0",
+    "@remix-project/remixd": "^0.6.18",
+    "@typechain/ethers-v6": "^0.4.0",
+    "@typechain/hardhat": "^8.0.0",
+    "@types/chai": "^4.2.0",
+    "@types/mocha": ">=9.1.0",
+    "@types/node": ">=16.0.0",
+    "chai": "^4.2.0",
+    "concurrently": "^8.2.2",
+    "ethers": "^6.4.0",
+    "hardhat": "^2.18.3",
+    "hardhat-gas-reporter": "^1.0.8",
+    "rimraf": "^5.0.1",
+    "solc": "^0.8.22",
+    "solidity-coverage": "^0.8.0",
+    "ts-node": ">=8.0.0",
+    "typechain": "^8.1.0",
+    "typescript": ">=4.5.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/contracts-upgradeable": "^4.9.3",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=6.0.0",
+    "pnpm": ">=8.6.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nasfame/hardhat-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nasfame/hardhat-template/issues"
+  }
+}

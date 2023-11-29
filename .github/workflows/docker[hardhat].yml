@@ -1,0 +1,38 @@
+name: Docker Hardhat
+on:
+  push:
+    branches:
+      - main
+    tags:
+
+  pull_request:
+    branches:
+
+  merge_group:
+    types: [checks_requested]
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  envfile: ${{secrets.ENVHARDHAT}}
+  MODE: test
+  NODE_ENV: testing
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./hardhat
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Docker
+        run: docker build .
