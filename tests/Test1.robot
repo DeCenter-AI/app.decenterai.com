@@ -5,7 +5,7 @@ Library    XML
 Library    OperatingSystem
 
 *** Variables ***
-${URL}            http://decenterai.com
+${URL}            https://localhost:3000
 ${BROWSER}        chrome
 
 *** Test Cases ***
