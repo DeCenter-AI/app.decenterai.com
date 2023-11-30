@@ -75,7 +75,7 @@ export default function Page() {
 
           <div className=" w-[85%]  h-full  ">
             <div className="w-full h-[80%] flex flex-col gap-6  overflow-y-scroll">
-              <Repository repository={repositoryList} />
+              <Repository />
             </div>
 
             <div className="flex h-[20%] justify-center gap-x-3 text-primary_7  items-center ">
