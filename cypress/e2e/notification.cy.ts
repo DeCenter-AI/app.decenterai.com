@@ -106,6 +106,47 @@ const notifications = [
     avatar: avatarData.avatar.url,
     read: false,
   },
+  {
+    id: 2,
+    name: 'Israel Faizul',
+    msg: 'Downloaded your model “Speech therapy TXT” ',
+    time: '12 Minutes ago',
+    avatar: avatarData.avatar.url,
+    read: false,
+  },
+  {
+    id: 3,
+    name: 'Solomon Ideh',
+    msg: 'Downloaded your model “Speech therapy TXT” ',
+    time: '12 Minutes ago',
+    avatar: avatarData.avatar.url,
+    read: false,
+  },
+  {
+    id: 4,
+    name: 'Ebubechukwu Agnes',
+    msg: 'Downloaded your model “Speech therapy TXT” ',
+    time: '12 Minutes ago',
+    avatar: avatarData.avatar.url,
+    read: true,
+  },
+  {
+    id: 5,
+    name: 'Folasayo Ogunnaike',
+    msg: 'Downloaded your model “Speech therapy TXT” ',
+    time: '12 Minutes ago',
+    avatar: avatarData.avatar.url,
+    read: true,
+  },
+  {
+    id: 6,
+    name: 'Ogunmodede-Smart Olusegun',
+    msg: 'Downloaded your model “Speech therapy TXT” ',
+    time: '12 Minutes ago',
+    avatar: avatarData.avatar.url,
+    read: true,
+  },
+  
 ]
 
 // Render the ModalNotification component with mock data
