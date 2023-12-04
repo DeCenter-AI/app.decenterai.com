@@ -1,7 +1,7 @@
-import { create } from 'zustand'
-import { devtools, persist } from 'zustand/middleware'
-import { upsert_user } from '@app/explore/upsert_user'
-import { User } from '@prisma/client'
+import {create} from 'zustand'
+import {devtools, persist} from 'zustand/middleware'
+import {upsert_user} from '@app/explore/upsert_user'
+import {User} from '@prisma/client'
 
 // interface IUser{
 //     id: string
