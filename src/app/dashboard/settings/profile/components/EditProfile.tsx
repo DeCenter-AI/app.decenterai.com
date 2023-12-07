@@ -98,17 +98,10 @@ const EditProfile = ({ onclick }) => {
           ></textarea>
         </div>
         <div className="font-semibold flex justify-end gap-4 items-center mt-2">
-          <button
-            className=" bg-transparent border border-primary_8 rounded-full px-4 py-2 text-[#F5F5F5] w-[140px] text-center"
-            onClick={onclick}
-          >
+          <button className=" bg-transparent border border-primary_8 rounded-full px-4 py-3 text-[#F5F5F5] w-[140px] text-center">
             Cancel
           </button>
-          <button
-            className=" bg-primary_10 rounded-full px-4 py-2 w-[140px] text-center"
-            onClick={onclick}
-            // TODO: fixme this is not activated. Use userStore.syncDB to save to DB. And pass false as second argument to userStore.setUser
-          >
+          <button className=" bg-primary_10 rounded-full px-4 py-3 w-[140px] text-center">
             Save changes
           </button>
         </div>
