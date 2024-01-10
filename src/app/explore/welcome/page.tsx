@@ -158,6 +158,7 @@ export default function Page() {
                     id="imageInput"
                 />
                 <label htmlFor="imageInput">
+                    {userStore.user && (
                     <Image
                         src={selectedImage ? URL.createObjectURL(selectedImage) : userStore.user.profileImage}
                         alt="profile pic"
@@ -167,6 +168,7 @@ export default function Page() {
                         height={70}
                         className="max-w-[100%] max-h-[100%] rounded-full cursor-pointer"
                     />
+                    )}
                 </label>
 
                 <button className="absolute -bottom-2 left-10 text-primary_7 bg-primary_10 p-1.5 rounded-full">
