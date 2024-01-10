@@ -5,7 +5,7 @@ import { myImageLoader } from '@/lib/imageHelper'
 import { AiOutlineCamera } from 'react-icons/ai'
 import { useRouter } from 'next/navigation'
 import lighthouse from "@lighthouse-web3/sdk"
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 async function uploadImage(selectedImage) {
     return await lighthouse.upload(selectedImage, process.env.NEXT_PUBLIC_LH_API);
@@ -16,25 +16,95 @@ export default function Page() {
     const { push } = useRouter()
     const userStore = useUserStore()
     const [selectedImage, setSelectedImage] = useState(null);
+    const fileInputRef = useRef(null); 
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [username, setUsername] = useState('')
+    const [bio, setBio] = useState('')
+    const [email, setEmail] = useState('')
 
-    const handleNameChange = (event) => {
-        if (userStore.user) {
-            userStore.setUser({
-                name: `${event.target.value}`,
-            });
-        }
-
-    }
-    const handleBioChange = (event) => {
-        userStore.setUser({
-            bio: `${event.target.value}`,
-        })
-    }
-
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        setSelectedImage(file);
+    const handleFirstNameChange = (event) => {
+        setFirstName(event.target.value);
     };
+
+    const handleLastNameChange = (event) => {
+        setLastName(event.target.value);
+    };
+
+
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+    }
+
+    const handleBioChange = (event) => {
+        setBio(event.target.value)
+    }
+
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value)
+    };
+
+    const handleImageChange = () => {
+        fileInputRef.current.click();  // Trigger file input click
+    };
+
+    const areAllFieldsFilled = () => {
+        return firstName && lastName && username && email && bio;
+    };
+
+
+    const handleFileInputChange = async (event) => {
+            
+        const selectedFile = event.target.files[0];
+
+        console.log(selectedFile)
+
+        if (selectedFile) {
+            try {
+            // Convert the selected file to a data URL
+            const dataUrl = await readFileAsDataURL(selectedFile);
+
+            // console.log("Data URL: " + dataUrl)
+
+
+            // Ensure dataUrl is a string before updating userStore
+            if (typeof dataUrl === 'string') {
+                // Update the userStore with the data URL
+                userStore.setUser({
+                profileImage: dataUrl,
+                });
+
+                // Update the src prop of the Image component
+                setSelectedImage(selectedFile);
+            } else {
+                console.error('Error converting file to data URL. Invalid data URL format.');
+            }
+
+            } catch (error) {
+            console.error('Error converting file to data URL:', error);
+            }
+        }
+    };
+
+
+    // Helper function to read file as data URL
+    const readFileAsDataURL = (file) => {
+        return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+    
+        reader.onloadend = () => {
+            resolve(reader.result);
+        };
+    
+        reader.onerror = (error) => {
+            reject(error);
+        };
+    
+        reader.readAsDataURL(file);
+        });
+    };
+    
 
     type Url = {
         url: string
@@ -43,11 +113,21 @@ export default function Page() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        const fullName = `${firstName} ${lastName}`;
+
+        if (userStore.user) {
+            userStore.setUser({
+                name: fullName,
+                userName: username,
+                bio: bio
+            })
+        }
+
         if (selectedImage) {
             try {
                 const response = await uploadImage(selectedImage);
 
-                console.log(response)
+                console.log("IMAGE UPLOADED : ", response)
 
                 // Redirect to the dashboard
                 push('/dashboard');
@@ -59,6 +139,7 @@ export default function Page() {
             push('/dashboard');
         }
     };
+
 
 
 
@@ -78,7 +159,7 @@ export default function Page() {
                 />
                 <label htmlFor="imageInput">
                     <Image
-                        src={userStore.user.profileImage}
+                        src={selectedImage ? URL.createObjectURL(selectedImage) : userStore.user.profileImage}
                         alt="profile pic"
                         loader={myImageLoader}
                         unoptimized
@@ -89,6 +170,14 @@ export default function Page() {
                 </label>
 
                 <button className="absolute -bottom-2 left-10 text-primary_7 bg-primary_10 p-1.5 rounded-full">
+                <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        id="imageInput"
+                        ref={fileInputRef}
+                        onChange={handleFileInputChange}
+                    />
                     <AiOutlineCamera size={20} onClick={handleImageChange} />
                 </button>
             </div>
@@ -101,8 +190,8 @@ export default function Page() {
                         </label>
                         <input
                             type="text"
-                            value={userStore.user?.name}
-                            onChange={handleNameChange}
+                            value={firstName}
+                            onChange={handleFirstNameChange}
                             className="text-primary_7 border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
                         />
 
@@ -114,8 +203,8 @@ export default function Page() {
                         </label>
                         <input
                             type="text"
-                            value={userStore.user?.name}
-                            onChange={handleNameChange}
+                            value={lastName}
+                            onChange={handleLastNameChange}
                             className="text-primary_7 border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
                         />
                     </div>
@@ -127,7 +216,8 @@ export default function Page() {
                     <input
                         type="text"
                         placeholder="Nick name (optional)"
-                        value={userStore.user ? userStore.user.name : ''}
+                        value={username}
+                        onChange={handleUsernameChange}
                         className="text-primary_7 border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
                         id="Username"
                     />
@@ -138,10 +228,12 @@ export default function Page() {
                     </label>
                     <input
                         type="text"
-                        value={userStore.user?.email}
+                        value={email}
                         className="text-primary_7 border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
                         id="email"
                         name="email"
+                        onChange={handleEmailChange}
+
                     />
                 </div>
                 <div className="flex flex-col gap-1 ">
@@ -151,7 +243,7 @@ export default function Page() {
                     <textarea
                         name="bio"
                         id="bio"
-                        value={userStore.user?.bio}
+                        value={bio}
                         className="text-primary_7 border border-primary_8 rounded-xl p-3 focus:outline-none bg-transparent h-12 overflow-y-hidden"
                         placeholder="About you (optional)"
                         onChange={handleBioChange}
@@ -160,7 +252,10 @@ export default function Page() {
                 <div className="font-semibold flex justify-center gap-4 items-center mt-2">
                     <button
                         onClick={handleSubmit}
-                        className="bg-primary_10 bg-blue rounded-full px-4 py-2 w-[200px] text-center mt-4"
+                        className={`bg-primary_10 bg-blue text-primary_4 rounded-full px-4 py-2 w-[200px] text-center mt-4 ${
+                            areAllFieldsFilled() ? '' : 'opacity-50 cursor-not-allowed'
+                        }`}
+                        disabled={!areAllFieldsFilled()} // Disable the button if fields are not filled
                     // TODO: fixme this is not activated. Use userStore.syncDB to save to DB. And pass false as the second argument to userStore.setUser
                     >
 
