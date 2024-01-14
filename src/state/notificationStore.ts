@@ -21,10 +21,11 @@ const useNotificationStore = create<Store>()(
         {
           id: "1",
           avatar: "",
-          message:"Hello world",
-          name:"Hello world",
-          time: new Date() ,
-          userId:"1"
+          message: "Hello world",
+          name: "Hello world",
+          time: new Date(),
+          userId: "1"
+
         }
       ],
 
@@ -57,7 +58,7 @@ const useNotificationStore = create<Store>()(
         }))
       },
     })),
-    { name: 'notification-store' }, 
+    { name: 'notification-store' },
   ),
 )
 
