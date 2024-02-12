@@ -1,13 +1,65 @@
 import { create } from 'zustand'
+import { devtools, persist } from 'zustand/middleware'
+import { Notification } from '@prisma/client'
 
-type Notification = {
-  id: number
-  message: string
-  // type: 'success' | 'error' | 'info';
+type INotification = Omit<Omit<Notification, 'createdAt'>, 'updatedAt'>
+
+interface Notifications {
+  [modelId: string]: INotification
+}
+type Store = {
+  notification: INotification[]
+  Notifications?: Notifications
+  addNotification: (notification: INotification) => void
+  markAsRead: (id: string) => void
 }
 
-type NotificationStore = {
-  notifications: Notification[]
-  addNotification: (notification: Notification) => void
-  removeNotification: (id: number) => void
-}
+const useNotificationStore = create<Store>()(
+  persist(
+    devtools((set, get) => ({
+      notification: [
+        {
+          id: "1",
+          avatar: "",
+          message: "Hello world",
+          name: "Hello world",
+          time: new Date(),
+          userId: "1"
+
+        }
+      ],
+
+      // fetchNotifications: async () => {
+      //   try {
+      //     const notifications = await useNotificationStore.notification.findMany();
+      //     set({ notification: notifications });
+      //   } catch (error) {
+      //     console.error('Error fetching notifications:', error);
+      //   }
+      // },
+
+      addNotification: (notification) => {
+        set((state) => ({
+          notification: [
+            ...state.notification,
+            {
+              id: String(Date.now()),
+              ...notification,
+            },
+          ],
+        }))
+      },
+
+      markAsRead: (id) => {
+        set((state) => ({
+          notification: state.notification.map((notification) =>
+            notification.id === id ? { ...notification, read: true } : notification,
+          ),
+        }))
+      },
+    })),
+    { name: 'notification-store' },
+  ),
+)
+
+export default useNotificationStore
