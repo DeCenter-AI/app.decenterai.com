@@ -1,7 +1,7 @@
-import {create} from 'zustand'
-import {devtools, persist} from 'zustand/middleware'
-import {upsert_user} from '@app/explore/upsert_user'
-import {User} from '@prisma/client'
+import { create } from 'zustand'
+import { devtools, persist } from 'zustand/middleware'
+import { upsert_user } from '@app/explore/upsert_user'
+import { User } from '@prisma/client'
 
 // interface IUser{
 //     id: string
@@ -36,8 +36,9 @@ const useUserStore = create<Store>()(
           }))
           console.log('userStore: init')
         },
-        async setUser(userDto: Partial<IUser>, syncDB: boolean = true) {
+        async setUser(userDto: Partial<IUser>, syncDB: boolean = false) {
           //TODO: make this false, too much DB writes!!
+          // * Syncdb set to false by default
           set((state) => ({
             ...state,
             user: {

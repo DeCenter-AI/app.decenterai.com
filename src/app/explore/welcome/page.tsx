@@ -16,7 +16,7 @@ export default function Page() {
     const { push } = useRouter()
     const userStore = useUserStore()
     const [selectedImage, setSelectedImage] = useState(null);
-    const fileInputRef = useRef(null); 
+    const fileInputRef = useRef(null);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('')
@@ -50,39 +50,39 @@ export default function Page() {
     };
 
     const areAllFieldsFilled = () => {
-        return firstName && lastName && username && email && bio;
+        return firstName && lastName && username && email;
     };
 
 
     const handleFileInputChange = async (event) => {
-            
+
         const selectedFile = event.target.files[0];
 
         console.log(selectedFile)
 
         if (selectedFile) {
             try {
-            // Convert the selected file to a data URL
-            const dataUrl = await readFileAsDataURL(selectedFile);
+                // Convert the selected file to a data URL
+                const dataUrl = await readFileAsDataURL(selectedFile);
 
-            // console.log("Data URL: " + dataUrl)
+                // console.log("Data URL: " + dataUrl)
 
 
-            // Ensure dataUrl is a string before updating userStore
-            if (typeof dataUrl === 'string') {
-                // Update the userStore with the data URL
-                userStore.setUser({
-                profileImage: dataUrl,
-                });
+                // Ensure dataUrl is a string before updating userStore
+                if (typeof dataUrl === 'string') {
+                    // Update the userStore with the data URL
+                    userStore.setUser({
+                        profileImage: dataUrl,
+                    });
 
-                // Update the src prop of the Image component
-                setSelectedImage(selectedFile);
-            } else {
-                console.error('Error converting file to data URL. Invalid data URL format.');
-            }
+                    // Update the src prop of the Image component
+                    setSelectedImage(selectedFile);
+                } else {
+                    console.error('Error converting file to data URL. Invalid data URL format.');
+                }
 
             } catch (error) {
-            console.error('Error converting file to data URL:', error);
+                console.error('Error converting file to data URL:', error);
             }
         }
     };
@@ -91,20 +91,20 @@ export default function Page() {
     // Helper function to read file as data URL
     const readFileAsDataURL = (file) => {
         return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-    
-        reader.onloadend = () => {
-            resolve(reader.result);
-        };
-    
-        reader.onerror = (error) => {
-            reject(error);
-        };
-    
-        reader.readAsDataURL(file);
+            const reader = new FileReader();
+
+            reader.onloadend = () => {
+                resolve(reader.result);
+            };
+
+            reader.onerror = (error) => {
+                reject(error);
+            };
+
+            reader.readAsDataURL(file);
         });
     };
-    
+
 
     type Url = {
         url: string
@@ -144,7 +144,7 @@ export default function Page() {
 
 
     return (
-        <div className="absolute inset-0 z-50 bg-black w-[80%] sm:w-[60%] md:w-[40%] lg:w-[30%] h-[90%] max-h-screen mx-auto transition-all duration-500 ease-in-out rounded-xl px-6 py-6 flex flex-col gap-4 shadow-xl my-auto" style={{ border: '1px solid white' }}>
+        <div className="absolute inset-0 z-50 bg-black w-[80%] sm:w-[60%] md:w-[40%] lg:w-[40%] h-[90%] max-h-screen mx-auto transition-all duration-500 ease-in-out rounded-xl px-6 py-6 flex flex-col gap-4 shadow-xl my-auto" style={{ border: '1px solid white' }}>
             <h1 className="font-logirentBold text-primary_1 text-center font-bold text-5xl rounded-md py-3 w-[80%] lg:w-[100%] h-[10%]"
             >
                 {' '}
@@ -159,20 +159,20 @@ export default function Page() {
                 />
                 <label htmlFor="imageInput">
                     {userStore.user && (
-                    <Image
-                        src={selectedImage ? URL.createObjectURL(selectedImage) : userStore.user.profileImage}
-                        alt="profile pic"
-                        loader={myImageLoader}
-                        unoptimized
-                        width={70}
-                        height={70}
-                        className="max-w-[100%] max-h-[100%] rounded-full cursor-pointer"
-                    />
+                        <Image
+                            src={selectedImage ? URL.createObjectURL(selectedImage) : userStore.user.profileImage}
+                            alt="profile pic"
+                            loader={myImageLoader}
+                            unoptimized
+                            width={70}
+                            height={70}
+                            className="max-w-[100%] max-h-[100%] rounded-full cursor-pointer"
+                        />
                     )}
                 </label>
 
                 <button className="absolute -bottom-2 left-10 text-primary_7 bg-primary_10 p-1.5 rounded-full">
-                <input
+                    <input
                         type="file"
                         accept="image/*"
                         style={{ display: 'none' }}
@@ -184,7 +184,7 @@ export default function Page() {
                 </button>
             </div>
             <form action="" className="text-primary_8 text-sm flex flex-col gap-4 relative ">
-                <div className="flex gap-4" >
+                <div className="flex gap-4 " >
                     <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                         {/*FIXME: keep firstName and last name ; .*/}
                         <label htmlFor="name" className="font-bold text-sm text-primary_2">
@@ -254,9 +254,8 @@ export default function Page() {
                 <div className="font-semibold flex justify-center gap-4 items-center mt-2">
                     <button
                         onClick={handleSubmit}
-                        className={`bg-primary_10 bg-blue text-primary_4 rounded-full px-4 py-2 w-[200px] text-center mt-4 ${
-                            areAllFieldsFilled() ? '' : 'opacity-50 cursor-not-allowed'
-                        }`}
+                        className={`bg-primary_10 bg-blue text-primary_4 rounded-full px-4 py-2 w-[200px] text-center mt-4 ${areAllFieldsFilled() ? '' : 'opacity-50 cursor-not-allowed'
+                            }`}
                         disabled={!areAllFieldsFilled()} // Disable the button if fields are not filled
                     // TODO: fixme this is not activated. Use userStore.syncDB to save to DB. And pass false as the second argument to userStore.setUser
                     >
