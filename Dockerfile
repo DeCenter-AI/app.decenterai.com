@@ -28,6 +28,6 @@ COPY --from=builder /app ./
 
 CMD ["sh", "-c", "npm run test && npm run test:e2e"]
 
-ENTRYPOINT ["npm", "run", "start:prod"]
+ENTRYPOINT ["npm", "run", "start"]
 
 LABEL maintainer="Hiro <laciferin@gmail.com>"
