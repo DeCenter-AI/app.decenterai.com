@@ -54,7 +54,7 @@ const EditProfile = ({ onclick }) => {
             </label>
             <input
               type="text"
-              value={userStore.user.name}
+              value={userStore.user?.name}
               onChange={handleNameChange}
               className="text-[#8F8F8F] border border-primary_8 rounded-xl p-2 focus:outline-none bg-transparent"
             />

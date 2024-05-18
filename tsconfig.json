@@ -20,7 +20,6 @@
       "@/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
       "@api/*": ["./src/app/api/*"],
-      "@abi/*": ["./src/abi/*"],
       "@lib/*": ["./src/lib/*"],
       "@data/*": ["./src/app/data/*"],
       "@state/*": ["./src/state/*"],
@@ -36,7 +35,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    // "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": ".",
     "strictNullChecks": false,
@@ -67,7 +66,6 @@
     "test/jest-e2e.ts",
     "tsconfig.json"
   ],
-
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

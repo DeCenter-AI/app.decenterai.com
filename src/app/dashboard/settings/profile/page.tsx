@@ -29,9 +29,9 @@ export default function Page() {
     setIsModalOPen(false)
     setShowBackdrop(false)
   }
-  if (!user) {
-    return <div>User Not found</div>
-  }
+  // if (!user) {
+  //   return <div>User Not found</div>
+  // }
   return (
     <DashLayout>
       {isModalOpen && <EditProfile onclick={closeModal} />}
