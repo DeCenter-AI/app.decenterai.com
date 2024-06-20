@@ -11,6 +11,8 @@ import Loading from '../components/Loading'
 import { userType } from '@app/api/prisma/upsert_user/route'
 import { upsert_user } from './upsert_user'
 import useUserStore from '@/state/userStore'
+import axios from 'axios'
+import protectRoutes from './protect_routes'
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -24,7 +26,10 @@ export default function Page() {
     const userInfo = await particle.auth.login({
       supportAuthTypes: 'email,google',
     })
+
+    await protectRoutes(userInfo);
     console.log({ primsa: userInfo })
+
     const email = userInfo.email || userInfo.google_email
     const name =
       userInfo.name ||
